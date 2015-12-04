@@ -342,9 +342,9 @@ go
 
 create table VISITER
 (
-     ID_HEBERGEMENT char(32) not null,
-     ID_INSPECTEUR int not null,
-     ID_SAISON int not null,
+     ID_HEBERGEMENT char(32),
+     ID_INSPECTEUR int,
+     ID_SAISON int,
      NOMBRE_ETOILE_VISITE smallint ,
      DATE_HEURE_VISITE timestamp ,
      CONTRE_VISITE bit ,
