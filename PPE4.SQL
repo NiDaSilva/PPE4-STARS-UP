@@ -1,432 +1,344 @@
-/*
- ----------------------------------------------------------------------------
-             Génération d'une base de données pour
-                      Microsoft SQL Server
-                       (4/12/2015 15:39:41)
- ----------------------------------------------------------------------------
-     Nom de la base : PPE4
-     Projet : 
-     Auteur : BTS SIO
-     Date de dernière modification : 4/12/2015 15:38:16
- ----------------------------------------------------------------------------
-*/
+DROP DATABASE IF EXISTS PPE4;
+
+CREATE DATABASE IF NOT EXISTS PPE4;
+USE PPE4;
+# -----------------------------------------------------------------------------
+#       TABLE : HEBERGEMENT
+# -----------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS HEBERGEMENT
+ (
+   ID_HEBERGEMENT INTEGER NOT NULL  ,
+   ID_DEPARTEMENT INTEGER NOT NULL  ,
+   NOM_HEBERGEMENT VARCHAR(128) NULL  ,
+   ADRESSE_HEBERGEMENT VARCHAR(128) NULL  ,
+   VILLE_HEBERGEMENT VARCHAR(128) NULL  
+   , PRIMARY KEY (ID_HEBERGEMENT) 
+ ) 
+ comment = "";
+
+# -----------------------------------------------------------------------------
+#       INDEX DE LA TABLE HEBERGEMENT
+# -----------------------------------------------------------------------------
+
+
+CREATE  INDEX I_FK_HEBERGEMENT_DEPARTEMENT
+     ON HEBERGEMENT (ID_DEPARTEMENT ASC);
+
+# -----------------------------------------------------------------------------
+#       TABLE : SAISON
+# -----------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS SAISON
+ (
+   ID_SAISON INTEGER NOT NULL  ,
+   LIBELLE_SAISON VARCHAR(128) NULL  
+   , PRIMARY KEY (ID_SAISON) 
+ ) 
+ comment = "";
+
+# -----------------------------------------------------------------------------
+#       TABLE : CHAMBRE_HOTE
+# -----------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS CHAMBRE_HOTE
+ (
+   ID_HEBERGEMENT INTEGER NOT NULL  ,
+   NOMBRE_CHAMBRE_HOTE SMALLINT NULL  ,
+   CUISINE_CHAMBRE_HOTE BOOLEAN NULL  ,
+   NOM_HEBERGEMENT VARCHAR(128) NULL  ,
+   ADRESSE_HEBERGEMENT VARCHAR(128) NULL  ,
+   VILLE_HEBERGEMENT VARCHAR(128) NULL  
+   , PRIMARY KEY (ID_HEBERGEMENT) 
+ ) 
+ comment = "";
+
+# -----------------------------------------------------------------------------
+#       TABLE : DEPARTEMENT
+# -----------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS DEPARTEMENT
+ (
+   ID_DEPARTEMENT INTEGER NOT NULL  ,
+   LIBELLE_DEPARTEMENT VARCHAR(128) NULL  
+   , PRIMARY KEY (ID_DEPARTEMENT) 
+ ) 
+ comment = "";
+
+# -----------------------------------------------------------------------------
+#       TABLE : SPECIALITE
+# -----------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS SPECIALITE
+ (
+   ID_SPECIALITE INTEGER NOT NULL  ,
+   LIBELLE_SPECIALITE VARCHAR(128) NULL  
+   , PRIMARY KEY (ID_SPECIALITE) 
+ ) 
+ comment = "";
+
+# -----------------------------------------------------------------------------
+#       TABLE : EQUIPEMENT_CAMPING
+# -----------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS EQUIPEMENT_CAMPING
+ (
+   ID_EQUIPEMENT_CAMPING INTEGER NOT NULL  ,
+   LIBELLE_EQUIPEMENT_CAMPING VARCHAR(128) NULL  
+   , PRIMARY KEY (ID_EQUIPEMENT_CAMPING) 
+ ) 
+ comment = "";
+
+# -----------------------------------------------------------------------------
+#       TABLE : CAMPING
+# -----------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS CAMPING
+ (
+   ID_HEBERGEMENT INTEGER NOT NULL  ,
+   NOM_HEBERGEMENT VARCHAR(128) NULL  ,
+   ADRESSE_HEBERGEMENT VARCHAR(128) NULL  ,
+   VILLE_HEBERGEMENT VARCHAR(128) NULL  
+   , PRIMARY KEY (ID_HEBERGEMENT) 
+ ) 
+ comment = "";
+
+# -----------------------------------------------------------------------------
+#       TABLE : TYPE_CUISINE
+# -----------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS TYPE_CUISINE
+ (
+   ID_TYPE_CUISINE INTEGER NOT NULL  ,
+   LIBELLE_TYPE_CUISINE INTEGER NULL  
+   , PRIMARY KEY (ID_TYPE_CUISINE) 
+ ) 
+ comment = "";
+
+# -----------------------------------------------------------------------------
+#       TABLE : HOTEL
+# -----------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS HOTEL
+ (
+   ID_HEBERGEMENT INTEGER NOT NULL  ,
+   RESTAURANT_HOTEL BOOLEAN NULL  ,
+   CHEF_RESTAURANT_HOTEL VARCHAR(128) NULL  ,
+   NOM_HEBERGEMENT VARCHAR(128) NULL  ,
+   ADRESSE_HEBERGEMENT VARCHAR(128) NULL  ,
+   VILLE_HEBERGEMENT VARCHAR(128) NULL  
+   , PRIMARY KEY (ID_HEBERGEMENT) 
+ ) 
+ comment = "";
+
+# -----------------------------------------------------------------------------
+#       TABLE : GERANT
+# -----------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS GERANT
+ (
+   ID_GERANT INTEGER NOT NULL  ,
+   NOM_GERANT VARCHAR(128) NULL  ,
+   PRENOM_GERANT VARCHAR(128) NULL  
+   , PRIMARY KEY (ID_GERANT) 
+ ) 
+ comment = "";
+
+# -----------------------------------------------------------------------------
+#       TABLE : INSPECTEUR
+# -----------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS INSPECTEUR
+ (
+   ID_INSPECTEUR INTEGER NOT NULL  ,
+   ID_SPECIALITE INTEGER NOT NULL  ,
+   NOM_INSPECTEUR VARCHAR(128) NULL  ,
+   PERNOM_INSPECTEUR VARCHAR(128) NULL  
+   , PRIMARY KEY (ID_INSPECTEUR) 
+ ) 
+ comment = "";
+
+# -----------------------------------------------------------------------------
+#       INDEX DE LA TABLE INSPECTEUR
+# -----------------------------------------------------------------------------
+
+
+CREATE  INDEX I_FK_INSPECTEUR_SPECIALITE
+     ON INSPECTEUR (ID_SPECIALITE ASC);
+
+# -----------------------------------------------------------------------------
+#       TABLE : GERER
+# -----------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS GERER
+ (
+   ID_HEBERGEMENT INTEGER NOT NULL  ,
+   ID_GERANT INTEGER NOT NULL  
+   , PRIMARY KEY (ID_HEBERGEMENT,ID_GERANT) 
+ ) 
+ comment = "";
+
+# -----------------------------------------------------------------------------
+#       INDEX DE LA TABLE GERER
+# -----------------------------------------------------------------------------
+
+
+CREATE  INDEX I_FK_GERER_HEBERGEMENT
+     ON GERER (ID_HEBERGEMENT ASC);
+
+CREATE  INDEX I_FK_GERER_GERANT
+     ON GERER (ID_GERANT ASC);
+
+# -----------------------------------------------------------------------------
+#       TABLE : AVOIR
+# -----------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS AVOIR
+ (
+   ID_TYPE_CUISINE INTEGER NOT NULL  ,
+   ID_HEBERGEMENT INTEGER NOT NULL  
+   , PRIMARY KEY (ID_TYPE_CUISINE,ID_HEBERGEMENT) 
+ ) 
+ comment = "";
+
+# -----------------------------------------------------------------------------
+#       INDEX DE LA TABLE AVOIR
+# -----------------------------------------------------------------------------
 
-drop database PPE4
-go
 
-/* -----------------------------------------------------------------------------
-      OUVERTURE DE LA BASE PPE4
------------------------------------------------------------------------------ */
+CREATE  INDEX I_FK_AVOIR_TYPE_CUISINE
+     ON AVOIR (ID_TYPE_CUISINE ASC);
 
-create database PPE4
-go
+CREATE  INDEX I_FK_AVOIR_HOTEL
+     ON AVOIR (ID_HEBERGEMENT ASC);
 
-use PPE4
-go
+# -----------------------------------------------------------------------------
+#       TABLE : POSSEDER
+# -----------------------------------------------------------------------------
 
+CREATE TABLE IF NOT EXISTS POSSEDER
+ (
+   ID_EQUIPEMENT_CAMPING INTEGER NOT NULL  ,
+   ID_HEBERGEMENT INTEGER NOT NULL  
+   , PRIMARY KEY (ID_EQUIPEMENT_CAMPING,ID_HEBERGEMENT) 
+ ) 
+ comment = "";
 
+# -----------------------------------------------------------------------------
+#       INDEX DE LA TABLE POSSEDER
+# -----------------------------------------------------------------------------
 
-/* -----------------------------------------------------------------------------
-      TABLE : HEBERGEMENT
------------------------------------------------------------------------------ */
 
-create table HEBERGEMENT
-(
-     ID_HEBERGEMENT char(32) not null,
-     ID_DEPARTEMENT int not null,
-     NOM_HEBERGEMENT varchar(128) ,
-     ADRESSE_HEBERGEMENT varchar(128) ,
-     VILLE_HEBERGEMENT varchar(128) 
-)
-go
+CREATE  INDEX I_FK_POSSEDER_EQUIPEMENT_CAMPING
+     ON POSSEDER (ID_EQUIPEMENT_CAMPING ASC);
 
+CREATE  INDEX I_FK_POSSEDER_CAMPING
+     ON POSSEDER (ID_HEBERGEMENT ASC);
 
+# -----------------------------------------------------------------------------
+#       TABLE : VISITER
+# -----------------------------------------------------------------------------
 
-/*      INDEX DE HEBERGEMENT      */
+CREATE TABLE IF NOT EXISTS VISITER
+ (
+   ID_HEBERGEMENT INTEGER NOT NULL  ,
+   ID_INSPECTEUR INTEGER NOT NULL  ,
+   ID_SAISON INTEGER NOT NULL  ,
+   NOMBRE_ETOILE_VISITE SMALLINT NULL  ,
+   DATE_HEURE_VISITE DATETIME NULL  ,
+   CONTRE_VISITE BOOLEAN NULL  ,
+   COMMENTAIRE_VISITE VARCHAR(255) NULL  ,
+   TYPE_VISITE BOOLEAN NULL  
+   , PRIMARY KEY (ID_HEBERGEMENT,ID_INSPECTEUR,ID_SAISON) 
+ ) 
+ comment = "";
 
+# -----------------------------------------------------------------------------
+#       INDEX DE LA TABLE VISITER
+# -----------------------------------------------------------------------------
 
-sp_primarykey HEBERGEMENT, ID_HEBERGEMENT
-go
 
+CREATE  INDEX I_FK_VISITER_HEBERGEMENT
+     ON VISITER (ID_HEBERGEMENT ASC);
 
+CREATE  INDEX I_FK_VISITER_INSPECTEUR
+     ON VISITER (ID_INSPECTEUR ASC);
 
-/* -----------------------------------------------------------------------------
-      TABLE : SAISON
------------------------------------------------------------------------------ */
+CREATE  INDEX I_FK_VISITER_SAISON
+     ON VISITER (ID_SAISON ASC);
 
-create table SAISON
-(
-     ID_SAISON int not null,
-     LIBELLE_SAISON varchar(128) 
-)
-go
 
+# -----------------------------------------------------------------------------
+#       CREATION DES REFERENCES DE TABLE
+# -----------------------------------------------------------------------------
 
 
-/*      INDEX DE SAISON      */
+ALTER TABLE HEBERGEMENT 
+  ADD FOREIGN KEY FK_HEBERGEMENT_DEPARTEMENT (ID_DEPARTEMENT)
+      REFERENCES DEPARTEMENT (ID_DEPARTEMENT) ;
 
 
-sp_primarykey SAISON, ID_SAISON
-go
+ALTER TABLE CHAMBRE_HOTE 
+  ADD FOREIGN KEY FK_CHAMBRE_HOTE_HEBERGEMENT (ID_HEBERGEMENT)
+      REFERENCES HEBERGEMENT (ID_HEBERGEMENT) ;
 
 
+ALTER TABLE CAMPING 
+  ADD FOREIGN KEY FK_CAMPING_HEBERGEMENT (ID_HEBERGEMENT)
+      REFERENCES HEBERGEMENT (ID_HEBERGEMENT) ;
 
-/* -----------------------------------------------------------------------------
-      TABLE : CHAMBRE_HÔTE
------------------------------------------------------------------------------ */
 
-create table CHAMBRE_HÔTE
-(
-     ID_HEBERGEMENT char(32) not null,
-     NOMBRE_CHAMBRE_HOTE smallint ,
-     CUISINE_CHAMBRE_HOTE bit ,
-     NOM_HEBERGEMENT varchar(128) ,
-     ADRESSE_HEBERGEMENT varchar(128) ,
-     VILLE_HEBERGEMENT varchar(128) 
-)
-go
+ALTER TABLE HOTEL 
+  ADD FOREIGN KEY FK_HOTEL_HEBERGEMENT (ID_HEBERGEMENT)
+      REFERENCES HEBERGEMENT (ID_HEBERGEMENT) ;
 
 
+ALTER TABLE INSPECTEUR 
+  ADD FOREIGN KEY FK_INSPECTEUR_SPECIALITE (ID_SPECIALITE)
+      REFERENCES SPECIALITE (ID_SPECIALITE) ;
 
-/*      INDEX DE CHAMBRE_HÔTE      */
 
+ALTER TABLE GERER 
+  ADD FOREIGN KEY FK_GERER_HEBERGEMENT (ID_HEBERGEMENT)
+      REFERENCES HEBERGEMENT (ID_HEBERGEMENT) ;
 
-sp_primarykey CHAMBRE_HÔTE, ID_HEBERGEMENT
-go
 
+ALTER TABLE GERER 
+  ADD FOREIGN KEY FK_GERER_GERANT (ID_GERANT)
+      REFERENCES GERANT (ID_GERANT) ;
 
 
-/* -----------------------------------------------------------------------------
-      TABLE : DEPARTEMENT
------------------------------------------------------------------------------ */
+ALTER TABLE AVOIR 
+  ADD FOREIGN KEY FK_AVOIR_TYPE_CUISINE (ID_TYPE_CUISINE)
+      REFERENCES TYPE_CUISINE (ID_TYPE_CUISINE) ;
 
-create table DEPARTEMENT
-(
-     ID_DEPARTEMENT int not null,
-     LIBELLE_DEPARTEMENT varchar(128) 
-)
-go
 
+ALTER TABLE AVOIR 
+  ADD FOREIGN KEY FK_AVOIR_HOTEL (ID_HEBERGEMENT)
+      REFERENCES HOTEL (ID_HEBERGEMENT) ;
 
 
-/*      INDEX DE DEPARTEMENT      */
+ALTER TABLE POSSEDER 
+  ADD FOREIGN KEY FK_POSSEDER_EQUIPEMENT_CAMPING (ID_EQUIPEMENT_CAMPING)
+      REFERENCES EQUIPEMENT_CAMPING (ID_EQUIPEMENT_CAMPING) ;
 
 
-sp_primarykey DEPARTEMENT, ID_DEPARTEMENT
-go
+ALTER TABLE POSSEDER 
+  ADD FOREIGN KEY FK_POSSEDER_CAMPING (ID_HEBERGEMENT)
+      REFERENCES CAMPING (ID_HEBERGEMENT) ;
 
 
+ALTER TABLE VISITER 
+  ADD FOREIGN KEY FK_VISITER_HEBERGEMENT (ID_HEBERGEMENT)
+      REFERENCES HEBERGEMENT (ID_HEBERGEMENT) ;
 
-/* -----------------------------------------------------------------------------
-      TABLE : SPECIALITE
------------------------------------------------------------------------------ */
 
-create table SPECIALITE
-(
-     ID_SPECIALITE int not null,
-     LIBELLE_SPECIALITE varchar(128) 
-)
-go
+ALTER TABLE VISITER 
+  ADD FOREIGN KEY FK_VISITER_INSPECTEUR (ID_INSPECTEUR)
+      REFERENCES INSPECTEUR (ID_INSPECTEUR) ;
 
 
+ALTER TABLE VISITER 
+  ADD FOREIGN KEY FK_VISITER_SAISON (ID_SAISON)
+      REFERENCES SAISON (ID_SAISON) ;
 
-/*      INDEX DE SPECIALITE      */
-
-
-sp_primarykey SPECIALITE, ID_SPECIALITE
-go
-
-
-
-/* -----------------------------------------------------------------------------
-      TABLE : EQUIPEMENT_CAMPING
------------------------------------------------------------------------------ */
-
-create table EQUIPEMENT_CAMPING
-(
-     ID_EQUIPEMENT_CAMPING int not null,
-     LIBELLE_EQUIPEMENT_CAMPING varchar(128) 
-)
-go
-
-
-
-/*      INDEX DE EQUIPEMENT_CAMPING      */
-
-
-sp_primarykey EQUIPEMENT_CAMPING, ID_EQUIPEMENT_CAMPING
-go
-
-
-
-/* -----------------------------------------------------------------------------
-      TABLE : CAMPING
------------------------------------------------------------------------------ */
-
-create table CAMPING
-(
-     ID_HEBERGEMENT char(32) not null,
-     NOM_HEBERGEMENT varchar(128) ,
-     ADRESSE_HEBERGEMENT varchar(128) ,
-     VILLE_HEBERGEMENT varchar(128) 
-)
-go
-
-
-
-/*      INDEX DE CAMPING      */
-
-
-sp_primarykey CAMPING, ID_HEBERGEMENT
-go
-
-
-
-/* -----------------------------------------------------------------------------
-      TABLE : TYPE_CUISINE
------------------------------------------------------------------------------ */
-
-create table TYPE_CUISINE
-(
-     ID_TYPE_CUISINE int not null,
-     LIBELLE_TYPE_CUISINE int 
-)
-go
-
-
-
-/*      INDEX DE TYPE_CUISINE      */
-
-
-sp_primarykey TYPE_CUISINE, ID_TYPE_CUISINE
-go
-
-
-
-/* -----------------------------------------------------------------------------
-      TABLE : HÔTEL
------------------------------------------------------------------------------ */
-
-create table HÔTEL
-(
-     ID_HEBERGEMENT char(32) not null,
-     RESTAURANT_HOTEL bit ,
-     CHEF_RESTAURANT_HOTEL varchar(128) ,
-     NOM_HEBERGEMENT varchar(128) ,
-     ADRESSE_HEBERGEMENT varchar(128) ,
-     VILLE_HEBERGEMENT varchar(128) 
-)
-go
-
-
-
-/*      INDEX DE HÔTEL      */
-
-
-sp_primarykey HÔTEL, ID_HEBERGEMENT
-go
-
-
-
-/* -----------------------------------------------------------------------------
-      TABLE : GÉRANT
------------------------------------------------------------------------------ */
-
-create table GÉRANT
-(
-     ID_GERANT int not null,
-     NOM_GERANT varchar(128) ,
-     PRENOM_GERANT varchar(128) 
-)
-go
-
-
-
-/*      INDEX DE GÉRANT      */
-
-
-sp_primarykey GÉRANT, ID_GERANT
-go
-
-
-
-/* -----------------------------------------------------------------------------
-      TABLE : INSPECTEUR
------------------------------------------------------------------------------ */
-
-create table INSPECTEUR
-(
-     ID_INSPECTEUR int not null,
-     ID_SPECIALITE int not null,
-     NOM_INSPECTEUR varchar(128) ,
-     PERNOM_INSPECTEUR varchar(128) 
-)
-go
-
-
-
-/*      INDEX DE INSPECTEUR      */
-
-
-sp_primarykey INSPECTEUR, ID_INSPECTEUR
-go
-
-
-
-/* -----------------------------------------------------------------------------
-      TABLE : GERER
------------------------------------------------------------------------------ */
-
-create table GERER
-(
-     ID_HEBERGEMENT char(32) not null,
-     ID_GERANT int not null
-)
-go
-
-
-
-/*      INDEX DE GERER      */
-
-
-sp_primarykey GERER, ID_HEBERGEMENT, ID_GERANT
-go
-
-
-
-/* -----------------------------------------------------------------------------
-      TABLE : AVOIR
------------------------------------------------------------------------------ */
-
-create table AVOIR
-(
-     ID_TYPE_CUISINE int not null,
-     ID_HEBERGEMENT char(32) not null
-)
-go
-
-
-
-/*      INDEX DE AVOIR      */
-
-
-sp_primarykey AVOIR, ID_TYPE_CUISINE, ID_HEBERGEMENT
-go
-
-
-
-/* -----------------------------------------------------------------------------
-      TABLE : POSSEDER
------------------------------------------------------------------------------ */
-
-create table POSSEDER
-(
-     ID_EQUIPEMENT_CAMPING int not null,
-     ID_HEBERGEMENT char(32) not null
-)
-go
-
-
-
-/*      INDEX DE POSSEDER      */
-
-
-sp_primarykey POSSEDER, ID_EQUIPEMENT_CAMPING, ID_HEBERGEMENT
-go
-
-
-
-/* -----------------------------------------------------------------------------
-      TABLE : VISITER
------------------------------------------------------------------------------ */
-
-create table VISITER
-(
-     ID_HEBERGEMENT char(32),
-     ID_INSPECTEUR int,
-     ID_SAISON int,
-     NOMBRE_ETOILE_VISITE smallint ,
-     DATE_HEURE_VISITE timestamp ,
-     CONTRE_VISITE bit ,
-     COMMENTAIRE_VISITE varchar(255) ,
-     TYPE_VISITE bit 
-)
-go
-
-
-
-/*      INDEX DE VISITER      */
-
-
-sp_primarykey VISITER, ID_HEBERGEMENT, ID_INSPECTEUR, ID_SAISON
-go
-
-
-
-/* -----------------------------------------------------------------------------
-      REFRENCES SUR LES TABLES
------------------------------------------------------------------------------ */
-
-
-sp_foreignkey HEBERGEMENT, DEPARTEMENT, ID_DEPARTEMENT
-go
-
-
-sp_foreignkey CHAMBRE_HÔTE, HEBERGEMENT, ID_HEBERGEMENT
-go
-
-
-sp_foreignkey CAMPING, HEBERGEMENT, ID_HEBERGEMENT
-go
-
-
-sp_foreignkey HÔTEL, HEBERGEMENT, ID_HEBERGEMENT
-go
-
-
-sp_foreignkey INSPECTEUR, SPECIALITE, ID_SPECIALITE
-go
-
-
-sp_foreignkey GERER, HEBERGEMENT, ID_HEBERGEMENT
-go
-
-
-sp_foreignkey GERER, GÉRANT, ID_GERANT
-go
-
-
-sp_foreignkey AVOIR, TYPE_CUISINE, ID_TYPE_CUISINE
-go
-
-
-sp_foreignkey AVOIR, HÔTEL, ID_HEBERGEMENT
-go
-
-
-sp_foreignkey POSSEDER, EQUIPEMENT_CAMPING, ID_EQUIPEMENT_CAMPING
-go
-
-
-sp_foreignkey POSSEDER, CAMPING, ID_HEBERGEMENT
-go
-
-
-sp_foreignkey VISITER, HEBERGEMENT, ID_HEBERGEMENT
-go
-
-
-sp_foreignkey VISITER, INSPECTEUR, ID_INSPECTEUR
-go
-
-
-sp_foreignkey VISITER, SAISON, ID_SAISON
-go
-
-
-
-/*
- -----------------------------------------------------------------------------
-               FIN DE GENERATION
- -----------------------------------------------------------------------------
-*/
