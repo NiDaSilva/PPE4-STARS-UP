@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">StarsUp</string>
+    
+    <!-- Strings de Connexion -->
+    <string name="champ_requis">Ce champ est requis</string>
+    <string name="email_erreur">L\'email est incorrect</string>
+    <string name="mdp">Mot de passe</string>
+    <string name="mdp_erreur">Le mot de passe est incorrect</string>
+    <string name="connexion">Connexion</string>
+
+    <string name="titre_activity_planning">Planning</string>
+
+    <!-- Strings de Hebergement -->
+    <string name="titre_activity_hebergement">Hébergement</string>
+    <string name="nom">Nom</string>
+    <string name="web">Site Web</string>
+    <string name="horaires">Horaires</string>
+    <string name="adresse">Adresse</string>
+    <string name="note">Note</string>
+    <string name="rediger">Rédiger</string>
+
+    <!-- Strings de Visite -->
+    <string name="titre_activity_visite">Compte Rendu</string>
+    <string name="commentaire">Commentaire</string>
+    <string name="envoyer">Envoyer</string>
+</resources>
