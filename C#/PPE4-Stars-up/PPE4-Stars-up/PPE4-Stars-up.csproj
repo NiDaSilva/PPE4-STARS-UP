@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2B4D97A1-1B20-46D1-B009-388D3129BC45}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PPE4_Stars_up</RootNamespace>
+    <AssemblyName>PPE4-Stars-up</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.Calendar">
+      <HintPath>G:\Skill project\Skill Project\Skill Project\bin\Debug\System.Windows.Forms.Calendar.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FormIndex.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormIndex.Designer.cs">
+      <DependentUpon>FormIndex.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Planning\Jour\Calendar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Planning\Jour\CalendarColorTable.cs" />
+    <Compile Include="Planning\Jour\CalendarDay.cs" />
+    <Compile Include="Planning\Jour\CalendarDayEventArgs.cs" />
+    <Compile Include="Planning\Jour\CalendarDaysMode.cs" />
+    <Compile Include="Planning\Jour\CalendarDayTop.cs" />
+    <Compile Include="Planning\Jour\CalendarHighlightRange.cs" />
+    <Compile Include="Planning\Jour\CalendarItem.cs" />
+    <Compile Include="Planning\Jour\CalendarItemCancelEventArgs.cs" />
+    <Compile Include="Planning\Jour\CalendarItemCollection.cs" />
+    <Compile Include="Planning\Jour\CalendarItemEventArgs.cs" />
+    <Compile Include="Planning\Jour\CalendarItemImageAlign.cs" />
+    <Compile Include="Planning\Jour\CalendarLoadEventArgs.cs" />
+    <Compile Include="Planning\Jour\CalendarProfessionalRenderer.cs" />
+    <Compile Include="Planning\Jour\CalendarRenderer.cs" />
+    <Compile Include="Planning\Jour\CalendarRendererBoxEventArgs.cs" />
+    <Compile Include="Planning\Jour\CalendarRendererDayEventArgs.cs" />
+    <Compile Include="Planning\Jour\CalendarRendererEventArgs.cs" />
+    <Compile Include="Planning\Jour\CalendarRendererItemBoundsEventArgs.cs" />
+    <Compile Include="Planning\Jour\CalendarRendererItemEventArgs.cs" />
+    <Compile Include="Planning\Jour\CalendarRendererTimeUnitEventArgs.cs" />
+    <Compile Include="Planning\Jour\CalendarSelectableElement.cs" />
+    <Compile Include="Planning\Jour\CalendarSystemRenderer.cs" />
+    <Compile Include="Planning\Jour\CalendarTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Planning\Jour\CalendarTimeScale.cs" />
+    <Compile Include="Planning\Jour\CalendarTimeScaleUnit.cs" />
+    <Compile Include="Planning\Jour\CalendarWeek.cs" />
+    <Compile Include="Planning\Jour\FormPlanningJour.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Planning\Jour\FormPlanningJour.Designer.cs">
+      <DependentUpon>FormPlanningJour.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Planning\Jour\ICalendarSelectableElement.cs" />
+    <Compile Include="Planning\Jour\ISelectableElement.cs" />
+    <Compile Include="Planning\Jour\ItemInfo.cs" />
+    <Compile Include="Planning\Jour\MonthView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Planning\Jour\MonthViewBoxEventArgs.cs" />
+    <Compile Include="Planning\Jour\MonthViewDay.cs" />
+    <Compile Include="Planning\Jour\MonthViewMontEventArgs.cs" />
+    <Compile Include="Planning\Jour\MonthViewMonth.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormIndex.resx">
+      <DependentUpon>FormIndex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Planning\Jour\FormPlanningJour.resx">
+      <DependentUpon>FormPlanningJour.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Planning\Jour\MonthView.resx">
+      <DependentUpon>MonthView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
