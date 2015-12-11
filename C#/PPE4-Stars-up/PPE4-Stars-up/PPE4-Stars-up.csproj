@@ -53,6 +53,12 @@
     <Compile Include="FormIndex.Designer.cs">
       <DependentUpon>FormIndex.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLogin.Designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Planning\Jour\Calendar.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -105,6 +111,9 @@
     <EmbeddedResource Include="FormIndex.resx">
       <DependentUpon>FormIndex.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Planning\Jour\FormPlanningJour.resx">
       <DependentUpon>FormPlanningJour.cs</DependentUpon>
     </EmbeddedResource>
@@ -119,6 +128,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -132,6 +142,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\abstract blue microsoft windows 1920x1080 wallpaper_www.wallpaperfo.com_92.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cool_washing_basic_collor_blue_black_rain_hd-wallpaper-112685.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\vista-wallpaper-aurora-2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Wallpaper-Gray-Bars-Opera.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
