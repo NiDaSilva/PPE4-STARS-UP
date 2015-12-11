@@ -34,6 +34,9 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.Calendar">
+      <HintPath>G:\Skill project\Skill Project\Skill Project\bin\Debug\System.Windows.Forms.Calendar.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,14 +47,70 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="FormIndex.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="FormIndex.Designer.cs">
+      <DependentUpon>FormIndex.cs</DependentUpon>
     </Compile>
+    <Compile Include="Planning\Jour\Calendar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Planning\Jour\CalendarColorTable.cs" />
+    <Compile Include="Planning\Jour\CalendarDay.cs" />
+    <Compile Include="Planning\Jour\CalendarDayEventArgs.cs" />
+    <Compile Include="Planning\Jour\CalendarDaysMode.cs" />
+    <Compile Include="Planning\Jour\CalendarDayTop.cs" />
+    <Compile Include="Planning\Jour\CalendarHighlightRange.cs" />
+    <Compile Include="Planning\Jour\CalendarItem.cs" />
+    <Compile Include="Planning\Jour\CalendarItemCancelEventArgs.cs" />
+    <Compile Include="Planning\Jour\CalendarItemCollection.cs" />
+    <Compile Include="Planning\Jour\CalendarItemEventArgs.cs" />
+    <Compile Include="Planning\Jour\CalendarItemImageAlign.cs" />
+    <Compile Include="Planning\Jour\CalendarLoadEventArgs.cs" />
+    <Compile Include="Planning\Jour\CalendarProfessionalRenderer.cs" />
+    <Compile Include="Planning\Jour\CalendarRenderer.cs" />
+    <Compile Include="Planning\Jour\CalendarRendererBoxEventArgs.cs" />
+    <Compile Include="Planning\Jour\CalendarRendererDayEventArgs.cs" />
+    <Compile Include="Planning\Jour\CalendarRendererEventArgs.cs" />
+    <Compile Include="Planning\Jour\CalendarRendererItemBoundsEventArgs.cs" />
+    <Compile Include="Planning\Jour\CalendarRendererItemEventArgs.cs" />
+    <Compile Include="Planning\Jour\CalendarRendererTimeUnitEventArgs.cs" />
+    <Compile Include="Planning\Jour\CalendarSelectableElement.cs" />
+    <Compile Include="Planning\Jour\CalendarSystemRenderer.cs" />
+    <Compile Include="Planning\Jour\CalendarTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Planning\Jour\CalendarTimeScale.cs" />
+    <Compile Include="Planning\Jour\CalendarTimeScaleUnit.cs" />
+    <Compile Include="Planning\Jour\CalendarWeek.cs" />
+    <Compile Include="Planning\Jour\FormPlanningJour.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Planning\Jour\FormPlanningJour.Designer.cs">
+      <DependentUpon>FormPlanningJour.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Planning\Jour\ICalendarSelectableElement.cs" />
+    <Compile Include="Planning\Jour\ISelectableElement.cs" />
+    <Compile Include="Planning\Jour\ItemInfo.cs" />
+    <Compile Include="Planning\Jour\MonthView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Planning\Jour\MonthViewBoxEventArgs.cs" />
+    <Compile Include="Planning\Jour\MonthViewDay.cs" />
+    <Compile Include="Planning\Jour\MonthViewMontEventArgs.cs" />
+    <Compile Include="Planning\Jour\MonthViewMonth.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormIndex.resx">
+      <DependentUpon>FormIndex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Planning\Jour\FormPlanningJour.resx">
+      <DependentUpon>FormPlanningJour.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Planning\Jour\MonthView.resx">
+      <DependentUpon>MonthView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
