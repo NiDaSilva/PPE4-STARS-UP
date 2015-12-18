@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
             android:ems="10"
-            android:id="@+id/txtEmail"
+            android:id="@+id/txt_Email"
             android:layout_gravity="center_horizontal"
             android:hint="Email" />
 
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:ems="10"
-            android:id="@+id/txtMDP"
+            android:id="@+id/txt_MDP"
             android:layout_gravity="center_horizontal"
             android:hint="@string/mdp" />
 
@@ -36,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/connexion"
-            android:id="@+id/btnLogin"
+            android:id="@+id/btn_login"
             android:layout_gravity="center_horizontal" />
     </LinearLayout>
 </RelativeLayout>
