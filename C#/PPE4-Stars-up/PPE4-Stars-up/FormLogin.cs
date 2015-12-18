@@ -50,7 +50,6 @@ namespace PPE4_Stars_up
             tbNom.Clear(); // Palatino Linotype; 12pt; style=Bold
             // tbNom.Cursor = IBeam;
             tbNom.ForeColor = Color.Black;
-            click = 1;
 
             if (tbMdp.Text == "")
             {
@@ -59,8 +58,7 @@ namespace PPE4_Stars_up
 
                 tbMdp.ForeColor = Color.DarkGray;
                 // tbMdp.Cursor = Default;
-                tbMdp.Text = "Nom";
-                click3 = 0;
+                tbMdp.Text = "Mot de passe";
             }
         }
 
@@ -86,6 +84,78 @@ namespace PPE4_Stars_up
 
                // tbNom.Cursor = Default;
                 tbNom.Text = "Nom";
+            }
+        }
+
+        private void tbMdp_Click(object sender, EventArgs e)
+        {
+            tbMdp.Clear();
+
+            tbMdp.Clear(); // Palatino Linotype; 12pt; style=Bold
+            // tbNom.Cursor = IBeam;
+            tbMdp.ForeColor = Color.Black;
+
+            tbMdp.PasswordChar = '*';
+
+            if (tbNom.Text == "")
+            {
+                tbNom.ForeColor = Color.DarkGray;
+                tbNom.Clear();
+
+                tbNom.ForeColor = Color.DarkGray;
+                // tbMdp.Cursor = Default;
+                tbNom.Text = "Nom";
+            }
+        }
+
+        private void tbMdp_Enter(object sender, EventArgs e)
+        {
+            tbMdp_Click(sender, e);
+        }
+
+        private void tbMdp_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.NumPad0 || e.KeyCode == Keys.NumPad1 || e.KeyCode == Keys.NumPad2 || e.KeyCode == Keys.NumPad3 || e.KeyCode == Keys.NumPad4 || e.KeyCode == Keys.NumPad5 || e.KeyCode == Keys.NumPad6 || e.KeyCode == Keys.NumPad7 || e.KeyCode == Keys.NumPad8 || e.KeyCode == Keys.NumPad9)
+            {
+                MessageBox.Show("Vous devez entrer une chaîne de caractère !", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                tbMdp.Clear();
+            }
+        }
+
+        private void tbMdp_Leave(object sender, EventArgs e)
+        {
+            if (tbMdp.Text == "Mot de passe" || tbMdp.Text == "" || tbMdp.Text == " ")
+            {
+                tbMdp.ForeColor = Color.DarkGray;
+
+                // tbNom.Cursor = Default;
+                tbMdp.PasswordChar = '\0';
+                tbMdp.Text = "Mot de passe";
+            }
+        }
+
+        private void FormLogin_Load(object sender, EventArgs e)
+        {
+            this.ActiveControl = textBox1;
+        }
+
+        private void cbAfficherMdp_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbAfficherMdp_Click(object sender, EventArgs e)
+        {
+            if (tbMdp.Text != "Mot de passe")
+            {
+                if (cbAfficherMdp.Checked == true)
+                {
+                    tbMdp.PasswordChar = '\0';
+                }
+                else
+                {
+                    tbMdp.PasswordChar = '*';
+                }
             }
         }
     }

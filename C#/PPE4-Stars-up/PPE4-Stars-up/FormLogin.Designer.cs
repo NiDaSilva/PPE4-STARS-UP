@@ -31,6 +31,8 @@
             this.tbNom = new System.Windows.Forms.TextBox();
             this.tbMdp = new System.Windows.Forms.TextBox();
             this.btnOK = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.cbAfficherMdp = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // tbNom
@@ -51,11 +53,15 @@
             // 
             this.tbMdp.Font = new System.Drawing.Font("Gentium Basic", 14.25F);
             this.tbMdp.ForeColor = System.Drawing.Color.Gray;
-            this.tbMdp.Location = new System.Drawing.Point(125, 108);
+            this.tbMdp.Location = new System.Drawing.Point(125, 105);
             this.tbMdp.Name = "tbMdp";
             this.tbMdp.Size = new System.Drawing.Size(164, 29);
             this.tbMdp.TabIndex = 1;
             this.tbMdp.Text = "Mot de passe";
+            this.tbMdp.Click += new System.EventHandler(this.tbMdp_Click);
+            this.tbMdp.Enter += new System.EventHandler(this.tbMdp_Enter);
+            this.tbMdp.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbMdp_KeyDown);
+            this.tbMdp.Leave += new System.EventHandler(this.tbMdp_Leave);
             // 
             // btnOK
             // 
@@ -68,6 +74,28 @@
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(439, 12);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 3;
+            this.textBox1.Visible = false;
+            // 
+            // cbAfficherMdp
+            // 
+            this.cbAfficherMdp.AutoSize = true;
+            this.cbAfficherMdp.BackColor = System.Drawing.Color.Transparent;
+            this.cbAfficherMdp.Font = new System.Drawing.Font("Gentium Basic", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbAfficherMdp.Location = new System.Drawing.Point(101, 141);
+            this.cbAfficherMdp.Name = "cbAfficherMdp";
+            this.cbAfficherMdp.Size = new System.Drawing.Size(209, 21);
+            this.cbAfficherMdp.TabIndex = 4;
+            this.cbAfficherMdp.Text = "Afficher / Cacher le mot de passe";
+            this.cbAfficherMdp.UseVisualStyleBackColor = false;
+            this.cbAfficherMdp.CheckedChanged += new System.EventHandler(this.cbAfficherMdp_CheckedChanged);
+            this.cbAfficherMdp.Click += new System.EventHandler(this.cbAfficherMdp_Click);
+            // 
             // FormLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -75,14 +103,17 @@
             this.BackgroundImage = global::PPE4_Stars_up.Properties.Resources.cool_washing_basic_collor_blue_black_rain_hd_wallpaper_112685;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(427, 237);
+            this.Controls.Add(this.cbAfficherMdp);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.tbMdp);
             this.Controls.Add(this.tbNom);
+            this.Controls.Add(this.textBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "FormLogin";
             this.Text = "Se connecter";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormLogin_FormClosed);
+            this.Load += new System.EventHandler(this.FormLogin_Load);
             this.Leave += new System.EventHandler(this.FormLogin_Leave);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -94,5 +125,7 @@
         private System.Windows.Forms.TextBox tbNom;
         private System.Windows.Forms.TextBox tbMdp;
         private System.Windows.Forms.Button btnOK;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.CheckBox cbAfficherMdp;
     }
 }
