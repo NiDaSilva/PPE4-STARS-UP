@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace PPE4_Stars_up
 {
@@ -40,7 +41,22 @@ namespace PPE4_Stars_up
         private void importToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (importToolStripMenuItem.Text == "Import")
-            {
+            {                
+                controleur.init();
+                controleur.Vmodele.seconnecter();
+
+                if (controleur.Vmodele.Connopen == false)
+                {
+                    MessageBox.Show("La connexion n'a pas eu lieu.", "Erreur !", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    // MessageBox.Show("Connexion à la base de donnée effectuée avec succès", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    controleur.Vmodele.import();
+
+                    controleur.Vmodele.sedeconnecter();
+                }
+
                 importToolStripMenuItem.Text = "Export";
                 planningToolStripMenuItem.Enabled = true;
                 historiqueDesVisitesToolStripMenuItem.Enabled = true;

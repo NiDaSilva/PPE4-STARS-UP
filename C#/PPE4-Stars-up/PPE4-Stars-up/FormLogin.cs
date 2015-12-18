@@ -18,8 +18,15 @@ namespace PPE4_Stars_up
         // public bool IsBalloon { get; set; }
         // public Brush BorderBrush { get; set; } // fonctionne pas 
 
+        private BindingSource bindingSource1 = new BindingSource();
         public int click = 0;
         public int click3 = 0;
+
+        // creation d’une liste des logins inspecteurs
+        List<KeyValuePair<int, string>> FListLogin = new List<KeyValuePair<int, string>>();
+
+        // creation d’une liste des mot de passe inspecteurs
+        List<KeyValuePair<int, string>> FListMdp = new List<KeyValuePair<int, string>>();
 
         public FormLogin()
         {
@@ -28,9 +35,41 @@ namespace PPE4_Stars_up
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            FormIndex FI = new FormIndex();
-            FI.Show();
-            Visible = false;            
+            if (rtbLogin.Text.Contains(tbNom.Text))
+            {
+                if (rtbMdp.Text.Contains(tbMdp.Text))
+                {
+                    FormIndex FI = new FormIndex();
+                    FI.Show();
+                    Visible = false;
+                }
+                else
+                {
+                    MessageBox.Show("Mot de passe incorrect", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    tbMdp.Clear();
+
+                    tbMdp.ForeColor = Color.DarkGray;
+                    tbMdp.Clear();
+
+                    tbMdp.ForeColor = Color.DarkGray;
+                    // tbMdp.Cursor = Default;
+                    tbMdp.Text = "Mot de passe";
+                    cbAfficherMdp.Checked = false;
+                    tbMdp.PasswordChar = '\0';
+                }
+            }
+            else
+            {
+                MessageBox.Show("Login incorrect", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                tbNom.Clear();
+
+                tbNom.ForeColor = Color.DarkGray;
+                tbNom.Clear();
+
+                tbNom.ForeColor = Color.DarkGray;
+                // tbMdp.Cursor = Default;
+                tbNom.Text = "Nom";
+            }
         }
 
         private void FormLogin_Leave(object sender, EventArgs e)
@@ -115,11 +154,7 @@ namespace PPE4_Stars_up
 
         private void tbMdp_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.NumPad0 || e.KeyCode == Keys.NumPad1 || e.KeyCode == Keys.NumPad2 || e.KeyCode == Keys.NumPad3 || e.KeyCode == Keys.NumPad4 || e.KeyCode == Keys.NumPad5 || e.KeyCode == Keys.NumPad6 || e.KeyCode == Keys.NumPad7 || e.KeyCode == Keys.NumPad8 || e.KeyCode == Keys.NumPad9)
-            {
-                MessageBox.Show("Vous devez entrer une chaîne de caractère !", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                tbMdp.Clear();
-            }
+
         }
 
         private void tbMdp_Leave(object sender, EventArgs e)
@@ -137,6 +172,32 @@ namespace PPE4_Stars_up
         private void FormLogin_Load(object sender, EventArgs e)
         {
             this.ActiveControl = textBox1;
+
+            controleur.init();
+            controleur.Vmodele.seconnecter();
+
+            controleur.Vmodele.import();
+            controleur.Vmodele.sedeconnecter();
+            
+            chargedgv();
+        }
+
+        public void chargedgv()
+        {
+            bindingSource1.DataSource = controleur.Vmodele.Dv_login;
+
+            // on parcourt le dataView des inspecteurs Dv_login de la classe bdd pour compléter la FList
+            for (int i = 0; i < controleur.Vmodele.Dv_login.ToTable().Rows.Count; i++)
+            {
+                FListLogin.Add(new KeyValuePair<int, string>((int)controleur.Vmodele.Dv_login.ToTable().Rows[i][0], controleur.Vmodele.Dv_login.ToTable().Rows[i][4].ToString()));
+                rtbLogin.Text += controleur.Vmodele.Dv_login.ToTable().Rows[i][4].ToString() + "\n";
+            }
+
+            for (int i = 0; i < controleur.Vmodele.Dv_login.ToTable().Rows.Count; i++)
+            {
+                FListMdp.Add(new KeyValuePair<int, string>((int)controleur.Vmodele.Dv_login.ToTable().Rows[i][0], controleur.Vmodele.Dv_login.ToTable().Rows[i][5].ToString()));
+                rtbMdp.Text += controleur.Vmodele.Dv_login.ToTable().Rows[i][5].ToString() + "\n";
+            }
         }
 
         private void cbAfficherMdp_CheckedChanged(object sender, EventArgs e)
@@ -156,6 +217,14 @@ namespace PPE4_Stars_up
                 {
                     tbMdp.PasswordChar = '*';
                 }
+            }
+        }
+
+        private void tbMdp_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnOK_Click(sender, e);
             }
         }
     }

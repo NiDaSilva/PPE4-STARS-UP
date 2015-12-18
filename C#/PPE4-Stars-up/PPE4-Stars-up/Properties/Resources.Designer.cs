@@ -63,6 +63,16 @@ namespace PPE4_Stars_up.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _15679_babasse_cadenas {
+            get {
+                object obj = ResourceManager.GetObject("15679-babasse-cadenas", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap abstract_blue_microsoft_windows_1920x1080_wallpaper_www_wallpaperfo_com_92 {
             get {
                 object obj = ResourceManager.GetObject("abstract blue microsoft windows 1920x1080 wallpaper_www.wallpaperfo.com_92", resourceCulture);
