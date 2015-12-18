@@ -1,12 +1,13 @@
 <resources>
     <string name="app_name">StarsUp</string>
-    
+
     <!-- Strings de Connexion -->
     <string name="champ_requis">Ce champ est requis</string>
     <string name="email_erreur">L\'email est incorrect</string>
     <string name="mdp">Mot de passe</string>
     <string name="mdp_erreur">Le mot de passe est incorrect</string>
     <string name="connexion">Connexion</string>
+    <string name="action_settings">Parametres</string>
 
     <string name="titre_activity_planning">Planning</string>
 
