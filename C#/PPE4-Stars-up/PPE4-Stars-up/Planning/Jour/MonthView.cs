@@ -12,7 +12,7 @@ namespace PPE4_Stars_up
     /// Hosts a month-level calendar where user can select day-based dates
     /// </summary>
     [DefaultEvent("SelectionChanged")]
-    public class MonthView
+    public class MonthView2
         : ContainerControl
     {
         #region Subclasses
@@ -99,7 +99,7 @@ namespace PPE4_Stars_up
 
         #region Ctors
 
-        public MonthView()
+        public MonthView2()
         {
             SetStyle(ControlStyles.Opaque, true);
             DoubleBuffered = true;
@@ -268,7 +268,7 @@ namespace PPE4_Stars_up
         }
 
         /// <summary>
-        /// Gets the size of an entire month inside the <see cref="MonthView"/>
+        /// Gets the size of an entire month inside the <see cref="MonthView2"/>
         /// </summary>
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Size MonthSize
@@ -333,7 +333,7 @@ namespace PPE4_Stars_up
         }
 
         /// <summary>
-        /// Gets or sets the selection mode of <see cref="MonthView"/>
+        /// Gets or sets the selection mode of <see cref="MonthView2"/>
         /// </summary>
         [DefaultValue(MonthViewSelection.Manual)]
         public MonthViewSelection SelectionMode

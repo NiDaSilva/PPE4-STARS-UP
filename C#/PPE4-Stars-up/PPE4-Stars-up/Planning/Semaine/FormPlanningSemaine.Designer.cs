@@ -1,6 +1,6 @@
-﻿namespace PPE4_Stars_up
+﻿namespace PPE4_Stars_up.Planning.Semaine
 {
-    partial class FormPlanningJour
+    partial class FormPlanningSemaine
     {
         /// <summary>
         /// Required designer variable.
@@ -33,18 +33,10 @@
             PPE4_Stars_up.CalendarHighlightRange calendarHighlightRange3 = new PPE4_Stars_up.CalendarHighlightRange();
             PPE4_Stars_up.CalendarHighlightRange calendarHighlightRange4 = new PPE4_Stars_up.CalendarHighlightRange();
             PPE4_Stars_up.CalendarHighlightRange calendarHighlightRange5 = new PPE4_Stars_up.CalendarHighlightRange();
-            this.splitter1 = new System.Windows.Forms.Splitter();
             this.calendar1 = new PPE4_Stars_up.Calendar();
+            this.splitter1 = new System.Windows.Forms.Splitter();
             this.monthView1 = new PPE4_Stars_up.MonthView2();
             this.SuspendLayout();
-            // 
-            // splitter1
-            // 
-            this.splitter1.Location = new System.Drawing.Point(185, 0);
-            this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(3, 462);
-            this.splitter1.TabIndex = 1;
-            this.splitter1.TabStop = false;
             // 
             // calendar1
             // 
@@ -74,15 +66,16 @@
             this.calendar1.Location = new System.Drawing.Point(188, 0);
             this.calendar1.Name = "calendar1";
             this.calendar1.Size = new System.Drawing.Size(596, 462);
-            this.calendar1.TabIndex = 2;
+            this.calendar1.TabIndex = 5;
             this.calendar1.Text = "calendar1";
-            this.calendar1.LoadItems += new PPE4_Stars_up.Calendar.CalendarLoadEventHandler(this.calendar1_LoadItems);
-            this.calendar1.DayHeaderClick += new PPE4_Stars_up.Calendar.CalendarDayEventHandler(this.calendar1_DayHeaderClick);
-            this.calendar1.ItemCreated += new PPE4_Stars_up.Calendar.CalendarItemCancelEventHandler(this.calendar1_ItemCreated);
-            this.calendar1.ItemDeleted += new PPE4_Stars_up.Calendar.CalendarItemEventHandler(this.calendar1_ItemDeleted);
-            this.calendar1.ItemClick += new PPE4_Stars_up.Calendar.CalendarItemEventHandler(this.calendar1_ItemClick);
-            this.calendar1.ItemDoubleClick += new PPE4_Stars_up.Calendar.CalendarItemEventHandler(this.calendar1_ItemDoubleClick);
-            this.calendar1.ItemMouseHover += new PPE4_Stars_up.Calendar.CalendarItemEventHandler(this.calendar1_ItemMouseHover);
+            // 
+            // splitter1
+            // 
+            this.splitter1.Location = new System.Drawing.Point(185, 0);
+            this.splitter1.Name = "splitter1";
+            this.splitter1.Size = new System.Drawing.Size(3, 462);
+            this.splitter1.TabIndex = 4;
+            this.splitter1.TabStop = false;
             // 
             // monthView1
             // 
@@ -102,12 +95,11 @@
             this.monthView1.MonthTitleTextColorInactive = System.Drawing.SystemColors.InactiveCaptionText;
             this.monthView1.Name = "monthView1";
             this.monthView1.Size = new System.Drawing.Size(185, 462);
-            this.monthView1.TabIndex = 0;
+            this.monthView1.TabIndex = 3;
             this.monthView1.Text = "monthView1";
             this.monthView1.TodayBorderColor = System.Drawing.Color.Maroon;
-            this.monthView1.SelectionChanged += new System.EventHandler(this.monthView1_SelectionChanged);
             // 
-            // FormPlanningJour
+            // FormPlanningSemaine
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -116,18 +108,19 @@
             this.Controls.Add(this.calendar1);
             this.Controls.Add(this.splitter1);
             this.Controls.Add(this.monthView1);
-            this.Name = "FormPlanningJour";
-            this.Text = "Planning - Jour";
+            this.Name = "FormPlanningSemaine";
+            this.Text = "Planning - Semaine";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.FormPlanningJour_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private MonthView2 monthView1;
-        private System.Windows.Forms.Splitter splitter1;
         private Calendar calendar1;
+        private System.Windows.Forms.Splitter splitter1;
+        private MonthView2 monthView1;
+
+
     }
 }

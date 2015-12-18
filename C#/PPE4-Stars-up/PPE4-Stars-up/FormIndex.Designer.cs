@@ -79,15 +79,16 @@
             // jourToolStripMenuItem
             // 
             this.jourToolStripMenuItem.Name = "jourToolStripMenuItem";
-            this.jourToolStripMenuItem.Size = new System.Drawing.Size(146, 26);
+            this.jourToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
             this.jourToolStripMenuItem.Text = "Jour";
             this.jourToolStripMenuItem.Click += new System.EventHandler(this.jourToolStripMenuItem_Click);
             // 
             // semaineToolStripMenuItem
             // 
             this.semaineToolStripMenuItem.Name = "semaineToolStripMenuItem";
-            this.semaineToolStripMenuItem.Size = new System.Drawing.Size(146, 26);
+            this.semaineToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
             this.semaineToolStripMenuItem.Text = "Semaine";
+            this.semaineToolStripMenuItem.Click += new System.EventHandler(this.semaineToolStripMenuItem_Click);
             // 
             // historiqueDesVisitesToolStripMenuItem
             // 

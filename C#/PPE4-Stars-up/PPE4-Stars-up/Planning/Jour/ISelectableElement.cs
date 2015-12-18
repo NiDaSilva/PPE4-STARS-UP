@@ -8,7 +8,7 @@ using System.Windows.Forms;
 namespace PPE4_Stars_up
 {
     /// <summary>
-    /// Represents a clickable element of <see cref="MonthView"/> control
+    /// Represents a clickable element of <see cref="MonthView2"/> control
     /// </summary>
     public interface ISelectableElement
     {

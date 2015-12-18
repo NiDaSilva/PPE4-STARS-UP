@@ -28,9 +28,14 @@ namespace PPE4_Stars_up
 
         private void quitterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Close();
+           Visible = false;
+            //this.Close();
+
+            
             FormLogin FL = new FormLogin();
             FL.Show();
+
+            //FormLogin.ActiveForm.Visible = true;          
         }
 
         private void FormIndex_Enter(object sender, EventArgs e)
@@ -68,6 +73,14 @@ namespace PPE4_Stars_up
         private void FormIndex_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void semaineToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Planning.Semaine.FormPlanningSemaine FPS = new Planning.Semaine.FormPlanningSemaine();
+            FPS.MdiParent = this;
+
+            FPS.Show();
         }
     }
 }

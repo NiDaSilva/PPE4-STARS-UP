@@ -20,12 +20,12 @@ namespace PPE4_Stars_up
         private string[] _dayHeaders;
         private Size _size;
         private Point _location;
-        private MonthView _monthview;
+        private MonthView2 _monthview;
         #endregion
 
         #region Ctor
 
-        internal MonthViewMonth(MonthView monthView, DateTime date)
+        internal MonthViewMonth(MonthView2 monthView, DateTime date)
         {
             if (date.Day != 1)
             {
@@ -63,7 +63,7 @@ namespace PPE4_Stars_up
             get { return new Rectangle(Location, Size); }
         }
 
-        public MonthView MonthView
+        public MonthView2 MonthView
         {
             get { return _monthview; }
         }

@@ -14,7 +14,7 @@ namespace PPE4_Stars_up
         Rectangle _bounds;
         private DateTime _date;
         private MonthViewMonth _month;
-        private MonthView _monthView;
+        private MonthView2 _monthView;
 
         #endregion
 
@@ -36,7 +36,7 @@ namespace PPE4_Stars_up
         /// <summary>
         /// Gets the parent MonthView
         /// </summary>
-        public MonthView MonthView
+        public MonthView2 MonthView
         {
             get { return _monthView; }
             set { _monthView = value; }

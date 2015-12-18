@@ -79,7 +79,10 @@ namespace PPE4_Stars_up
 
         private void FormLogin_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            // Application.Exit();
+
+           // System.Diagnostics.Process monProcess = System.Diagnostics.Process.Start("CefSharp.BrowserSubprocess.exe");
+            //monProcess.Kill();
         }
 
         private void tbNom_Click(object sender, EventArgs e)
@@ -171,6 +174,7 @@ namespace PPE4_Stars_up
 
         private void FormLogin_Load(object sender, EventArgs e)
         {
+            Visible = true;
             this.ActiveControl = textBox1;
 
             controleur.init();
