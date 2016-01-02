@@ -12,3 +12,4 @@ C:\wamp\www\PPE4-STARS-UP\C#\PPE4-Stars-up\PPE4-Stars-up\bin\Debug\System.Window
 C:\wamp\www\PPE4-STARS-UP\C#\PPE4-Stars-up\PPE4-Stars-up\obj\Debug\PPE4_Stars_up.FormLogin.resources
 C:\wamp\www\PPE4-STARS-UP\C#\PPE4-Stars-up\PPE4-Stars-up\obj\Debug\PPE4_Stars_up.Planning.Semaine.FormPlanningSemaine.resources
 C:\wamp\www\PPE4-STARS-UP\C#\PPE4-Stars-up\PPE4-Stars-up\obj\Debug\PPE4_Stars_up.MonthView2.resources
+C:\wamp\www\PPE4-STARS-UP\C#\PPE4-Stars-up\PPE4-Stars-up\bin\Debug\MySql.Data.dll
