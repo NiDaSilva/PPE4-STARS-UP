@@ -31,13 +31,15 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.planningToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.jourToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.semaineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.historiqueDesVisitesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imprimerPDFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quitterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.paramètreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblInspecteur = new System.Windows.Forms.Label();
+            this.lblinfo = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -66,29 +68,13 @@
             // 
             // planningToolStripMenuItem
             // 
-            this.planningToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.jourToolStripMenuItem,
-            this.semaineToolStripMenuItem});
             this.planningToolStripMenuItem.Enabled = false;
             this.planningToolStripMenuItem.Font = new System.Drawing.Font("Gentium Basic", 14.25F);
             this.planningToolStripMenuItem.Name = "planningToolStripMenuItem";
             this.planningToolStripMenuItem.Padding = new System.Windows.Forms.Padding(25, 0, 4, 0);
             this.planningToolStripMenuItem.Size = new System.Drawing.Size(112, 26);
             this.planningToolStripMenuItem.Text = "Planning";
-            // 
-            // jourToolStripMenuItem
-            // 
-            this.jourToolStripMenuItem.Name = "jourToolStripMenuItem";
-            this.jourToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
-            this.jourToolStripMenuItem.Text = "Jour";
-            this.jourToolStripMenuItem.Click += new System.EventHandler(this.jourToolStripMenuItem_Click);
-            // 
-            // semaineToolStripMenuItem
-            // 
-            this.semaineToolStripMenuItem.Name = "semaineToolStripMenuItem";
-            this.semaineToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
-            this.semaineToolStripMenuItem.Text = "Semaine";
-            this.semaineToolStripMenuItem.Click += new System.EventHandler(this.semaineToolStripMenuItem_Click);
+            this.planningToolStripMenuItem.Click += new System.EventHandler(this.planningToolStripMenuItem_Click);
             // 
             // historiqueDesVisitesToolStripMenuItem
             // 
@@ -98,6 +84,7 @@
             this.historiqueDesVisitesToolStripMenuItem.Padding = new System.Windows.Forms.Padding(25, 0, 4, 0);
             this.historiqueDesVisitesToolStripMenuItem.Size = new System.Drawing.Size(209, 26);
             this.historiqueDesVisitesToolStripMenuItem.Text = "Historique des visites";
+            this.historiqueDesVisitesToolStripMenuItem.Click += new System.EventHandler(this.historiqueDesVisitesToolStripMenuItem_Click);
             // 
             // imprimerPDFToolStripMenuItem
             // 
@@ -107,6 +94,7 @@
             this.imprimerPDFToolStripMenuItem.Padding = new System.Windows.Forms.Padding(25, 0, 4, 0);
             this.imprimerPDFToolStripMenuItem.Size = new System.Drawing.Size(153, 26);
             this.imprimerPDFToolStripMenuItem.Text = "Imprimer PDF";
+            this.imprimerPDFToolStripMenuItem.Click += new System.EventHandler(this.imprimerPDFToolStripMenuItem_Click);
             // 
             // quitterToolStripMenuItem
             // 
@@ -126,6 +114,39 @@
             this.paramètreToolStripMenuItem.Size = new System.Drawing.Size(127, 26);
             this.paramètreToolStripMenuItem.Text = "Paramètre";
             // 
+            // lblInspecteur
+            // 
+            this.lblInspecteur.AutoSize = true;
+            this.lblInspecteur.BackColor = System.Drawing.Color.Transparent;
+            this.lblInspecteur.Font = new System.Drawing.Font("Gentium Basic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInspecteur.Location = new System.Drawing.Point(637, 439);
+            this.lblInspecteur.Name = "lblInspecteur";
+            this.lblInspecteur.Size = new System.Drawing.Size(105, 19);
+            this.lblInspecteur.TabIndex = 2;
+            this.lblInspecteur.Text = "Dimitry Robin";
+            // 
+            // lblinfo
+            // 
+            this.lblinfo.AutoSize = true;
+            this.lblinfo.BackColor = System.Drawing.Color.Transparent;
+            this.lblinfo.Font = new System.Drawing.Font("Gentium Basic", 12.25F);
+            this.lblinfo.Location = new System.Drawing.Point(465, 439);
+            this.lblinfo.Name = "lblinfo";
+            this.lblinfo.Size = new System.Drawing.Size(166, 20);
+            this.lblinfo.TabIndex = 3;
+            this.lblinfo.Text = "Connecté en tant que :";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::PPE4_Stars_up.Properties.Resources.Wallpaper_Gray_Bars_Opera;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(784, 462);
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
+            // 
             // FormIndex
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -133,7 +154,10 @@
             this.BackgroundImage = global::PPE4_Stars_up.Properties.Resources.Wallpaper_Gray_Bars_Opera;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(784, 462);
+            this.Controls.Add(this.lblinfo);
+            this.Controls.Add(this.lblInspecteur);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
@@ -141,9 +165,11 @@
             this.Name = "FormIndex";
             this.Text = "Accueil";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormIndex_FormClosed);
+            this.Load += new System.EventHandler(this.FormIndex_Load);
             this.Enter += new System.EventHandler(this.FormIndex_Enter);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -154,12 +180,13 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem importToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem planningToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem jourToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem semaineToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem historiqueDesVisitesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem imprimerPDFToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem quitterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem paramètreToolStripMenuItem;
+        private System.Windows.Forms.Label lblInspecteur;
+        private System.Windows.Forms.Label lblinfo;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

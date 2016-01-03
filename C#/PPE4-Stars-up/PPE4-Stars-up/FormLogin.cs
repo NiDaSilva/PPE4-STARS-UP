@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.IO;
 
 namespace PPE4_Stars_up
 {
@@ -22,24 +23,131 @@ namespace PPE4_Stars_up
         public int click = 0;
         public int click3 = 0;
 
+        private string nomInspecteur;
+        private string prenomInspecteur;
+        private int idInspecteur;
+
+        public int idINSP;
+
         // creation d’une liste des logins inspecteurs
         List<KeyValuePair<int, string>> FListLogin = new List<KeyValuePair<int, string>>();
 
         // creation d’une liste des mot de passe inspecteurs
         List<KeyValuePair<int, string>> FListMdp = new List<KeyValuePair<int, string>>();
 
+       
+
         public FormLogin()
         {
             InitializeComponent();
         }
 
+        private void creationFichier()
+        {
+            string folderName = @"c:\";
+            string pathString = System.IO.Path.Combine(folderName, "PPE4_DR");
+            System.IO.Directory.CreateDirectory(pathString);
+            string fileName = "Preferences_PPE4_DR.txt";
+            pathString = System.IO.Path.Combine(pathString, fileName);
+
+
+            Console.WriteLine("Path to my file: {0}\n", pathString);
+
+
+            using (System.IO.FileStream fs = new System.IO.FileStream(pathString, FileMode.Append))
+            {
+
+                for (byte i = 0; i < 100; i++)
+                {
+                    fs.WriteByte(i);
+                }
+
+            }
+
+            try
+            {
+                byte[] readBuffer = System.IO.File.ReadAllBytes(pathString);
+                foreach (byte b in readBuffer)
+                {
+                    Console.Write(b + " ");
+                }
+                Console.WriteLine();
+            }
+            catch (System.IO.IOException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            string[] lines = { idINSP.ToString() };
+            System.IO.File.WriteAllLines(@"C:\PPE4_DR\Preferences_PPE4_DR.txt", lines);
+        }
+
+        private void ecrireFichier()
+        {
+            idInspecteur = idINSP;
+
+            string[] lines = { idINSP.ToString()};
+            System.IO.File.WriteAllLines(@"C:\PPE4_DR\Preferences_PPE4_DR.txt", lines);
+        }
+
         private void btnOK_Click(object sender, EventArgs e)
         {
+
             if (rtbLogin.Text.Contains(tbNom.Text))
             {
                 if (rtbMdp.Text.Contains(tbMdp.Text))
                 {
-                    FormIndex FI = new FormIndex();
+                    if(tbNom.Text == "NGrondin")
+                    {
+                        nomInspecteur = "Grondin";
+                        prenomInspecteur = "Nicolas";
+                        idInspecteur = 1;
+                        idINSP = 1;
+                    }
+
+                    if (tbNom.Text == "NBouhours")
+                    {
+                        nomInspecteur = "Bouhours";
+                        prenomInspecteur = "Natacha";
+                        idInspecteur = 2;
+                        idINSP = 2;
+                    }
+
+                    if (tbNom.Text == "NDSilva")
+                    {
+                        nomInspecteur = "Da Silva";
+                        prenomInspecteur = "Nicolas";
+                        idInspecteur = 3;
+                        idINSP = 3;
+                    }
+
+                    if (tbNom.Text == "Drobin")
+                    {
+                        nomInspecteur = "Robin";
+                        prenomInspecteur = "Dimitry";
+                        idInspecteur = 4;
+                        idINSP = 4;
+                    }
+
+                    if (tbNom.Text == "PHermange")
+                    {
+                        nomInspecteur = "Hermange";
+                        prenomInspecteur = "Pierre";
+                        idInspecteur = 5;
+                        idINSP = 5;
+                    }
+
+                    if (tbNom.Text == "KMenant")
+                    {
+                        nomInspecteur = "Menant";
+                        prenomInspecteur = "Kévin";
+                        idInspecteur = 6;
+                        idINSP = 6;
+                    }
+
+                    ecrireFichier();
+
+                    FormIndex FI = new FormIndex(nomInspecteur, prenomInspecteur, idInspecteur);
                     FI.Show();
                     Visible = false;
                 }
@@ -174,6 +282,8 @@ namespace PPE4_Stars_up
 
         private void FormLogin_Load(object sender, EventArgs e)
         {
+
+            creationFichier();
             Visible = true;
             this.ActiveControl = textBox1;
 

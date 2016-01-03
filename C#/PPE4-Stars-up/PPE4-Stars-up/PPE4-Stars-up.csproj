@@ -109,12 +109,6 @@
     <Compile Include="Planning\Jour\MonthViewDay.cs" />
     <Compile Include="Planning\Jour\MonthViewMontEventArgs.cs" />
     <Compile Include="Planning\Jour\MonthViewMonth.cs" />
-    <Compile Include="Planning\Semaine\FormPlanningSemaine.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Planning\Semaine\FormPlanningSemaine.Designer.cs">
-      <DependentUpon>FormPlanningSemaine.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormIndex.resx">
@@ -128,9 +122,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Planning\Jour\MonthView.resx">
       <DependentUpon>MonthView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Planning\Semaine\FormPlanningSemaine.resx">
-      <DependentUpon>FormPlanningSemaine.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

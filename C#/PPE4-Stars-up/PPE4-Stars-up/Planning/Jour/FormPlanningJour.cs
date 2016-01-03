@@ -17,9 +17,14 @@ namespace PPE4_Stars_up
         List<CalendarItem> _items = new List<CalendarItem>();
         CalendarItem contextItem = null;
 
+        string test;
+
+        private BindingSource bindingSource1 = new BindingSource();
+
         public FormPlanningJour()
         {
             InitializeComponent();
+            chargedgv();
 
             //Monthview colors
             monthView1.MonthTitleColor = monthView1.MonthTitleColorInactive = CalendarColorTable.FromHex("#C2DAFC");
@@ -338,6 +343,69 @@ namespace PPE4_Stars_up
         private void btnRetourSuggestion_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        public void chargedgv()
+        {
+            lireFichier();
+
+            bindingSource1.DataSource = controleur.Vmodele.Dv_visite;
+            dataGridViewPersonnes.DataSource = bindingSource1;
+
+            // TEST AJOUT ITEM EN DUR
+
+            /*
+            DateTime date = new DateTime(2016, 1, 02);
+            TimeSpan time = new TimeSpan(9, 0, 0);
+            TimeSpan time2 = new TimeSpan(10, 0, 0);
+            string test = string.Format("{0}", date.ToString("dd-MM-yyyy")).Trim();
+            string test2 = string.Format("{0}", time.Hours).Trim();
+            string test3 = string.Format("{0}", time2.Hours).Trim();
+
+            string test4 = string.Format("{0} {1}", test, time).Trim();
+            string test5 = string.Format("{0} {1}", test, time2).Trim();
+
+            
+            MessageBox.Show("date : " + test);
+            MessageBox.Show("heure debut : " + test2);
+            MessageBox.Show("heure fin : " + test3);
+            
+
+            CalendarItem cal = new CalendarItem(calendar1, Convert.ToDateTime(test4), Convert.ToDateTime(test5), "test"); 
+
+            _items.Add(cal);
+
+            PlaceItems();
+            */
+
+            for (int i = 0; i < dataGridViewPersonnes.Rows.Count; i++) // parcours le datagridview
+            {
+                DateTime DateEntiere = Convert.ToDateTime(dataGridViewPersonnes.Rows[i].Cells[4].Value.ToString()); // recupere date + heure
+                string DateSeulement = string.Format("{0}", DateEntiere.ToString("dd-MM-yyyy")).Trim(); // recupere date
+                TimeSpan HeureDebutEntiere = new TimeSpan(DateEntiere.Hour, DateEntiere.Minute, DateEntiere.Second); // recupere heure, minute, seconde
+                TimeSpan HeureFinEntiere = new TimeSpan(Convert.ToInt32(HeureDebutEntiere.Hours) + 2, 0, 0);
+
+                string HeureDebut = string.Format("{0} {1}", DateSeulement, HeureDebutEntiere).Trim(); // Bon format
+                string HeureFin = string.Format("{0} {1}", DateSeulement, HeureFinEntiere).Trim(); // Bon format
+
+                string commentaire = dataGridViewPersonnes.Rows[i].Cells[6].Value.ToString(); // recupere date + heure
+
+                // MessageBox.Show("debut : " + HeureDebutSeulement + "/nFin : " + HeureFin);
+                CalendarItem cal = new CalendarItem(calendar1, Convert.ToDateTime(HeureDebut), Convert.ToDateTime(HeureFin), commentaire);
+
+                _items.Add(cal);
+
+                PlaceItems();
+            }
+                
+        }
+
+        private void lireFichier()
+        {
+
+            string[] lines = System.IO.File.ReadAllLines(@"C:\PPE4_DR\Preferences_PPE4_DR.txt");
+
+            test = lines[0].ToString();
         }
     }
 }

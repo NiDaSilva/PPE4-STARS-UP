@@ -7,11 +7,15 @@ using MySql.Data.MySqlClient;
 using System.Data;
 using System.Windows.Forms;
 using System.Collections;
+using System.IO;
 
 namespace PPE4_Stars_up
 {
     class bdd
     {
+        int idI;
+        string test;
+
         private MySqlConnection myConnection;
         private bool connopen = false;
         private bool errgrave = false;
@@ -23,9 +27,25 @@ namespace PPE4_Stars_up
 
         private MySqlDataAdapter mySqlDataAdapterTP7 = new MySqlDataAdapter();
         private DataSet dataSetTP7 = new DataSet();
-        private DataView dv_login = new DataView();
+        private DataView dv_login, dv_visite = new DataView();
 
+        private void lireFichier()
+        {
+            
+            string[] lines = System.IO.File.ReadAllLines(@"C:\PPE4_DR\Preferences_PPE4_DR.txt");
+
+            test = lines[0].ToString();
+        }
+
+        public int recup()
+        {
+            lireFichier();
+            idI = Convert.ToInt32(test);
+            return idI;
+        }
         
+
+
         #region instanciation des variables
 
         public ArrayList Rapport
@@ -68,6 +88,19 @@ namespace PPE4_Stars_up
         {
             get { return vaction; }
             set { vaction = value; }
+        }
+
+        public DataView Dv_visite
+        {
+            get
+            {
+                return dv_visite;
+            }
+
+            set
+            {
+                dv_visite = value;
+            }
         }
         #endregion
 
@@ -123,7 +156,7 @@ namespace PPE4_Stars_up
         public void import()
         {
             if (!connopen) return;
-            mySqlDataAdapterTP7.SelectCommand = new MySqlCommand("select * from inspecteur;", myConnection);   
+            mySqlDataAdapterTP7.SelectCommand = new MySqlCommand("select * from inspecteur; select * from visiter where id_inspecteur ="+ recup() +";", myConnection);   
             
                 try
                 {
@@ -143,6 +176,7 @@ namespace PPE4_Stars_up
 
                         // remplissage des dataView à partir des tables du dataSet
                         dv_login = dataSetTP7.Tables[0].DefaultView;
+                        dv_visite = dataSetTP7.Tables[1].DefaultView;
                         chargement = true;
                 }
                 catch (Exception err)

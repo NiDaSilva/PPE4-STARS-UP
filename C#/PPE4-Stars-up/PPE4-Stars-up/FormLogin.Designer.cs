@@ -143,8 +143,8 @@
             this.Controls.Add(this.tbMdp);
             this.Controls.Add(this.tbNom);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.rtbMdp);
             this.Controls.Add(this.rtbLogin);
+            this.Controls.Add(this.rtbMdp);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "FormLogin";

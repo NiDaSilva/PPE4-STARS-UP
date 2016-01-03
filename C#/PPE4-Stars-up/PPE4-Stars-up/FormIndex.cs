@@ -13,9 +13,30 @@ namespace PPE4_Stars_up
 {
     public partial class FormIndex : Form
     {
-        public FormIndex()
+        string NI, PI;
+        int II;
+
+        public int II1
+        {
+            get
+            {
+                return II;
+            }
+
+            set
+            {
+                II = value;
+            }
+        }
+        
+        public FormIndex(string nomInspecteur, string prenomInspecteur, int idInspecteur)
         {
             InitializeComponent();
+            
+            NI = nomInspecteur;
+            PI = prenomInspecteur;
+            II = idInspecteur;
+
         }
 
         private void jourToolStripMenuItem_Click(object sender, EventArgs e)
@@ -77,10 +98,45 @@ namespace PPE4_Stars_up
 
         private void semaineToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Planning.Semaine.FormPlanningSemaine FPS = new Planning.Semaine.FormPlanningSemaine();
-            FPS.MdiParent = this;
 
-            FPS.Show();
+        }
+
+        private void planningToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pictureBox1.Visible = false;
+            FormPlanningJour FPJ = new FormPlanningJour();
+            FPJ.MdiParent = this;
+
+            FPJ.Show();
+        }
+
+        private void FormIndex_Load(object sender, EventArgs e)
+        {
+            pictureBox1.Visible = true;
+            var pos = this.PointToScreen(lblinfo.Location);
+            pos = pictureBox1.PointToClient(pos);
+            lblinfo.Parent = pictureBox1;
+            lblinfo.Location = pos;
+            lblinfo.BackColor = Color.Transparent;
+            var pos2 = this.PointToScreen(lblInspecteur.Location);
+            pos2 = pictureBox1.PointToClient(pos2);
+            lblInspecteur.Parent = pictureBox1;
+            lblInspecteur.Location = pos2;
+            lblInspecteur.BackColor = Color.Transparent;
+
+            FormLogin FL = new FormLogin();
+            
+            lblInspecteur.Text = NI + " " + PI;
+        }
+
+        private void historiqueDesVisitesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pictureBox1.Visible = false;
+        }
+
+        private void imprimerPDFToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pictureBox1.Visible = false;
         }
     }
 }
