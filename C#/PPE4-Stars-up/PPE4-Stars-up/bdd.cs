@@ -27,24 +27,43 @@ namespace PPE4_Stars_up
 
         private MySqlDataAdapter mySqlDataAdapterTP7 = new MySqlDataAdapter();
         private DataSet dataSetTP7 = new DataSet();
-        private DataView dv_login, dv_visite = new DataView();
+        private DataView dv_login, dv_visite, dv_specialite = new DataView();
 
         private void lireFichier()
         {
-            
-            string[] lines = System.IO.File.ReadAllLines(@"C:\PPE4_DR\Preferences_PPE4_DR.txt");
 
-            test = lines[0].ToString();
+            // string[] lines = System.IO.File.ReadAllLines(@"C:\PPE4_DR\Preferences_PPE4_DR.txt");
+
+            int counter = 0;
+            string line;
+
+            // Read the file and display it line by line.
+            System.IO.StreamReader file = new System.IO.StreamReader(@"C:\PPE4_DR\Preferences_PPE4_DR.txt");
+
+            while ((line = file.ReadLine()) != null)
+            {
+                counter++;
+                if (counter == 1)
+                {
+
+                    test = line.ToString();
+                }
+            }
+
+            file.Close();
+
+            // test = lines[0].ToString();
         }
 
         public int recup()
         {
+            // Id de l'inspecteur connecté
+
             lireFichier();
             idI = Convert.ToInt32(test);
             return idI;
         }
-        
-
+       
 
         #region instanciation des variables
 
@@ -102,6 +121,19 @@ namespace PPE4_Stars_up
                 dv_visite = value;
             }
         }
+
+        public DataView Dv_specialite
+        {
+            get
+            {
+                return dv_specialite;
+            }
+
+            set
+            {
+                dv_specialite = value;
+            }
+        }
         #endregion
 
         #region constructeur
@@ -156,7 +188,7 @@ namespace PPE4_Stars_up
         public void import()
         {
             if (!connopen) return;
-            mySqlDataAdapterTP7.SelectCommand = new MySqlCommand("select * from inspecteur; select * from visiter where id_inspecteur ="+ recup() +";", myConnection);   
+            mySqlDataAdapterTP7.SelectCommand = new MySqlCommand("select * from inspecteur; select * from visiter where id_inspecteur ="+ recup() + "; SELECT Libelle_specialite FROM specialite as s INNER JOIN inspecteur as i on s.ID_SPECIALITE = i.ID_SPECIALITE where id_inspecteur =" + recup() + "; ", myConnection);   
             
                 try
                 {
@@ -175,8 +207,10 @@ namespace PPE4_Stars_up
                         */
 
                         // remplissage des dataView à partir des tables du dataSet
-                        dv_login = dataSetTP7.Tables[0].DefaultView;
-                        dv_visite = dataSetTP7.Tables[1].DefaultView;
+                        dv_login = dataSetTP7.Tables[0].DefaultView; // Gestion de la connexion
+                        dv_visite = dataSetTP7.Tables[1].DefaultView; // Gestion du remplissage du planning
+                        dv_specialite = dataSetTP7.Tables[2].DefaultView; // Récupération de la spécialité
+
                         chargement = true;
                 }
                 catch (Exception err)
@@ -230,7 +264,7 @@ namespace PPE4_Stars_up
                     {
                         if (vtable == 'p')
                         {
-                            msg = "Pour le numéro dees inspecteurs : " + args.Row[0, DataRowVersion.Original] + " Impossible MAJ car enr supprimé dans la base";
+                            msg = "Pour le numéro des inspecteurs : " + args.Row[0, DataRowVersion.Original] + " Impossible MAJ car enr supprimé dans la base";
                         }
                         rapport.Add(msg);
                         errmaj = true;

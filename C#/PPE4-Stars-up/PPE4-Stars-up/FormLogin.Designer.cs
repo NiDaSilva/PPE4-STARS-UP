@@ -137,14 +137,14 @@
             this.BackgroundImage = global::PPE4_Stars_up.Properties.Resources.cool_washing_basic_collor_blue_black_rain_hd_wallpaper_112685;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(427, 237);
+            this.Controls.Add(this.tbMdp);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.cbAfficherMdp);
             this.Controls.Add(this.btnOK);
-            this.Controls.Add(this.tbMdp);
             this.Controls.Add(this.tbNom);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.rtbLogin);
             this.Controls.Add(this.rtbMdp);
+            this.Controls.Add(this.rtbLogin);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "FormLogin";

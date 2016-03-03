@@ -35,7 +35,7 @@ namespace PPE4_Stars_up
         // creation d’une liste des mot de passe inspecteurs
         List<KeyValuePair<int, string>> FListMdp = new List<KeyValuePair<int, string>>();
 
-       
+
 
         public FormLogin()
         {
@@ -78,15 +78,15 @@ namespace PPE4_Stars_up
                 Console.WriteLine(e.Message);
             }
 
-            string[] lines = { idINSP.ToString() };
+            string[] lines = { idINSP.ToString()};
             System.IO.File.WriteAllLines(@"C:\PPE4_DR\Preferences_PPE4_DR.txt", lines);
         }
 
         private void ecrireFichier()
         {
-            idInspecteur = idINSP;
+            idInspecteur = idINSP; 
 
-            string[] lines = { idINSP.ToString()};
+            string[] lines = { idINSP.ToString() };
             System.IO.File.WriteAllLines(@"C:\PPE4_DR\Preferences_PPE4_DR.txt", lines);
         }
 
@@ -144,7 +144,7 @@ namespace PPE4_Stars_up
                         idInspecteur = 6;
                         idINSP = 6;
                     }
-
+                    
                     ecrireFichier();
 
                     FormIndex FI = new FormIndex(nomInspecteur, prenomInspecteur, idInspecteur);

@@ -38,6 +38,9 @@
             this.lblInspecteur = new System.Windows.Forms.Label();
             this.lblinfo = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblinfo2 = new System.Windows.Forms.Label();
+            this.lblSpecialite = new System.Windows.Forms.Label();
+            this.lblheure = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -119,18 +122,18 @@
             this.lblInspecteur.AutoSize = true;
             this.lblInspecteur.BackColor = System.Drawing.Color.Transparent;
             this.lblInspecteur.Font = new System.Drawing.Font("Gentium Basic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInspecteur.Location = new System.Drawing.Point(637, 439);
+            this.lblInspecteur.Location = new System.Drawing.Point(175, 440);
             this.lblInspecteur.Name = "lblInspecteur";
-            this.lblInspecteur.Size = new System.Drawing.Size(105, 19);
+            this.lblInspecteur.Size = new System.Drawing.Size(99, 19);
             this.lblInspecteur.TabIndex = 2;
-            this.lblInspecteur.Text = "Dimitry Robin";
+            this.lblInspecteur.Text = "Prénom Nom";
             // 
             // lblinfo
             // 
             this.lblinfo.AutoSize = true;
             this.lblinfo.BackColor = System.Drawing.Color.Transparent;
             this.lblinfo.Font = new System.Drawing.Font("Gentium Basic", 12.25F);
-            this.lblinfo.Location = new System.Drawing.Point(465, 439);
+            this.lblinfo.Location = new System.Drawing.Point(3, 440);
             this.lblinfo.Name = "lblinfo";
             this.lblinfo.Size = new System.Drawing.Size(166, 20);
             this.lblinfo.TabIndex = 3;
@@ -147,6 +150,39 @@
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
             // 
+            // lblinfo2
+            // 
+            this.lblinfo2.AutoSize = true;
+            this.lblinfo2.BackColor = System.Drawing.Color.Transparent;
+            this.lblinfo2.Font = new System.Drawing.Font("Gentium Basic", 12.25F);
+            this.lblinfo2.Location = new System.Drawing.Point(380, 440);
+            this.lblinfo2.Name = "lblinfo2";
+            this.lblinfo2.Size = new System.Drawing.Size(86, 20);
+            this.lblinfo2.TabIndex = 8;
+            this.lblinfo2.Text = "Spécialité :";
+            // 
+            // lblSpecialite
+            // 
+            this.lblSpecialite.AutoSize = true;
+            this.lblSpecialite.BackColor = System.Drawing.Color.Transparent;
+            this.lblSpecialite.Font = new System.Drawing.Font("Gentium Basic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSpecialite.Location = new System.Drawing.Point(475, 440);
+            this.lblSpecialite.Name = "lblSpecialite";
+            this.lblSpecialite.Size = new System.Drawing.Size(167, 19);
+            this.lblSpecialite.TabIndex = 7;
+            this.lblSpecialite.Text = "Import données requis";
+            // 
+            // lblheure
+            // 
+            this.lblheure.AutoSize = true;
+            this.lblheure.BackColor = System.Drawing.Color.Transparent;
+            this.lblheure.Font = new System.Drawing.Font("Gentium Basic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblheure.Location = new System.Drawing.Point(734, 440);
+            this.lblheure.Name = "lblheure";
+            this.lblheure.Size = new System.Drawing.Size(61, 19);
+            this.lblheure.TabIndex = 9;
+            this.lblheure.Text = "HH:mm";
+            // 
             // FormIndex
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -154,6 +190,9 @@
             this.BackgroundImage = global::PPE4_Stars_up.Properties.Resources.Wallpaper_Gray_Bars_Opera;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(784, 462);
+            this.Controls.Add(this.lblheure);
+            this.Controls.Add(this.lblinfo2);
+            this.Controls.Add(this.lblSpecialite);
             this.Controls.Add(this.lblinfo);
             this.Controls.Add(this.lblInspecteur);
             this.Controls.Add(this.menuStrip1);
@@ -187,6 +226,9 @@
         private System.Windows.Forms.Label lblInspecteur;
         private System.Windows.Forms.Label lblinfo;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label lblinfo2;
+        private System.Windows.Forms.Label lblSpecialite;
+        private System.Windows.Forms.Label lblheure;
     }
 }
 

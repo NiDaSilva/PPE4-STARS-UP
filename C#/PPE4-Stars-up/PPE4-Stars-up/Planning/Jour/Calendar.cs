@@ -1262,7 +1262,8 @@ namespace PPE4_Stars_up
 
             if (span.Days < 1 || span.Days > MaximumViewDays )
             {
-                throw new Exception("Days between ViewStart and ViewEnd should be between 1 and MaximumViewDays");
+                //MessageBox.Show("Erreur", "Vous avez séléctionné trop de date !", MessageBoxButtons.OK);
+                //throw new Exception("Days between ViewStart and ViewEnd should be between 1 and MaximumViewDays");
             }
 
             if (span.Days > MaximumFullDays)
