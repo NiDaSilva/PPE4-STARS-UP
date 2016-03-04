@@ -1455,18 +1455,22 @@ namespace PPE4_Stars_up
 
         protected virtual void OnItemDeleting(CalendarItemCancelEventArgs e)
         {
+            /*
             if (ItemDeleting != null)
             {
                 ItemDeleting(this, e);
             }
+             */
         }
 
         protected virtual void OnItemDeleted(CalendarItemEventArgs e)
         {
+            /*
             if (ItemDeleted != null)
             {
                 ItemDeleted(this, e);
             }
+            */
         }
 
         protected virtual void OnItemDoubleClick(CalendarItemEventArgs e)
@@ -1495,18 +1499,22 @@ namespace PPE4_Stars_up
 
         protected virtual void OnItemSelected(CalendarItemEventArgs e)
         {
+            /*
             if (ItemSelected != null)
             {
                 ItemSelected(this, e);
             }
+             */
         }
 
         protected virtual void OnItemsPositioned(EventArgs e)
         {
+            /*
             if (ItemsPositioned != null)
             {
                 ItemsPositioned(this, e);
             }
+             */
         }
 
         protected virtual void OnItemDatesChanged(CalendarItemEventArgs e)
@@ -1534,6 +1542,7 @@ namespace PPE4_Stars_up
             ICalendarSelectableElement sStart = null;
             ICalendarSelectableElement sEnd = null;
 
+            /*
             if (e.KeyCode == Keys.F2)
             {
                 ActivateEditMode();
@@ -1577,6 +1586,7 @@ namespace PPE4_Stars_up
             {
 
             }
+            */
             
 
             if (sStart != null)
@@ -1622,6 +1632,7 @@ namespace PPE4_Stars_up
 
         protected override void OnMouseDown(MouseEventArgs e)
         {
+            /*
             base.OnMouseDown(e);
 
             ICalendarSelectableElement hitted = HitTest(e.Location);
@@ -1698,6 +1709,7 @@ namespace PPE4_Stars_up
                     break;
                     
             }
+            */
         }
 
         protected override void OnMouseMove(MouseEventArgs e)
@@ -1718,10 +1730,12 @@ namespace PPE4_Stars_up
 
                         if (hittedItem != null)
                         {
+                            /*
                             if((hittedItem.ResizeEndDateZone(e.Location) || hittedItem.ResizeStartDateZone(e.Location)) && AllowItemResize)
                             {
                                 should = hittedItem.IsOnDayTop || DaysMode == CalendarDaysMode.Short ? Cursors.SizeWE : Cursors.SizeNS;
                             }
+                            */
 
                             OnItemMouseHover(new CalendarItemEventArgs(hittedItem));
 

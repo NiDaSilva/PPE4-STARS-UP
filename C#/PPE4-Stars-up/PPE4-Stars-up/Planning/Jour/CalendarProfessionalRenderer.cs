@@ -144,6 +144,7 @@ namespace PPE4_Stars_up
                 e.Graphics.DrawLine(p, e.Bounds.Left + ItemRoundness, e.Bounds.Top + 1, e.Bounds.Right - ItemRoundness, e.Bounds.Top + 1); 
             }
 
+            
             if (e.Item.Selected && !e.Item.IsDragging)
             {
                 bool horizontal = false;
@@ -185,6 +186,7 @@ namespace PPE4_Stars_up
                     }
                 } 
             }
+
         }
 
         #endregion

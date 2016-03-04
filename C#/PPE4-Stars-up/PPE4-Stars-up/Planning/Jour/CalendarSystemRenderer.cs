@@ -251,6 +251,7 @@ namespace PPE4_Stars_up
 
             int alpha = 255;
 
+            
             if (e.Item.IsDragging)
             {
                 alpha = 120;
@@ -297,6 +298,7 @@ namespace PPE4_Stars_up
 
         public override void OnDrawItemBorder(CalendarRendererItemBoundsEventArgs e)
         {
+            
             base.OnDrawItemBorder(e);
 
             Color a = e.Item.BorderColor.IsEmpty ? ColorTable.ItemBorder : e.Item.BorderColor;
@@ -333,10 +335,12 @@ namespace PPE4_Stars_up
             
             if (item != null)
             {
+                
                 if (item.IsDragging)
                 {
                     e.TextColor = Color.FromArgb(120, e.TextColor);
                 }
+                
             }
 
             base.OnDrawItemText(e);

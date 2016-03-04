@@ -88,7 +88,7 @@ namespace PPE4_Stars_up
 
         private void calendar1_ItemCreated(object sender, CalendarItemCancelEventArgs e)
         {
-            _items.Add(e.Item);
+            // _items.Add(e.Item);
         }
 
         private void calendar1_ItemMouseHover(object sender, CalendarItemEventArgs e)
@@ -174,7 +174,7 @@ namespace PPE4_Stars_up
 
         private void editItemToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            calendar1.ActivateEditMode();
+            //calendar1.ActivateEditMode();
         }
 
         private void DemoForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -217,12 +217,18 @@ namespace PPE4_Stars_up
 
         private void calendar1_ItemDoubleClick(object sender, CalendarItemEventArgs e)
         {
-            MessageBox.Show("Double click: " + e.Item.Text);
+            // MessageBox.Show("Double click: " + e.Item.Text);
+
+            // Envoie vers la nouvelle form
+
+            FormVisite FV = new FormVisite();
+            FV.MdiParent = this.MdiParent;
+            FV.Show();
         }
 
         private void calendar1_ItemDeleted(object sender, CalendarItemEventArgs e)
         {
-            _items.Remove(e.Item);
+            // _items.Remove(e.Item);
         }
 
         private void calendar1_DayHeaderClick(object sender, CalendarDayEventArgs e)

@@ -1857,7 +1857,7 @@ namespace PPE4_Stars_up
         /// <param name="e"></param>
         public virtual void OnDrawDayOverflowEnd(CalendarRendererDayEventArgs e)
         {
-            //e.Graphics.FillRectangle(Brushes.Red, e.Day.OverflowEndBounds);
+            e.Graphics.FillRectangle(Brushes.Red, e.Day.OverflowEndBounds);
         }
 
         /// <summary>

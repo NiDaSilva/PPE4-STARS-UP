@@ -109,5 +109,15 @@ namespace PPE4_Stars_up.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap white_wallpaper_18 {
+            get {
+                object obj = ResourceManager.GetObject("white-wallpaper-18", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

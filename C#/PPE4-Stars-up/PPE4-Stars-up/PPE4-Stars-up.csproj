@@ -62,6 +62,12 @@
     <Compile Include="FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormVisite.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormVisite.Designer.cs">
+      <DependentUpon>FormVisite.cs</DependentUpon>
+    </Compile>
     <Compile Include="Planning\Jour\Calendar.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -117,6 +123,9 @@
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormVisite.resx">
+      <DependentUpon>FormVisite.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Planning\Jour\FormPlanningJour.resx">
       <DependentUpon>FormPlanningJour.cs</DependentUpon>
     </EmbeddedResource>
@@ -160,6 +169,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\15679-babasse-cadenas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\white-wallpaper-18.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
