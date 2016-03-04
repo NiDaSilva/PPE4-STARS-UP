@@ -18,7 +18,7 @@ public class Modele {
     private File appDir;
 
     public void open() {
-        db4oFileName = Environment.getExternalStorageDirectory() + "/baseDB4o" + "/BaseCours.db4o";
+        db4oFileName = Environment.getExternalStorageDirectory() + "/baseDB4o" + "/BaseStartsUp.db4o";
         Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(),db4oFileName);
     }
 
@@ -50,9 +50,10 @@ public class Modele {
 //créer la liste de retour
         open();
         ObjectSet<Hebergement_Activity> result = dataBase.queryByExample(Hebergement_Activity.class);
+        ArrayList<Hebergement_Activity> heberg = new ArrayList<Hebergement_Activity>();
 //parcourir tous les éléments du résultat de la requête et ajouter chaque élément à la nouvelle liste
 //fermer la BDDO
 //retourner la liste
-        return;
+        return heberg;
     }
 }
