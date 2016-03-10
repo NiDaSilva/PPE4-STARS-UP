@@ -78,10 +78,12 @@ public class VISITE {
     public VISITE(){
 
     }
-    public VISITE(Integer unNbEtoile, Integer uneContreVisiste, Integer unType, Date uneD, String unCom ){
-        NOMBRE_ETOILE_VISITE = unNbEtoile;
-        CONTRE_VISITE_CHECKED = uneContreVisiste;
-        COMMENTAIRE_VISTE = unCom ;
+    public VISITE(Integer id_hebergement, Integer id_inspecteur, Integer nbrEtoile, String commentaire, Date date){
+        ID_HEBERGEMENT = id_hebergement;
+        ID_INSPECTEUR = id_inspecteur;
+        NOMBRE_ETOILE_VISITE = nbrEtoile;
+        COMMENTAIRE_VISTE = commentaire ;
+        DATE_HEURE_VISITE = date ;
 
     }
     //endregion

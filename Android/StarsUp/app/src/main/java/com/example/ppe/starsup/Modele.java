@@ -19,7 +19,7 @@ public class Modele {
 
     public void open() {
         db4oFileName = Environment.getExternalStorageDirectory() + "/baseDB4o" + "/BaseStartsUp.db4o";
-        Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(),db4oFileName);
+        dataBase = Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(),db4oFileName);
     }
 
     public void createDirectory() {
@@ -33,27 +33,27 @@ public class Modele {
         createDirectory();
     }
 
-    public void saveVisite(Visite_Activity uneVisite) {
+    public void saveVisite(VISITE uneVisite) {
         try {
             open();
             dataBase.store(uneVisite);
-            dataBase.commit();// VALIDATION de cet ajout d'objet car le store s'est bien passé
+            dataBase.commit();  // VALIDATION de l'ajout, le store s'est bien passÃ©
         }catch(Exception e){
             e.printStackTrace();
-            dataBase.rollback();// ANNULATION de cet ajout d'objet car le store a "buggé"
+            dataBase.rollback();// ANNULATION de l'ajout, le store a "buggÃ©"
         }finally {
-            dataBase.close();// dans tous les cas FERMETURE de la BDDO
+            dataBase.close();   // FERMETURE de la BDDO
         }
     }
 
-    public ArrayList<Hebergement_Activity> listeHebergement(){
-//créer la liste de retour
+    public ArrayList<HEBERGEMENT> listeHebergements(){//Retourne la liste des hebergements
         open();
-        ObjectSet<Hebergement_Activity> result = dataBase.queryByExample(Hebergement_Activity.class);
-        ArrayList<Hebergement_Activity> heberg = new ArrayList<Hebergement_Activity>();
-//parcourir tous les éléments du résultat de la requête et ajouter chaque élément à la nouvelle liste
-//fermer la BDDO
-//retourner la liste
-        return heberg;
+        ArrayList<HEBERGEMENT> listeHebergements = new ArrayList<HEBERGEMENT>();
+        ObjectSet<HEBERGEMENT> result = dataBase.queryByExample(HEBERGEMENT.class);
+        while (result.hasNext()) {  //Ajoute chaque ligne dans la liste
+            listeHebergements.add(result.next());
+        }
+        dataBase.close();           //Ferme la BDDO
+        return listeHebergements;   //Retourner la liste
     }
 }

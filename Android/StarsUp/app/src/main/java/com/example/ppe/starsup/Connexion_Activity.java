@@ -25,12 +25,12 @@ public class Connexion_Activity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_connexion);
 
-        Button btnL = (Button) findViewById(R.id.btn_login);
-        btnL.setOnClickListener(click);
+        Button btnLogin = (Button) findViewById(R.id.btn_login);
+        btnLogin.setOnClickListener(click);
     }
 
     private View.OnClickListener click = new View.OnClickListener() {
-        //redéfinition de la méthode onClick
+        //redÃ©finition de la mÃ©thode onClick
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.btn_login : //gestion du click du bouton

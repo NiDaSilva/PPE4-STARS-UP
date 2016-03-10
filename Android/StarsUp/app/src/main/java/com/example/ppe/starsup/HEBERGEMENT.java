@@ -5,8 +5,10 @@ package com.example.ppe.starsup;
  */
 public class HEBERGEMENT {
     private Integer ID_DEPARTEMENT;
-    private Integer ID_HEBERGEMENT ;
+    private Integer ID_HEBERGEMENT;
     private String NOM_HEBERGEMENT;
+    private String WEBSITE_HEBERGEMENT;
+    private String HORAIRES_HEBERGEMENT;
     private String ADRESSE_HEBERGEMENT;
     private String VILLE_HEBERGEMENT;
 
@@ -33,6 +35,14 @@ public class HEBERGEMENT {
 
     public void setNOM_HEBERGEMENT(String NOM_HEBERGEMENT) {
         this.NOM_HEBERGEMENT = NOM_HEBERGEMENT;
+    }
+
+    public String getWEBSITE_HEBERGEMENT() {
+        return WEBSITE_HEBERGEMENT;
+    }
+
+    public String getHORAIRES_HEBERGEMENT() {
+        return HORAIRES_HEBERGEMENT;
     }
 
     public String getADRESSE_HEBERGEMENT() {

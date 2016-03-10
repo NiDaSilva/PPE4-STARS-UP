@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent" android:layout_height="match_parent"
+    android:orientation="horizontal"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/date"
+        android:layout_gravity="center_vertical"
+        android:text="10H30" />
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:layout_weight="1"
+        >
+
+        <TextView android:id="@+id/nom"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:text="Nom de l&apos;hébergement" />
+
+        <TextView android:id="@+id/adresse"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="9 Rue des Lices - Angers" />
+
+    </LinearLayout>
+
+</LinearLayout>

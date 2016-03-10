@@ -1,27 +1,56 @@
 package com.example.ppe.starsup;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.io.Serializable;
 
 
 public class Hebergement_Activity extends Activity {
+
+    private HEBERGEMENT hebergement; //Objet Hebergement
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hebergement);
 
-        Button Btn_rediger=(Button) findViewById(R.id.btn_rediger);
-        Btn_rediger.setOnClickListener(btnClickRedig); // btnclick � garder
+        Button btn_rediger = (Button) findViewById(R.id.btn_rediger);
+        btn_rediger.setOnClickListener(click); // btnclick à garder
+
+        //Réception les données passées par le Intent
+        Bundle b = getIntent().getExtras();
+        //String info1 = b.getString("info1");
+        hebergement = (HEBERGEMENT) getIntent().getSerializableExtra("hebergement");
+        //Toast.makeText(getApplicationContext(), "Chargement effectuée ! Hébergement : " + hebergement.getNOM_HEBERGEMENT(), Toast.LENGTH_LONG).show();
+
+        //Chargement des infos dans la page
+        /*((TextView) findViewById(R.id.txt_nom)).setText(hebergement.getNOM_HEBERGEMENT());
+        ((TextView) findViewById(R.id.txt_web)).setText(hebergement.getWEBSITE_HEBERGEMENT());
+        ((TextView) findViewById(R.id.txt_horaires)).setText(hebergement.getHORAIRES_HEBERGEMENT());
+        ((TextView) findViewById(R.id.txt_adresse)).setText(hebergement.getVILLE_HEBERGEMENT()+"\n"+hebergement.getADRESSE_HEBERGEMENT());*/
+        //((EditText) findViewById(R.id.ratingBar)).setText("");
     }
 
 
-    private View.OnClickListener btnClickRedig = new View.OnClickListener() {
+    private View.OnClickListener click = new View.OnClickListener() {
         public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.btn_rediger : //gestion du click du radiobouton Cours collectif
+                    Intent i = new Intent(getApplicationContext(), Visite_Activity.class);
+                    //i.putExtra("info1", "Démarrage de l'activité");
+                    i.putExtra("hebergement", (Serializable)hebergement);
+                    startActivity(i);
+                    break;
+            }
         }
 
     };
