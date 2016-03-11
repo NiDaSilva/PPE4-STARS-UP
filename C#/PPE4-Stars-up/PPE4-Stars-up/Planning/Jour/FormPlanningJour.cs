@@ -17,9 +17,11 @@ namespace PPE4_Stars_up
         List<CalendarItem> _items = new List<CalendarItem>();
         CalendarItem contextItem = null;
 
+        string nbEtoile;
         string test;
 
         private BindingSource bindingSource1 = new BindingSource();
+        private BindingSource bindingSource2 = new BindingSource();
 
         public FormPlanningJour()
         {
@@ -217,11 +219,57 @@ namespace PPE4_Stars_up
 
         private void calendar1_ItemDoubleClick(object sender, CalendarItemEventArgs e)
         {
-            // MessageBox.Show("Double click: " + e.Item.Text);
+            // MessageBox.Show("Texte : " + e.Item.Text)
+            // MessageBox.Show("Date avant : " + e.Item.Date);
+
+            // 11/03/2016 10:00:00
+
+            string element0 = "";
+            string element1 = "";
+            string element2 = "";
+            string element3 = "";
+            string element4 = "";
+            string element5 = "";
+
+            string DateComplete = string.Format("{0}", e.Item.Date.ToString("dd/MM/yyyy HH:mm:ss")).Trim(); // recupere date
+            // MessageBox.Show("Date apres : " + DateComplete);
+
+            for (int i = 0; i < dataGridViewPersonnes.Rows.Count; i++) // parcours le datagridview
+            {
+                if (dataGridViewPersonnes.Rows[i].Cells[4].Value.ToString() == DateComplete)
+                {
+                    element0 = dataGridViewPersonnes.Rows[i].Cells[0].Value.ToString(); // recupere ID
+                    element1 = dataGridViewPersonnes.Rows[i].Cells[1].Value.ToString(); // recupere NOM
+                    element2 = dataGridViewPersonnes.Rows[i].Cells[2].Value.ToString(); // recupere Adresse
+                    element3 = dataGridViewPersonnes.Rows[i].Cells[3].Value.ToString(); // recupere Ville
+                    element4 = dataGridViewPersonnes.Rows[i].Cells[4].Value.ToString(); // recupere Date --> DateComplete
+                    element5 = dataGridViewPersonnes.Rows[i].Cells[5].Value.ToString(); // recupere Horaires
+                }
+            }
+
+            // MessageBox.Show("element1 : " + element1);
+            // MessageBox.Show("element2 : " + element2);
+            // MessageBox.Show("element3 : " + element3);
+            // MessageBox.Show("element4 : " + element4);
+            // MessageBox.Show("element5 : " + element5);
+
+            bindingSource2.DataSource = controleur.Vmodele.Dv_NbEtoiles;
+            dataGridViewNbEtoiles.DataSource = bindingSource2;
+
+            for (int i = 0; i < dataGridViewNbEtoiles.Rows.Count; i++) // parcours le datagridview
+            {
+                if (dataGridViewNbEtoiles.Rows[i].Cells[0].Value.ToString() == element0 && dataGridViewNbEtoiles.Rows[i].Cells[2].Value.ToString() != "")
+                {
+                    nbEtoile = dataGridViewNbEtoiles.Rows[i].Cells[2].Value.ToString();
+                    break;
+                }
+            }
+
+            // MessageBox.Show(nbEtoile);
 
             // Envoie vers la nouvelle form
 
-            FormVisite FV = new FormVisite();
+            FormVisite FV = new FormVisite(element1, element2, element3, element4, element5, nbEtoile);
             FV.MdiParent = this.MdiParent;
             FV.Show();
         }
@@ -358,6 +406,7 @@ namespace PPE4_Stars_up
             bindingSource1.DataSource = controleur.Vmodele.Dv_visite;
             dataGridViewPersonnes.DataSource = bindingSource1;
 
+            
             // TEST AJOUT ITEM EN DUR
 
             /*
@@ -394,7 +443,9 @@ namespace PPE4_Stars_up
                 string HeureDebut = string.Format("{0} {1}", DateSeulement, HeureDebutEntiere).Trim(); // Bon format
                 string HeureFin = string.Format("{0} {1}", DateSeulement, HeureFinEntiere).Trim(); // Bon format
 
-                string commentaire = dataGridViewPersonnes.Rows[i].Cells[6].Value.ToString(); // recupere date + heure
+                string commentaire = dataGridViewPersonnes.Rows[i].Cells[1].Value.ToString() + "\n"; // recupere NOM
+                commentaire += dataGridViewPersonnes.Rows[i].Cells[2].Value.ToString() + "\n"; // recupere Adresse
+                commentaire += dataGridViewPersonnes.Rows[i].Cells[3].Value.ToString(); // recupere Ville
 
                 // MessageBox.Show("debut : " + HeureDebutSeulement + "/nFin : " + HeureFin);
                 CalendarItem cal = new CalendarItem(calendar1, Convert.ToDateTime(HeureDebut), Convert.ToDateTime(HeureFin), commentaire);
@@ -412,6 +463,15 @@ namespace PPE4_Stars_up
             string[] lines = System.IO.File.ReadAllLines(@"C:\PPE4_DR\Preferences_PPE4_DR.txt");
 
             test = lines[0].ToString();
+        }
+
+        private void btnRetour_Click(object sender, EventArgs e)
+        {
+            FormIndex form = (FormIndex)this.MdiParent;
+            form.HistoriqueDesVisitesToolStripMenuItem.Enabled = true;
+            form.PlanningToolStripMenuItem.Enabled = true;
+
+            this.Close();
         }
     }
 }

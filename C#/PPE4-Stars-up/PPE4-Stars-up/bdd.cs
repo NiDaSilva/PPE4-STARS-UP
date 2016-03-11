@@ -27,7 +27,7 @@ namespace PPE4_Stars_up
 
         private MySqlDataAdapter mySqlDataAdapterTP7 = new MySqlDataAdapter();
         private DataSet dataSetTP7 = new DataSet();
-        private DataView dv_login, dv_visite, dv_specialite = new DataView();
+        private DataView dv_login, dv_visite, dv_specialite, dv_NbEtoiles = new DataView();
 
         private void lireFichier()
         {
@@ -134,6 +134,12 @@ namespace PPE4_Stars_up
                 dv_specialite = value;
             }
         }
+
+        public DataView Dv_NbEtoiles
+        {
+            get { return dv_NbEtoiles; }
+            set { dv_NbEtoiles = value; }
+        }
         #endregion
 
         #region constructeur
@@ -188,7 +194,7 @@ namespace PPE4_Stars_up
         public void import()
         {
             if (!connopen) return;
-            mySqlDataAdapterTP7.SelectCommand = new MySqlCommand("select * from inspecteur; select * from visiter where id_inspecteur ="+ recup() + "; SELECT Libelle_specialite FROM specialite as s INNER JOIN inspecteur as i on s.ID_SPECIALITE = i.ID_SPECIALITE where id_inspecteur =" + recup() + "; ", myConnection);   
+            mySqlDataAdapterTP7.SelectCommand = new MySqlCommand("select * from inspecteur; select v.ID_HEBERGEMENT as 'ID', h.NOM_HEBERGEMENT as 'NOM', h.ADRESSE_HEBERGEMENT as 'ADRESSE', h.VILLE_HEBERGEMENT as 'VILLE', v.DATE_HEURE_VISITE as 'DATE', h.HORAIRES from visiter as v inner join hebergement as h on v.ID_HEBERGEMENT = h.ID_HEBERGEMENT where id_inspecteur =" + recup() + "; SELECT Libelle_specialite FROM specialite as s INNER JOIN inspecteur as i on s.ID_SPECIALITE = i.ID_SPECIALITE where id_inspecteur =" + recup() + "; Select ID_HEBERGEMENT as 'ID', DATE_HEURE_VISITE as 'Date_Heure', NOMBRE_ETOILE_VISITE as 'Nb Etoiles' FROM visiter ORDER BY Date_Heure DESC; ", myConnection);   
             
                 try
                 {
@@ -210,6 +216,7 @@ namespace PPE4_Stars_up
                         dv_login = dataSetTP7.Tables[0].DefaultView; // Gestion de la connexion
                         dv_visite = dataSetTP7.Tables[1].DefaultView; // Gestion du remplissage du planning
                         dv_specialite = dataSetTP7.Tables[2].DefaultView; // Récupération de la spécialité
+                        dv_NbEtoiles = dataSetTP7.Tables[3].DefaultView; // Récupération du nombre d'étoiles de tous les hébergements
 
                         chargement = true;
                 }

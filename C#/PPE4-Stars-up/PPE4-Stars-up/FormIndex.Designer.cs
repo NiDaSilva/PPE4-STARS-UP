@@ -217,9 +217,30 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
+
+        public System.Windows.Forms.MenuStrip MenuStrip1
+        {
+            get { return menuStrip1; }
+            set { menuStrip1 = value; }
+        }
+
         private System.Windows.Forms.ToolStripMenuItem importToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem planningToolStripMenuItem;
+
+        public System.Windows.Forms.ToolStripMenuItem PlanningToolStripMenuItem
+        {
+            get { return planningToolStripMenuItem; }
+            set { planningToolStripMenuItem = value; }
+        }
+
         private System.Windows.Forms.ToolStripMenuItem historiqueDesVisitesToolStripMenuItem;
+
+        public System.Windows.Forms.ToolStripMenuItem HistoriqueDesVisitesToolStripMenuItem
+        {
+            get { return historiqueDesVisitesToolStripMenuItem; }
+            set { historiqueDesVisitesToolStripMenuItem = value; }
+        }
+
         private System.Windows.Forms.ToolStripMenuItem imprimerPDFToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem quitterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem paramètreToolStripMenuItem;

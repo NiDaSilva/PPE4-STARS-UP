@@ -50,6 +50,11 @@ namespace PPE4_Stars_up
 
         }
 
+        public FormIndex()
+        {
+            InitializeComponent();
+        }
+
         private void jourToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormPlanningJour FPJ = new FormPlanningJour();
@@ -117,6 +122,8 @@ namespace PPE4_Stars_up
 
         private void planningToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            historiqueDesVisitesToolStripMenuItem.Enabled = false;
+            planningToolStripMenuItem.Enabled = false;
             pictureBox1.Visible = false;
             FormPlanningJour FPJ = new FormPlanningJour();
             FPJ.MdiParent = this;
@@ -126,6 +133,21 @@ namespace PPE4_Stars_up
 
         private void FormIndex_Load(object sender, EventArgs e)
         {
+            /*
+            if (importToolStripMenuItem.Text == "Export")
+            {
+                if (planningToolStripMenuItem.Enabled == false)
+                {
+                    planningToolStripMenuItem.Enabled = true;
+                }
+
+                if (historiqueDesVisitesToolStripMenuItem.Enabled == false)
+                {
+                    historiqueDesVisitesToolStripMenuItem.Enabled = true;
+                }
+            }
+            */
+
             chargedgv();
 
             pictureBox1.Visible = true;
