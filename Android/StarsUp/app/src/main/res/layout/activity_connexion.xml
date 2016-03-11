@@ -38,6 +38,5 @@
             android:text="@string/connexion"
             android:id="@+id/btn_login"
             android:layout_gravity="center_horizontal" />
-
     </LinearLayout>
 </RelativeLayout>
