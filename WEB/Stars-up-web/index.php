@@ -1,3 +1,7 @@
+<?php
+include 'class/hebergement.controller.class.php';
+$controller = new controller();
+echo'
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Grayscale - Start Bootstrap Theme</title>
+    <title>Stars\'up</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -23,7 +27,7 @@
     <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!-- WARNING: Respond.js doesn\'t work if you view the page via file:// -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -41,7 +45,7 @@
                     <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand page-scroll" href="#page-top">
-                    <i class="fa fa-play-circle"></i>  <span class="light">Star's</span> UP
+                    <i class="fa fa-play-circle"></i>  <span class="light">Star\'s</span> UP
                 </a>
             </div>
 
@@ -74,7 +78,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
-                        <h1 class="brand-heading">Star's UP</h1>
+                        <h1 class="brand-heading">Star\'s UP</h1>
                         <p class="intro-text">Created by 2TSIOD.</p>
                         <a href="#about" class="btn btn-circle page-scroll">
                             <i class="fa fa-angle-double-down animated"></i>
@@ -136,69 +140,17 @@
                 <!-- contenue -->
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2">
-                        <!--TODO Boucle EACH -->
-                          <div class="col-sm-6 col-md-4">
-                            <div class="thumbnail">
-                              <img src="http://placehold.it/350x150" alt="320x150">
-                              <div class="caption">
-                                <h4><a href="#">NOM HOTEL</a></h4>
-                                <p>Description de l'hotel, il tue sa mere !...</p>
-                                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                              </div>
-                            </div>
-                          </div>
-                        <!-- END -->
-                        <div class="col-sm-6 col-md-4">
-                            <div class="thumbnail">
-                              <img src="http://placehold.it/350x150" alt="320x150">
-                              <div class="caption">
-                                <h4><a href="#">NOM HOTEL</a></h4>
-                                <p>Description de l'hotel, il tue sa mere !...</p>
-                                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-sm-6 col-md-4">
-                            <div class="thumbnail">
-                              <img src="http://placehold.it/350x150" alt="320x150">
-                              <div class="caption">
-                                <h4><a href="#">NOM HOTEL</a></h4>
-                                <p>Description de l'hotel, il tue sa mere !...</p>
-                                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-sm-6 col-md-4">
-                            <div class="thumbnail">
-                              <img src="http://placehold.it/350x150" alt="320x150">
-                              <div class="caption">
-                                <h4><a href="#">NOM HOTEL</a></h4>
-                                <p>Description de l'hotel, il tue sa mere !...</p>
-                                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-sm-6 col-md-4">
-                            <div class="thumbnail inverse">
-                              <img src="http://placehold.it/350x150" alt="320x150">
-                              <div class="caption">
-                                <h4><a href="#">NOM HOTEL</a></h4>
-                                <p>Description de l'hotel, il tue sa mere !...</p>
-                                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-sm-6 col-md-4">
-                            <div class="thumbnail">
-                              <img src="http://placehold.it/350x150" alt="320x150">
-                              <div class="caption">
-                                <h4><a href="#">NOM HOTEL</a></h4>
-                                <p>Description de l'hotel, il tue sa mere !...</p>
-                                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                              </div>
-                            </div>
-                          </div>
-                    </div>                    
+                        <div class="owl-wrapper">
+							'.
+
+
+                          $controller->hebergement()
+
+
+
+                    .'
+                        </div>
+                    </div>
                 </div>
                 <!-- pagination a géré -->
                 <!-- end -->
@@ -232,4 +184,26 @@
 
 </body>
 
-</html>
+</html>';
+?>
+<script>
+    $(document).ready(function() {
+
+        $("#owl-demo").owlCarousel({
+
+            navigation : true, // Show next and prev buttons
+            slideSpeed : 300,
+            paginationSpeed : 400,
+            singleItem:true
+
+            // "singleItem:true" is a shortcut for:
+            // items : 1,
+            // itemsDesktop : false,
+            // itemsDesktopSmall : false,
+            // itemsTablet: false,
+            // itemsMobile : false
+
+        });
+
+    });
+</script>
