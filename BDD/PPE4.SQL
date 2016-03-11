@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Dim 03 Janvier 2016 à 02:53
+-- Généré le :  Ven 11 Mars 2016 à 17:58
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -74,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `departement` (
   `ID_DEPARTEMENT` int(11) NOT NULL AUTO_INCREMENT,
   `LIBELLE_DEPARTEMENT` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`ID_DEPARTEMENT`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=101 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=977 ;
 
 --
 -- Contenu de la table `departement`
@@ -84,21 +84,104 @@ INSERT INTO `departement` (`ID_DEPARTEMENT`, `LIBELLE_DEPARTEMENT`) VALUES
 (1, 'Ain'),
 (2, 'Aisne'),
 (3, 'Allier'),
-(30, 'Gard'),
-(34, 'Hérault'),
-(44, 'Loire Atlantique'),
-(49, 'Maine et Loire'),
-(85, 'Vendée'),
-(86, 'Vienne'),
-(87, 'Haute-Vienne'),
-(88, 'Vosges'),
-(89, 'Yonne'),
-(90, 'Territoire de Belfort'),
-(91, 'Essonne'),
-(92, 'Hauts de Seine'),
-(93, 'Seine Saint Denis'),
-(94, 'Val de Marne'),
-(95, 'Val d''Oise');
+(4, 'Alpes-de-Haute-Provence'),
+(5, 'Hautes-Alpes'),
+(6, 'Alpes-Maritimes'),
+(7, 'Ardèche'),
+(8, 'Ardennes'),
+(9, 'Ariège'),
+(10, 'Aube'),
+(11, 'Aude'),
+(12, 'Aveyron'),
+(13, 'Bouches-du-Rhône'),
+(14, 'Calvados'),
+(15, 'Cantal'),
+(16, 'Charente'),
+(17, 'Charente-Maritime'),
+(18, 'Cher'),
+(19, 'Corrèze'),
+(20, 'Corse-du-sud'),
+(21, 'Haute-corse'),
+(22, 'Côte-d''or'),
+(23, 'Côtes-d''armor'),
+(24, 'Creuse'),
+(25, 'Dordogne'),
+(26, 'Doubs'),
+(27, 'Drôme'),
+(28, 'Eure'),
+(29, 'Eure-et-Loir'),
+(30, 'Finistère'),
+(31, 'Gard'),
+(32, 'Haute-Garonne'),
+(33, 'Gers'),
+(34, 'Gironde'),
+(35, 'Hérault'),
+(36, 'Ile-et-Vilaine'),
+(37, 'Indre'),
+(38, 'Indre-et-Loire'),
+(39, 'Isère'),
+(40, 'Jura'),
+(41, 'Landes'),
+(42, 'Loir-et-Cher'),
+(43, 'Loire'),
+(44, 'Haute-Loire'),
+(45, 'Loire-Atlantique'),
+(46, 'Loiret'),
+(47, 'Lot'),
+(48, 'Lot-et-Garonne'),
+(49, 'Lozère'),
+(50, 'Maine-et-Loire'),
+(51, 'Manche'),
+(52, 'Marne'),
+(53, 'Haute-Marne'),
+(54, 'Mayenne'),
+(55, 'Meurthe-et-Moselle'),
+(56, 'Meuse'),
+(57, 'Morbihan'),
+(58, 'Moselle'),
+(59, 'Nièvre'),
+(60, 'Nord'),
+(61, 'Oise'),
+(62, 'Orne'),
+(63, 'Pas-de-Calais'),
+(64, 'Puy-de-Dôme'),
+(65, 'Pyrénées-Atlantiques'),
+(66, 'Hautes-Pyrénées'),
+(67, 'Pyrénées-Orientales'),
+(68, 'Bas-Rhin'),
+(69, 'Haut-Rhin'),
+(70, 'Rhône'),
+(71, 'Haute-Saône'),
+(72, 'Saône-et-Loire'),
+(73, 'Sarthe'),
+(74, 'Savoie'),
+(75, 'Haute-Savoie'),
+(76, 'Paris'),
+(77, 'Seine-Maritime'),
+(78, 'Seine-et-Marne'),
+(79, 'Yvelines'),
+(80, 'Deux-Sèvres'),
+(81, 'Somme'),
+(82, 'Tarn'),
+(83, 'Tarn-et-Garonne'),
+(84, 'Var'),
+(85, 'Vaucluse'),
+(86, 'Vendée'),
+(87, 'Vienne'),
+(88, 'Haute-Vienne'),
+(89, 'Vosges'),
+(90, 'Yonne'),
+(91, 'Territoire de Belfort'),
+(92, 'Essonne'),
+(93, 'Hauts-de-Seine'),
+(94, 'Seine-Saint-Denis'),
+(95, 'Val-de-Marne'),
+(96, 'Val-d''oise'),
+(971, 'Guadeloupe'),
+(972, 'Martinique'),
+(973, 'Guyane'),
+(974, 'Réunion'),
+(976, 'Mayotte');
 
 -- --------------------------------------------------------
 
@@ -167,16 +250,27 @@ CREATE TABLE IF NOT EXISTS `hebergement` (
   `HORAIRES` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`ID_HEBERGEMENT`),
   KEY `I_FK_HEBERGEMENT_DEPARTEMENT` (`ID_DEPARTEMENT`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
 
 --
 -- Contenu de la table `hebergement`
 --
 
 INSERT INTO `hebergement` (`ID_HEBERGEMENT`, `ID_DEPARTEMENT`, `NOM_HEBERGEMENT`, `ADRESSE_HEBERGEMENT`, `VILLE_HEBERGEMENT`, `HORAIRES`) VALUES
-(1, 49, 'L''Océane', 'Route Nationale 323', 'Villevêque', NULL),
-(2, 34, 'Royal Hotel', '8 Rue de Maguelone', 'Montpellier', NULL),
-(3, 92, 'Hotel ibis Nanterre La Défense', '36/38 avenue Champs Pierreux', 'Nanterre', NULL);
+(1, 49, 'Hotel Mercure', '2 Allée Du Grand Launay', '49000 Angers', '8h - 18h'),
+(2, 49, 'BEST WESTERN', '1 Boulevard Maréchal Foch', '49100 Angers', '8h - 18h'),
+(3, 44, 'Ibis Styles', '3 rue du Couedic', '44000 Nantes', '8h - 18h'),
+(4, 44, 'BEST WESTERN', '155 Route De Gachet', '44300 Nantes', '8h - 18h'),
+(5, 69, 'Studio Part Dieu', '23 rue Riboud', '69003 Lyon', '8h - 18h'),
+(6, 69, 'Appart Coeur de Lyon', '72 boulevard Vivier Merle', '69003 Lyon', '8h - 18h'),
+(7, 75, 'George Washington', '43 rue Washington', '75008 Paris', '8h - 18h'),
+(8, 75, 'Opera-Louvre', 'Passage Choiseul', '75002 Paris', '8h - 18h'),
+(9, 13, 'Grand Tonic', '43 Quai des Belges', '13001 Marseille', '8h - 18h'),
+(10, 13, 'Golden Tulip', '17 Place Louis Bonnefon', '13008 Marseille', '8h - 18h'),
+(11, 31, 'Le Clocher de Rodez', '15 Place Jeanne d''Arc', '31000 Toulouse', '8h - 18h'),
+(12, 31, 'Hotel de Brienne', '20 Boulevard Maréchal Leclerc', '31000 Toulouse', '8h - 18h'),
+(13, 21, 'hotel Mercure', '22 Boulevard De la Mane', '21071 Dijon', '8h - 18h'),
+(14, 21, 'hotel Ibis', '2 avenue de Marbotte', '21000 Dijon', '8h - 18h');
 
 -- --------------------------------------------------------
 
@@ -196,7 +290,16 @@ CREATE TABLE IF NOT EXISTS `hotel` (
 --
 
 INSERT INTO `hotel` (`ID_HEBERGEMENT`, `RESTAURANT_HOTEL`, `CHEF_RESTAURANT_HOTEL`) VALUES
-(1, 1, 'Gerard Paillote');
+(1, 3, 'MICHEL'),
+(2, 4, 'BOUHOURS'),
+(3, 5, 'ROBIN'),
+(4, 2, 'JAMAIN'),
+(5, 1, 'DA SILVA'),
+(6, 4, 'MENANT'),
+(7, 5, 'MENANT'),
+(8, 2, 'GRONDIN'),
+(9, 1, 'PASCAL'),
+(10, 3, 'JEAN');
 
 -- --------------------------------------------------------
 
@@ -251,16 +354,17 @@ CREATE TABLE IF NOT EXISTS `saison` (
   `ID_SAISON` int(11) NOT NULL AUTO_INCREMENT,
   `LIBELLE_SAISON` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`ID_SAISON`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Contenu de la table `saison`
 --
 
 INSERT INTO `saison` (`ID_SAISON`, `LIBELLE_SAISON`) VALUES
-(1, '2015'),
-(2, '2016'),
-(3, '2017');
+(1, 'Hiver 2016'),
+(2, 'Printemps 2016'),
+(3, 'Eté 2016'),
+(4, 'Automne 2016');
 
 -- --------------------------------------------------------
 
@@ -330,9 +434,11 @@ CREATE TABLE IF NOT EXISTS `visiter` (
 --
 
 INSERT INTO `visiter` (`ID_HEBERGEMENT`, `ID_INSPECTEUR`, `ID_SAISON`, `NOMBRE_ETOILE_VISITE`, `DATE_HEURE_VISITE`, `CONTRE_VISITE`, `COMMENTAIRE_VISITE`, `TYPE_VISITE`) VALUES
-(1, 4, 2, NULL, '2016-07-18 15:00:00', NULL, NULL, NULL),
-(2, 4, 3, NULL, '2016-01-05 10:00:00', NULL, 'Poutre à nettoyé', NULL),
-(3, 5, 3, NULL, '2017-02-22 14:00:00', NULL, NULL, NULL);
+(1, 2, 1, 3, '2016-03-01 16:00:00', NULL, 'Blablablablabla', NULL),
+(1, 3, 1, 4, '2016-02-25 14:00:00', NULL, 'Rien à signaler lors de la visite.', NULL),
+(1, 4, 1, NULL, '2016-03-11 10:00:00', NULL, NULL, NULL),
+(2, 4, 1, 2, '2016-03-10 16:00:00', NULL, 'Visite vraiment horrible !', NULL),
+(3, 4, 1, NULL, '2016-03-11 13:00:00', NULL, NULL, NULL);
 
 --
 -- Contraintes pour les tables exportées
