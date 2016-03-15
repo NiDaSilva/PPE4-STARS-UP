@@ -1,344 +1,500 @@
-DROP DATABASE IF EXISTS PPE4;
-
-CREATE DATABASE IF NOT EXISTS PPE4;
-USE PPE4;
-# -----------------------------------------------------------------------------
-#       TABLE : HEBERGEMENT
-# -----------------------------------------------------------------------------
-
-CREATE TABLE IF NOT EXISTS HEBERGEMENT
- (
-   ID_HEBERGEMENT INTEGER NOT NULL  ,
-   ID_DEPARTEMENT INTEGER NOT NULL  ,
-   NOM_HEBERGEMENT VARCHAR(128) NULL  ,
-   ADRESSE_HEBERGEMENT VARCHAR(128) NULL  ,
-   VILLE_HEBERGEMENT VARCHAR(128) NULL  
-   , PRIMARY KEY (ID_HEBERGEMENT) 
- ) 
- comment = "";
-
-# -----------------------------------------------------------------------------
-#       INDEX DE LA TABLE HEBERGEMENT
-# -----------------------------------------------------------------------------
-
-
-CREATE  INDEX I_FK_HEBERGEMENT_DEPARTEMENT
-     ON HEBERGEMENT (ID_DEPARTEMENT ASC);
-
-# -----------------------------------------------------------------------------
-#       TABLE : SAISON
-# -----------------------------------------------------------------------------
-
-CREATE TABLE IF NOT EXISTS SAISON
- (
-   ID_SAISON INTEGER NOT NULL  ,
-   LIBELLE_SAISON VARCHAR(128) NULL  
-   , PRIMARY KEY (ID_SAISON) 
- ) 
- comment = "";
-
-# -----------------------------------------------------------------------------
-#       TABLE : CHAMBRE_HOTE
-# -----------------------------------------------------------------------------
-
-CREATE TABLE IF NOT EXISTS CHAMBRE_HOTE
- (
-   ID_HEBERGEMENT INTEGER NOT NULL  ,
-   NOMBRE_CHAMBRE_HOTE SMALLINT NULL  ,
-   CUISINE_CHAMBRE_HOTE BOOLEAN NULL  ,
-   NOM_HEBERGEMENT VARCHAR(128) NULL  ,
-   ADRESSE_HEBERGEMENT VARCHAR(128) NULL  ,
-   VILLE_HEBERGEMENT VARCHAR(128) NULL  
-   , PRIMARY KEY (ID_HEBERGEMENT) 
- ) 
- comment = "";
-
-# -----------------------------------------------------------------------------
-#       TABLE : DEPARTEMENT
-# -----------------------------------------------------------------------------
-
-CREATE TABLE IF NOT EXISTS DEPARTEMENT
- (
-   ID_DEPARTEMENT INTEGER NOT NULL  ,
-   LIBELLE_DEPARTEMENT VARCHAR(128) NULL  
-   , PRIMARY KEY (ID_DEPARTEMENT) 
- ) 
- comment = "";
-
-# -----------------------------------------------------------------------------
-#       TABLE : SPECIALITE
-# -----------------------------------------------------------------------------
-
-CREATE TABLE IF NOT EXISTS SPECIALITE
- (
-   ID_SPECIALITE INTEGER NOT NULL  ,
-   LIBELLE_SPECIALITE VARCHAR(128) NULL  
-   , PRIMARY KEY (ID_SPECIALITE) 
- ) 
- comment = "";
-
-# -----------------------------------------------------------------------------
-#       TABLE : EQUIPEMENT_CAMPING
-# -----------------------------------------------------------------------------
-
-CREATE TABLE IF NOT EXISTS EQUIPEMENT_CAMPING
- (
-   ID_EQUIPEMENT_CAMPING INTEGER NOT NULL  ,
-   LIBELLE_EQUIPEMENT_CAMPING VARCHAR(128) NULL  
-   , PRIMARY KEY (ID_EQUIPEMENT_CAMPING) 
- ) 
- comment = "";
-
-# -----------------------------------------------------------------------------
-#       TABLE : CAMPING
-# -----------------------------------------------------------------------------
-
-CREATE TABLE IF NOT EXISTS CAMPING
- (
-   ID_HEBERGEMENT INTEGER NOT NULL  ,
-   NOM_HEBERGEMENT VARCHAR(128) NULL  ,
-   ADRESSE_HEBERGEMENT VARCHAR(128) NULL  ,
-   VILLE_HEBERGEMENT VARCHAR(128) NULL  
-   , PRIMARY KEY (ID_HEBERGEMENT) 
- ) 
- comment = "";
-
-# -----------------------------------------------------------------------------
-#       TABLE : TYPE_CUISINE
-# -----------------------------------------------------------------------------
-
-CREATE TABLE IF NOT EXISTS TYPE_CUISINE
- (
-   ID_TYPE_CUISINE INTEGER NOT NULL  ,
-   LIBELLE_TYPE_CUISINE INTEGER NULL  
-   , PRIMARY KEY (ID_TYPE_CUISINE) 
- ) 
- comment = "";
-
-# -----------------------------------------------------------------------------
-#       TABLE : HOTEL
-# -----------------------------------------------------------------------------
-
-CREATE TABLE IF NOT EXISTS HOTEL
- (
-   ID_HEBERGEMENT INTEGER NOT NULL  ,
-   RESTAURANT_HOTEL BOOLEAN NULL  ,
-   CHEF_RESTAURANT_HOTEL VARCHAR(128) NULL  ,
-   NOM_HEBERGEMENT VARCHAR(128) NULL  ,
-   ADRESSE_HEBERGEMENT VARCHAR(128) NULL  ,
-   VILLE_HEBERGEMENT VARCHAR(128) NULL  
-   , PRIMARY KEY (ID_HEBERGEMENT) 
- ) 
- comment = "";
-
-# -----------------------------------------------------------------------------
-#       TABLE : GERANT
-# -----------------------------------------------------------------------------
-
-CREATE TABLE IF NOT EXISTS GERANT
- (
-   ID_GERANT INTEGER NOT NULL  ,
-   NOM_GERANT VARCHAR(128) NULL  ,
-   PRENOM_GERANT VARCHAR(128) NULL  
-   , PRIMARY KEY (ID_GERANT) 
- ) 
- comment = "";
-
-# -----------------------------------------------------------------------------
-#       TABLE : INSPECTEUR
-# -----------------------------------------------------------------------------
-
-CREATE TABLE IF NOT EXISTS INSPECTEUR
- (
-   ID_INSPECTEUR INTEGER NOT NULL  ,
-   ID_SPECIALITE INTEGER NOT NULL  ,
-   NOM_INSPECTEUR VARCHAR(128) NULL  ,
-   PERNOM_INSPECTEUR VARCHAR(128) NULL  
-   , PRIMARY KEY (ID_INSPECTEUR) 
- ) 
- comment = "";
-
-# -----------------------------------------------------------------------------
-#       INDEX DE LA TABLE INSPECTEUR
-# -----------------------------------------------------------------------------
-
-
-CREATE  INDEX I_FK_INSPECTEUR_SPECIALITE
-     ON INSPECTEUR (ID_SPECIALITE ASC);
-
-# -----------------------------------------------------------------------------
-#       TABLE : GERER
-# -----------------------------------------------------------------------------
-
-CREATE TABLE IF NOT EXISTS GERER
- (
-   ID_HEBERGEMENT INTEGER NOT NULL  ,
-   ID_GERANT INTEGER NOT NULL  
-   , PRIMARY KEY (ID_HEBERGEMENT,ID_GERANT) 
- ) 
- comment = "";
-
-# -----------------------------------------------------------------------------
-#       INDEX DE LA TABLE GERER
-# -----------------------------------------------------------------------------
-
-
-CREATE  INDEX I_FK_GERER_HEBERGEMENT
-     ON GERER (ID_HEBERGEMENT ASC);
-
-CREATE  INDEX I_FK_GERER_GERANT
-     ON GERER (ID_GERANT ASC);
-
-# -----------------------------------------------------------------------------
-#       TABLE : AVOIR
-# -----------------------------------------------------------------------------
-
-CREATE TABLE IF NOT EXISTS AVOIR
- (
-   ID_TYPE_CUISINE INTEGER NOT NULL  ,
-   ID_HEBERGEMENT INTEGER NOT NULL  
-   , PRIMARY KEY (ID_TYPE_CUISINE,ID_HEBERGEMENT) 
- ) 
- comment = "";
-
-# -----------------------------------------------------------------------------
-#       INDEX DE LA TABLE AVOIR
-# -----------------------------------------------------------------------------
-
-
-CREATE  INDEX I_FK_AVOIR_TYPE_CUISINE
-     ON AVOIR (ID_TYPE_CUISINE ASC);
-
-CREATE  INDEX I_FK_AVOIR_HOTEL
-     ON AVOIR (ID_HEBERGEMENT ASC);
-
-# -----------------------------------------------------------------------------
-#       TABLE : POSSEDER
-# -----------------------------------------------------------------------------
-
-CREATE TABLE IF NOT EXISTS POSSEDER
- (
-   ID_EQUIPEMENT_CAMPING INTEGER NOT NULL  ,
-   ID_HEBERGEMENT INTEGER NOT NULL  
-   , PRIMARY KEY (ID_EQUIPEMENT_CAMPING,ID_HEBERGEMENT) 
- ) 
- comment = "";
-
-# -----------------------------------------------------------------------------
-#       INDEX DE LA TABLE POSSEDER
-# -----------------------------------------------------------------------------
-
-
-CREATE  INDEX I_FK_POSSEDER_EQUIPEMENT_CAMPING
-     ON POSSEDER (ID_EQUIPEMENT_CAMPING ASC);
-
-CREATE  INDEX I_FK_POSSEDER_CAMPING
-     ON POSSEDER (ID_HEBERGEMENT ASC);
-
-# -----------------------------------------------------------------------------
-#       TABLE : VISITER
-# -----------------------------------------------------------------------------
-
-CREATE TABLE IF NOT EXISTS VISITER
- (
-   ID_HEBERGEMENT INTEGER NOT NULL  ,
-   ID_INSPECTEUR INTEGER NOT NULL  ,
-   ID_SAISON INTEGER NOT NULL  ,
-   NOMBRE_ETOILE_VISITE SMALLINT NULL  ,
-   DATE_HEURE_VISITE DATETIME NULL  ,
-   CONTRE_VISITE BOOLEAN NULL  ,
-   COMMENTAIRE_VISITE VARCHAR(255) NULL  ,
-   TYPE_VISITE BOOLEAN NULL  
-   , PRIMARY KEY (ID_HEBERGEMENT,ID_INSPECTEUR,ID_SAISON) 
- ) 
- comment = "";
-
-# -----------------------------------------------------------------------------
-#       INDEX DE LA TABLE VISITER
-# -----------------------------------------------------------------------------
-
-
-CREATE  INDEX I_FK_VISITER_HEBERGEMENT
-     ON VISITER (ID_HEBERGEMENT ASC);
-
-CREATE  INDEX I_FK_VISITER_INSPECTEUR
-     ON VISITER (ID_INSPECTEUR ASC);
-
-CREATE  INDEX I_FK_VISITER_SAISON
-     ON VISITER (ID_SAISON ASC);
-
-
-# -----------------------------------------------------------------------------
-#       CREATION DES REFERENCES DE TABLE
-# -----------------------------------------------------------------------------
-
-
-ALTER TABLE HEBERGEMENT 
-  ADD FOREIGN KEY FK_HEBERGEMENT_DEPARTEMENT (ID_DEPARTEMENT)
-      REFERENCES DEPARTEMENT (ID_DEPARTEMENT) ;
-
-
-ALTER TABLE CHAMBRE_HOTE 
-  ADD FOREIGN KEY FK_CHAMBRE_HOTE_HEBERGEMENT (ID_HEBERGEMENT)
-      REFERENCES HEBERGEMENT (ID_HEBERGEMENT) ;
-
-
-ALTER TABLE CAMPING 
-  ADD FOREIGN KEY FK_CAMPING_HEBERGEMENT (ID_HEBERGEMENT)
-      REFERENCES HEBERGEMENT (ID_HEBERGEMENT) ;
-
-
-ALTER TABLE HOTEL 
-  ADD FOREIGN KEY FK_HOTEL_HEBERGEMENT (ID_HEBERGEMENT)
-      REFERENCES HEBERGEMENT (ID_HEBERGEMENT) ;
-
-
-ALTER TABLE INSPECTEUR 
-  ADD FOREIGN KEY FK_INSPECTEUR_SPECIALITE (ID_SPECIALITE)
-      REFERENCES SPECIALITE (ID_SPECIALITE) ;
-
-
-ALTER TABLE GERER 
-  ADD FOREIGN KEY FK_GERER_HEBERGEMENT (ID_HEBERGEMENT)
-      REFERENCES HEBERGEMENT (ID_HEBERGEMENT) ;
-
-
-ALTER TABLE GERER 
-  ADD FOREIGN KEY FK_GERER_GERANT (ID_GERANT)
-      REFERENCES GERANT (ID_GERANT) ;
-
-
-ALTER TABLE AVOIR 
-  ADD FOREIGN KEY FK_AVOIR_TYPE_CUISINE (ID_TYPE_CUISINE)
-      REFERENCES TYPE_CUISINE (ID_TYPE_CUISINE) ;
-
-
-ALTER TABLE AVOIR 
-  ADD FOREIGN KEY FK_AVOIR_HOTEL (ID_HEBERGEMENT)
-      REFERENCES HOTEL (ID_HEBERGEMENT) ;
-
-
-ALTER TABLE POSSEDER 
-  ADD FOREIGN KEY FK_POSSEDER_EQUIPEMENT_CAMPING (ID_EQUIPEMENT_CAMPING)
-      REFERENCES EQUIPEMENT_CAMPING (ID_EQUIPEMENT_CAMPING) ;
-
-
-ALTER TABLE POSSEDER 
-  ADD FOREIGN KEY FK_POSSEDER_CAMPING (ID_HEBERGEMENT)
-      REFERENCES CAMPING (ID_HEBERGEMENT) ;
-
-
-ALTER TABLE VISITER 
-  ADD FOREIGN KEY FK_VISITER_HEBERGEMENT (ID_HEBERGEMENT)
-      REFERENCES HEBERGEMENT (ID_HEBERGEMENT) ;
-
-
-ALTER TABLE VISITER 
-  ADD FOREIGN KEY FK_VISITER_INSPECTEUR (ID_INSPECTEUR)
-      REFERENCES INSPECTEUR (ID_INSPECTEUR) ;
-
-
-ALTER TABLE VISITER 
-  ADD FOREIGN KEY FK_VISITER_SAISON (ID_SAISON)
-      REFERENCES SAISON (ID_SAISON) ;
-
+-- phpMyAdmin SQL Dump
+-- version 4.1.14
+-- http://www.phpmyadmin.net
+--
+-- Client :  127.0.0.1
+-- Généré le :  Ven 18 Décembre 2015 à 17:57
+-- Version du serveur :  5.6.17
+-- Version de PHP :  5.5.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Base de données :  `ppe4`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `avoir`
+--
+
+CREATE TABLE IF NOT EXISTS `avoir` (
+  `ID_TYPE_CUISINE` int(11) NOT NULL,
+  `ID_HEBERGEMENT` int(11) NOT NULL,
+  PRIMARY KEY (`ID_TYPE_CUISINE`,`ID_HEBERGEMENT`),
+  KEY `I_FK_AVOIR_TYPE_CUISINE` (`ID_TYPE_CUISINE`),
+  KEY `I_FK_AVOIR_HOTEL` (`ID_HEBERGEMENT`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `camping`
+--
+
+CREATE TABLE IF NOT EXISTS `camping` (
+  `ID_HEBERGEMENT` int(11) NOT NULL,
+  `NOM_HEBERGEMENT` varchar(128) DEFAULT NULL,
+  `ADRESSE_HEBERGEMENT` varchar(128) DEFAULT NULL,
+  `VILLE_HEBERGEMENT` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`ID_HEBERGEMENT`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `chambre_hote`
+--
+
+CREATE TABLE IF NOT EXISTS `chambre_hote` (
+  `ID_HEBERGEMENT` int(11) NOT NULL,
+  `NOMBRE_CHAMBRE_HOTE` smallint(6) DEFAULT NULL,
+  `CUISINE_CHAMBRE_HOTE` tinyint(1) DEFAULT NULL,
+  `NOM_HEBERGEMENT` varchar(128) DEFAULT NULL,
+  `ADRESSE_HEBERGEMENT` varchar(128) DEFAULT NULL,
+  `VILLE_HEBERGEMENT` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`ID_HEBERGEMENT`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `departement`
+--
+
+CREATE TABLE IF NOT EXISTS `departement` (
+  `ID_DEPARTEMENT` int(11) NOT NULL AUTO_INCREMENT,
+  `LIBELLE_DEPARTEMENT` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`ID_DEPARTEMENT`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=101 ;
+
+--
+-- Contenu de la table `departement`
+--
+
+INSERT INTO `departement` (`ID_DEPARTEMENT`, `LIBELLE_DEPARTEMENT`) VALUES
+(1,'Ain'),
+(2,'Aisne'),
+(3,'Allier'),
+(5,'Hautes-Alpes'),
+(4,'Alpes-de-Haute-Provence'),
+(6,'Alpes-Maritimes'),
+(7,'Ardèche'),
+(8,'Ardennes'),
+(9,'Ariège'),
+(10,'Aube'),
+(11,'Aude'),
+(12,'Aveyron'),
+(13,'Bouches-du-Rhône'),
+(14,'Calvados'),
+(15,'Cantal'),
+(16,'Charente'),
+(17,'Charente-Maritime'),
+(18,'Cher'),
+(19,'Corrèze'),
+(20,'Corse-du-sud'),
+(21,'Haute-corse'),
+(22,'Côte-d''or'),
+(23,'Côtes-d''armor'),
+(24,'Creuse'),
+(25,'Dordogne'),
+(26,'Doubs'),
+(27,'Drôme'),
+(28,'Eure'),
+(29,'Eure-et-Loir'),
+(30,'Finistère'),
+(31,'Gard'),
+(32,'Haute-Garonne'),
+(33,'Gers'),
+(34,'Gironde'),
+(35,'Hérault'),
+(36,'Ile-et-Vilaine'),
+(37,'Indre'),
+(38,'Indre-et-Loire'),
+(39,'Isère'),
+(40,'Jura'),
+(41,'Landes'),
+(42,'Loir-et-Cher'),
+(43,'Loire'),
+(44,'Haute-Loire'),
+(45,'Loire-Atlantique'),
+(46,'Loiret'),
+(47,'Lot'),
+(48,'Lot-et-Garonne'),
+(49,'Lozère'),
+(50,'Maine-et-Loire'),
+(51,'Manche'),
+(52,'Marne'),
+(53,'Haute-Marne'),
+(54,'Mayenne'),
+(55,'Meurthe-et-Moselle'),
+(56,'Meuse'),
+(57,'Morbihan'),
+(58,'Moselle'),
+(59,'Nièvre'),
+(60,'Nord'),
+(61,'Oise'),
+(62,'Orne'),
+(63,'Pas-de-Calais'),
+(64,'Puy-de-Dôme'),
+(65,'Pyrénées-Atlantiques'),
+(66,'Hautes-Pyrénées'),
+(67,'Pyrénées-Orientales'),
+(68,'Bas-Rhin'),
+(69,'Haut-Rhin'),
+(70,'Rhône'),
+(71,'Haute-Saône'),
+(72,'Saône-et-Loire'),
+(73,'Sarthe'),
+(74,'Savoie'),
+(75,'Haute-Savoie'),
+(76,'Paris'),
+(77,'Seine-Maritime'),
+(78,'Seine-et-Marne'),
+(79,'Yvelines'),
+(80,'Deux-Sèvres'),
+(81,'Somme'),
+(82,'Tarn'),
+(83,'Tarn-et-Garonne'),
+(84,'Var'),
+(85,'Vaucluse'),
+(86,'Vendée'),
+(87,'Vienne'),
+(88,'Haute-Vienne'),
+(89,'Vosges'),
+(90,'Yonne'),
+(91,'Territoire de Belfort'),
+(92,'Essonne'),
+(93,'Hauts-de-Seine'),
+(94,'Seine-Saint-Denis'),
+(95,'Val-de-Marne'),
+(96,'Val-d''oise'),
+(971,'Guadeloupe'),
+(972,'Martinique'),
+(973,'Guyane'),
+(974,'Réunion'),
+(976,'Mayotte');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `equipement_camping`
+--
+
+CREATE TABLE IF NOT EXISTS `equipement_camping` (
+  `ID_EQUIPEMENT_CAMPING` int(11) NOT NULL AUTO_INCREMENT,
+  `LIBELLE_EQUIPEMENT_CAMPING` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`ID_EQUIPEMENT_CAMPING`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Contenu de la table `equipement_camping`
+--
+
+INSERT INTO `equipement_camping` (`ID_EQUIPEMENT_CAMPING`, `LIBELLE_EQUIPEMENT_CAMPING`) VALUES
+(1, 'Piscine'),
+(2, 'Terrain de jeux'),
+(3, 'Supérette'),
+(4, 'Salle de sport'),
+(5, 'Salle de jeux');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `gerant`
+--
+
+CREATE TABLE IF NOT EXISTS `gerant` (
+  `ID_GERANT` int(11) NOT NULL AUTO_INCREMENT,
+  `NOM_GERANT` varchar(128) DEFAULT NULL,
+  `PRENOM_GERANT` varchar(128) DEFAULT NULL,
+  `LOGIN` varchar(50) NOT NULL,
+  `MDP` varchar(50) NOT NULL,
+  PRIMARY KEY (`ID_GERANT`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `gerer`
+--
+
+CREATE TABLE IF NOT EXISTS `gerer` (
+  `ID_HEBERGEMENT` int(11) NOT NULL,
+  `ID_GERANT` int(11) NOT NULL,
+  PRIMARY KEY (`ID_HEBERGEMENT`,`ID_GERANT`),
+  KEY `I_FK_GERER_HEBERGEMENT` (`ID_HEBERGEMENT`),
+  KEY `I_FK_GERER_GERANT` (`ID_GERANT`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `hebergement`
+--
+
+CREATE TABLE IF NOT EXISTS `hebergement` (
+  `ID_HEBERGEMENT` int(11) NOT NULL AUTO_INCREMENT,
+  `ID_DEPARTEMENT` int(11) NOT NULL,
+  `NOM_HEBERGEMENT` varchar(128) DEFAULT NULL,
+  `ADRESSE_HEBERGEMENT` varchar(128) DEFAULT NULL,
+  `VILLE_HEBERGEMENT` varchar(128) DEFAULT NULL,
+  `HORAIRES` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`ID_HEBERGEMENT`),
+  KEY `I_FK_HEBERGEMENT_DEPARTEMENT` (`ID_DEPARTEMENT`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `hebergement`
+--
+
+INSERT INTO `hebergement` (`ID_HEBERGEMENT`,`ID_DEPARTEMENT`,`NOM_HEBERGEMENT`,`ADRESSE_HEBERGEMENT`,`VILLE_HEBERGEMENT`,`HORAIRES`) VALUES
+(1,49,'Hotel Mercure','2 Allée Du Grand Launay','49000 Angers','8h - 18h'),
+(2,49,'BEST WESTERN','1 Boulevard Maréchal Foch','49100 Angers','8h - 18h'),
+(3,44,'Ibis Styles','3 rue du Couedic','44000 Nantes','8h - 18h'),
+(4,44,'BEST WESTERN','155 Route De Gachet','44300 Nantes','8h - 18h'),
+(5,69,'Studio Part Dieu','23 rue Riboud','69003 Lyon','8h - 18h'),
+(6,69,'Appart Coeur de Lyon','72 boulevard Vivier Merle','69003 Lyon','8h - 18h'),
+(7,75,'George Washington','43 rue Washington','75008 Paris','8h - 18h'),
+(8,75,'Opera-Louvre','Passage Choiseul','75002 Paris','8h - 18h'),
+(9,13,'Grand Tonic','43 Quai des Belges','13001 Marseille','8h - 18h'),
+(10,13,'Golden Tulip','17 Place Louis Bonnefon','13008 Marseille','8h - 18h'),
+(11,31,'Le Clocher de Rodez','15 Place Jeanne d''Arc','31000 Toulouse','8h - 18h'),
+(12,31,'Hotel de Brienne','20 Boulevard Maréchal Leclerc','31000 Toulouse','8h - 18h'),
+(13,21,'hotel Mercure','22 Boulevard De la Mane','21071 Dijon','8h - 18h'),
+(14,21,'hotel Ibis','2 avenue de Marbotte','21000 Dijon','8h - 18h');
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `hotel`
+--
+
+CREATE TABLE IF NOT EXISTS `hotel` (
+  `ID_HEBERGEMENT` int(11) NOT NULL,
+  `RESTAURANT_HOTEL` tinyint(1) DEFAULT NULL,
+  `CHEF_RESTAURANT_HOTEL` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`ID_HEBERGEMENT`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `hotel`
+--
+
+INSERT INTO `hotel` (`ID_HEBERGEMENT`,`RESTAURANT_HOTEL`,`CHEF_RESTAURANT_HOTEL`) VALUES
+(1,3,'MICHEL'),
+(2,4,'BOUHOURS'),
+(3,5,'ROBIN'),
+(4,2,'JAMAIN'),
+(5,1,'DA SILVA'),
+(6,4,'MENANT'),
+(7,5,'MENANT'),
+(8,2,'GRONDIN'),
+(9,1,'PASCAL'),
+(10,3,'JEAN');
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `inspecteur`
+--
+
+CREATE TABLE IF NOT EXISTS `inspecteur` (
+  `ID_INSPECTEUR` int(11) NOT NULL AUTO_INCREMENT,
+  `ID_SPECIALITE` int(11) NOT NULL,
+  `NOM_INSPECTEUR` varchar(128) DEFAULT NULL,
+  `PERNOM_INSPECTEUR` varchar(128) DEFAULT NULL,
+  `LOGIN` varchar(50) NOT NULL,
+  `MDP` varchar(50) NOT NULL,
+  PRIMARY KEY (`ID_INSPECTEUR`),
+  KEY `I_FK_INSPECTEUR_SPECIALITE` (`ID_SPECIALITE`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+--
+-- Contenu de la table `inspecteur`
+--
+
+INSERT INTO `inspecteur` (`ID_INSPECTEUR`, `ID_SPECIALITE`, `NOM_INSPECTEUR`, `PERNOM_INSPECTEUR`, `LOGIN`, `MDP`) VALUES
+(1, 2, 'Grondin', 'Nicolas', 'NGrondin', 'azerty1234'),
+(2, 3, 'Bouhours', 'Natacha', 'NBouhours', 'azerty1234'),
+(3, 2, 'Da Silva', 'Nicolas', 'NDSilva', 'azerty1234'),
+(4, 1, 'Robin', 'Dimitry', 'Drobin', 'vtyde'),
+(5, 3, 'Hermange', 'Pierre', 'PHermange', 'azerty1234'),
+(6, 1, 'Menant', 'Kévin', 'KMenant', 'azerty1234');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `posseder`
+--
+
+CREATE TABLE IF NOT EXISTS `posseder` (
+  `ID_EQUIPEMENT_CAMPING` int(11) NOT NULL,
+  `ID_HEBERGEMENT` int(11) NOT NULL,
+  PRIMARY KEY (`ID_EQUIPEMENT_CAMPING`,`ID_HEBERGEMENT`),
+  KEY `I_FK_POSSEDER_EQUIPEMENT_CAMPING` (`ID_EQUIPEMENT_CAMPING`),
+  KEY `I_FK_POSSEDER_CAMPING` (`ID_HEBERGEMENT`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `saison`
+--
+
+CREATE TABLE IF NOT EXISTS `saison` (
+  `ID_SAISON` int(11) NOT NULL AUTO_INCREMENT,
+  `LIBELLE_SAISON` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`ID_SAISON`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Contenu de la table `saison`
+--
+
+INSERT INTO `saison` (`LIBELLE_SAISON` ) VALUES
+('Hiver 2016'),
+('Printemps 2016'),
+('Eté 2016'),
+('Automne 2016');
+
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `specialite`
+--
+
+CREATE TABLE IF NOT EXISTS `specialite` (
+  `ID_SPECIALITE` int(11) NOT NULL AUTO_INCREMENT,
+  `LIBELLE_SPECIALITE` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`ID_SPECIALITE`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Contenu de la table `specialite`
+--
+
+INSERT INTO `specialite` (`ID_SPECIALITE`, `LIBELLE_SPECIALITE`) VALUES
+(1, 'Hôtel'),
+(2, 'Camping'),
+(3, 'Chambres d''hôtes');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `type_cuisine`
+--
+
+CREATE TABLE IF NOT EXISTS `type_cuisine` (
+  `ID_TYPE_CUISINE` int(11) NOT NULL AUTO_INCREMENT,
+  `LIBELLE_TYPE_CUISINE` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`ID_TYPE_CUISINE`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Contenu de la table `type_cuisine`
+--
+
+INSERT INTO `type_cuisine` (`ID_TYPE_CUISINE`, `LIBELLE_TYPE_CUISINE`) VALUES
+(1, 'Gastronomique'),
+(2, 'Chinoise'),
+(3, 'Rapide');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `visiter`
+--
+
+CREATE TABLE IF NOT EXISTS `visiter` (
+  `ID_HEBERGEMENT` int(11) NOT NULL,
+  `ID_INSPECTEUR` int(11) NOT NULL,
+  `ID_SAISON` int(11) NOT NULL,
+  `NOMBRE_ETOILE_VISITE` smallint(6) DEFAULT NULL,
+  `DATE_HEURE_VISITE` datetime DEFAULT NULL,
+  `CONTRE_VISITE` tinyint(1) DEFAULT NULL,
+  `COMMENTAIRE_VISITE` varchar(255) DEFAULT NULL,
+  `TYPE_VISITE` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`ID_HEBERGEMENT`,`ID_INSPECTEUR`,`ID_SAISON`),
+  KEY `I_FK_VISITER_HEBERGEMENT` (`ID_HEBERGEMENT`),
+  KEY `I_FK_VISITER_INSPECTEUR` (`ID_INSPECTEUR`),
+  KEY `I_FK_VISITER_SAISON` (`ID_SAISON`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `visiter`
+--
+
+--
+-- Contraintes pour les tables exportées
+--
+
+--
+-- Contraintes pour la table `avoir`
+--
+ALTER TABLE `avoir`
+  ADD CONSTRAINT `avoir_ibfk_2` FOREIGN KEY (`ID_HEBERGEMENT`) REFERENCES `hotel` (`ID_HEBERGEMENT`),
+  ADD CONSTRAINT `avoir_ibfk_1` FOREIGN KEY (`ID_TYPE_CUISINE`) REFERENCES `type_cuisine` (`ID_TYPE_CUISINE`);
+
+--
+-- Contraintes pour la table `camping`
+--
+ALTER TABLE `camping`
+  ADD CONSTRAINT `camping_ibfk_1` FOREIGN KEY (`ID_HEBERGEMENT`) REFERENCES `hebergement` (`ID_HEBERGEMENT`);
+
+--
+-- Contraintes pour la table `chambre_hote`
+--
+ALTER TABLE `chambre_hote`
+  ADD CONSTRAINT `chambre_hote_ibfk_1` FOREIGN KEY (`ID_HEBERGEMENT`) REFERENCES `hebergement` (`ID_HEBERGEMENT`);
+
+--
+-- Contraintes pour la table `gerer`
+--
+ALTER TABLE `gerer`
+  ADD CONSTRAINT `gerer_ibfk_2` FOREIGN KEY (`ID_GERANT`) REFERENCES `gerant` (`ID_GERANT`),
+  ADD CONSTRAINT `gerer_ibfk_1` FOREIGN KEY (`ID_HEBERGEMENT`) REFERENCES `hebergement` (`ID_HEBERGEMENT`);
+
+--
+-- Contraintes pour la table `hebergement`
+--
+ALTER TABLE `hebergement`
+  ADD CONSTRAINT `hebergement_ibfk_1` FOREIGN KEY (`ID_DEPARTEMENT`) REFERENCES `departement` (`ID_DEPARTEMENT`);
+
+--
+-- Contraintes pour la table `hotel`
+--
+ALTER TABLE `hotel`
+  ADD CONSTRAINT `hotel_ibfk_1` FOREIGN KEY (`ID_HEBERGEMENT`) REFERENCES `hebergement` (`ID_HEBERGEMENT`);
+
+--
+-- Contraintes pour la table `inspecteur`
+--
+ALTER TABLE `inspecteur`
+  ADD CONSTRAINT `inspecteur_ibfk_1` FOREIGN KEY (`ID_SPECIALITE`) REFERENCES `specialite` (`ID_SPECIALITE`);
+
+--
+-- Contraintes pour la table `posseder`
+--
+ALTER TABLE `posseder`
+  ADD CONSTRAINT `posseder_ibfk_2` FOREIGN KEY (`ID_HEBERGEMENT`) REFERENCES `camping` (`ID_HEBERGEMENT`),
+  ADD CONSTRAINT `posseder_ibfk_1` FOREIGN KEY (`ID_EQUIPEMENT_CAMPING`) REFERENCES `equipement_camping` (`ID_EQUIPEMENT_CAMPING`);
+
+--
+-- Contraintes pour la table `visiter`
+--
+ALTER TABLE `visiter`
+  ADD CONSTRAINT `visiter_ibfk_4` FOREIGN KEY (`ID_INSPECTEUR`) REFERENCES `inspecteur` (`ID_INSPECTEUR`),
+  ADD CONSTRAINT `visiter_ibfk_1` FOREIGN KEY (`ID_HEBERGEMENT`) REFERENCES `hebergement` (`ID_HEBERGEMENT`),
+  ADD CONSTRAINT `visiter_ibfk_3` FOREIGN KEY (`ID_SAISON`) REFERENCES `saison` (`ID_SAISON`);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

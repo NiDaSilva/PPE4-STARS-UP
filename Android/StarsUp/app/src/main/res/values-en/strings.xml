@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">StarsUp</string>
+
+    <!-- Strings de Connexion -->
+    <string name="champ_requis">This field is required</string>
+    <string name="email_erreur">This email address is invalid</string>
+    <string name="mdp">Password</string>
+    <string name="mdp_erreur">This password is incorrect</string>
+    <string name="connexion">Sign in</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+
+    <string name="titre_activity_planning">Planning</string>
+
+    <!-- Strings de Hebergement -->
+    <string name="titre_activity_hebergement">Accommodation</string>
+    <string name="nom">Name</string>
+    <string name="web">Website </string>
+    <string name="horaires">Opening hours </string>
+    <string name="adresse">Address</string>
+    <string name="note">Rating</string>
+    <string name="rediger">Write</string>
+
+    <!-- Strings de Visite -->
+    <string name="titre_activity_visite">Review</string>
+    <string name="commentaire">Feedback</string>
+    <string name="envoyer">Send</string>
+</resources>
