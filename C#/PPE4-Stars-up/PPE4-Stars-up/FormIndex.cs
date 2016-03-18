@@ -131,25 +131,8 @@ namespace PPE4_Stars_up
             FPJ.Show();
         }
 
-        private void FormIndex_Load(object sender, EventArgs e)
+        public void Background()
         {
-            /*
-            if (importToolStripMenuItem.Text == "Export")
-            {
-                if (planningToolStripMenuItem.Enabled == false)
-                {
-                    planningToolStripMenuItem.Enabled = true;
-                }
-
-                if (historiqueDesVisitesToolStripMenuItem.Enabled == false)
-                {
-                    historiqueDesVisitesToolStripMenuItem.Enabled = true;
-                }
-            }
-            */
-
-            chargedgv();
-
             pictureBox1.Visible = true;
             var pos = this.PointToScreen(lblinfo.Location);
             pos = pictureBox1.PointToClient(pos);
@@ -180,6 +163,28 @@ namespace PPE4_Stars_up
             lblheure.Parent = pictureBox1;
             lblheure.Location = pos6;
             lblheure.BackColor = Color.Transparent;
+        }
+
+        private void FormIndex_Load(object sender, EventArgs e)
+        {
+            /*
+            if (importToolStripMenuItem.Text == "Export")
+            {
+                if (planningToolStripMenuItem.Enabled == false)
+                {
+                    planningToolStripMenuItem.Enabled = true;
+                }
+
+                if (historiqueDesVisitesToolStripMenuItem.Enabled == false)
+                {
+                    historiqueDesVisitesToolStripMenuItem.Enabled = true;
+                }
+            }
+            */
+
+            chargedgv();
+            Background();
+            
 
             FormLogin FL = new FormLogin();
             
@@ -206,6 +211,16 @@ namespace PPE4_Stars_up
         {
             string lines = lblSpecialite.Text;
             System.IO.File.AppendAllText(@"C:\PPE4_DR\Preferences_PPE4_DR.txt", lines);
+        }
+
+        private void FormIndex_MouseHover(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormIndex_Activated(object sender, EventArgs e)
+        {
+
         }
     }
 }

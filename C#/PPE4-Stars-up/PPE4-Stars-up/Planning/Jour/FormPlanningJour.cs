@@ -230,6 +230,7 @@ namespace PPE4_Stars_up
             string element3 = "";
             string element4 = "";
             string element5 = "";
+            string element6 = "";
 
             string DateComplete = string.Format("{0}", e.Item.Date.ToString("dd/MM/yyyy HH:mm:ss")).Trim(); // recupere date
             // MessageBox.Show("Date apres : " + DateComplete);
@@ -244,6 +245,7 @@ namespace PPE4_Stars_up
                     element3 = dataGridViewPersonnes.Rows[i].Cells[3].Value.ToString(); // recupere Ville
                     element4 = dataGridViewPersonnes.Rows[i].Cells[4].Value.ToString(); // recupere Date --> DateComplete
                     element5 = dataGridViewPersonnes.Rows[i].Cells[5].Value.ToString(); // recupere Horaires
+                    element6 = dataGridViewPersonnes.Rows[i].Cells[6].Value.ToString(); // recupere Horaires
                 }
             }
 
@@ -252,6 +254,7 @@ namespace PPE4_Stars_up
             // MessageBox.Show("element3 : " + element3);
             // MessageBox.Show("element4 : " + element4);
             // MessageBox.Show("element5 : " + element5);
+            // MessageBox.Show("Commentaire : " + element6);
 
             bindingSource2.DataSource = controleur.Vmodele.Dv_NbEtoiles;
             dataGridViewNbEtoiles.DataSource = bindingSource2;
@@ -269,7 +272,7 @@ namespace PPE4_Stars_up
 
             // Envoie vers la nouvelle form
 
-            FormVisite FV = new FormVisite(element1, element2, element3, element4, element5, nbEtoile);
+            FormVisite FV = new FormVisite(element1, element2, element3, element4, element5, element6, nbEtoile);
             FV.MdiParent = this.MdiParent;
             FV.Show();
         }
@@ -406,7 +409,7 @@ namespace PPE4_Stars_up
             bindingSource1.DataSource = controleur.Vmodele.Dv_visite;
             dataGridViewPersonnes.DataSource = bindingSource1;
 
-            
+
             // TEST AJOUT ITEM EN DUR
 
             /*
@@ -454,7 +457,7 @@ namespace PPE4_Stars_up
 
                 PlaceItems();
             }
-                
+
         }
 
         private void lireFichier()
@@ -470,7 +473,7 @@ namespace PPE4_Stars_up
             FormIndex form = (FormIndex)this.MdiParent;
             form.HistoriqueDesVisitesToolStripMenuItem.Enabled = true;
             form.PlanningToolStripMenuItem.Enabled = true;
-
+            form.Background();
             this.Close();
         }
     }

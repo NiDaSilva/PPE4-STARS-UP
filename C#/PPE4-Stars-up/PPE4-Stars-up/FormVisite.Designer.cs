@@ -33,9 +33,18 @@
             this.rtbCommentaire = new System.Windows.Forms.RichTextBox();
             this.lblNomHebergemenr = new System.Windows.Forms.Label();
             this.gbInformations = new System.Windows.Forms.GroupBox();
+            this.lblhoraire = new System.Windows.Forms.Label();
+            this.lblville = new System.Windows.Forms.Label();
+            this.lbladresse = new System.Windows.Forms.Label();
+            this.lblnom = new System.Windows.Forms.Label();
+            this.pbV5 = new System.Windows.Forms.PictureBox();
             this.pbF5 = new System.Windows.Forms.PictureBox();
+            this.pbV4 = new System.Windows.Forms.PictureBox();
             this.pbF4 = new System.Windows.Forms.PictureBox();
+            this.pbV3 = new System.Windows.Forms.PictureBox();
             this.pbF3 = new System.Windows.Forms.PictureBox();
+            this.pbV2 = new System.Windows.Forms.PictureBox();
+            this.pbV1 = new System.Windows.Forms.PictureBox();
             this.pbF2 = new System.Windows.Forms.PictureBox();
             this.pbF1 = new System.Windows.Forms.PictureBox();
             this.lblNbEtoiles = new System.Windows.Forms.Label();
@@ -55,20 +64,18 @@
             this.pbV3bis = new System.Windows.Forms.PictureBox();
             this.pbV2bis = new System.Windows.Forms.PictureBox();
             this.pbV1bis = new System.Windows.Forms.PictureBox();
-            this.pbV5 = new System.Windows.Forms.PictureBox();
-            this.pbV4 = new System.Windows.Forms.PictureBox();
-            this.pbV3 = new System.Windows.Forms.PictureBox();
-            this.pbV2 = new System.Windows.Forms.PictureBox();
-            this.pbV1 = new System.Windows.Forms.PictureBox();
-            this.lblnom = new System.Windows.Forms.Label();
-            this.lbladresse = new System.Windows.Forms.Label();
-            this.lblville = new System.Windows.Forms.Label();
-            this.lblhoraire = new System.Windows.Forms.Label();
             this.lblDateTitre = new System.Windows.Forms.Label();
+            this.btnRetour = new System.Windows.Forms.Button();
+            this.pbEtoile0 = new System.Windows.Forms.PictureBox();
             this.gbInformations.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbV5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbF5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbV4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbF4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbV3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbF3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbV2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbV1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbF2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbF1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbF5bis)).BeginInit();
@@ -81,11 +88,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbV3bis)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbV2bis)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbV1bis)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbV5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbV4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbV3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbV2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbV1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbEtoile0)).BeginInit();
             this.SuspendLayout();
             // 
             // lblVisite
@@ -150,6 +153,56 @@
             this.gbInformations.TabIndex = 3;
             this.gbInformations.TabStop = false;
             // 
+            // lblhoraire
+            // 
+            this.lblhoraire.AutoSize = true;
+            this.lblhoraire.BackColor = System.Drawing.Color.Transparent;
+            this.lblhoraire.Font = new System.Drawing.Font("Gentium Basic", 16.25F);
+            this.lblhoraire.Location = new System.Drawing.Point(581, 59);
+            this.lblhoraire.Name = "lblhoraire";
+            this.lblhoraire.Size = new System.Drawing.Size(0, 25);
+            this.lblhoraire.TabIndex = 23;
+            // 
+            // lblville
+            // 
+            this.lblville.AutoSize = true;
+            this.lblville.BackColor = System.Drawing.Color.Transparent;
+            this.lblville.Font = new System.Drawing.Font("Gentium Basic", 16.25F);
+            this.lblville.Location = new System.Drawing.Point(545, 22);
+            this.lblville.Name = "lblville";
+            this.lblville.Size = new System.Drawing.Size(0, 25);
+            this.lblville.TabIndex = 24;
+            // 
+            // lbladresse
+            // 
+            this.lbladresse.AutoSize = true;
+            this.lbladresse.BackColor = System.Drawing.Color.Transparent;
+            this.lbladresse.Font = new System.Drawing.Font("Gentium Basic", 16.25F);
+            this.lbladresse.Location = new System.Drawing.Point(123, 59);
+            this.lbladresse.Name = "lbladresse";
+            this.lbladresse.Size = new System.Drawing.Size(0, 25);
+            this.lbladresse.TabIndex = 23;
+            // 
+            // lblnom
+            // 
+            this.lblnom.AutoSize = true;
+            this.lblnom.BackColor = System.Drawing.Color.Transparent;
+            this.lblnom.Font = new System.Drawing.Font("Gentium Basic", 16.25F);
+            this.lblnom.Location = new System.Drawing.Point(90, 22);
+            this.lblnom.Name = "lblnom";
+            this.lblnom.Size = new System.Drawing.Size(0, 25);
+            this.lblnom.TabIndex = 22;
+            // 
+            // pbV5
+            // 
+            this.pbV5.BackgroundImage = global::PPE4_Stars_up.Properties.Resources.etoileV;
+            this.pbV5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbV5.Location = new System.Drawing.Point(403, 91);
+            this.pbV5.Name = "pbV5";
+            this.pbV5.Size = new System.Drawing.Size(35, 35);
+            this.pbV5.TabIndex = 21;
+            this.pbV5.TabStop = false;
+            // 
             // pbF5
             // 
             this.pbF5.BackgroundImage = global::PPE4_Stars_up.Properties.Resources.etoileF;
@@ -159,6 +212,16 @@
             this.pbF5.Size = new System.Drawing.Size(35, 35);
             this.pbF5.TabIndex = 11;
             this.pbF5.TabStop = false;
+            // 
+            // pbV4
+            // 
+            this.pbV4.BackgroundImage = global::PPE4_Stars_up.Properties.Resources.etoileV;
+            this.pbV4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbV4.Location = new System.Drawing.Point(371, 91);
+            this.pbV4.Name = "pbV4";
+            this.pbV4.Size = new System.Drawing.Size(35, 35);
+            this.pbV4.TabIndex = 20;
+            this.pbV4.TabStop = false;
             // 
             // pbF4
             // 
@@ -170,6 +233,16 @@
             this.pbF4.TabIndex = 10;
             this.pbF4.TabStop = false;
             // 
+            // pbV3
+            // 
+            this.pbV3.BackgroundImage = global::PPE4_Stars_up.Properties.Resources.etoileV;
+            this.pbV3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbV3.Location = new System.Drawing.Point(339, 91);
+            this.pbV3.Name = "pbV3";
+            this.pbV3.Size = new System.Drawing.Size(35, 35);
+            this.pbV3.TabIndex = 19;
+            this.pbV3.TabStop = false;
+            // 
             // pbF3
             // 
             this.pbF3.BackgroundImage = global::PPE4_Stars_up.Properties.Resources.etoileF;
@@ -179,6 +252,26 @@
             this.pbF3.Size = new System.Drawing.Size(35, 35);
             this.pbF3.TabIndex = 9;
             this.pbF3.TabStop = false;
+            // 
+            // pbV2
+            // 
+            this.pbV2.BackgroundImage = global::PPE4_Stars_up.Properties.Resources.etoileV;
+            this.pbV2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbV2.Location = new System.Drawing.Point(307, 91);
+            this.pbV2.Name = "pbV2";
+            this.pbV2.Size = new System.Drawing.Size(35, 35);
+            this.pbV2.TabIndex = 18;
+            this.pbV2.TabStop = false;
+            // 
+            // pbV1
+            // 
+            this.pbV1.BackgroundImage = global::PPE4_Stars_up.Properties.Resources.etoileV;
+            this.pbV1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbV1.Location = new System.Drawing.Point(274, 91);
+            this.pbV1.Name = "pbV1";
+            this.pbV1.Size = new System.Drawing.Size(35, 35);
+            this.pbV1.TabIndex = 17;
+            this.pbV1.TabStop = false;
             // 
             // pbF2
             // 
@@ -265,11 +358,13 @@
             this.lblNote.Size = new System.Drawing.Size(65, 25);
             this.lblNote.TabIndex = 7;
             this.lblNote.Text = "Note :";
+            this.lblNote.Click += new System.EventHandler(this.lblNote_Click);
+            this.lblNote.MouseHover += new System.EventHandler(this.lblNote_MouseHover);
             // 
             // btnSauvegarderVisite
             // 
             this.btnSauvegarderVisite.Font = new System.Drawing.Font("Gentium Basic", 16.25F);
-            this.btnSauvegarderVisite.Location = new System.Drawing.Point(438, 381);
+            this.btnSauvegarderVisite.Location = new System.Drawing.Point(438, 378);
             this.btnSauvegarderVisite.Name = "btnSauvegarderVisite";
             this.btnSauvegarderVisite.Size = new System.Drawing.Size(143, 39);
             this.btnSauvegarderVisite.TabIndex = 8;
@@ -287,6 +382,8 @@
             this.pbF5bis.Size = new System.Drawing.Size(35, 35);
             this.pbF5bis.TabIndex = 16;
             this.pbF5bis.TabStop = false;
+            this.pbF5bis.Click += new System.EventHandler(this.pbF5bis_Click);
+            this.pbF5bis.MouseHover += new System.EventHandler(this.pbF5bis_MouseHover);
             // 
             // pbF4bis
             // 
@@ -298,6 +395,8 @@
             this.pbF4bis.Size = new System.Drawing.Size(35, 35);
             this.pbF4bis.TabIndex = 15;
             this.pbF4bis.TabStop = false;
+            this.pbF4bis.Click += new System.EventHandler(this.pbF4bis_Click);
+            this.pbF4bis.MouseHover += new System.EventHandler(this.pbF4bis_MouseHover);
             // 
             // pbF3bis
             // 
@@ -309,6 +408,8 @@
             this.pbF3bis.Size = new System.Drawing.Size(35, 35);
             this.pbF3bis.TabIndex = 14;
             this.pbF3bis.TabStop = false;
+            this.pbF3bis.Click += new System.EventHandler(this.pbF3bis_Click);
+            this.pbF3bis.MouseHover += new System.EventHandler(this.pbF3bis_MouseHover);
             // 
             // pbF2bis
             // 
@@ -320,6 +421,8 @@
             this.pbF2bis.Size = new System.Drawing.Size(35, 35);
             this.pbF2bis.TabIndex = 13;
             this.pbF2bis.TabStop = false;
+            this.pbF2bis.Click += new System.EventHandler(this.pbF2bis_Click);
+            this.pbF2bis.MouseHover += new System.EventHandler(this.pbF2bis_MouseHover);
             // 
             // pbF1bis
             // 
@@ -331,6 +434,8 @@
             this.pbF1bis.Size = new System.Drawing.Size(35, 35);
             this.pbF1bis.TabIndex = 12;
             this.pbF1bis.TabStop = false;
+            this.pbF1bis.Click += new System.EventHandler(this.pbF1bis_Click);
+            this.pbF1bis.MouseHover += new System.EventHandler(this.pbF1bis_MouseHover);
             // 
             // pbV5bis
             // 
@@ -342,6 +447,8 @@
             this.pbV5bis.Size = new System.Drawing.Size(35, 35);
             this.pbV5bis.TabIndex = 16;
             this.pbV5bis.TabStop = false;
+            this.pbV5bis.Click += new System.EventHandler(this.pbV5bis_Click);
+            this.pbV5bis.MouseHover += new System.EventHandler(this.pbV5bis_MouseHover);
             // 
             // pbV4bis
             // 
@@ -353,6 +460,8 @@
             this.pbV4bis.Size = new System.Drawing.Size(35, 35);
             this.pbV4bis.TabIndex = 15;
             this.pbV4bis.TabStop = false;
+            this.pbV4bis.Click += new System.EventHandler(this.pbV4bis_Click);
+            this.pbV4bis.MouseHover += new System.EventHandler(this.pbV4bis_MouseHover);
             // 
             // pbV3bis
             // 
@@ -364,6 +473,8 @@
             this.pbV3bis.Size = new System.Drawing.Size(35, 35);
             this.pbV3bis.TabIndex = 14;
             this.pbV3bis.TabStop = false;
+            this.pbV3bis.Click += new System.EventHandler(this.pbV3bis_Click);
+            this.pbV3bis.MouseHover += new System.EventHandler(this.pbV3bis_MouseHover);
             // 
             // pbV2bis
             // 
@@ -375,6 +486,8 @@
             this.pbV2bis.Size = new System.Drawing.Size(35, 35);
             this.pbV2bis.TabIndex = 13;
             this.pbV2bis.TabStop = false;
+            this.pbV2bis.Click += new System.EventHandler(this.pbV2bis_Click);
+            this.pbV2bis.MouseHover += new System.EventHandler(this.pbV2bis_MouseHover);
             // 
             // pbV1bis
             // 
@@ -386,96 +499,8 @@
             this.pbV1bis.Size = new System.Drawing.Size(35, 35);
             this.pbV1bis.TabIndex = 12;
             this.pbV1bis.TabStop = false;
-            // 
-            // pbV5
-            // 
-            this.pbV5.BackgroundImage = global::PPE4_Stars_up.Properties.Resources.etoileV;
-            this.pbV5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbV5.Location = new System.Drawing.Point(403, 91);
-            this.pbV5.Name = "pbV5";
-            this.pbV5.Size = new System.Drawing.Size(35, 35);
-            this.pbV5.TabIndex = 21;
-            this.pbV5.TabStop = false;
-            // 
-            // pbV4
-            // 
-            this.pbV4.BackgroundImage = global::PPE4_Stars_up.Properties.Resources.etoileV;
-            this.pbV4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbV4.Location = new System.Drawing.Point(371, 91);
-            this.pbV4.Name = "pbV4";
-            this.pbV4.Size = new System.Drawing.Size(35, 35);
-            this.pbV4.TabIndex = 20;
-            this.pbV4.TabStop = false;
-            // 
-            // pbV3
-            // 
-            this.pbV3.BackgroundImage = global::PPE4_Stars_up.Properties.Resources.etoileV;
-            this.pbV3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbV3.Location = new System.Drawing.Point(339, 91);
-            this.pbV3.Name = "pbV3";
-            this.pbV3.Size = new System.Drawing.Size(35, 35);
-            this.pbV3.TabIndex = 19;
-            this.pbV3.TabStop = false;
-            // 
-            // pbV2
-            // 
-            this.pbV2.BackgroundImage = global::PPE4_Stars_up.Properties.Resources.etoileV;
-            this.pbV2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbV2.Location = new System.Drawing.Point(307, 91);
-            this.pbV2.Name = "pbV2";
-            this.pbV2.Size = new System.Drawing.Size(35, 35);
-            this.pbV2.TabIndex = 18;
-            this.pbV2.TabStop = false;
-            // 
-            // pbV1
-            // 
-            this.pbV1.BackgroundImage = global::PPE4_Stars_up.Properties.Resources.etoileV;
-            this.pbV1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbV1.Location = new System.Drawing.Point(274, 91);
-            this.pbV1.Name = "pbV1";
-            this.pbV1.Size = new System.Drawing.Size(35, 35);
-            this.pbV1.TabIndex = 17;
-            this.pbV1.TabStop = false;
-            // 
-            // lblnom
-            // 
-            this.lblnom.AutoSize = true;
-            this.lblnom.BackColor = System.Drawing.Color.Transparent;
-            this.lblnom.Font = new System.Drawing.Font("Gentium Basic", 16.25F);
-            this.lblnom.Location = new System.Drawing.Point(90, 22);
-            this.lblnom.Name = "lblnom";
-            this.lblnom.Size = new System.Drawing.Size(0, 25);
-            this.lblnom.TabIndex = 22;
-            // 
-            // lbladresse
-            // 
-            this.lbladresse.AutoSize = true;
-            this.lbladresse.BackColor = System.Drawing.Color.Transparent;
-            this.lbladresse.Font = new System.Drawing.Font("Gentium Basic", 16.25F);
-            this.lbladresse.Location = new System.Drawing.Point(123, 59);
-            this.lbladresse.Name = "lbladresse";
-            this.lbladresse.Size = new System.Drawing.Size(0, 25);
-            this.lbladresse.TabIndex = 23;
-            // 
-            // lblville
-            // 
-            this.lblville.AutoSize = true;
-            this.lblville.BackColor = System.Drawing.Color.Transparent;
-            this.lblville.Font = new System.Drawing.Font("Gentium Basic", 16.25F);
-            this.lblville.Location = new System.Drawing.Point(545, 22);
-            this.lblville.Name = "lblville";
-            this.lblville.Size = new System.Drawing.Size(0, 25);
-            this.lblville.TabIndex = 24;
-            // 
-            // lblhoraire
-            // 
-            this.lblhoraire.AutoSize = true;
-            this.lblhoraire.BackColor = System.Drawing.Color.Transparent;
-            this.lblhoraire.Font = new System.Drawing.Font("Gentium Basic", 16.25F);
-            this.lblhoraire.Location = new System.Drawing.Point(581, 59);
-            this.lblhoraire.Name = "lblhoraire";
-            this.lblhoraire.Size = new System.Drawing.Size(0, 25);
-            this.lblhoraire.TabIndex = 23;
+            this.pbV1bis.Click += new System.EventHandler(this.pbV1bis_Click);
+            this.pbV1bis.MouseHover += new System.EventHandler(this.pbV1bis_MouseHover);
             // 
             // lblDateTitre
             // 
@@ -487,6 +512,28 @@
             this.lblDateTitre.Size = new System.Drawing.Size(0, 42);
             this.lblDateTitre.TabIndex = 17;
             // 
+            // btnRetour
+            // 
+            this.btnRetour.Font = new System.Drawing.Font("Gentium Basic", 16.25F);
+            this.btnRetour.Location = new System.Drawing.Point(325, 378);
+            this.btnRetour.Name = "btnRetour";
+            this.btnRetour.Size = new System.Drawing.Size(96, 39);
+            this.btnRetour.TabIndex = 18;
+            this.btnRetour.Text = "Retour";
+            this.btnRetour.UseVisualStyleBackColor = true;
+            this.btnRetour.Click += new System.EventHandler(this.btnRetour_Click);
+            // 
+            // pbEtoile0
+            // 
+            this.pbEtoile0.BackColor = System.Drawing.Color.Transparent;
+            this.pbEtoile0.Location = new System.Drawing.Point(6, 370);
+            this.pbEtoile0.Name = "pbEtoile0";
+            this.pbEtoile0.Size = new System.Drawing.Size(90, 71);
+            this.pbEtoile0.TabIndex = 19;
+            this.pbEtoile0.TabStop = false;
+            this.pbEtoile0.Click += new System.EventHandler(this.pbEtoile0_Click);
+            this.pbEtoile0.MouseHover += new System.EventHandler(this.pbEtoile0_MouseHover);
+            // 
             // FormVisite
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -495,6 +542,7 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(784, 462);
             this.ControlBox = false;
+            this.Controls.Add(this.btnRetour);
             this.Controls.Add(this.lblDateTitre);
             this.Controls.Add(this.pbV5bis);
             this.Controls.Add(this.pbF5bis);
@@ -512,15 +560,21 @@
             this.Controls.Add(this.gbInformations);
             this.Controls.Add(this.rtbCommentaire);
             this.Controls.Add(this.lblVisite);
+            this.Controls.Add(this.pbEtoile0);
             this.Name = "FormVisite";
             this.Text = "Visite";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormVisite_Load);
             this.gbInformations.ResumeLayout(false);
             this.gbInformations.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbV5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbF5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbV4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbF4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbV3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbF3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbV2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbV1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbF2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbF1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbF5bis)).EndInit();
@@ -533,11 +587,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbV3bis)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbV2bis)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbV1bis)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbV5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbV4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbV3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbV2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbV1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbEtoile0)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -581,5 +631,7 @@
         private System.Windows.Forms.Label lbladresse;
         private System.Windows.Forms.Label lblnom;
         private System.Windows.Forms.Label lblDateTitre;
+        private System.Windows.Forms.Button btnRetour;
+        private System.Windows.Forms.PictureBox pbEtoile0;
     }
 }

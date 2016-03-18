@@ -203,9 +203,11 @@
             this.MaximizeBox = false;
             this.Name = "FormIndex";
             this.Text = "Accueil";
+            this.Activated += new System.EventHandler(this.FormIndex_Activated);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormIndex_FormClosed);
             this.Load += new System.EventHandler(this.FormIndex_Load);
             this.Enter += new System.EventHandler(this.FormIndex_Enter);
+            this.MouseHover += new System.EventHandler(this.FormIndex_MouseHover);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

@@ -134,7 +134,7 @@
             this.dataGridViewNbEtoiles.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewNbEtoiles.GridColor = System.Drawing.Color.Black;
             this.dataGridViewNbEtoiles.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.dataGridViewNbEtoiles.Location = new System.Drawing.Point(549, 428);
+            this.dataGridViewNbEtoiles.Location = new System.Drawing.Point(6, 244);
             this.dataGridViewNbEtoiles.MultiSelect = false;
             this.dataGridViewNbEtoiles.Name = "dataGridViewNbEtoiles";
             this.dataGridViewNbEtoiles.ReadOnly = true;
@@ -186,7 +186,7 @@
             this.dataGridViewPersonnes.DefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridViewPersonnes.GridColor = System.Drawing.Color.Black;
             this.dataGridViewPersonnes.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.dataGridViewPersonnes.Location = new System.Drawing.Point(540, -182);
+            this.dataGridViewPersonnes.Location = new System.Drawing.Point(6, 8);
             this.dataGridViewPersonnes.MultiSelect = false;
             this.dataGridViewPersonnes.Name = "dataGridViewPersonnes";
             this.dataGridViewPersonnes.ReadOnly = true;
