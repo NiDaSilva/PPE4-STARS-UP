@@ -3,13 +3,11 @@
 class page_base {
 
 	private $titre;
-	protected $corps;
+	private $corps;
 
 	public function __construct($p) {
 				$this->titre = $p;
 	}
-
-
 	public function __set($propriete, $valeur) {
 		switch ($propriete) 
 		{
@@ -27,38 +25,37 @@ class page_base {
 
 	/******************************Gestion des styles **********************************************/
 	private function style() {
-		return '
-		<!-- Bootstrap Core CSS -->
-    		<link href="css/bootstrap.min.css" rel="stylesheet">
-
-    	<!-- Custom CSS -->
-    		<link href="css/grayscale.css" rel="stylesheet">';
-		}
+		$r= '
+    		<link href="../css/bootstrap.min.css" rel="stylesheet">
+    		<link href="../css/grayscale.css" rel="stylesheet">';
+		echo $r;
 
 	}
 	/******************************Gestion du fonts **********************************************/
 
 	private function fonts() {
-			return'
-			<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+			$r= '
+			<link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     		<link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
     		<link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">';
-		}
+    		echo $r;
+		
 	}
 	/******************************affichage metakeyword **********************************************/
 
 	private function meta() {
-		return'
+		$r='
 		<meta charset="utf-8">
     	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1">
     	<meta name="description" content="">
     	<meta name="author" content="">';
+    	echo $r;
 	}
 
 	/****************************** Affichage de la navbar top ***************************************/	
 	private function navbar_top(){
-		return'
+		$r='
 		<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
 	        <div class="container">
 	            <div class="navbar-header">
@@ -92,114 +89,94 @@ class page_base {
 	        </div>
 	        <!-- /.container -->
     	</nav>';
+    	echo $r;
 	}
 
 
 	/****************************** Affichage de la partie entÃªte ***************************************/	
 	private function entete() {
-		return'
+		$r='
 		<header class="intro2">
         <div class="intro-body">
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
-                        <h1 class="brand-heading2">Star\'s UP</h1>
-                        <p class="intro-text">Created by 2TSIOD.</p>
-                        <a href="#about" class="btn btn-circle page-scroll">
-                            <i class="fa fa-angle-double-down animated"></i>
-                        </a>
+                        <h1 class="brand-heading2">'.$this->titre.'</h1>                       
                     </div>
                 </div>
             </div>
         </div>
     	</header>';
+    	echo $r;
 	}
 
 	/****************************** Affichage de la partie footer ***************************************/	
 	private function footer() {
-		return'
+		$r='
+		<footer>
 		<div class="container text-center">
             <p>Copyright &copy; Your Website 2014</p>
-        </div>';
+        </div>
+        </footer>';
+        echo $r;
 	}
 	/****************************** Affichage de la partie sciprt ***************************************/	
 	private function script() {
-		return'
+		$r='
 		    <!-- jQuery -->
-		    <script src="js/jquery.js"></script>
+		    <script src="../js/jquery.js"></script>
 
 		    <!-- Bootstrap Core JavaScript -->
-		    <script src="js/bootstrap.min.js"></script>
+		    <script src="../js/bootstrap.min.js"></script>
 
 		    <!-- Plugin JavaScript -->
-		    <script src="js/jquery.easing.min.js"></script>
+		    <script src="../js/jquery.easing.min.js"></script>
 
 		    <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
 		    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
 
 		    <!-- Custom Theme JavaScript -->
-		    <script src="js/grayscale.js"></script>';
+		    <script src="../js/grayscale.js"></script>';
+		    echo $r;
 	}
-
-
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	public function head(){
+		echo'
+		<head>'
+		.$this->meta()
+		.'<title>'.$this->titre.'</title>'
+		.$this->style()
+		.$this->fonts()
+		.'</head>';
+	}
+	public function content(){
+		echo'<div class="row">
+        		<div class="col-lg-12">
+        			<div class="row">
+                    	<div class="col-lg-8 col-lg-offset-2">
+        					'.$this->corps.'
+        				</div>
+        			</div>
+        		</div>
+            </div>';
+	}
 	/*************************************** AFFICHER **************************************************/	
-	private function afficher(){
-		return'
-		<!DOCTYPE html>
-		<html lang="en">
 
-		<head>
-			//meta
-			//titre
-			//style
-			//front
-		</head>
-		<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
-			//navbar
-			//header
-			<section id="about" class="container content">
-        		<div class="row">
-            		<div class="col-lg-12">
-            			<div class="row">
-            			//corps
-                		</div>         
-            		</div>
-            	</div>
-            </section>
-            <footer>
-           		//footer
-            </footer>
-            	//script
-		</body>
+	public function afficher(){
+		echo'
+		<html lang="en">'
+		.$this->head().'		
+		<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">'
+		.$this->navbar_top()
+		.$this->entete()
+		.'<section id="about" class="container content">'.
+        		$this->content()
+            .'</section>'           	
+            .$this->script()
+		.'</body>'
+		.$this->footer().'
+		</html>
 		';
 	}
-
 }
 
 ?>
