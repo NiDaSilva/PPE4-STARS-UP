@@ -23,15 +23,21 @@ namespace PPE4_Stars_up
         public void chargedgv()
         {
             bindingSource1.DataSource = controleur.Vmodele.Dv_Historique;
+
+            // Remplissage du Tableau
             dataGridViewHistorique.DataSource = bindingSource1;
 
             for (int i = 0; i < dataGridViewHistorique.Rows.Count; i++) // parcours le datagridview
             {
-                DateTime DateEntiere = Convert.ToDateTime(dataGridViewHistorique.Rows[i].Cells[0].Value.ToString()); // recupere date + heure
-                string DateSeulement = string.Format("{0}", DateEntiere.ToString("dd-MM-yyyy")).Trim(); // recupere date
-                TimeSpan HeureSeulement = new TimeSpan(DateEntiere.Hour, DateEntiere.Minute, DateEntiere.Second); // recupere heure, minute, seconde
+                // Remplissage de la liste
 
-                string HeureDebut = string.Format("{0} {1}", DateSeulement, HeureSeulement).Trim(); // Bon format
+                /*
+                listBoxHistorique.Items.Add("Date & Heure  : " + dataGridViewHistorique.Rows[i].Cells[0].Value.ToString() + "\nDépartement : " + dataGridViewHistorique.Rows[i].Cells[1].Value.ToString() +
+                    "\nHébergement : " + dataGridViewHistorique.Rows[i].Cells[2].Value.ToString() + "\nNombre d'étoiles attribuées : " + dataGridViewHistorique.Rows[i].Cells[3].Value.ToString() +
+                    "\nCommentaire : " + dataGridViewHistorique.Rows[i].Cells[4].Value.ToString() + "\n\n\n");
+                 */
+
+
             }
         }
 
@@ -51,7 +57,27 @@ namespace PPE4_Stars_up
 
         private void FormHistorique_Load(object sender, EventArgs e)
         {
+            listBoxHistorique.Visible = false;
+        }
+
+        private void rbListe_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rbListe_Click(object sender, EventArgs e)
+        {
+            dataGridViewHistorique.Visible = false;
+            gbTri.Enabled = true;
+            listBoxHistorique.Visible = true;
             
+        }
+
+        private void rbTableau_Click(object sender, EventArgs e)
+        {
+            dataGridViewHistorique.Visible = true;
+            gbTri.Enabled = false;
+            listBoxHistorique.Visible = false;
         }
     }
 }

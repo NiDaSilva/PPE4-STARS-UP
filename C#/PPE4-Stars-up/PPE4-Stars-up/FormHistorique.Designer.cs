@@ -35,17 +35,23 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblTitre = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.dataGridViewHistorique = new System.Windows.Forms.DataGridView();
             this.pbRetour = new System.Windows.Forms.PictureBox();
             this.pbSave = new System.Windows.Forms.PictureBox();
-            this.dataGridViewHistorique = new System.Windows.Forms.DataGridView();
-            this.gbInformations = new System.Windows.Forms.GroupBox();
+            this.gbAffichage = new System.Windows.Forms.GroupBox();
             this.rbListe = new System.Windows.Forms.RadioButton();
             this.rbTableau = new System.Windows.Forms.RadioButton();
+            this.gbTri = new System.Windows.Forms.GroupBox();
+            this.rbTriDepartement = new System.Windows.Forms.RadioButton();
+            this.rbTriDate = new System.Windows.Forms.RadioButton();
+            this.rbTriEtoile = new System.Windows.Forms.RadioButton();
+            this.listBoxHistorique = new System.Windows.Forms.ListBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewHistorique)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbRetour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSave)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewHistorique)).BeginInit();
-            this.gbInformations.SuspendLayout();
+            this.gbAffichage.SuspendLayout();
+            this.gbTri.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblTitre
@@ -64,35 +70,12 @@
             this.panel1.AutoScroll = true;
             this.panel1.BackgroundImage = global::PPE4_Stars_up.Properties.Resources._2395551_5_x11_wide_spread_professional_high_res_background_template_layout_that_can_be_used_for_any_kind_of_marketing_material_magazines_articles_scrapbook_and_even_advertisements;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel1.Controls.Add(this.listBoxHistorique);
             this.panel1.Controls.Add(this.dataGridViewHistorique);
             this.panel1.Location = new System.Drawing.Point(-2, 124);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(785, 305);
             this.panel1.TabIndex = 2;
-            // 
-            // pbRetour
-            // 
-            this.pbRetour.BackColor = System.Drawing.Color.Transparent;
-            this.pbRetour.BackgroundImage = global::PPE4_Stars_up.Properties.Resources.Fleche_navigation_bleue_gauche;
-            this.pbRetour.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbRetour.Location = new System.Drawing.Point(3, 4);
-            this.pbRetour.Name = "pbRetour";
-            this.pbRetour.Size = new System.Drawing.Size(48, 44);
-            this.pbRetour.TabIndex = 3;
-            this.pbRetour.TabStop = false;
-            this.pbRetour.Click += new System.EventHandler(this.pbRetour_Click);
-            // 
-            // pbSave
-            // 
-            this.pbSave.BackColor = System.Drawing.Color.Transparent;
-            this.pbSave.BackgroundImage = global::PPE4_Stars_up.Properties.Resources._19057_bubka_totalCommander;
-            this.pbSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbSave.Location = new System.Drawing.Point(732, 4);
-            this.pbSave.Name = "pbSave";
-            this.pbSave.Size = new System.Drawing.Size(48, 44);
-            this.pbSave.TabIndex = 4;
-            this.pbSave.TabStop = false;
-            this.pbSave.Click += new System.EventHandler(this.pbSave_Click);
             // 
             // dataGridViewHistorique
             // 
@@ -102,9 +85,6 @@
             this.dataGridViewHistorique.AllowUserToResizeRows = false;
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
             this.dataGridViewHistorique.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridViewHistorique.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewHistorique.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewHistorique.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -145,20 +125,44 @@
             this.dataGridViewHistorique.Size = new System.Drawing.Size(606, 281);
             this.dataGridViewHistorique.TabIndex = 39;
             // 
-            // gbInformations
+            // pbRetour
             // 
-            this.gbInformations.BackColor = System.Drawing.Color.Transparent;
-            this.gbInformations.Controls.Add(this.rbListe);
-            this.gbInformations.Controls.Add(this.rbTableau);
-            this.gbInformations.Font = new System.Drawing.Font("Gentium Basic", 12.25F);
-            this.gbInformations.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.gbInformations.Location = new System.Drawing.Point(207, 55);
-            this.gbInformations.Name = "gbInformations";
-            this.gbInformations.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.gbInformations.Size = new System.Drawing.Size(371, 63);
-            this.gbInformations.TabIndex = 5;
-            this.gbInformations.TabStop = false;
-            this.gbInformations.Text = "Affichage";
+            this.pbRetour.BackColor = System.Drawing.Color.Transparent;
+            this.pbRetour.BackgroundImage = global::PPE4_Stars_up.Properties.Resources.Fleche_navigation_bleue_gauche;
+            this.pbRetour.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbRetour.Location = new System.Drawing.Point(3, 4);
+            this.pbRetour.Name = "pbRetour";
+            this.pbRetour.Size = new System.Drawing.Size(48, 44);
+            this.pbRetour.TabIndex = 3;
+            this.pbRetour.TabStop = false;
+            this.pbRetour.Click += new System.EventHandler(this.pbRetour_Click);
+            // 
+            // pbSave
+            // 
+            this.pbSave.BackColor = System.Drawing.Color.Transparent;
+            this.pbSave.BackgroundImage = global::PPE4_Stars_up.Properties.Resources._19057_bubka_totalCommander;
+            this.pbSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbSave.Location = new System.Drawing.Point(732, 4);
+            this.pbSave.Name = "pbSave";
+            this.pbSave.Size = new System.Drawing.Size(48, 44);
+            this.pbSave.TabIndex = 4;
+            this.pbSave.TabStop = false;
+            this.pbSave.Click += new System.EventHandler(this.pbSave_Click);
+            // 
+            // gbAffichage
+            // 
+            this.gbAffichage.BackColor = System.Drawing.Color.Transparent;
+            this.gbAffichage.Controls.Add(this.rbListe);
+            this.gbAffichage.Controls.Add(this.rbTableau);
+            this.gbAffichage.Font = new System.Drawing.Font("Gentium Basic", 12.25F);
+            this.gbAffichage.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.gbAffichage.Location = new System.Drawing.Point(12, 55);
+            this.gbAffichage.Name = "gbAffichage";
+            this.gbAffichage.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.gbAffichage.Size = new System.Drawing.Size(371, 63);
+            this.gbAffichage.TabIndex = 5;
+            this.gbAffichage.TabStop = false;
+            this.gbAffichage.Text = "Affichage";
             // 
             // rbListe
             // 
@@ -169,6 +173,8 @@
             this.rbListe.TabIndex = 4;
             this.rbListe.Text = "Liste";
             this.rbListe.UseVisualStyleBackColor = true;
+            this.rbListe.CheckedChanged += new System.EventHandler(this.rbListe_CheckedChanged);
+            this.rbListe.Click += new System.EventHandler(this.rbListe_Click);
             // 
             // rbTableau
             // 
@@ -181,6 +187,64 @@
             this.rbTableau.TabStop = true;
             this.rbTableau.Text = "Tableau";
             this.rbTableau.UseVisualStyleBackColor = true;
+            this.rbTableau.Click += new System.EventHandler(this.rbTableau_Click);
+            // 
+            // gbTri
+            // 
+            this.gbTri.BackColor = System.Drawing.Color.Transparent;
+            this.gbTri.Controls.Add(this.rbTriEtoile);
+            this.gbTri.Controls.Add(this.rbTriDepartement);
+            this.gbTri.Controls.Add(this.rbTriDate);
+            this.gbTri.Enabled = false;
+            this.gbTri.Font = new System.Drawing.Font("Gentium Basic", 12.25F);
+            this.gbTri.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.gbTri.Location = new System.Drawing.Point(401, 55);
+            this.gbTri.Name = "gbTri";
+            this.gbTri.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.gbTri.Size = new System.Drawing.Size(371, 63);
+            this.gbTri.TabIndex = 6;
+            this.gbTri.TabStop = false;
+            this.gbTri.Text = "Trier par";
+            // 
+            // rbTriDepartement
+            // 
+            this.rbTriDepartement.AutoSize = true;
+            this.rbTriDepartement.Location = new System.Drawing.Point(121, 25);
+            this.rbTriDepartement.Name = "rbTriDepartement";
+            this.rbTriDepartement.Size = new System.Drawing.Size(118, 24);
+            this.rbTriDepartement.TabIndex = 4;
+            this.rbTriDepartement.Text = "Département";
+            this.rbTriDepartement.UseVisualStyleBackColor = true;
+            // 
+            // rbTriDate
+            // 
+            this.rbTriDate.AutoSize = true;
+            this.rbTriDate.Checked = true;
+            this.rbTriDate.Location = new System.Drawing.Point(40, 25);
+            this.rbTriDate.Name = "rbTriDate";
+            this.rbTriDate.Size = new System.Drawing.Size(59, 24);
+            this.rbTriDate.TabIndex = 3;
+            this.rbTriDate.TabStop = true;
+            this.rbTriDate.Text = "Date";
+            this.rbTriDate.UseVisualStyleBackColor = true;
+            // 
+            // rbTriEtoile
+            // 
+            this.rbTriEtoile.AutoSize = true;
+            this.rbTriEtoile.Location = new System.Drawing.Point(264, 25);
+            this.rbTriEtoile.Name = "rbTriEtoile";
+            this.rbTriEtoile.Size = new System.Drawing.Size(68, 24);
+            this.rbTriEtoile.TabIndex = 5;
+            this.rbTriEtoile.Text = "Etoile";
+            this.rbTriEtoile.UseVisualStyleBackColor = true;
+            // 
+            // listBoxHistorique
+            // 
+            this.listBoxHistorique.FormattingEnabled = true;
+            this.listBoxHistorique.Location = new System.Drawing.Point(89, 12);
+            this.listBoxHistorique.Name = "listBoxHistorique";
+            this.listBoxHistorique.Size = new System.Drawing.Size(606, 277);
+            this.listBoxHistorique.TabIndex = 40;
             // 
             // FormHistorique
             // 
@@ -190,7 +254,8 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(784, 462);
             this.ControlBox = false;
-            this.Controls.Add(this.gbInformations);
+            this.Controls.Add(this.gbTri);
+            this.Controls.Add(this.gbAffichage);
             this.Controls.Add(this.pbSave);
             this.Controls.Add(this.pbRetour);
             this.Controls.Add(this.panel1);
@@ -200,11 +265,13 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormHistorique_Load);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewHistorique)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbRetour)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSave)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewHistorique)).EndInit();
-            this.gbInformations.ResumeLayout(false);
-            this.gbInformations.PerformLayout();
+            this.gbAffichage.ResumeLayout(false);
+            this.gbAffichage.PerformLayout();
+            this.gbTri.ResumeLayout(false);
+            this.gbTri.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -217,8 +284,13 @@
         private System.Windows.Forms.PictureBox pbRetour;
         private System.Windows.Forms.PictureBox pbSave;
         private System.Windows.Forms.DataGridView dataGridViewHistorique;
-        private System.Windows.Forms.GroupBox gbInformations;
+        private System.Windows.Forms.GroupBox gbAffichage;
         private System.Windows.Forms.RadioButton rbListe;
         private System.Windows.Forms.RadioButton rbTableau;
+        private System.Windows.Forms.GroupBox gbTri;
+        private System.Windows.Forms.RadioButton rbTriEtoile;
+        private System.Windows.Forms.RadioButton rbTriDepartement;
+        private System.Windows.Forms.RadioButton rbTriDate;
+        private System.Windows.Forms.ListBox listBoxHistorique;
     }
 }
