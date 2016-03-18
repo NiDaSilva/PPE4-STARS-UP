@@ -50,6 +50,12 @@
   <ItemGroup>
     <Compile Include="bdd.cs" />
     <Compile Include="controleur.cs" />
+    <Compile Include="FormHistorique.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormHistorique.Designer.cs">
+      <DependentUpon>FormHistorique.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormIndex.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,6 +123,9 @@
     <Compile Include="Planning\Jour\MonthViewMonth.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormHistorique.resx">
+      <DependentUpon>FormHistorique.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormIndex.resx">
       <DependentUpon>FormIndex.cs</DependentUpon>
     </EmbeddedResource>
@@ -184,6 +193,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\etoileV.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\whisps.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\téléchargement.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2395551-5-x11-wide-spread-professional-high-res-background-template-layout-that-can-be-used-for-any-kind-of-marketing-material-magazines-articles-scrapbook-and-even-advertisements.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Fleche-navigation-bleue-gauche.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\19057-bubka-totalCommander.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -73,6 +73,28 @@ namespace PPE4_Stars_up.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _19057_bubka_totalCommander {
+            get {
+                object obj = ResourceManager.GetObject("19057-bubka-totalCommander", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _2395551_5_x11_wide_spread_professional_high_res_background_template_layout_that_can_be_used_for_any_kind_of_marketing_material_magazines_articles_scrapbook_and_even_advertisements {
+            get {
+                object obj = ResourceManager.GetObject("2395551-5-x11-wide-spread-professional-high-res-background-template-layout-that-c" +
+                        "an-be-used-for-any-kind-of-marketing-material-magazines-articles-scrapbook-and-e" +
+                        "ven-advertisements", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap abstract_blue_microsoft_windows_1920x1080_wallpaper_www_wallpaperfo_com_92 {
             get {
                 object obj = ResourceManager.GetObject("abstract blue microsoft windows 1920x1080 wallpaper_www.wallpaperfo.com_92", resourceCulture);
@@ -123,9 +145,29 @@ namespace PPE4_Stars_up.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Fleche_navigation_bleue_gauche {
+            get {
+                object obj = ResourceManager.GetObject("Fleche-navigation-bleue-gauche", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ombre0 {
             get {
                 object obj = ResourceManager.GetObject("ombre0", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap téléchargement {
+            get {
+                object obj = ResourceManager.GetObject("téléchargement", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -146,6 +188,16 @@ namespace PPE4_Stars_up.Properties {
         internal static System.Drawing.Bitmap Wallpaper_Gray_Bars_Opera {
             get {
                 object obj = ResourceManager.GetObject("Wallpaper-Gray-Bars-Opera", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap whisps {
+            get {
+                object obj = ResourceManager.GetObject("whisps", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -194,7 +194,13 @@ namespace PPE4_Stars_up
 
         private void historiqueDesVisitesToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            historiqueDesVisitesToolStripMenuItem.Enabled = false;
+            planningToolStripMenuItem.Enabled = false;
             pictureBox1.Visible = false;
+            FormHistorique FH = new FormHistorique();
+            FH.MdiParent = this;
+
+            FH.Show();
         }
 
         private void imprimerPDFToolStripMenuItem_Click(object sender, EventArgs e)

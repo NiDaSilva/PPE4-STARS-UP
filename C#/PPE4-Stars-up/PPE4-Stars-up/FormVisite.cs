@@ -216,7 +216,7 @@ namespace PPE4_Stars_up
         {
             CR_commentaire = rtbCommentaire.Text;
 
-            MessageBox.Show("Compte-rendu :\n\nCommentaire : " + CR_commentaire + "\n\nNote : " + CR_note + "Plus qu'à export.");
+            MessageBox.Show("Compte-rendu :\n\nCommentaire : " + CR_commentaire + "\n\nNote : " + CR_note + "\n\nPlus qu'à export.");
 
             // Gérer l'export des données
             this.Close();
