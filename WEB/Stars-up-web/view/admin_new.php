@@ -1,15 +1,12 @@
 <?php
 include_once('../class/page_base.class.php');
 include '../class/admin.controller.class.php';
-if(!isset($_GET['page']))
-{
-$_GET['page']=1;
-}
+
 $controller = new admin_controller();
 
-$test = new page_base('TEST');
+$new = new page_base('new '.$_GET['type']);
 
-$test->corps=$controller->corps_admin();
+$new->corps=$controller->corps_new($_GET['type']);
 
-$test->afficher();
+$new->afficher();
 ?>

@@ -54,9 +54,27 @@ class mypdo extends PDO
         return null;
     }
 
-    public function return_hebergement()
+    /****ADMIN****/
+
+    public function count_row($nomtable)
     {
-        $requete = 'SELECT * FROM hebergement;';
+        $requete = 'SELECT * FROM '.$nomtable.';';
+        $result = $this->connexion->query($requete);
+        return ($result->rowCount());
+    }
+
+
+    public function return_table($nomtable,$cPage,$limit)
+    {
+        if($limit == 0)
+        {
+            $requete = 'SELECT * FROM '.$nomtable.';';
+        }
+        else
+        {
+            $cPage=($cPage-1)*$limit;
+            $requete = 'SELECT * FROM '.$nomtable.' LIMIT '.$cPage.','.$limit.';';
+        }
         $result = $this->connexion->query($requete);
         if ($result) {
             if ($result->rowCount() >= 1) {

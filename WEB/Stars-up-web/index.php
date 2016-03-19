@@ -1,6 +1,10 @@
 <?php
 include 'class/hebergement.controller.class.php';
 $controller = new controller();
+if(!isset($_GET['page']))
+{
+$_GET['page']=1;
+}
 echo'
 <!DOCTYPE html>
 <html lang="en">
@@ -60,7 +64,7 @@ echo'
                         <a class="page-scroll" href="#">Connexion</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#about">About</a>
+                        <a class="page-scroll" href="view/test.php">About</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#">Contact</a>
@@ -142,18 +146,14 @@ echo'
                     <div class="col-lg-8 col-lg-offset-2">
                         <div class="owl-wrapper">
 							'.
-
-
-                          $controller->hebergement()
-
-
-
+                          $controller->hebergement($_GET['page'])
                     .'
                         </div>
                     </div>
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <center>'.$controller->pagination(6).'</center>
+                    </div>
                 </div>
-                <!-- pagination a géré -->
-                <!-- end -->
             </div>
         </div>
     </section>

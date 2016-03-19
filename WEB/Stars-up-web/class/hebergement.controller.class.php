@@ -24,10 +24,10 @@ class controller{
         }
     }
 
-    public function hebergement()
+    public function hebergement($x)
     {
         $retour='';
-        $result= $this->vpdo->return_hebergement();
+        $result= $this->vpdo->return_table('hebergement',$x,6);
         while ($row =$result->fetch())
         {
             $retour = $retour . '
@@ -45,6 +45,33 @@ class controller{
             </div>
             </div>';
         }
+        return $retour;
+    }
+    public function pagination($perPage)
+    {
+        $nbRow= $this->vpdo->count_row('hebergement');
+        $nbpage= ceil($nbRow/$perPage);
+        $retour = '
+        <div>
+        <nav>
+          <ul class="pagination">
+            <li>
+              <a href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>';
+            for ($i=1; $i <= $nbpage ; $i++) { 
+               $retour= $retour.'<li><a href="?page='.$i.'&#about">'.$i.'</a></li>';
+            }
+        $retour= $retour.'
+            <li>
+              <a href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        </div>';
         return $retour;
     }
 }

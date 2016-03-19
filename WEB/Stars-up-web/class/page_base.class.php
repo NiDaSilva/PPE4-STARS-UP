@@ -73,15 +73,15 @@ class page_base {
 	                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
 	                    <li class="hidden">
 	                        <a href="#page-top"></a>
-	                    </li>
-	                    <li>
-	                        <a class="page-scroll" href="#">Connexion</a>
-	                    </li>
+	                    </li>                    
 	                    <li>
 	                        <a class="page-scroll" href="#about">About</a>
 	                    </li>
 	                    <li>
 	                        <a class="page-scroll" href="#">Contact</a>
+	                    </li>
+	                    <li>
+	                        <a class="page-scroll" href="#">Deconnexion</a>
 	                    </li>
 	                </ul>
 	            </div>
@@ -139,7 +139,7 @@ class page_base {
 		    <script src="../js/grayscale.js"></script>';
 		    echo $r;
 	}
-	public function head(){
+	private function head(){
 		echo'
 		<head>'
 		.$this->meta()
@@ -148,16 +148,18 @@ class page_base {
 		.$this->fonts()
 		.'</head>';
 	}
-	public function content(){
-		echo'<div class="row">
-        		<div class="col-lg-12">
-        			<div class="row">
-                    	<div class="col-lg-8 col-lg-offset-2">
-        					'.$this->corps.'
-        				</div>
-        			</div>
-        		</div>
-            </div>';
+	private function content(){
+		echo'<section id="about" class="container content">
+				<div class="row">
+	        		<div class="col-lg-12">
+	        			<div class="row">
+	                    	<div class="col-lg-8 col-lg-offset-2">
+	        					'.$this->corps.'
+	        				</div>
+	        			</div>
+	        		</div>
+	            </div>
+            </section>';
 	}
 	/*************************************** AFFICHER **************************************************/	
 
@@ -168,10 +170,8 @@ class page_base {
 		<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">'
 		.$this->navbar_top()
 		.$this->entete()
-		.'<section id="about" class="container content">'.
-        		$this->content()
-            .'</section>'           	
-            .$this->script()
+		.$this->content()
+        .$this->script()
 		.'</body>'
 		.$this->footer().'
 		</html>
