@@ -64,7 +64,7 @@ echo'
                         <a class="page-scroll" href="#">Connexion</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="view/test.php">About</a>
+                        <a class="page-scroll" href="view/consultation_admin.php">About</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#">Contact</a>

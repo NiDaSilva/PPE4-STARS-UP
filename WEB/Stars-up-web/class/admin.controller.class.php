@@ -139,31 +139,17 @@ class admin_controller{
                 </div>  
                 <div class="panel-body">
                 <form id=select method="post">
-                    <select id="nomtable" name="nomtable" class="form-control" onChange="document.getElementById(\'select\').submit()"> 
+                    <select id="nomtable" name="nomtable" class="form-control"> 
                     <option value="" disabled selected>Select your option</option>                  
                     <option value ="hebergement">Hebergement</option>
                     <option value="inspecteur">Inspecteur</option>
                     </select>
                 </form>
                 </div>  
-            </div>';
-        if (isset($_POST['nomtable']))
-        {
-                    $retour=$retour.'
-                <div class="well well-lg">
-                    <h3 style="color:black">'.$_POST['nomtable'].'</h3>
-                    <div style="padding:5px">'.
-
-                        $this->return_table($_POST['nomtable'],$_GET['page']).$this->pagination(6).
-                    '<a class="btn btn-success"href="admin_new.php?type='.$_POST['nomtable'].'">NEW</a>
-                    </div>
-                </div>';
-          
-        }
-
-
-                
-                       
+            </div>
+            <div id="resultajax" class="well well-lg">
+            </div>
+            ';
             return $retour;
     }
 
