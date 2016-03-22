@@ -10,6 +10,9 @@ $new->corps=$controller->corps_new($_GET['type']);
 
 $new->afficher();
 ?>
+
+
+
 <script type="text/javascript">
 $("#submit").click(function () {
 	var params =     {  	departement : "nico aime la bite"
@@ -20,7 +23,7 @@ $("#submit").click(function () {
         data :  params,
 
         success: function (data) {
-        	$("#result").append(data);
+        	$("#resultajax").append(data);
         	console.log(data);
         },
         error: function () {

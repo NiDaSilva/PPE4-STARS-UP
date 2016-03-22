@@ -112,7 +112,7 @@ if(isset($_REQUEST['categ']))
                         <input type="text" class="form-control" id="horraire" placeholder="ex: 8h - 18h">
                     </div>
                 </div> 
-                <button type="submit" class="btn btn-primary">Submit</button>                               
+                <button type="submit" id="submit" class="btn btn-primary">Submit</button>                               
         	</div>'
 	         ;
 	    }
@@ -171,7 +171,7 @@ if(isset($_REQUEST['categ']))
                         <input type="number" class="form-control" id="nbcuisine">
                     </div>
                 </div> 
-                <button type="submit" class="btn btn-primary">Submit</button>                              
+                <button type="submit" id="submit" class="btn btn-primary">Submit</button>                              
             </div>
             ';	
 	    }
