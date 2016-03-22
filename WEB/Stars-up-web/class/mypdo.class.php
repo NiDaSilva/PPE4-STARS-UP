@@ -82,4 +82,10 @@ class mypdo extends PDO
             }
         }
     }
+
+    public function insert_hebergement($tab){
+        $requete = 'INSERT INTO hebergement (ID_DEPARTEMENT, NOM_HEBERGEMENT,ADRESSE_HEBERGEMENT,VILLE_HEBERGEMENT, HORRAIRE_HEBERGEMENT)VALUES('.$tab['departement'].','.$tab['nom'].','.$tab['adresse'].','.$tab['ville'].','.$tab['horraire'].')';
+        $result = $this->connexion->query($requete);
+    }
+
 }

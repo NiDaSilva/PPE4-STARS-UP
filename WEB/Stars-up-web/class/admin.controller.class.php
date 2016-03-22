@@ -60,6 +60,7 @@ class admin_controller{
                     $retour = $retour .'
                     </tbody>
                 </table>
+                .
                 ';
                 break;
             }
@@ -130,7 +131,7 @@ class admin_controller{
     }
 
 
-    function corps_admin(){
+    public function corps_admin(){
         $retour= '
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -168,7 +169,7 @@ class admin_controller{
 
     /*******NEW******/
 
-    public function corps_new($type)
+    public function corps_new2($type)
     {   
         switch ($type) {
             case 'hebergement':
@@ -204,43 +205,43 @@ class admin_controller{
                                 <div class="form-group row">
                                     <label for="nom" class="col-sm-2 form-control-label">Nom hébergement</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="nom" placeholder="nom">
+                                        <input type="text" class="form-control" name="nom" placeholder="nom">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="adresse" class="col-sm-2 form-control-label">Adresse hébergement</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="adresse" placeholder="ex: 2 rue bidule">
+                                        <input type="text" class="form-control" name="adresse" placeholder="ex: 2 rue bidule">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="ville" class="col-sm-2 form-control-label">Ville</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="ville" placeholder="ex: 49000 Angers">
+                                        <input type="text" class="form-control" name="ville" placeholder="ex: 49000 Angers">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="horraire" class="col-sm-2 form-control-label">Horraire</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="horraire" placeholder="ex: 8h - 18h">
+                                        <input type="text" class="form-control" name="horraire" placeholder="ex: 8h - 18h">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="nbresto" class="col-sm-2 form-control-label">Nombre resto</label>
                                     <div class="col-sm-10">
-                                        <input type="number" class="form-control" id="nbresto" default="1">
+                                        <input type="number" class="form-control" name="nbresto" default="1">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="chefresto" class="col-sm-2 form-control-label">Chef Resto</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="chefresto">
+                                        <input type="text" class="form-control" name="chefresto">
                                     </div>
                                 </div>
 
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="button" id="submit" name="submit" class="btn btn-primary">Submit</button>
                                 
-                            </div>
+                            </div>                            
                             ';
                     }
 
@@ -362,18 +363,45 @@ class admin_controller{
                     }
                         break;
 
+
                 }
                 
                 break;
         }
         $retour='
         <div class="well well-lg">
-        <form id="new" method="post">'.
+        <form id="new" name="new" method="post">'.
         $form
         .'</form>
-        </div>
+        </div>  
+        <div id="result">
+        </div>     
         ';
+        if (isset($_POST['departement'])) {
+           $retour=$retour.print_r($_POST['departement']);
+        }
         return $retour;
+    }
+
+
+    public function corps_new($type)
+    {   
+        $form=
+
+        '<div class="well well-lg">
+        <form id="new" name="new" method="post">
+        <ul class="nav nav-pills nav-justified nav-inverse">
+            <li id ="lihotel" role="presentation"><a id="hotel">Hotel</a></li>
+            <li id ="licamping" role="presentation"><a id ="camping">Camping</a></li>
+            <li id = "lichambre" role="presentation"><a name ="x" id ="chambre">Chambre d\'hote</a></li>
+        </ul>
+        
+        </form>
+        <div class="well well-lg" id="resultajax">
+
+        </div>
+        </div>';
+        return $form;
     }
 
 
