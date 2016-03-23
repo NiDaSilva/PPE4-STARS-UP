@@ -34,23 +34,4 @@ $("#nomtable").change(function (){
         }
     })
 });
-
-$("#page").click(function (){
-    $.ajax({
-        url: "../ajax/switch_tableau_bdd.php",
-        type: "GET",
-        data: ({nbpage : $("#page").text()}),
-
-        success: function (data) {
-
-           $("#resultajax").empty();
-           var d = $.parseJSON(data)
-           $("#resultajax").append(d);
-        },
-        error: function () {
-            alert("fail");
-        }
-    })
-});
-
 </script>

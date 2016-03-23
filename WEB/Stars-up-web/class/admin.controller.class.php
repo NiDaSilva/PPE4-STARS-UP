@@ -24,113 +24,6 @@ class admin_controller{
     }
 
 
-    public function return_table($nom_table,$x)
-    {
-        $result= $this->vpdo->return_table($nom_table,$x,6);
-        switch ($nom_table) 
-        {
-            case 'hebergement' : 
-            {
-                $retour ='
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>NOM</th>
-                        <th>VILLE</th>
-                        <th>ACTION</th>
-                    </tr>
-                    </thead>
-                    <tbody>';                    
-                    while ($row =$result->fetch())
-                    {
-                        $retour = $retour .'
-                        <tr>
-                        <td>'.$row['ID_HEBERGEMENT'].'</td>
-                        <td>'.$row['NOM_HEBERGEMENT'].'</td>
-                        <td>'.$row['VILLE_HEBERGEMENT'].'</td>
-                        <td>
-                            <div class="btn-group btn-group-xs" role="group" aria-label="...">  
-                              <button type="button" class="btn btn-success">Update</button>
-                              <button type="button" class="btn btn-danger">Delete</button>
-                            </div>
-                        </td>
-                        </tr>';
-                    }
-                    $retour = $retour .'
-                    </tbody>
-                </table>
-                .
-                ';
-                break;
-            }
-            case 'inspecteur' : 
-            {
-                $retour ='
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>NOM</th>
-                        <th>PRENOM</th>
-                        <th>ACTION</th>
-                    </tr>
-                    </thead>
-                    <tbody>';                    
-                    while ($row =$result->fetch())
-                    {
-                        $retour = $retour .'
-                        <tr>
-                        <td>'.$row['ID_INSPECTEUR'].'</td>
-                        <td>'.$row['NOM_INSPECTEUR'].'</td>
-                        <td>'.$row['PERNOM_INSPECTEUR'].'</td>
-                        <td>
-                            <div class="btn-group btn-group-xs" role="group" aria-label="...">  
-                              <button type="button" class="btn btn-success">Update</button>
-                              <button type="button" class="btn btn-danger">Delete</button>
-                            </div>
-                        </td>
-                        </tr>';
-                    }
-                    $retour = $retour .'
-                    </tbody>
-                </table>
-                ';
-                break;
-            }
-        }        
-        return $retour;
-    }
-
-    public function pagination($perPage)
-    {
-        $nbRow= $this->vpdo->count_row($_POST['nomtable']);
-        $nbpage= ceil($nbRow/$perPage);
-        $retour = '
-        <div>
-        <nav>
-          <ul class="pagination">
-            <li>
-              <a href="#" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-              </a>
-            </li>';
-            for ($i=1; $i <= $nbpage ; $i++) { 
-               $retour= $retour.'<li><a href="?page='.$i.'&#about">'.$i.'</a></li>';
-            }
-        $retour= $retour.'
-            <li>
-              <a href="#" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
-        </div>';
-        return $retour;
-    }
-
-
     public function corps_admin(){
         $retour= '
             <div class="panel panel-default">
@@ -143,6 +36,7 @@ class admin_controller{
                     <option value="" disabled selected>Select your option</option>                  
                     <option value ="hebergement">Hebergement</option>
                     <option value="inspecteur">Inspecteur</option>
+                    <option value="gerant">gerant</option>
                     </select>
                 </form>
                 </div>  
@@ -156,21 +50,72 @@ class admin_controller{
     /*******NEW******/
 
     public function corps_new($type)
-    {   
+    {
+
         $form=
-
         '<div class="well well-lg">
-        <form id="new" name="new" method="post">
-        <ul class="nav nav-pills nav-justified nav-inverse">
-            <li id ="lihotel" role="presentation"><a id="hotel">Hotel</a></li>
-            <li id ="licamping" role="presentation"><a id ="camping">Camping</a></li>
-            <li id = "lichambre" role="presentation"><a name ="x" id ="chambre">Chambre d\'hote</a></li>
-        </ul>
-        
+        <form id="new" name="new" method="post">';
+        switch($type){
+            case "hebergement" :
+            {
+                $form=$form.'<ul class="nav nav-pills nav-justified nav-inverse">
+                                <li id ="lihotel" role="presentation"><a id="hotel">Hotel</a></li>
+                                <li id ="licamping" role="presentation"><a id ="camping">Camping</a></li>
+                                <li id = "lichambre" role="presentation"><a name ="x" id ="chambre">Chambre d\'hote</a></li>
+                            </ul>
+                            <div class="well well-lg" id="resultajax">
+                            </div>
+                            ';
+            }
+            break;
+            case "inspecteur" :
+            {
+                $form=$form.'
+                <div class="well well-lg">
+                    <div class="form-group row">
+                        <label for="departement" class="col-sm-2 form-control-label">Département</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="departement" name="departement">
+                                <option selected>- Spécialité -</option>';
+                                $result= $this->vpdo->return_table('specialite',0,0);
+                                while ($row =$result->fetch())
+                                {
+                                    $form=$form.'<option value="'.$row['ID_SPECIALITE'].'">'.$row['LIBELLE_SPECIALITE'].'</option>';
+                                }
+                                $form=$form.'                                        
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="nom" class="col-sm-2 form-control-label">Nom</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="nom" placeholder="nom">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="prenom" class="col-sm-2 form-control-label">Prenom</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="prenom" placeholder="Prenom">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="login" class="col-sm-2 form-control-label">Login</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="login" placeholder="Login">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="mdp" class="col-sm-2 form-control-label">Password</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="mdp" placeholder="••••••••">
+                        </div>
+                    </div>                    
+                    <button type="button" id="submit" name="submit" class="btn btn-primary">Submit</button>
+                </div> ';
+            }
+        } 
+        $form=$form.'        
         </form>
-        <div class="well well-lg" id="resultajax">
-
-        </div>
         </div>';
         return $form;
     }
