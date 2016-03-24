@@ -9,7 +9,7 @@ $db = new DB_CONNECT(); // connecting to db
 // check for post data
 if (isset($_GET["login"]) && isset($_GET["mdp"])) {
     $login = $_GET['login'];
-    $login = $_GET['mdp'];
+    $mdp = $_GET['mdp'];
 
     // get a inspecteur from inspecteurs table
     $result = mysql_query("SELECT * FROM inspecteur WHERE LOGIN = $login AND MDP = $mdp");
