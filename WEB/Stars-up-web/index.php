@@ -61,7 +61,7 @@ echo'
                         <a href="#page-top"></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#">Connexion</a>
+                        <a class="page-scroll" href="view/connexion.php">Connexion</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="view/consultation_admin.php">About</a>

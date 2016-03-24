@@ -28,14 +28,16 @@ $script='
 			$.ajax({
 		        url: "../ajax/delete.php",
 		        type: "GET",
-		        data: ({id : "1",
+		        data: ({id : $(this).attr("name"),
 		                table : $("#nomtable").val()}),
 
 		        success: function (data) {
+		        $("#nomtable").trigger("change");
 		           $("#resultat1").empty();
 		           $("#resultat1").addClass("alert alert-success");
 		           var d = $.parseJSON(data);
 		           $("#resultat1").append(d);
+
 		        },
 		        error: function () {
 		            $("#resultat1").empty();
@@ -71,11 +73,12 @@ if(isset($_REQUEST['table']))
                     <tbody>';
                     if(!isset($_GET['page'])){$_GET['page'] = 1;}
                     $result= $vpdo->return_table($_REQUEST['table'],$_GET['page'],6);
+                    
                     while ($row =$result->fetch())
                     {
                         $data = $data .'
                         <tr>
-                        <td>'.$row['ID_HEBERGEMENT'].'</td>
+                        <td></td>
                         <td>'.$row['NOM_HEBERGEMENT'].'</td>
                         <td>'.$row['VILLE_HEBERGEMENT'].'</td>
                         <td>
@@ -85,6 +88,7 @@ if(isset($_REQUEST['table']))
                             </div>
                         </td>
                         </tr>';
+                        
                     }
                     $data=$data.
                     '</tbody>
@@ -139,7 +143,7 @@ if(isset($_REQUEST['table']))
                     {
                         $data = $data .'
                         <tr>
-                        <td>'.$row['ID_INSPECTEUR'].'</td>
+                        <td></td>
                         <td>'.$row['NOM_INSPECTEUR'].'</td>
                         <td>'.$row['PERNOM_INSPECTEUR'].'</td>
                         <td>
@@ -203,7 +207,7 @@ if(isset($_REQUEST['table']))
                     {
                         $data = $data .'
                         <tr>
-                        <td>'.$row['ID_GERANT'].'</td>
+                        <td></td>
                         <td>'.$row['NOM_GERANT'].'</td>
                         <td>'.$row['PRENOM_GERANT'].'</td>
                         <td>
