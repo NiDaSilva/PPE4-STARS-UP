@@ -130,8 +130,7 @@ public class AllHebergementActivity extends ListActivity {
                  * */
                 ListAdapter adapter = new SimpleAdapter(
                         AllHebergementActivity.this, productsList,
-                        R.layout.list_item, new String[] { TAG_ID,TAG_NAME},
-                        new int[] { R.id.id, R.id.name });
+                        R.layout.list_item, new String[] { TAG_ID,TAG_NAME}, new int[] { R.id.id, R.id.name });
                 // updating listview
                 setListAdapter(adapter);
             }

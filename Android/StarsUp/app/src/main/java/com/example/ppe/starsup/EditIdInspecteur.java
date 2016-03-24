@@ -50,7 +50,7 @@ public class EditIdInspecteur extends Activity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog = new ProgressDialog(EditProductActivity.this);
+            pDialog = new ProgressDialog(EditIdInspecteur.this);
             pDialog.setMessage("Loading inspecteur. Please wait...");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
@@ -88,9 +88,9 @@ public class EditIdInspecteur extends Activity {
                             // get first product object from JSON Array
                             JSONObject product = productObj.getJSONObject(0);
 
-                            // product with this pid found
+                            // product with this id found
                             // Edit Text
-                            txtName = (EditText) findViewById(R.id.id);
+                            txtName = (EditText) findViewById(R.id.txtName);
 
                             // display product data in EditText
                             txtName.setText(product.getString(TAG_ID));
