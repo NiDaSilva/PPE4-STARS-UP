@@ -4,7 +4,7 @@
 include_once('../class/mypdo.class.php');
 
 $vpdo=new mypdo();
-$script_pagination='
+$script='
 	<script type="text/javascript">
 		$(".page").click(function(){
 		    $.ajax({
@@ -24,6 +24,29 @@ $script_pagination='
 		        }
 		    })
 		});
+	$(".delete").click(function(){
+			$.ajax({
+		        url: "../ajax/delete.php",
+		        type: "GET",
+		        data: ({id : "1",
+		                table : $("#nomtable").val()}),
+
+		        success: function (data) {
+		           $("#resultat1").empty();
+		           $("#resultat1").addClass("alert alert-success");
+		           var d = $.parseJSON(data);
+		           $("#resultat1").append(d);
+		        },
+		        error: function () {
+		            $("#resultat1").empty();
+		            $("#resultat1").addClass("alert alert-danger");
+		           var d = $.parseJSON(data);
+		           $("#resultat1").append(d);
+		        }
+		    })
+		});
+
+		
 	</script>';
 
 if(isset($_REQUEST['table']))
@@ -34,6 +57,7 @@ if(isset($_REQUEST['table']))
 		{
 			$data='
 			<h3 style="color:black">'.$_REQUEST['table'].'</h3>
+			<div id="resultat1"></div>
 			    <div id="pagination" style="padding:5px">		
 			        <table class="table">
                     <thead>
@@ -57,7 +81,7 @@ if(isset($_REQUEST['table']))
                         <td>
                             <div class="btn-group btn-group-xs" role="group" aria-label="...">  
                               <button type="button" class="btn btn-success">Update</button>
-                              <button type="button" class="btn btn-danger">Delete</button>
+                              <a class="btn btn-danger delete" name="'.$row['ID_HEBERGEMENT'].'">Delete</a>
                             </div>
                         </td>
                         </tr>';
@@ -90,13 +114,14 @@ if(isset($_REQUEST['table']))
 				        </div>
                 <a class="btn btn-success"href="admin_new.php?type='.$_REQUEST['table'].'">NEW</a>
 			</div>
-			'.$script_pagination	;
+			'.$script	;
 		}
 		break;
 		case "inspecteur" :
 		{
 			$data='
 			<h3 style="color:black">'.$_REQUEST['table'].'</h3>
+			<div id="resultat1"></div>
 			    <div id="pagination" style="padding:5px">		
 			        <table class="table">
                     <thead>
@@ -120,7 +145,7 @@ if(isset($_REQUEST['table']))
                         <td>
                             <div class="btn-group btn-group-xs" role="group" aria-label="...">  
                               <button type="button" class="btn btn-success">Update</button>
-                              <button type="button" class="btn btn-danger">Delete</button>
+                              <a class="btn btn-danger delete" name="'.$row['ID_INSPECTEUR'].'">Delete</a>
                             </div>
                         </td>
                         </tr>';
@@ -153,13 +178,14 @@ if(isset($_REQUEST['table']))
 				        </div>
                 <a class="btn btn-success"href="admin_new.php?type='.$_REQUEST['table'].'">NEW</a>
 			</div>
-			'.$script_pagination	;
+			'.$script	;
 		}
 		break;
 		case "gerant" :
 		{
 			$data='
 			<h3 style="color:black">'.$_REQUEST['table'].'</h3>
+			<div id="resultat1"></div>
 			    <div id="pagination" style="padding:5px">		
 			        <table class="table">
                     <thead>
@@ -216,7 +242,9 @@ if(isset($_REQUEST['table']))
 				        </div>
                 <a class="btn btn-success"href="admin_new.php?type='.$_REQUEST['table'].'">NEW</a>
 			</div>
-			'.$script_pagination	;
+			
+
+			'.$script	;
 		}
 		break;
 
@@ -227,22 +255,3 @@ if(isset($_REQUEST['table']))
 echo json_encode($data);
 ?>
 
-<script type="text/javascript">
-$(".delete").click(function (){
-    $.ajax({
-        url: "../ajax/switch_tableau_bdd.php",
-        type: "GET",
-        data: ({table : $("#nomtable").val()}),
-
-        success: function (data) {
-
-           $("#resultajax").empty();
-           var d = $.parseJSON(data)
-           $("#resultajax").append(d);
-        },
-        error: function () {
-            alert("fail");
-        }
-    })
-});
-</script>

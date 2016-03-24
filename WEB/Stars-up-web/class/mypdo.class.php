@@ -88,4 +88,10 @@ class mypdo extends PDO
         $result = $this->connexion->query($requete);
     }
 
+    public function delete($table,$id){
+        $requete ='DELETE FROM '.$table.' WHERE ID_'.$table.' = '.$id.';';
+        $this->connexion->query($requete);
+    }
+
+
 }
