@@ -10,8 +10,10 @@ $db = new DB_CONNECT(); // connecting to db
 if (isset($_GET["id"])) {
     $id = $_GET['id'];
 
+//ID_VISITE,v.ID_HEBERGEMENT,ID_SAISON,DATE_HEURE_VISITE, NOM_HEBERGEMENT,ADRESSE_HEBERGEMENT,VILLE_HEBERGEMENT,ID_DEPARTEMENT,HORAIRES  WHERE ID_INSPECTEUR = $id
+
     // get a visite from visites table
-    $result = mysql_query("SELECT * FROM visiter WHERE ID_INSPECTEUR = $id") or die(mysql_error());
+    $result = mysql_query("SELECT * FROM visiter AS v INNER JOIN hebergement AS h ON v.ID_HEBERGEMENT=h.ID_HEBERGEMENT WHERE 1 ") or die(mysql_error());
 
     if (!empty($result)) {
         // check for empty result
@@ -23,10 +25,15 @@ if (isset($_GET["id"])) {
             while ($row = mysql_fetch_array($result)) {
                 // temp user array
                 $visite = array();
-                $visite["id"]   = $result["ID_VISITE"];
-                $visite["id_h"] = $result["ID_HEBERGEMENT"];
-                $visite["id_s"] = $result["ID_SAISON"];
-                $visite["date"] = $result["DATE_HEURE_VISITE"];
+                $visite["id"]           = $row["ID_VISITE"];
+                $visite["id_h"]         = $row["ID_HEBERGEMENT"];
+                $visite["id_s"]         = $row["ID_SAISON"];
+                $visite["date"]         = $row["DATE_HEURE_VISITE"];
+                $visite["nom"]          = $row["NOM_HEBERGEMENT"];
+                $visite["adresse"]      = $row["ADRESSE_HEBERGEMENT"];
+                $visite["ville"]        = $row["VILLE_HEBERGEMENT"];
+                $visite["departement"]  = $row["ID_DEPARTEMENT"];
+                $visite["horaires"]     = $row["HORAIRES"];
          
                 // push single product into final response array
                 array_push($response["visite"], $visite);
