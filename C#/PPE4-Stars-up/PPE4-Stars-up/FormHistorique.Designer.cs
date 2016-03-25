@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle46 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle47 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle48 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle49 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle50 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblTitre = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.listBoxHistorique = new System.Windows.Forms.ListBox();
             this.dataGridViewHistorique = new System.Windows.Forms.DataGridView();
             this.pbRetour = new System.Windows.Forms.PictureBox();
             this.pbSave = new System.Windows.Forms.PictureBox();
@@ -42,10 +43,9 @@
             this.rbListe = new System.Windows.Forms.RadioButton();
             this.rbTableau = new System.Windows.Forms.RadioButton();
             this.gbTri = new System.Windows.Forms.GroupBox();
+            this.rbTriEtoile = new System.Windows.Forms.RadioButton();
             this.rbTriDepartement = new System.Windows.Forms.RadioButton();
             this.rbTriDate = new System.Windows.Forms.RadioButton();
-            this.rbTriEtoile = new System.Windows.Forms.RadioButton();
-            this.listBoxHistorique = new System.Windows.Forms.ListBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewHistorique)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbRetour)).BeginInit();
@@ -76,6 +76,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(785, 305);
             this.panel1.TabIndex = 2;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // listBoxHistorique
+            // 
+            this.listBoxHistorique.Font = new System.Drawing.Font("Gentium Basic", 12.25F);
+            this.listBoxHistorique.FormattingEnabled = true;
+            this.listBoxHistorique.ItemHeight = 19;
+            this.listBoxHistorique.Location = new System.Drawing.Point(89, 12);
+            this.listBoxHistorique.Name = "listBoxHistorique";
+            this.listBoxHistorique.Size = new System.Drawing.Size(606, 270);
+            this.listBoxHistorique.TabIndex = 40;
             // 
             // dataGridViewHistorique
             // 
@@ -83,44 +94,44 @@
             this.dataGridViewHistorique.AllowUserToDeleteRows = false;
             this.dataGridViewHistorique.AllowUserToResizeColumns = false;
             this.dataGridViewHistorique.AllowUserToResizeRows = false;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            this.dataGridViewHistorique.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle46.SelectionForeColor = System.Drawing.Color.Black;
+            this.dataGridViewHistorique.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle46;
             this.dataGridViewHistorique.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewHistorique.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewHistorique.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle47.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle47.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle47.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle47.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle47.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle47.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle47.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewHistorique.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle47;
             this.dataGridViewHistorique.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewHistorique.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle48.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle48.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle48.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle48.ForeColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle48.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle48.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle48.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewHistorique.DefaultCellStyle = dataGridViewCellStyle48;
             this.dataGridViewHistorique.GridColor = System.Drawing.Color.Black;
             this.dataGridViewHistorique.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.dataGridViewHistorique.Location = new System.Drawing.Point(89, 12);
             this.dataGridViewHistorique.MultiSelect = false;
             this.dataGridViewHistorique.Name = "dataGridViewHistorique";
             this.dataGridViewHistorique.ReadOnly = true;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewHistorique.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
-            this.dataGridViewHistorique.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle49.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle49.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle49.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle49.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle49.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle49.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle49.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewHistorique.RowHeadersDefaultCellStyle = dataGridViewCellStyle49;
+            dataGridViewCellStyle50.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle50.SelectionForeColor = System.Drawing.Color.Black;
+            this.dataGridViewHistorique.RowsDefaultCellStyle = dataGridViewCellStyle50;
             this.dataGridViewHistorique.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewHistorique.Size = new System.Drawing.Size(606, 281);
             this.dataGridViewHistorique.TabIndex = 39;
@@ -206,6 +217,17 @@
             this.gbTri.TabStop = false;
             this.gbTri.Text = "Trier par";
             // 
+            // rbTriEtoile
+            // 
+            this.rbTriEtoile.AutoSize = true;
+            this.rbTriEtoile.Location = new System.Drawing.Point(264, 25);
+            this.rbTriEtoile.Name = "rbTriEtoile";
+            this.rbTriEtoile.Size = new System.Drawing.Size(68, 24);
+            this.rbTriEtoile.TabIndex = 5;
+            this.rbTriEtoile.Text = "Etoile";
+            this.rbTriEtoile.UseVisualStyleBackColor = true;
+            this.rbTriEtoile.Click += new System.EventHandler(this.rbTriEtoile_Click);
+            // 
             // rbTriDepartement
             // 
             this.rbTriDepartement.AutoSize = true;
@@ -215,6 +237,7 @@
             this.rbTriDepartement.TabIndex = 4;
             this.rbTriDepartement.Text = "Département";
             this.rbTriDepartement.UseVisualStyleBackColor = true;
+            this.rbTriDepartement.Click += new System.EventHandler(this.rbTriDepartement_Click);
             // 
             // rbTriDate
             // 
@@ -227,24 +250,7 @@
             this.rbTriDate.TabStop = true;
             this.rbTriDate.Text = "Date";
             this.rbTriDate.UseVisualStyleBackColor = true;
-            // 
-            // rbTriEtoile
-            // 
-            this.rbTriEtoile.AutoSize = true;
-            this.rbTriEtoile.Location = new System.Drawing.Point(264, 25);
-            this.rbTriEtoile.Name = "rbTriEtoile";
-            this.rbTriEtoile.Size = new System.Drawing.Size(68, 24);
-            this.rbTriEtoile.TabIndex = 5;
-            this.rbTriEtoile.Text = "Etoile";
-            this.rbTriEtoile.UseVisualStyleBackColor = true;
-            // 
-            // listBoxHistorique
-            // 
-            this.listBoxHistorique.FormattingEnabled = true;
-            this.listBoxHistorique.Location = new System.Drawing.Point(89, 12);
-            this.listBoxHistorique.Name = "listBoxHistorique";
-            this.listBoxHistorique.Size = new System.Drawing.Size(606, 277);
-            this.listBoxHistorique.TabIndex = 40;
+            this.rbTriDate.Click += new System.EventHandler(this.rbTriDate_Click);
             // 
             // FormHistorique
             // 
