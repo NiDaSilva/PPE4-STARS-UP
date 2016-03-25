@@ -33,12 +33,13 @@ class controller{
             $retour = $retour . '
             <div class="owl-item">
 
+
             <div class="col-sm-6 col-md-4">
                 <div class="thumbnail">
                     <img src="http://placehold.it/350x150" alt="320x150">
                     <div class="caption">
-                        <h4><a href="#">'.$row['NOM_HEBERGEMENT'].'</a></h4>
-                        <p>'.$row['ADRESSE_HEBERGEMENT'].'</p>
+                        <h4><a href="#">' . $row['NOM_HEBERGEMENT'] . '</a></h4>
+                        <p>' . $row['ADRESSE_HEBERGEMENT'] . '</p>
                         <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
                     </div>
                 </div>

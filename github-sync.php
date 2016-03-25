@@ -1,1 +1,0 @@
-github-sync.php
