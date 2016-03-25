@@ -13,14 +13,14 @@ if (isset($_GET["id"])) {
 //ID_VISITE,v.ID_HEBERGEMENT,ID_SAISON,DATE_HEURE_VISITE, NOM_HEBERGEMENT,ADRESSE_HEBERGEMENT,VILLE_HEBERGEMENT,ID_DEPARTEMENT,HORAIRES  WHERE ID_INSPECTEUR = $id
 
     // get a visite from visites table
-    $result = mysql_query("SELECT * FROM visiter AS v INNER JOIN hebergement AS h ON v.ID_HEBERGEMENT=h.ID_HEBERGEMENT WHERE 1 ") or die(mysql_error());
+    $result = mysql_query("SELECT * FROM visiter AS v INNER JOIN hebergement AS h ON v.ID_HEBERGEMENT=h.ID_HEBERGEMENT WHERE ID_INSPECTEUR = $id") or die(mysql_error());
 
     if (!empty($result)) {
         // check for empty result
         if (mysql_num_rows($result) > 0) {
 
             // user node
-            $response["visite"] = array();
+            $response["visites"] = array();
  
             while ($row = mysql_fetch_array($result)) {
                 // temp user array
@@ -36,7 +36,7 @@ if (isset($_GET["id"])) {
                 $visite["horaires"]     = $row["HORAIRES"];
          
                 // push single product into final response array
-                array_push($response["visite"], $visite);
+                array_push($response["visites"], $visite);
             }
 
             // success
