@@ -41,9 +41,8 @@ public class Connexion_Activity extends Activity {
 
                         //if login est bon
                             i = new Intent(getApplicationContext(), Planning_Activity.class);
-                            startActivity(i);
                             Toast.makeText(getApplicationContext(),"Valide",Toast.LENGTH_SHORT).show();
-
+                            startActivity(i);
                     break;
             }
         }

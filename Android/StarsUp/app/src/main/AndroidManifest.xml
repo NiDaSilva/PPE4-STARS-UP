@@ -37,6 +37,7 @@
         <activity
             android:name=".Planning_Activity"
             android:label="@string/titre_activity_planning" >
+
         </activity>
         <activity
             android:name=".Visite_Activity"

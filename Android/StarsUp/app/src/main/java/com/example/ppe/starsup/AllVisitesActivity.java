@@ -1,20 +1,8 @@
 package com.example.ppe.starsup;
 
-import android.app.Activity;
-import android.app.ProgressDialog;
-import android.content.Intent;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ListAdapter;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -22,12 +10,17 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import android.app.ListActivity;
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.util.Log;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 
 
-public class Planning_Activity extends Activity {
+public class AllVisitesActivity extends ListActivity {
 
     // Progress Dialog
     private ProgressDialog pDialog;
@@ -39,68 +32,27 @@ public class Planning_Activity extends Activity {
     ArrayList<HashMap<String, String>> listVisite = new ArrayList<HashMap<String, String>>();
 
     // url to get all products list
-    private static String get_visites = "http://192.168.215.10/ppe4-stars-up/get_visites.php";
+    private static String get_visite = "./get_visite.php";
+
 
     // products JSONArray
     JSONArray visites = null;
 
+    //chargement des visites
+    //new AllVisitesActivity().execute();
+
     ListView list_visite = (ListView) findViewById(R.id.list_visites);
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_planning);
-
-
-
-
-        //chargement des visites
-        new ChargementVisite().execute();
-
-
-        //OnClick ****************************************************************************************** à faire
-        list_visite.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> a, View v, int position, long id) {
-                Intent i = new Intent(getApplicationContext(), Hebergement_Activity.class);
-                startActivity(i);
-            }
-        });
-    }
-
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_planning, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-
-
+    /**
+     * Background Async Task to Load all product by making HTTP Request
+     */
     class ChargementVisite extends AsyncTask<String, String, String> {
 
         // Before starting background thread Show Progress Dialog
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog = new ProgressDialog(Planning_Activity.this);
+            pDialog = new ProgressDialog(AllVisitesActivity.this);
             pDialog.setMessage("Chargement des visites. Attendez ...");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(false);
@@ -117,7 +69,7 @@ public class Planning_Activity extends Activity {
             params.add(new BasicNameValuePair("id", idInspecteur));
 
             // getting JSON string from URL
-            JSONObject json = jParser.makeHttpRequest(get_visites, "GET", params);
+            JSONObject json = jParser.makeHttpRequest(get_visite, "GET", params);
 
             // Check your log cat for JSON reponse
             Log.d("Visites : ", json.toString());
@@ -149,10 +101,10 @@ public class Planning_Activity extends Activity {
                 } else {
                     // no products found
                     // Launch Add New product Activity
-                    //Intent i = new Intent(getApplicationContext(), Planning_Activity.class);
+                    Intent i = new Intent(getApplicationContext(), Planning_Activity.class);
                     // Closing all previous activities
-                    // i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    //startActivity(i);
+                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(i);
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -174,17 +126,14 @@ public class Planning_Activity extends Activity {
                     /**
                      * Updating parsed JSON data into ListView
                      * */
-
-                    //Insertion des items dans la vue list_planning
-                    SimpleAdapter adapter = new SimpleAdapter(Planning_Activity.this, listVisite, R.layout.list_planning,
-                            new String[] {"date", "nom", "adresse"}, new int[] {R.id.date, R.id.nom, R.id.adresse});
-
-                    list_visite.setAdapter(adapter);
+                    ListAdapter adapter = new SimpleAdapter(
+                            AllVisitesActivity.this, listVisite, R.layout.list_planning, new String[]{"date", "nom", "adresse"}, new int[]{R.id.date, R.id.nom, R.id.adresse});
+                    // updating listview
+                    setListAdapter(adapter);
                 }
             });
 
         }
-
 
     }
 }

@@ -90,7 +90,7 @@ public class EditIdInspecteur extends Activity {
 
                             // product with this id found
                             // Edit Text
-                            txtName = (EditText) findViewById(R.id.txtName);
+                        //    txtName = (EditText) findViewById(R.id.txtName);
 
                             // display product data in EditText
                             txtName.setText(product.getString(TAG_ID));
