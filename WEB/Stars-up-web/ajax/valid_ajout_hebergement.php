@@ -4,7 +4,7 @@
 include_once('../class/mypdo.class.php');
 $vpdo=new mypdo();
 $tab=array();
-
+//test validation frd champ a faire.
 if($_REQUEST['departement']!= 0){
 $tab['departement']=intval($_REQUEST['departement']);
 $tab['nom']=$_REQUEST['nom'];
@@ -49,6 +49,7 @@ while ($row = $result->fetch()) {
 	}
 	$vpdo->insert($tab);
 
+
 }
 else
 {
@@ -59,8 +60,6 @@ else
 			</div>
 			';
 }
-
-//$vpdo->insert($tab)
 
 echo json_encode($tab['alert']);
 ?>

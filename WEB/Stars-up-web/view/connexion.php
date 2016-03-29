@@ -18,4 +18,22 @@ $(".switch").click(function () {
            $(li).addClass("active");
 
 });
+$("#signin").click(function(){
+    $.ajax({
+        url: "../ajax/connect.php",
+        type: "POST",
+        data: ({login : $("#login").val(),pass : $("#password").val(),type : $("#choix li.active").text().toLowerCase()})
+    }).done(function(data)
+    {
+        data=JSON.parse(data);
+       if(data.ok==true)
+       {
+           alert("ça marche !il es connecter on fera un petit affichage des familles ici");
+       }
+        else
+       {
+           alert("ça marche ! il est nul on fera un petit affichage des familles ici");
+       }
+    });
+});
 </script>
