@@ -81,7 +81,7 @@ class page_base {
 	                        <a class="page-scroll" href="#">Contact</a>
 	                    </li>
 	                    <li>
-	                        <a class="page-scroll" href="#">Deconnexion</a>
+	                        <a class="page-scroll" href="../view/deconnexion.php">Deconnexion</a>
 	                    </li>
 	                </ul>
 	            </div>
