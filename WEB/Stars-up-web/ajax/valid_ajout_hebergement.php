@@ -11,7 +11,7 @@ $mypdo=new mypdo();
 
 if(isset($_REQUEST['departement'])){
 $tab['departement']=$_REQUEST['departement'];}
-$tab['nom']="bite"
+$tab['nom']="try";
 //$tab['adresse']=$_REQUIRE['adresse'];
 //$tab['ville']=$_REQUIERE['ville'];
 //$tab['horraire']=$_REQUIERe['horraire'];

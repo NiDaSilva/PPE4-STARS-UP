@@ -45,8 +45,8 @@ class conn_controller{
                                     <div class="col-sm-12">
                                     </div>
                                 </div>  
-                                <div class="form-group row" style="padding:10px">
-                                    <ul class="nav nav-pills nav-justified nav-inverse">
+                                <div class="form-group row ch" style="padding:10px">
+                                    <ul id="choix" class="nav nav-pills nav-justified nav-inverse">
                                         <li id ="liadmin" role="presentation" class="liconn"><a class="switch" name="admin">Admin</a></li>
                                         <li id ="ligerant" role="presentation" class="liconn"><a class="switch" name="gerant">Gerant</a></li>
                                         <li id = "liinspecteur" role="presentation" class="liconn"><a class="switch" name="inspecteur">Inspecteur</a></li>
@@ -86,7 +86,7 @@ class conn_controller{
                             </div> 
                             <div class="form-group row">
                                     <div class="col-sm-12">
-                                    <a href="#" class="btn btn-primary" role="button">Sign in</a>
+                                    <a href="#" id="signin" class="btn btn-primary" role="button">Sign in</a>
                                     </div>
                                 </div>                         
                             </form>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="5a0cd883-8b55-4d4f-b4e5-043ca3bcd9c3" name="SERVEUR_PPE4" url="http://192.168.215.10">
+        <fileTransfer host="192.168.215.10" port="21" password="" username="nicolas">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

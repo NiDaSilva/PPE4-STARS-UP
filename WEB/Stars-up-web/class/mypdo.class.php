@@ -36,20 +36,12 @@ class mypdo extends PDO
 
     public function connect($tab)
     {
-        if ($tab['categ'] == 'admin') {
-            $requete = 'select * from admin where LOGIN="' . $tab['id'] . '" and MDP=MD5("' . $tab['mp'] . '");';
-        }
-        if ($tab['categ'] == 'inspecteur') {
-            $requete = 'select * from inspecteur where LOGIN="' . $tab['id'] . '" and MDP=MD5("' . $tab['mp'] . '");';
-        }
-        if ($tab['categ'] == 'gerant') {
-            $requete = 'select * from gerant where LOGIN="' . $tab['id'] . '" and MDP=MD5("' . $tab['mp'] . '");';
-        }
-        $result = $this->connexion->query($requete);
-        if ($result) {
-            if ($result->rowCount() == 1) {
-                return ($result);
-            }
+        $requ = $this->connexion->prepare('SELECT * FROM '.$tab["type"].' WHERE LOGIN="'.$tab["id"].'" and MDP="'.$tab["mp"].'";');
+        $requ->execute();
+        $result = $requ->fetch(PDO::FETCH_ASSOC);
+        if ($result)
+        {
+            return ($result);
         }
         return null;
     }
