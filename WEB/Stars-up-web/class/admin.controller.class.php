@@ -54,15 +54,18 @@ class admin_controller{
 
         $form=
         '<div class="well well-lg">
-        <form id="new" name="new" method="post">';
+        <form id="new" name="new" method="post">
+        <span><h2><a href="../view/consultation_admin.php"><i class="fa fa-chevron-circle-left"> Retour vers consultation</i></a></h2></span>';
         switch($type){
             case "hebergement" :
             {
-                $form=$form.'<ul class="nav nav-pills nav-justified nav-inverse">
+                $form=$form.'                
+                            <ul class="nav nav-pills nav-justified nav-inverse">
                                 <li id ="lihotel" role="presentation"><a id="hotel">Hotel</a></li>
                                 <li id ="licamping" role="presentation"><a id ="camping">Camping</a></li>
                                 <li id = "lichambre" role="presentation"><a name ="x" id ="chambre">Chambre d\'hote</a></li>
                             </ul>
+
                             <div class="well well-lg" id="resultajax">
                             </div>
                             ';

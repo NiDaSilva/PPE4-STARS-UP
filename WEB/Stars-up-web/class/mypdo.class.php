@@ -2,7 +2,7 @@
 
 class mypdo extends PDO
 {
-    private $PARAM_hote = '192.168.215.10'; // le chemin vers le serveur
+    private $PARAM_hote = '127.0.0.1'; // le chemin vers le serveur : 192.168.215.10
     private $PARAM_utilisateur = 'root'; // nom d'utilisateur pour se connecter
     private $PARAM_mot_passe = ''; // mot de passe de l'utilisateur pour se connecter
     private $PARAM_nom_bd = 'ppe4';
@@ -83,9 +83,29 @@ class mypdo extends PDO
         }
     }
 
-    public function insert_hebergement($tab){
-        $requete = 'INSERT INTO hebergement (ID_DEPARTEMENT, NOM_HEBERGEMENT,ADRESSE_HEBERGEMENT,VILLE_HEBERGEMENT, HORRAIRE_HEBERGEMENT)VALUES('.$tab['departement'].','.$tab['nom'].','.$tab['adresse'].','.$tab['ville'].','.$tab['horraire'].')';
-        $result = $this->connexion->query($requete);
+    public function insert($tab){
+        $requete = 'INSERT INTO hebergement (ID_HEBERGEMENT,ID_DEPARTEMENT, NOM_HEBERGEMENT,ADRESSE_HEBERGEMENT,VILLE_HEBERGEMENT, HORAIRES)
+        VALUES('.$tab['id'].','.$tab['departement'].','.$tab['nom'].','.$tab['adresse'].','.$tab['ville'].','.$tab['horaire'].'); ';
+
+
+        switch ($tab['table']) {
+            case 'hotel':
+            {
+                $requete = $requete. 'INSERT INTO hotel VALUES('.$tab['id'].','.$tab['nbresto'].','.$tab['chefresto'].');';
+            }
+                break;
+            case 'camping':
+            {
+                $requete = $requete. 'INSERT INTO camping VALUES('.$tab['id'].');';
+            }
+                break;
+            case 'chambre':
+            {
+                $requete = $requete. 'INSERT INTO chambre_hote VALUES('.$tab['id'].','.$tab['nbchambre'].','.$tab['nbcuisine'].');';
+            }
+                break;
+        }
+        $this->connexion->query($requete);
     }
 
     public function delete($table,$id){

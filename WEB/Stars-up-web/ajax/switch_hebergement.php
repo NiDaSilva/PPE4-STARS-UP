@@ -5,16 +5,55 @@ include_once('../class/mypdo.class.php');
 $vpdo=new mypdo();
 
 
+$script = '
+<script type="text/javascript">
+$("#submit").click(function(){
+    $.ajax({
+                url: "../ajax/valid_ajout_hebergement.php",
+                type: "GET",
+                data: ({
 
-$data = "test";
+                    table : $("#table").val(),
+                    departement : $("#departement").val(),
+                    nom : $("#nom").val(),
+                    adresse : $("#adresse").val(),
+                    ville : $("#ville").val(),
+                    horaire : $("#horaire").val(),
+
+                    nbresto : $("#nbresto").val(),
+                    chefresto : $("#chefresto").val(),
+
+                    nbchambre : $("#nbchambre").val(),
+                    nbcuisine : $("#nbcuisine").val()
+                }),
+
+                success: function (data) {
+                    $("#alertsubmit").empty();
+                    var d = $.parseJSON(data);
+                   $("#alertsubmit").append(d);
+                   $("#table").val(),
+                    $("#departement").prop("selectedIndex",0);
+                    $("#nom").val("");
+                    $("#adresse").val("");
+                    $("#ville").val("");
+                    $("#horaire").val("");
+                    $("#nbresto").val("");
+                    $("#chefresto").val("");
+                },
+                error: function () {
+                }
+            })
+});
+
+</script>';
+
 if(isset($_REQUEST['categ']))
 {
 	switch($_REQUEST['categ'])
 	{
 		case "hotel" :
 		{
-			$data='
-			<div class="well well-lg">
+			$data='<div id="alertsubmit"></div><input type="hidden" class="form-control" id="table" value="'.$_REQUEST['categ'].'">
 	            <div class="form-group row">
 	                <label for="departement" class="col-sm-2 form-control-label">Département</label>
 	                <div class="col-sm-10">
@@ -32,49 +71,47 @@ if(isset($_REQUEST['categ']))
 	            <div class="form-group row">
 	                <label for="nom" class="col-sm-2 form-control-label">Nom hébergement</label>
 	                <div class="col-sm-10">
-	                    <input type="text" class="form-control" name="nom" placeholder="nom">
+	                    <input type="text" class="form-control" id="nom" placeholder="nom">
 	                </div>
 	            </div>
 	            <div class="form-group row">
 	                <label for="adresse" class="col-sm-2 form-control-label">Adresse hébergement</label>
 	                <div class="col-sm-10">
-	                    <input type="text" class="form-control" name="adresse" placeholder="ex: 2 rue bidule">
+	                    <input type="text" class="form-control" id="adresse" placeholder="ex: 2 rue bidule">
 	                </div>
 	            </div>
 	            <div class="form-group row">
 	                <label for="ville" class="col-sm-2 form-control-label">Ville</label>
 	                <div class="col-sm-10">
-	                    <input type="text" class="form-control" name="ville" placeholder="ex: 49000 Angers">
+	                    <input type="text" class="form-control" id="ville" placeholder="ex: 49000 Angers">
 	                </div>
 	            </div>
 	            <div class="form-group row">
-	                <label for="horraire" class="col-sm-2 form-control-label">Horraire</label>
+	                <label for="horaire" class="col-sm-2 form-control-label">Horaire</label>
 	                <div class="col-sm-10">
-	                    <input type="text" class="form-control" name="horraire" placeholder="ex: 8h - 18h">
+	                    <input type="text" class="form-control" id="horaire" placeholder="ex: 8h - 18h">
 	                </div>
 	            </div>
 	            <div class="form-group row">
 	                <label for="nbresto" class="col-sm-2 form-control-label">Nombre resto</label>
 	                <div class="col-sm-10">
-	                    <input type="number" class="form-control" name="nbresto" default="1">
+	                    <input type="number" class="form-control" id="nbresto" default="1">
 	                </div>
 	            </div>
 	            <div class="form-group row">
 	                <label for="chefresto" class="col-sm-2 form-control-label">Chef Resto</label>
 	                <div class="col-sm-10">
-	                    <input type="text" class="form-control" name="chefresto">
+	                    <input type="text" class="form-control" id="chefresto">
 	                </div>
 	            </div>
-	            <button type="button" id="submit" name="submit" class="btn btn-primary">Submit</button>
-	        </div>	     
-	        ';
+                <a type="button" id="submit" class="btn btn-primary">Submit</a>
+	        '.$script;
 	    }
 	    	break;
 	    case "camping" :
 	    {
-	    	$data=
-    		'<div class="well well-lg">
-            	<div class="form-group row">
+	    	$data='<div id="alertsubmit"></div><input type="hidden" class="form-control" id="table" value="'.$_REQUEST['categ'].'">
+               	<div class="form-group row">
                     <label for="departement" class="col-sm-2 form-control-label">Département</label>
                     <div class="col-sm-10">
                         <select class="form-control" id="departement" name="departement">
@@ -107,20 +144,18 @@ if(isset($_REQUEST['categ']))
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="horraire" class="col-sm-2 form-control-label">Horraire</label>
+                    <label for="horaire" class="col-sm-2 form-control-label">Horaire</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="horraire" placeholder="ex: 8h - 18h">
+                        <input type="text" class="form-control" id="horaire" placeholder="ex: 8h - 18h">
                     </div>
                 </div> 
-                <button type="submit" id="submit" class="btn btn-primary">Submit</button>                               
-        	</div>'
-	         ;
+                <a type="button" id="submit" class="btn btn-primary">Submit</a>
+        	'.$script;
 	    }
 	    	break;
 	    case "chambre" :
 	    {	    
-	    	$data='
-            <div class="well well-lg">
+	    	$data='<div id="alertsubmit"></div><input type="hidden" class="form-control" id="table" value="'.$_REQUEST['categ'].'">
             	<div class="form-group row">
                     <label for="departement" class="col-sm-2 form-control-label">Département</label>
                     <div class="col-sm-10">
@@ -154,9 +189,9 @@ if(isset($_REQUEST['categ']))
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="horraire" class="col-sm-2 form-control-label">Horraire</label>
+                    <label for="horaire" class="col-sm-2 form-control-label">Horaire</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="horraire" placeholder="ex: 8h - 18h">
+                        <input type="text" class="form-control" id="horaire" placeholder="ex: 8h - 18h">
                     </div>
                 </div> 
                 <div class="form-group row">
@@ -171,9 +206,8 @@ if(isset($_REQUEST['categ']))
                         <input type="number" class="form-control" id="nbcuisine">
                     </div>
                 </div> 
-                <button type="submit" id="submit" class="btn btn-primary">Submit</button>                              
-            </div>
-            ';	
+                <a type="button" id="submit" class="btn btn-primary">Submit</a>
+            '.$script;	
 	    }
 	    	break;
 	}
@@ -183,3 +217,4 @@ if(isset($_REQUEST['categ']))
 
 echo json_encode($data);
 ?>
+
