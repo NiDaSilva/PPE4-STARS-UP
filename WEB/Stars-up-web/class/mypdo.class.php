@@ -39,7 +39,7 @@ class mypdo extends PDO
         $requ = $this->connexion->prepare('SELECT * FROM '.$tab["type"].' WHERE LOGIN="'.$tab["id"].'" and MDP="'.$tab["mp"].'";');
         $requ->execute();
         $result = $requ->fetch(PDO::FETCH_ASSOC);
-        if ($result)
+        if($result)
         {
             return ($result);
         }

@@ -15,19 +15,31 @@ if(isset($_REQUEST['login']) && isset($_REQUEST['pass']) && isset($_REQUEST['typ
     if($result!=null)
     {
         session_start();
-        $_SESSION['id'] = $result['ID_INSPECTEUR'];
-        $_SESSION['NOM'] = $result['NOM_INSPECTEUR'];
         $_SESSION['type'] = $_REQUEST['type'];
+        if($_REQUEST['type']=="inspecteur")
+        {
+            $_SESSION['id'] = $result['ID_INSPECTEUR'];
+            $_SESSION['nom'] = $result['NOM_INSPECTEUR'];
+        }else if($_REQUEST['type']=="gerant")
+        {
+            $_SESSION['id'] = $result['ID_GERANT'];
+            $_SESSION['nom'] = $result['NOM_GERANT'];
+        }else{
+            $_SESSION['id'] = "Admin";
+            $_SESSION['nom'] = "Admin";
+        }
+
         $tableau=array(
             "ok"   => true,
-            "message"   => "Vous êtes bien connecter"
+            "message"   => "Vous êtes bien connecter",
+            "type"   => $_SESSION['type']
         );
     }
     else
     {
         $tableau=array(
             "ok"   => false,
-            "message"   => "Echec de la connection"
+            "message"   => "Mauvais identifiant"
         );
     }
     echo json_encode($tableau);

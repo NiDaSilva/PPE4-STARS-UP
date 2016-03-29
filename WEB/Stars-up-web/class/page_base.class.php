@@ -80,6 +80,7 @@ class page_base {
 	                    <li>
 	                        <a class="page-scroll" href="#">Contact</a>
 	                    </li>
+	                    if($_S
 	                    <li>
 	                        <a class="page-scroll" href="../view/deconnexion.php">Deconnexion</a>
 	                    </li>
