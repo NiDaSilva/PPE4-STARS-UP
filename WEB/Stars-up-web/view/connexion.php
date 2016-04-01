@@ -29,6 +29,10 @@ $("#signin").click(function(){
        if(data.ok==true)
        {
            alert("ça marche !il est connecter on fera un petit affichage des familles ici");
+           if(data.type=="gerant")
+           {
+               document.location.href="../index.php";
+           }
            //document.location.href="../index.php"; // ici c'est pour le rediriger selon le type de la session
        }
         else

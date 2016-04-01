@@ -31,7 +31,7 @@ if(isset($_REQUEST['login']) && isset($_REQUEST['pass']) && isset($_REQUEST['typ
 
         $tableau=array(
             "ok"   => true,
-            "message"   => "Vous êtes bien connecter",
+            "message"   => "Vous êtes bien connecté",
             "type"   => $_SESSION['type']
         );
     }

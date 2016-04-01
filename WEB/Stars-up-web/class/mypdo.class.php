@@ -2,7 +2,7 @@
 
 class mypdo extends PDO
 {
-    private $PARAM_hote = '127.0.0.1'; // le chemin vers le serveur : 192.168.215.10
+    private $PARAM_hote = '192.168.215.10'; // le chemin vers le serveur : 192.168.215.10
     private $PARAM_utilisateur = 'root'; // nom d'utilisateur pour se connecter
     private $PARAM_mot_passe = ''; // mot de passe de l'utilisateur pour se connecter
     private $PARAM_nom_bd = 'ppe4';
@@ -36,6 +36,7 @@ class mypdo extends PDO
 
     public function connect($tab)
     {
+
         $requ = $this->connexion->prepare('SELECT * FROM '.$tab["type"].' WHERE LOGIN="'.$tab["id"].'" and MDP="'.$tab["mp"].'";');
         $requ->execute();
         $result = $requ->fetch(PDO::FETCH_ASSOC);

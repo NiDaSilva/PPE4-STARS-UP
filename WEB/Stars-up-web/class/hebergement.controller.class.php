@@ -61,7 +61,7 @@ class controller{
                 <span aria-hidden="true">&laquo;</span>
               </a>
             </li>';
-            for ($i=1; $i <= $nbpage ; $i++) { 
+            for ($i=1; $i <= $nbpage ; $i++) {
                $retour= $retour.'<li><a href="?page='.$i.'&#about">'.$i.'</a></li>';
             }
         $retour= $retour.'
