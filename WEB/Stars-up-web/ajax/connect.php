@@ -1,14 +1,12 @@
 <?php
-//envoi du formulaire hebergement.
 
 include_once('../class/mypdo.class.php');
 $vpdo=new mypdo();
-$data = 'ECHEC';
 if(isset($_REQUEST['login']) && isset($_REQUEST['pass']) && isset($_REQUEST['type']))
 {
     $tab=array(
-        "id"   => $_REQUEST['login'],
-        "mp"   => $_REQUEST['pass'],
+        "login"   => $_REQUEST['login'],
+        "pass"   => $_REQUEST['pass'],
         "type" => $_REQUEST['type'],
     );
     $result=$vpdo->connect($tab);
@@ -45,4 +43,3 @@ if(isset($_REQUEST['login']) && isset($_REQUEST['pass']) && isset($_REQUEST['typ
     echo json_encode($tableau);
 
 }
-?>

@@ -19,26 +19,27 @@ $(".switch").click(function () {
 
 });
 $("#signin").click(function(){
-    $.ajax({
-        url: "../ajax/connect.php",
-        type: "POST",
-        data: ({login : $("#login").val(),pass : $("#password").val(),type : $("#choix li.active").text().toLowerCase()})
-    }).done(function(data)
+    if($("#login").val()!=""  && $("#password").val()!="" && $("#choix li.active").text().toLowerCase()!="") {
+        user.connexion({
+            login: $("#login").val(), pass: $("#password").val(), type: $("#choix li.active").text().toLowerCase()
+        });
+    }else
     {
-        data=JSON.parse(data);
-       if(data.ok==true)
-       {
-           alert("ça marche !il est connecter on fera un petit affichage des familles ici");
-           if(data.type=="gerant")
-           {
-               document.location.href="../index.php";
-           }
-           //document.location.href="../index.php"; // ici c'est pour le rediriger selon le type de la session
-       }
-        else
-       {
-           alert("ça marche ! il est nul on fera un petit affichage des familles ici");
-       }
-    });
+        $("#nul").text("veuillez remplir tout les champs");
+        $("#nul").show();
+    }
+});
+$("#signup").click(function(){
+
+    if($("#nom").val()!="" && $("#prenom").val()!="" && $("#user").val()!="" && $("#pass").val()!="")
+    {
+        user.inscription({nom: $("#nom").val(), prenom: $("#prenom").val(), login: $("#user").val(), pass: $("#pass").val()});
+    }else
+    {
+        $("#nul").text("veuillez remplir tout les champs");
+        $("#nul").show();
+    }
+
+
 });
 </script>

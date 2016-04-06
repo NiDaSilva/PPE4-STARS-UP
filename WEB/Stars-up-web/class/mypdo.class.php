@@ -37,7 +37,7 @@ class mypdo extends PDO
     public function connect($tab)
     {
 
-        $requ = $this->connexion->prepare('SELECT * FROM '.$tab["type"].' WHERE LOGIN="'.$tab["id"].'" and MDP="'.$tab["mp"].'";');
+        $requ = $this->connexion->prepare('SELECT * FROM '.$tab["type"].' WHERE LOGIN="'.$tab["login"].'" and MDP="'.$tab["pass"].'";');
         $requ->execute();
         $result = $requ->fetch(PDO::FETCH_ASSOC);
         if($result)
@@ -100,6 +100,27 @@ class mypdo extends PDO
         }
         $this->connexion->query($requete);
     }
+
+
+
+    public function inscription($tab){
+
+        try
+        {
+            $this->connexion->beginTransaction();
+            $requete ='INSERT INTO gerant (NOM_GERANT,PRENOM_GERANT, LOGIN, MDP) VALUES("'.$tab['nom'].'","'.$tab['prenom'].'","'.$tab['login'].'","'.$tab['pass'].'");';
+            $this->connexion->exec($requete);
+            $this->connexion->commit();
+            return true;
+        }
+        catch (PDOException $e)
+        {
+            if ($this->connexion) $this->connexion->rollBack();
+            return false;
+
+        }
+    }
+
 
     public function delete($table,$id){
         $requete ='DELETE FROM '.$table.' WHERE ID_'.$table.' = '.$id.';';

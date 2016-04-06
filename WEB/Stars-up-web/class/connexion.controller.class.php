@@ -26,6 +26,13 @@ class conn_controller{
     public function corps_connexion()
     {
         $r= '
+            <script src="../class/user.js"></script>
+            <div id="bien" class="alert alert-success" style="display: none">
+                <strong>Succès!</strong>
+            </div>
+            <div id="nul" class="alert alert-danger" style="display: none">
+                <strong>Echec!</strong>
+            </div>
             <div class="well well-lg">
             <center><fieldset><h2><i class="fa fa-play-circle"></i>  <span class="light">Star\'s</span> UP</h2></fieldset></center>
                 <div class="col lg-12">
@@ -102,19 +109,13 @@ class conn_controller{
                           </br>
                             <h3>Sign up</h3>
                             <form>
-                            <div class="well well-lg">
+                            <div class="well well-lg"style="padding-bottom: 84px">
                             <div class="form-group row">
-                            <div class="form-group row" style="padding:10px">
-                                    <ul class="nav nav-pills nav-justified nav-inverse">
-                                        <li id ="ligerant1" role="presentation" class="liconn"><a class="switch" name="gerant1">Gerant</a></li>
-                                        <li id = "liinspecteur1" role="presentation" class="liconn"><a class="switch" name="inspecteur1">Inspecteur</a></li>
-                                    </ul>
-                                </div>
                                 <div class="form-group row">
                                     <div class="col-sm-12">
                                         <div class="input-group">
                                           <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></span>
-                                          <input type="text" id="login" class="form-control" placeholder="Nom" aria-describedby="basic-addon1">
+                                          <input type="text" id="nom" class="form-control" placeholder="Nom" aria-describedby="basic-addon1">
                                         </div>
                                     </div>
                                 </div>
@@ -122,7 +123,7 @@ class conn_controller{
                                     <div class="col-sm-12">
                                         <div class="input-group">
                                           <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></span>
-                                          <input type="text" id="login" class="form-control" placeholder="Prenom" aria-describedby="basic-addon1">
+                                          <input type="text" id="prenom" class="form-control" placeholder="Prenom" aria-describedby="basic-addon1">
                                         </div>
                                     </div>
                                 </div>
@@ -130,7 +131,7 @@ class conn_controller{
                                     <div class="col-sm-12">
                                         <div class="input-group">
                                           <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>
-                                          <input type="text" id="login" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+                                          <input type="text" id="user" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
                                         </div>
                                     </div>
                                 </div>
@@ -138,7 +139,7 @@ class conn_controller{
                                     <div class="col-sm-12">
                                         <div class="input-group">
                                           <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span></span>
-                                          <input type="password" id="password" class="form-control" placeholder="••••••••" aria-describedby="basic-addon1">
+                                          <input type="password" id="pass" class="form-control" placeholder="••••••••" aria-describedby="basic-addon1">
                                         </div>
                                     </div>
                                 </div>                                                            
@@ -146,7 +147,7 @@ class conn_controller{
                             </div>
                             <div class="form-group row">
                                     <div class="col-sm-12">
-                                        <a href="#" class="btn btn-primary" role="button">Sign up</a>
+                                        <a id="signup" href="#" class="btn btn-primary" role="button">Sign up</a>
                                 </div>
                                 </div>                         
                             </form>
