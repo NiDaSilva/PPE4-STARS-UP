@@ -20,54 +20,52 @@ namespace PPE4_Stars_up
         private BindingSource bindingSource1 = new BindingSource();
         string nbEtoile, comment;
         AutoItX3 au3 = new AutoItX3();
-        
+
         public FormHistorique()
         {
             InitializeComponent();
             chargedgv();
+
         }
 
         /// <summary>
-        /// Méthode qui permet d'ouvrir un fichier xml (s'il existe) et de charger son contenu dans la collection
+        /// Méthode qui permet d'ouvrir un fichier xml (s'il existe) sinon de le créer
         /// </summary>
         private void recup_xml()
         {
             try
             {
-               // InputBox("Chargement", "Ouverture du fichier");
+                InputBox("Recherche du fichier..", "");
 
-                if (InputBox("Chargement", "Ouverture du fichier") == 100)
-                {
-                    Close();
-                }
-
-                // Pour recréer la liste à partir du fichier :
-                // XmlSerializer serialXml = new XmlSerializer(typeof(List<ClassActivite>));
                 if (File.Exists("C:\\PPE4_DR\\HistoriqueVisites.xml"))
                 {
                     using (Stream flux = new FileStream("C:\\PPE4_DR\\HistoriqueVisites.xml", FileMode.Open, FileAccess.Read))
                     {
-                        // lesActivites = (List<ClassActivite>)serialXml.Deserialize(flux);
+                        InputBox("Fichier trouvé. Ouverture..", "");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Fichier xml inexistant");
+                    // MessageBox.Show("Fichier xml inexistant!\nCliquez sur OK pour finaliser le processus.", "Avertissement", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    InputBox("Fichier inexistant. Création..", "");
+                    InputBox("Ouverture..", "");
                 }
             }
             catch (Exception err)
             {
-                MessageBox.Show("Erreur dans la récupation du fichier xml : " + err.ToString());
+                MessageBox.Show("Erreur dans la récupération du fichier : " + err.ToString());
             }
         }
 
         /// <summary>
-        /// méthode qui permet d'enregistrer la collection dans un fichier xml
+        /// méthode qui permet d'écrire dans le fichier
         /// </summary>
         private void ecrire_xml()
         {
             try
             {
+                InputBox("Ecriture des données..", "");
+
                 XmlSerializer serialXml = new XmlSerializer(typeof(String));
                 using (Stream flux = new FileStream("C:\\PPE4_DR\\HistoriqueVisites.xml", FileMode.OpenOrCreate, FileAccess.Write))
                 {
@@ -93,7 +91,7 @@ namespace PPE4_Stars_up
 
 
         public void chargedgv()
-        {            
+        {
             if (rbTriDate.Checked)
             {
                 bindingSource1.DataSource = controleur.Vmodele.Dv_Historique;
@@ -109,7 +107,7 @@ namespace PPE4_Stars_up
 
             // Remplissage du Tableau
             dataGridViewHistorique.DataSource = bindingSource1;
-            
+
             for (int i = 0; i < dataGridViewHistorique.Rows.Count; i++) // parcours le datagridview
             {
                 // Gestion si aucune étoile entrée dans la bdd
@@ -185,7 +183,7 @@ namespace PPE4_Stars_up
             listBoxHistorique.Items.Clear();
             chargedgv();
             listBoxHistorique.Visible = true;
-            
+
         }
 
         private void rbTableau_Click(object sender, EventArgs e)
@@ -220,39 +218,45 @@ namespace PPE4_Stars_up
         }
         public static int InputBox(string title, string promptText)
         {
+
             Form form = new Form();
-            Label label = new Label();
+            LinkLabel texte = new LinkLabel();
             ProgressBar Progress = new ProgressBar();
 
             Progress.Minimum = 0;
             Progress.Maximum = 100;
 
             form.Text = title;
-            label.Text = promptText;
-            label.SetBounds(9, 20, 372, 13);
-            Progress.SetBounds(22, 36, 372, 20);
+            texte.Text = promptText;
+            texte.SetBounds(9, 20, 372, 13);
+            Progress.SetBounds(9, 30, 372, 20);
 
-            label.AutoSize = true;
+            texte.AutoSize = true;
             Progress.Anchor = Progress.Anchor | AnchorStyles.Right;
 
-            form.ClientSize = new Size(396, 107);
-            form.Controls.AddRange(new Control[] { label, Progress });
-            form.ClientSize = new Size(Math.Max(300, label.Right + 10), form.ClientSize.Height);
+            form.ClientSize = new Size(396, 91);
+            form.Controls.AddRange(new Control[] { texte, Progress });
+            form.ClientSize = new Size(Math.Max(300, texte.Right + 10), form.ClientSize.Height);
             form.FormBorderStyle = FormBorderStyle.FixedDialog;
             form.StartPosition = FormStartPosition.CenterScreen;
             form.MinimizeBox = false;
             form.MaximizeBox = false;
 
-            for (int i = 0; i < 100; i++)
-            {
-                // Thread.Sleep(100); --> Timer au tick
-                Progress.Value += 1;
-            }
+            Progress.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
 
             form.Show();
+
+            for (int i = 0; i < 100; i++)
+            {
+                Thread.Sleep(15); // --> Timer au tick
+
+                Progress.Value += 1;
+                form.Show();
+            }
+
             int Res = Progress.Value;
             if (Res==100)
-                form.Close();
+              form.Close();
 
             return Res;
         }
