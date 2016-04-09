@@ -16,6 +16,7 @@ namespace PPE4_Stars_up
     public partial class FormIndex : Form
     {
         private BindingSource bindingSource1 = new BindingSource();
+        private BindingSource bindingSource2 = new BindingSource();
 
         private MySqlDataAdapter mySqlDataAdapterTP7 = new MySqlDataAdapter();
         private DataSet dataSetTP7 = new DataSet();
@@ -177,6 +178,8 @@ namespace PPE4_Stars_up
                     quitterToolStripMenuItem.Enabled = true;
 
                     lblSpecialite.Text = controleur.Vmodele.Dv_specialite.ToTable().Rows[0][0].ToString() + "\n"; // Récupère la spécialité 
+                    lblInspecteur.Text = controleur.Vmodele.Dv_inspecteur.ToTable().Rows[0][0].ToString() + "\n"; // Récupère le nom et prénom de l'inspecteur 
+
                     ecrireFichier();
                 }
             }
@@ -273,7 +276,7 @@ namespace PPE4_Stars_up
 
         public void MAJHeure()
         {
-            lblInspecteur.Text = NI + " " + PI;
+            // lblInspecteur.Text = NI + " " + PI;
             lblheure.Text = DateTime.Now.ToString("HH:mm:ss");
         }
 

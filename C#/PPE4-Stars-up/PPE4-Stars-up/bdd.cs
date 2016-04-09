@@ -27,7 +27,7 @@ namespace PPE4_Stars_up
 
         private MySqlDataAdapter mySqlDataAdapterTP7 = new MySqlDataAdapter();
         private DataSet dataSetTP7 = new DataSet();
-        private DataView dv_login, dv_visite, dv_specialite, dv_NbEtoiles, dv_Historique, dv_Historique_Dep, dv_Historique_Etoile, dv_maj_etoile_commentaire = new DataView();
+        private DataView dv_login, dv_visite, dv_specialite, dv_NbEtoiles, dv_Historique, dv_Historique_Dep, dv_Historique_Etoile, dv_maj_etoile_commentaire, dv_inspecteur = new DataView();
 
         private void lireFichier()
         {
@@ -171,6 +171,19 @@ namespace PPE4_Stars_up
                 dv_maj_etoile_commentaire = value;
             }
         }
+
+        public DataView Dv_inspecteur
+        {
+            get
+            {
+                return dv_inspecteur;
+            }
+
+            set
+            {
+                dv_inspecteur = value;
+            }
+        }
         #endregion
 
         #region constructeur
@@ -225,7 +238,7 @@ namespace PPE4_Stars_up
         public void import()
         {
             if (!connopen) return;
-            mySqlDataAdapterTP7.SelectCommand = new MySqlCommand("select * from inspecteur; select v.ID_HEBERGEMENT as 'ID', h.NOM_HEBERGEMENT as 'NOM', h.ADRESSE_HEBERGEMENT as 'ADRESSE', h.VILLE_HEBERGEMENT as 'VILLE', v.DATE_HEURE_VISITE as 'DATE', h.HORAIRES, v.COMMENTAIRE_VISITE from visiter as v inner join hebergement as h on v.ID_HEBERGEMENT = h.ID_HEBERGEMENT where id_inspecteur =" + recup() + "; SELECT Libelle_specialite FROM specialite as s INNER JOIN inspecteur as i on s.ID_SPECIALITE = i.ID_SPECIALITE where id_inspecteur =" + recup() + "; Select ID_HEBERGEMENT as 'ID', DATE_HEURE_VISITE as 'Date_Heure', NOMBRE_ETOILE_VISITE as 'Nb Etoiles' FROM visiter ORDER BY Date_Heure DESC; SELECT v.DATE_HEURE_VISITE as 'Date & Heure', d.LIBELLE_DEPARTEMENT as 'Departement', h.NOM_HEBERGEMENT as 'Hebergement', v.NOMBRE_ETOILE_VISITE as 'Etoile', v.COMMENTAIRE_VISITE as 'Commentaire' FROM departement as d INNER JOIN hebergement as h on d.ID_DEPARTEMENT = h.ID_DEPARTEMENT INNER JOIN visiter as v on h.ID_HEBERGEMENT = v.ID_HEBERGEMENT WHERE v.ID_INSPECTEUR =" + recup() + " AND v.DATE_HEURE_VISITE < DATE(NOW()) ORDER BY DATE_HEURE_VISITE ASC; SELECT v.DATE_HEURE_VISITE as 'Date & Heure', d.LIBELLE_DEPARTEMENT as 'Departement', h.NOM_HEBERGEMENT as 'Hebergement', v.NOMBRE_ETOILE_VISITE as 'Etoile', v.COMMENTAIRE_VISITE as 'Commentaire' FROM departement as d INNER JOIN hebergement as h on d.ID_DEPARTEMENT = h.ID_DEPARTEMENT INNER JOIN visiter as v on h.ID_HEBERGEMENT = v.ID_HEBERGEMENT WHERE v.ID_INSPECTEUR =" + recup() + " AND v.DATE_HEURE_VISITE < DATE(NOW()) ORDER BY Departement ASC; SELECT v.DATE_HEURE_VISITE as 'Date & Heure', d.LIBELLE_DEPARTEMENT as 'Departement', h.NOM_HEBERGEMENT as 'Hebergement', v.NOMBRE_ETOILE_VISITE as 'Etoile', v.COMMENTAIRE_VISITE as 'Commentaire' FROM departement as d INNER JOIN hebergement as h on d.ID_DEPARTEMENT = h.ID_DEPARTEMENT INNER JOIN visiter as v on h.ID_HEBERGEMENT = v.ID_HEBERGEMENT WHERE v.ID_INSPECTEUR =" + recup() + " AND v.DATE_HEURE_VISITE < DATE(NOW()) ORDER BY Etoile ASC; SELECT ID_INSPECTEUR, ID_HEBERGEMENT, COMMENTAIRE_VISITE, NOMBRE_ETOILE_VISITE FROM visiter; ", myConnection);   
+            mySqlDataAdapterTP7.SelectCommand = new MySqlCommand("select * from inspecteur; select v.ID_HEBERGEMENT as 'ID', h.NOM_HEBERGEMENT as 'NOM', h.ADRESSE_HEBERGEMENT as 'ADRESSE', h.VILLE_HEBERGEMENT as 'VILLE', v.DATE_HEURE_VISITE as 'DATE', h.HORAIRES, v.COMMENTAIRE_VISITE from visiter as v inner join hebergement as h on v.ID_HEBERGEMENT = h.ID_HEBERGEMENT where id_inspecteur =" + recup() + "; SELECT Libelle_specialite FROM specialite as s INNER JOIN inspecteur as i on s.ID_SPECIALITE = i.ID_SPECIALITE where id_inspecteur =" + recup() + "; Select ID_HEBERGEMENT as 'ID', DATE_HEURE_VISITE as 'Date_Heure', NOMBRE_ETOILE_VISITE as 'Nb Etoiles' FROM visiter ORDER BY Date_Heure DESC; SELECT v.DATE_HEURE_VISITE as 'Date & Heure', d.LIBELLE_DEPARTEMENT as 'Departement', h.NOM_HEBERGEMENT as 'Hebergement', v.NOMBRE_ETOILE_VISITE as 'Etoile', v.COMMENTAIRE_VISITE as 'Commentaire' FROM departement as d INNER JOIN hebergement as h on d.ID_DEPARTEMENT = h.ID_DEPARTEMENT INNER JOIN visiter as v on h.ID_HEBERGEMENT = v.ID_HEBERGEMENT WHERE v.ID_INSPECTEUR =" + recup() + " AND v.DATE_HEURE_VISITE < DATE(NOW()) ORDER BY DATE_HEURE_VISITE ASC; SELECT v.DATE_HEURE_VISITE as 'Date & Heure', d.LIBELLE_DEPARTEMENT as 'Departement', h.NOM_HEBERGEMENT as 'Hebergement', v.NOMBRE_ETOILE_VISITE as 'Etoile', v.COMMENTAIRE_VISITE as 'Commentaire' FROM departement as d INNER JOIN hebergement as h on d.ID_DEPARTEMENT = h.ID_DEPARTEMENT INNER JOIN visiter as v on h.ID_HEBERGEMENT = v.ID_HEBERGEMENT WHERE v.ID_INSPECTEUR =" + recup() + " AND v.DATE_HEURE_VISITE < DATE(NOW()) ORDER BY Departement ASC; SELECT v.DATE_HEURE_VISITE as 'Date & Heure', d.LIBELLE_DEPARTEMENT as 'Departement', h.NOM_HEBERGEMENT as 'Hebergement', v.NOMBRE_ETOILE_VISITE as 'Etoile', v.COMMENTAIRE_VISITE as 'Commentaire' FROM departement as d INNER JOIN hebergement as h on d.ID_DEPARTEMENT = h.ID_DEPARTEMENT INNER JOIN visiter as v on h.ID_HEBERGEMENT = v.ID_HEBERGEMENT WHERE v.ID_INSPECTEUR =" + recup() + " AND v.DATE_HEURE_VISITE < DATE(NOW()) ORDER BY Etoile ASC; SELECT ID_INSPECTEUR, ID_HEBERGEMENT, COMMENTAIRE_VISITE, NOMBRE_ETOILE_VISITE FROM visiter; SELECT CONCAT(PERNOM_INSPECTEUR, ' ', NOM_INSPECTEUR) FROM inspecteur WHERE ID_INSPECTEUR =" + recup() + "; ", myConnection);   
             
                 try
                 {
@@ -251,9 +264,10 @@ namespace PPE4_Stars_up
                         dv_Historique = dataSetTP7.Tables[4].DefaultView; // Récupération de l'historique de l'inspecteur trier par défaut (DATE)
                         dv_Historique_Dep = dataSetTP7.Tables[5].DefaultView; // Récupération de l'historique de l'inspecteur trier par Département
                         dv_Historique_Etoile = dataSetTP7.Tables[6].DefaultView; // Récupération de l'historique de l'inspecteur trier par Etoile
-                        dv_maj_etoile_commentaire = dataSetTP7.Tables[7].DefaultView; // pour maj
+                        dv_maj_etoile_commentaire = dataSetTP7.Tables[7].DefaultView; // pour maj export
+                        dv_inspecteur = dataSetTP7.Tables[8].DefaultView; // Récupération du nom et prénom de l'inspecteur concaténé
 
-                        chargement = true;
+                chargement = true;
                 }
                 catch (Exception err)
                 {
