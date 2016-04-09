@@ -66,11 +66,38 @@ namespace PPE4_Stars_up
 
         private void quitterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            timerHHmm.Stop();
-            Visible = false;
-            
-            FormLogin FL = new FormLogin();
-            FL.Show();       
+            // Exportation des données
+
+            InputBox("Connexion à la base de données..", "");
+
+            controleur.Vmodele.seconnecter();
+
+            if (controleur.Vmodele.Connopen == false)  // si la connexion échoue : propriété connopen de vmmodele à faux
+            {
+                MessageBox.Show("La connexion n'a pas eu lieu", "Erreur !", MessageBoxButtons.OK, MessageBoxIcon.Error);  // messageBox d’erreur
+            }
+            else  // sinon
+            {
+                InputBox("Connecté. Exportation des données..", "");
+
+                // MessageBox.Show("Connexion à la base de donnée effectuée avec succès", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                controleur.Vmodele.export();  // appel de la méthode export() via Vmodele du controleur
+
+                InputBox("Données exportées. Déconnexion..", "");
+
+                controleur.Vmodele.sedeconnecter();  // se déconnecter de la BD.
+
+                planningToolStripMenuItem.Enabled = false;
+                historiqueDesVisitesToolStripMenuItem.Enabled = false;
+                imprimerPDFToolStripMenuItem.Enabled = false;
+                quitterToolStripMenuItem.Enabled = false;
+
+                timerHHmm.Stop();
+                Visible = false;
+
+                FormLogin FL = new FormLogin();
+                FL.Show();
+            }
         }
 
         private void FormIndex_Enter(object sender, EventArgs e)
@@ -86,10 +113,40 @@ namespace PPE4_Stars_up
 
             if (importToolStripMenuItem.Text == "Export")
             {
-                InputBox("Exportation des données..", "");
+                InputBox("Connexion à la base de données..", "");
 
+                controleur.Vmodele.seconnecter();
+
+                if (controleur.Vmodele.Connopen == false)  // si la connexion échoue : propriété connopen de vmmodele à faux
+                {
+                    MessageBox.Show("La connexion n'a pas eu lieu", "Erreur !", MessageBoxButtons.OK, MessageBoxIcon.Error);  // messageBox d’erreur
+                }
+                else  // sinon
+                {
+                    InputBox("Connecté. Exportation des données..", "");
+
+                    // MessageBox.Show("Connexion à la base de donnée effectuée avec succès", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    controleur.Vmodele.export();  // appel de la méthode export() via Vmodele du controleur
+                    
+                    InputBox("Données exportées. Déconnexion..", "");
+
+                    controleur.Vmodele.sedeconnecter();  // se déconnecter de la BD.
+                    
+                    planningToolStripMenuItem.Enabled = false;
+                    historiqueDesVisitesToolStripMenuItem.Enabled = false;
+                    imprimerPDFToolStripMenuItem.Enabled = false;
+                    quitterToolStripMenuItem.Enabled = false;
+
+                    timerHHmm.Stop();
+                    Visible = false;
+
+                    FormLogin FL = new FormLogin();
+                    FL.Show();
+                }
             }
 
+
+            // Gestion de l'import
 
             if (importToolStripMenuItem.Text == "Import")
             {
@@ -112,23 +169,56 @@ namespace PPE4_Stars_up
                     InputBox("Données importées. Déconnexion..", "");
 
                     controleur.Vmodele.sedeconnecter();
+
+                    importToolStripMenuItem.Text = "Export";
+                    planningToolStripMenuItem.Enabled = true;
+                    historiqueDesVisitesToolStripMenuItem.Enabled = true;
+                    imprimerPDFToolStripMenuItem.Enabled = true;
+                    quitterToolStripMenuItem.Enabled = true;
+
+                    lblSpecialite.Text = controleur.Vmodele.Dv_specialite.ToTable().Rows[0][0].ToString() + "\n"; // Récupère la spécialité 
+                    ecrireFichier();
                 }
-
-                importToolStripMenuItem.Text = "Export";
-                planningToolStripMenuItem.Enabled = true;
-                historiqueDesVisitesToolStripMenuItem.Enabled = true;
-                imprimerPDFToolStripMenuItem.Enabled = true;
-                quitterToolStripMenuItem.Enabled = true;
-
-                lblSpecialite.Text = controleur.Vmodele.Dv_specialite.ToTable().Rows[0][0].ToString() + "\n"; // Récupère la spécialité 
-                ecrireFichier();
             }
         }
 
         private void FormIndex_FormClosed(object sender, FormClosedEventArgs e)
         {
-            timerHHmm.Stop();
-            Application.Exit();
+            // Exportation des données
+
+            InputBox("Connexion à la base de données..", "");
+
+            controleur.Vmodele.seconnecter();
+
+            if (controleur.Vmodele.Connopen == false)  // si la connexion échoue : propriété connopen de vmmodele à faux
+            {
+                MessageBox.Show("La connexion n'a pas eu lieu", "Erreur !", MessageBoxButtons.OK, MessageBoxIcon.Error);  // messageBox d’erreur
+            }
+            else  // sinon
+            {
+                InputBox("Connecté. Exportation des données..", "");
+
+                // MessageBox.Show("Connexion à la base de donnée effectuée avec succès", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                controleur.Vmodele.export();  // appel de la méthode export() via Vmodele du controleur
+
+                InputBox("Données exportées. Déconnexion..", "");
+
+                controleur.Vmodele.sedeconnecter();  // se déconnecter de la BD.
+
+                planningToolStripMenuItem.Enabled = false;
+                historiqueDesVisitesToolStripMenuItem.Enabled = false;
+                imprimerPDFToolStripMenuItem.Enabled = false;
+                quitterToolStripMenuItem.Enabled = false;
+
+                timerHHmm.Stop();
+                Visible = false;
+
+                FormLogin FL = new FormLogin();
+                FL.Show();
+
+                // Application.Exit();
+            }
+
         }
 
         private void semaineToolStripMenuItem_Click(object sender, EventArgs e)
@@ -242,7 +332,6 @@ namespace PPE4_Stars_up
 
         public static int InputBox(string title, string promptText)
         {
-
             Form form = new Form();
             LinkLabel texte = new LinkLabel();
             ProgressBar Progress = new ProgressBar();
@@ -272,7 +361,7 @@ namespace PPE4_Stars_up
 
             for (int i = 0; i < 100; i++)
             {
-                Thread.Sleep(15); // --> Timer au tick
+                Thread.Sleep(10); // --> Timer au tick
 
                 Progress.Value += 1;
                 form.Show();

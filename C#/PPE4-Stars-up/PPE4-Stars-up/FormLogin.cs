@@ -180,14 +180,24 @@ namespace PPE4_Stars_up
                     MessageBox.Show("Mot de passe incorrect", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     tbMdp.Clear();
 
-                    tbMdp.ForeColor = Color.DarkGray;
+                    tbMdp.ForeColor = Color.Black;
+
+                    // tbMdp.ForeColor = Color.DarkGray;
                     tbMdp.Clear();
 
-                    tbMdp.ForeColor = Color.DarkGray;
+                    // tbMdp.ForeColor = Color.DarkGray;
                     // tbMdp.Cursor = Default;
-                    tbMdp.Text = "Mot de passe";
-                    cbAfficherMdp.Checked = false;
-                    tbMdp.PasswordChar = '\0';
+                    // tbMdp.Text = "Mot de passe";
+                    // cbAfficherMdp.Checked = false;
+
+                    if(cbAfficherMdp.Checked==true)
+                    {
+                        tbMdp.PasswordChar = '\0';
+                    }
+                    else
+                    {
+                        tbMdp.PasswordChar = '*';
+                    }                    
                 }
             }
             else
@@ -271,7 +281,10 @@ namespace PPE4_Stars_up
             // tbNom.Cursor = IBeam;
             tbMdp.ForeColor = Color.Black;
 
-            tbMdp.PasswordChar = '*';
+            if(cbAfficherMdp.Checked==false)
+            {
+                tbMdp.PasswordChar = '*';
+            }
 
             if (tbNom.Text == "")
             {
@@ -405,7 +418,7 @@ namespace PPE4_Stars_up
 
             for (int i = 0; i < 100; i++)
             {
-                Thread.Sleep(10); // --> Timer au tick
+                Thread.Sleep(7); // --> Timer au tick
 
                 Progress.Value += 1;
                 form.Show();
@@ -448,6 +461,11 @@ namespace PPE4_Stars_up
                 }
                 else
                 {
+                    if(countt2 == 5)
+                    {
+                        countt2 = 0;
+                    }
+
                     countt2++;
                 }
             }

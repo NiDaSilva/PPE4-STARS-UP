@@ -27,7 +27,7 @@ namespace PPE4_Stars_up
 
         private MySqlDataAdapter mySqlDataAdapterTP7 = new MySqlDataAdapter();
         private DataSet dataSetTP7 = new DataSet();
-        private DataView dv_login, dv_visite, dv_specialite, dv_NbEtoiles, dv_Historique, dv_Historique_Dep, dv_Historique_Etoile = new DataView();
+        private DataView dv_login, dv_visite, dv_specialite, dv_NbEtoiles, dv_Historique, dv_Historique_Dep, dv_Historique_Etoile, dv_maj_etoile_commentaire = new DataView();
 
         private void lireFichier()
         {
@@ -158,6 +158,19 @@ namespace PPE4_Stars_up
             get { return dv_Historique_Dep; }
             set { dv_Historique_Dep = value; }
         }
+
+        public DataView Dv_maj_etoile_commentaire
+        {
+            get
+            {
+                return dv_maj_etoile_commentaire;
+            }
+
+            set
+            {
+                dv_maj_etoile_commentaire = value;
+            }
+        }
         #endregion
 
         #region constructeur
@@ -212,7 +225,7 @@ namespace PPE4_Stars_up
         public void import()
         {
             if (!connopen) return;
-            mySqlDataAdapterTP7.SelectCommand = new MySqlCommand("select * from inspecteur; select v.ID_HEBERGEMENT as 'ID', h.NOM_HEBERGEMENT as 'NOM', h.ADRESSE_HEBERGEMENT as 'ADRESSE', h.VILLE_HEBERGEMENT as 'VILLE', v.DATE_HEURE_VISITE as 'DATE', h.HORAIRES, v.COMMENTAIRE_VISITE from visiter as v inner join hebergement as h on v.ID_HEBERGEMENT = h.ID_HEBERGEMENT where id_inspecteur =" + recup() + "; SELECT Libelle_specialite FROM specialite as s INNER JOIN inspecteur as i on s.ID_SPECIALITE = i.ID_SPECIALITE where id_inspecteur =" + recup() + "; Select ID_HEBERGEMENT as 'ID', DATE_HEURE_VISITE as 'Date_Heure', NOMBRE_ETOILE_VISITE as 'Nb Etoiles' FROM visiter ORDER BY Date_Heure DESC; SELECT v.DATE_HEURE_VISITE as 'Date & Heure', d.LIBELLE_DEPARTEMENT as 'Departement', h.NOM_HEBERGEMENT as 'Hebergement', v.NOMBRE_ETOILE_VISITE as 'Etoile', v.COMMENTAIRE_VISITE as 'Commentaire' FROM departement as d INNER JOIN hebergement as h on d.ID_DEPARTEMENT = h.ID_DEPARTEMENT INNER JOIN visiter as v on h.ID_HEBERGEMENT = v.ID_HEBERGEMENT WHERE v.ID_INSPECTEUR =" + recup() + " AND v.DATE_HEURE_VISITE < DATE(NOW()) ORDER BY DATE_HEURE_VISITE ASC; SELECT v.DATE_HEURE_VISITE as 'Date & Heure', d.LIBELLE_DEPARTEMENT as 'Departement', h.NOM_HEBERGEMENT as 'Hebergement', v.NOMBRE_ETOILE_VISITE as 'Etoile', v.COMMENTAIRE_VISITE as 'Commentaire' FROM departement as d INNER JOIN hebergement as h on d.ID_DEPARTEMENT = h.ID_DEPARTEMENT INNER JOIN visiter as v on h.ID_HEBERGEMENT = v.ID_HEBERGEMENT WHERE v.ID_INSPECTEUR =" + recup() + " AND v.DATE_HEURE_VISITE < DATE(NOW()) ORDER BY Departement ASC; SELECT v.DATE_HEURE_VISITE as 'Date & Heure', d.LIBELLE_DEPARTEMENT as 'Departement', h.NOM_HEBERGEMENT as 'Hebergement', v.NOMBRE_ETOILE_VISITE as 'Etoile', v.COMMENTAIRE_VISITE as 'Commentaire' FROM departement as d INNER JOIN hebergement as h on d.ID_DEPARTEMENT = h.ID_DEPARTEMENT INNER JOIN visiter as v on h.ID_HEBERGEMENT = v.ID_HEBERGEMENT WHERE v.ID_INSPECTEUR =" + recup() + " AND v.DATE_HEURE_VISITE < DATE(NOW()) ORDER BY Etoile ASC; ", myConnection);   
+            mySqlDataAdapterTP7.SelectCommand = new MySqlCommand("select * from inspecteur; select v.ID_HEBERGEMENT as 'ID', h.NOM_HEBERGEMENT as 'NOM', h.ADRESSE_HEBERGEMENT as 'ADRESSE', h.VILLE_HEBERGEMENT as 'VILLE', v.DATE_HEURE_VISITE as 'DATE', h.HORAIRES, v.COMMENTAIRE_VISITE from visiter as v inner join hebergement as h on v.ID_HEBERGEMENT = h.ID_HEBERGEMENT where id_inspecteur =" + recup() + "; SELECT Libelle_specialite FROM specialite as s INNER JOIN inspecteur as i on s.ID_SPECIALITE = i.ID_SPECIALITE where id_inspecteur =" + recup() + "; Select ID_HEBERGEMENT as 'ID', DATE_HEURE_VISITE as 'Date_Heure', NOMBRE_ETOILE_VISITE as 'Nb Etoiles' FROM visiter ORDER BY Date_Heure DESC; SELECT v.DATE_HEURE_VISITE as 'Date & Heure', d.LIBELLE_DEPARTEMENT as 'Departement', h.NOM_HEBERGEMENT as 'Hebergement', v.NOMBRE_ETOILE_VISITE as 'Etoile', v.COMMENTAIRE_VISITE as 'Commentaire' FROM departement as d INNER JOIN hebergement as h on d.ID_DEPARTEMENT = h.ID_DEPARTEMENT INNER JOIN visiter as v on h.ID_HEBERGEMENT = v.ID_HEBERGEMENT WHERE v.ID_INSPECTEUR =" + recup() + " AND v.DATE_HEURE_VISITE < DATE(NOW()) ORDER BY DATE_HEURE_VISITE ASC; SELECT v.DATE_HEURE_VISITE as 'Date & Heure', d.LIBELLE_DEPARTEMENT as 'Departement', h.NOM_HEBERGEMENT as 'Hebergement', v.NOMBRE_ETOILE_VISITE as 'Etoile', v.COMMENTAIRE_VISITE as 'Commentaire' FROM departement as d INNER JOIN hebergement as h on d.ID_DEPARTEMENT = h.ID_DEPARTEMENT INNER JOIN visiter as v on h.ID_HEBERGEMENT = v.ID_HEBERGEMENT WHERE v.ID_INSPECTEUR =" + recup() + " AND v.DATE_HEURE_VISITE < DATE(NOW()) ORDER BY Departement ASC; SELECT v.DATE_HEURE_VISITE as 'Date & Heure', d.LIBELLE_DEPARTEMENT as 'Departement', h.NOM_HEBERGEMENT as 'Hebergement', v.NOMBRE_ETOILE_VISITE as 'Etoile', v.COMMENTAIRE_VISITE as 'Commentaire' FROM departement as d INNER JOIN hebergement as h on d.ID_DEPARTEMENT = h.ID_DEPARTEMENT INNER JOIN visiter as v on h.ID_HEBERGEMENT = v.ID_HEBERGEMENT WHERE v.ID_INSPECTEUR =" + recup() + " AND v.DATE_HEURE_VISITE < DATE(NOW()) ORDER BY Etoile ASC; SELECT ID_INSPECTEUR, ID_HEBERGEMENT, COMMENTAIRE_VISITE, NOMBRE_ETOILE_VISITE FROM visiter; ", myConnection);   
             
                 try
                 {
@@ -238,6 +251,7 @@ namespace PPE4_Stars_up
                         dv_Historique = dataSetTP7.Tables[4].DefaultView; // Récupération de l'historique de l'inspecteur trier par défaut (DATE)
                         dv_Historique_Dep = dataSetTP7.Tables[5].DefaultView; // Récupération de l'historique de l'inspecteur trier par Département
                         dv_Historique_Etoile = dataSetTP7.Tables[6].DefaultView; // Récupération de l'historique de l'inspecteur trier par Etoile
+                        dv_maj_etoile_commentaire = dataSetTP7.Tables[7].DefaultView; // pour maj
 
                         chargement = true;
                 }
@@ -258,20 +272,20 @@ namespace PPE4_Stars_up
                 if (vaction == 'd' || vaction == 'u')
                 {
                     MySqlCommand vcommand = myConnection.CreateCommand();
-                    if (vtable == 'p') // ‘p’ pour table INSPECTEUR
+                    if (vtable == 'v') // ‘v’ pour table visiter
                     {
-                        vcommand.CommandText = "SELECT COUNT(*) FROM inspecteur WHERE Id_Inspecteur = '" + args.Row[0, DataRowVersion.Original] + "'";
+                        vcommand.CommandText = "SELECT COUNT(*) FROM visiter WHERE ID_INSPECTEUR = '" + args.Row[0, DataRowVersion.Original] + "'";
                     }
                     nb = (Int64)vcommand.ExecuteScalar();
-                    // on veut savoir si la personne existe encore dans la base
+                    // on veut savoir si la visite existe encore dans la base
                 }
                 if (vaction == 'd')
                 {
                     if (nb == 1) // pour delete si l'enr a été supprimé on n'affiche pas l'erreur
                     {
-                        if (vtable == 'p')
+                        if (vtable == 'v')
                         {
-                            msg = "Pour le numéro des inspecteurs : " + args.Row[0, DataRowVersion.Original] + " Impossible delete car enr modifié dans la base";
+                            msg = "Pour le numéro des visites : " + args.Row[0, DataRowVersion.Original] + " Impossible delete car enr modifié dans la base";
                         }
                         rapport.Add(msg);
                         errmaj = true;
@@ -281,18 +295,18 @@ namespace PPE4_Stars_up
                 {
                     if (nb == 1)
                     {
-                        if (vtable == 'p')
+                        if (vtable == 'v')
                         {
-                            msg = "Pour le numéro des inspecteurs : " + args.Row[0, DataRowVersion.Original] + " Impossible MAJ car enr modifié dans la base";
+                            msg = "Pour le numéro des visites : " + args.Row[0, DataRowVersion.Original] + " Impossible MAJ car enr modifié dans la base";
                         }
                         rapport.Add(msg);
                         errmaj = true;
                     }
                     else
                     {
-                        if (vtable == 'p')
+                        if (vtable == 'v')
                         {
-                            msg = "Pour le numéro des inspecteurs : " + args.Row[0, DataRowVersion.Original] + " Impossible MAJ car enr supprimé dans la base";
+                            msg = "Pour le numéro des visites : " + args.Row[0, DataRowVersion.Original] + " Impossible MAJ car enr supprimé dans la base";
                         }
                         rapport.Add(msg);
                         errmaj = true;
@@ -300,9 +314,9 @@ namespace PPE4_Stars_up
                 }
                 if (vaction == 'c')
                 {
-                    if (vtable == 'p')
+                    if (vtable == 'v')
                     {
-                        msg = "Pour le numéro des inspecteurs : " + args.Row[0, DataRowVersion.Current] + " Impossible ADD car erreur données";
+                        msg = "Pour le numéro des visites : " + args.Row[0, DataRowVersion.Current] + " Impossible ADD car erreur données";
                     }
                     rapport.Add(msg);
                     errmaj = true;
@@ -310,11 +324,14 @@ namespace PPE4_Stars_up
             }
         }
 
-        
-        public void add_personne()
+        // Ajout Inutile car pas d'ajout dans ce projet
+
+        /*
+
+        public void add_visite()
         {
             vaction = 'c'; // on précise bien l’action, ici c pour create
-            vtable = 'p';
+            vtable = 'v';
 
             if (!connopen) return;
             //appel d'une méthode sur l'événement ajout d'un enr de la table
@@ -335,35 +352,41 @@ namespace PPE4_Stars_up
             mySqlDataAdapterTP7.RowUpdated -= new MySqlRowUpdatedEventHandler(OnRowUpdated);
         }
 
-        public void maj_personne()
+        */
+
+
+        public void maj_visite()
         {
-            vaction = 'u'; // on précise bien l’action, ici c pour update
-            vtable = 'p';
+            vaction = 'u'; // on précise bien l’action, ici u pour update
+            vtable = 'v';
 
             if (!connopen) return;
             //appel d'une méthode sur l'événement modifie d'un enr de la table
             mySqlDataAdapterTP7.RowUpdated += new MySqlRowUpdatedEventHandler(OnRowUpdated);
-            mySqlDataAdapterTP7.UpdateCommand = new MySqlCommand("update personne set nom =?nom, prenom =?prenom, IdFormation =?IdFormation where IdPersonne = ?num", myConnection);
+            mySqlDataAdapterTP7.UpdateCommand = new MySqlCommand("update visiter set COMMENTAIRE_VISITE =?commentaire, NOMBRE_ETOILE_VISITE =?nb_etoile where ID_INSPECTEUR = ?id_inspecteur and ID_HEBERGEMENT = ?id_hebergement", myConnection);
             //déclaration des variables utiles au commandbuilder
-            // pas besoin de créer l’IdPersonne car en auto-increment
-            mySqlDataAdapterTP7.UpdateCommand.Parameters.Add("?num", MySqlDbType.Int16, 10, "IdPersonne"); 
-            mySqlDataAdapterTP7.UpdateCommand.Parameters.Add("?nom", MySqlDbType.Text, 65535, "nom"); 
-            mySqlDataAdapterTP7.UpdateCommand.Parameters.Add("?prenom", MySqlDbType.Text, 65535, "prenom");  
-            mySqlDataAdapterTP7.UpdateCommand.Parameters.Add("?IdFormation", MySqlDbType.Int16, 10, "IdFormation");
+            mySqlDataAdapterTP7.UpdateCommand.Parameters.Add("?id_inspecteur", MySqlDbType.Int16, 10, "ID_INSPECTEUR");
+            mySqlDataAdapterTP7.UpdateCommand.Parameters.Add("?id_hebergement", MySqlDbType.Int16, 10, "ID_HEBERGEMENT");
+            mySqlDataAdapterTP7.UpdateCommand.Parameters.Add("?commentaire", MySqlDbType.Text, 65535, "COMMENTAIRE_VISITE"); 
+            mySqlDataAdapterTP7.UpdateCommand.Parameters.Add("?nb_etoile", MySqlDbType.Int16, 10, "NOMBRE_ETOILE_VISITE");  
             //on continue même si erreur de MAJ
             mySqlDataAdapterTP7.ContinueUpdateOnError = true;
-            //table concernée 1 = personne
-            DataTable table = dataSetTP7.Tables[1];
+            //table concernée 6 = visiter
+            DataTable table = dataSetTP7.Tables[7];
             //on ne s'occupe que des enregistrement ajoutés en local
             mySqlDataAdapterTP7.Update(table.Select(null, null, DataViewRowState.ModifiedCurrent)); 
             //désassocie la méthode sur l'événement maj de la base
             mySqlDataAdapterTP7.RowUpdated -= new MySqlRowUpdatedEventHandler(OnRowUpdated);
         }
 
-        public void del_personne()
+        // Suppression Inutile car pas de suppression dans ce projet
+
+        /*
+
+        public void del_visite()
         {
             vaction = 'd'; // on précise bien l’action, ici c pour delete
-            vtable = 'p';
+            vtable = 'v';
 
             if (!connopen) return;
             //appel d'une méthode sur l'événement supprimer d'un enr de la table
@@ -385,6 +408,7 @@ namespace PPE4_Stars_up
             mySqlDataAdapterTP7.RowUpdated -= new MySqlRowUpdatedEventHandler(OnRowUpdated);
         }
         
+    */
 
         public void export()
         {
@@ -392,37 +416,43 @@ namespace PPE4_Stars_up
             
                 try
                 {
+                    /*
                     try
                     {
-                        add_personne();
+                        add_visite();
                     }
                     catch (Exception err)
                     {
                         MessageBox.Show("Erreur add : " + err, "Probleme ajout", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         errgrave = true;
                     }
+                    */
+
                     try 
                     {
-                        maj_personne();
+                         maj_visite();
                     }
                     catch (Exception err)
                     {
-                        MessageBox.Show("Erreur maj : " + err, "Probleme maj", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Erreur dans la mise à jour de la base de données : " + err, "Probleme dans la mise à jour de la base de données", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         errgrave = true;
                     }
+
+                    /*
                     try
                     {
-                        del_personne();
+                        del_visite();
                     }
                     catch (Exception err)
                     {
                         MessageBox.Show("Erreur del: " + err, "Probleme suppr", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         errgrave = true;
                     }
+                    */
                 }
                 catch (Exception err)
                 {
-                    MessageBox.Show("Erreur chargement dataset : " + err, "Probleme Export", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Erreur de chargement du dataset : " + err, "Probleme Export", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     errgrave = true;
                 }
             

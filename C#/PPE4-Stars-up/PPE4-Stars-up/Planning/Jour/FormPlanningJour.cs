@@ -20,8 +20,18 @@ namespace PPE4_Stars_up
         string nbEtoile;
         string test;
 
+        static string com;
+
+        int compte = 0;
+        int compte2 = 0;
+        int iii = 0;
+        
+        int idI2;
+        string test2;
+
         private BindingSource bindingSource1 = new BindingSource();
         private BindingSource bindingSource2 = new BindingSource();
+        private BindingSource bindingSource3 = new BindingSource();
 
         public FormPlanningJour()
         {
@@ -219,10 +229,15 @@ namespace PPE4_Stars_up
 
         private void calendar1_ItemDoubleClick(object sender, CalendarItemEventArgs e)
         {
+            
+
             // MessageBox.Show("Texte : " + e.Item.Text)
             // MessageBox.Show("Date avant : " + e.Item.Date);
 
             // 11/03/2016 10:00:00
+
+            bindingSource3.DataSource = controleur.Vmodele.Dv_maj_etoile_commentaire;
+            dGMaj.DataSource = bindingSource3;
 
             string element0 = "";
             string element1 = "";
@@ -270,11 +285,73 @@ namespace PPE4_Stars_up
 
             // MessageBox.Show(nbEtoile);
 
-            // Envoie vers la nouvelle form
+            compte = 0;
+            compte2 = 0;
 
-            FormVisite FV = new FormVisite(element1, element2, element3, element4, element5, element6, nbEtoile);
-            FV.MdiParent = this.MdiParent;
-            FV.Show();
+            for (int i = 0; i < dGMaj.Rows.Count; i++) // parcours le datagridview
+            {
+                if (dGMaj.Rows[i].Cells[0].Value.ToString() == recup().ToString() && dGMaj.Rows[i].Cells[1].Value.ToString() == element0)
+                {
+                    // recupere valeur de compte ce qui nous donne l'index
+                    compte2 = compte;
+                }
+                else
+                {
+                    compte++;
+                }
+            }
+
+            if(iii == 0)
+            {
+                com = controleur.Vmodele.Dv_maj_etoile_commentaire[compte2]["COMMENTAIRE_VISITE"].ToString();
+            }
+
+            iii++;
+
+            // MessageBox.Show(controleur.Vmodele.Dv_maj_etoile_commentaire[compte2]["COMMENTAIRE_VISITE"].ToString());
+
+
+            if (controleur.Vmodele.Dv_maj_etoile_commentaire[compte2]["COMMENTAIRE_VISITE"].ToString() != "")
+            {
+                if (com != controleur.Vmodele.Dv_maj_etoile_commentaire[compte2]["COMMENTAIRE_VISITE"].ToString())
+                {
+                    DialogResult DR = MessageBox.Show("Vous avez déjà remplit un compte-rendu pour cette visite :\n\n- Commentaire : " + controleur.Vmodele.Dv_maj_etoile_commentaire[compte2]["COMMENTAIRE_VISITE"].ToString() + "\n- Note : " + controleur.Vmodele.Dv_maj_etoile_commentaire[compte2]["NOMBRE_ETOILE_VISITE"].ToString() + "\n\nSi vous continuez, la note et le commentaire précedemment ajoutés seront remplacés par les nouvelles valeurs.\n\nSouhaitez-vous continuer ?", "Avertissement", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                    if (DR == DialogResult.Yes)
+                    {
+                        // Envoie vers la nouvelle form
+
+                        compte = 0;
+                        compte2 = 0;
+
+                        FormVisite FV = new FormVisite(element1, element2, element3, element4, element5, element6, nbEtoile, element0);
+                        FV.MdiParent = this.MdiParent;
+                        FV.Show();
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+                else
+                {
+                    compte = 0;
+                    compte2 = 0;
+
+                    FormVisite FV = new FormVisite(element1, element2, element3, element4, element5, element6, nbEtoile, element0);
+                    FV.MdiParent = this.MdiParent;
+                    FV.Show();
+                }
+            }
+            else
+            {
+                compte = 0;
+                compte2 = 0;
+
+                FormVisite FV = new FormVisite(element1, element2, element3, element4, element5, element6, nbEtoile, element0);
+                FV.MdiParent = this.MdiParent;
+                FV.Show();
+            }
         }
 
         private void calendar1_ItemDeleted(object sender, CalendarItemEventArgs e)
@@ -476,6 +553,41 @@ namespace PPE4_Stars_up
             form.Background();
             form.MAJHeure();
             this.Close();
+        }
+
+        private void lireFichier2()
+        {
+
+            // string[] lines = System.IO.File.ReadAllLines(@"C:\PPE4_DR\Preferences_PPE4_DR.txt");
+
+            int counter = 0;
+            string line;
+
+            // Read the file and display it line by line.
+            System.IO.StreamReader file = new System.IO.StreamReader(@"C:\PPE4_DR\Preferences_PPE4_DR.txt");
+
+            while ((line = file.ReadLine()) != null)
+            {
+                counter++;
+                if (counter == 1)
+                {
+
+                    test2 = line.ToString();
+                }
+            }
+
+            file.Close();
+
+            // test = lines[0].ToString();
+        }
+
+        public int recup()
+        {
+            // Id de l'inspecteur connecté
+
+            lireFichier2();
+            idI2 = Convert.ToInt32(test2);
+            return idI2;
         }
     }
 }

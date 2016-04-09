@@ -12,6 +12,8 @@ namespace PPE4_Stars_up
 {
     public partial class FormVisite : Form
     {
+        private BindingSource bindingSource1 = new BindingSource();
+
         string RecupDateHeureVisite;
         string nom;
         string adresse;
@@ -19,11 +21,18 @@ namespace PPE4_Stars_up
         string horaires;
         string Etoile;
         string commentaireV;
+        string ide;
+
+        int compte = 0;
+        int compte2 = 0;
+
+        int idI;
+        string test;
 
         string CR_commentaire;
         string CR_note;
 
-        public FormVisite(string nomV, string adresseV, string villeV, string DateHeureVisite, string horairesV, string commentaireVisite, string NbE)
+        public FormVisite(string nomV, string adresseV, string villeV, string DateHeureVisite, string horairesV, string commentaireVisite, string NbE, string idd)
         {
             InitializeComponent();
 
@@ -34,6 +43,7 @@ namespace PPE4_Stars_up
             horaires = horairesV;
             Etoile = NbE;
             commentaireV = commentaireVisite;
+            ide = idd;
         }
 
         private void FormVisite_Load(object sender, EventArgs e)
@@ -85,6 +95,7 @@ namespace PPE4_Stars_up
                 pbF4bis.Visible = false;
                 pbF5bis.Visible = false;
 
+                btnAnnule.Visible = false;
                 btnSauvegarderVisite.Visible = false;
                 btnRetour.Visible = true;
             }
@@ -99,6 +110,7 @@ namespace PPE4_Stars_up
                 pbF4bis.Visible = true;
                 pbF5bis.Visible = true;
 
+                btnAnnule.Visible = true;
                 btnSauvegarderVisite.Visible = true;
                 btnRetour.Visible = false;
             }
@@ -210,16 +222,78 @@ namespace PPE4_Stars_up
                 pbF5.Visible = true;
             }
 
+            // Récupérer l'index
+
+            bindingSource1.DataSource = controleur.Vmodele.Dv_maj_etoile_commentaire;
+            dataGridViewPersonnes.DataSource = bindingSource1;
+                        
+            for (int i = 0; i < dataGridViewPersonnes.Rows.Count; i++) // parcours le datagridview
+            {
+                if (dataGridViewPersonnes.Rows[i].Cells[0].Value.ToString() == recup().ToString() && dataGridViewPersonnes.Rows[i].Cells[1].Value.ToString() == ide)
+                {
+                    // recupere valeur de compte ce qui nous donne l'index
+                    compte2 = compte;
+                }
+                else
+                {
+                    compte++;
+                }
+            }
+
+            // MessageBox.Show("id heber recu : " + ide.ToString());
+            // MessageBox.Show("index : " + compte2.ToString());
+
         }
 
         private void btnSauvegarderVisite_Click(object sender, EventArgs e)
         {
+            // Gestion des étoiles
+
+            if (pbV1bis.Visible == false && pbV2bis.Visible == false && pbV3bis.Visible == false && pbV4bis.Visible == false && pbV5bis.Visible == false)
+            {
+                CR_note = "0";
+            }
+
+            if (pbV1bis.Visible == true && pbV2bis.Visible == false && pbV3bis.Visible == false && pbV4bis.Visible == false && pbV5bis.Visible == false)
+            {
+                CR_note = "1";
+            }
+
+            if (pbV1bis.Visible == true && pbV2bis.Visible == true && pbV3bis.Visible == false && pbV4bis.Visible == false && pbV5bis.Visible == false)
+            {
+                CR_note = "2";
+            }
+
+            if (pbV1bis.Visible == true && pbV2bis.Visible == true && pbV3bis.Visible == true && pbV4bis.Visible == false && pbV5bis.Visible == false)
+            {
+                CR_note = "3";
+            }
+
+            if (pbV1bis.Visible == true && pbV2bis.Visible == true && pbV3bis.Visible == true && pbV4bis.Visible == true && pbV5bis.Visible == false)
+            {
+                CR_note = "4";
+            }
+
+            if (pbV1bis.Visible == true && pbV2bis.Visible == true && pbV3bis.Visible == true && pbV4bis.Visible == true && pbV5bis.Visible == true)
+            {
+                CR_note = "5";
+            }
+
             CR_commentaire = rtbCommentaire.Text;
 
-            MessageBox.Show("Compte-rendu :\n\nCommentaire : " + CR_commentaire + "\n\nNote : " + CR_note + "\n\nPlus qu'à export.");
+            DialogResult DR = MessageBox.Show("Veuillez confirmer l'envoie des données suivantes :\n\n- Commentaire : " + CR_commentaire + "\n- Note : " + CR_note + "\n\nVous ne pourrez pas revenir en arrière après confirmation, souhaitez-vous continuer ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-            // Gérer l'export des données
-            this.Close();
+            if(DR == DialogResult.Yes)
+            {
+                controleur.modif_bdd('u', CR_commentaire, Convert.ToInt32(CR_note), compte2);
+
+                // Gérer l'export des données
+                this.Close();
+            }
+            else
+            {
+                return;
+            }
         }
 
         private void btnRetour_Click(object sender, EventArgs e)
@@ -244,7 +318,7 @@ namespace PPE4_Stars_up
             pbV5bis.Visible = false;
             pbF5bis.Visible = true;
 
-            CR_note = "1";
+            // CR_note = "1";
         }
 
         private void pbV2bis_Click(object sender, EventArgs e)
@@ -264,7 +338,7 @@ namespace PPE4_Stars_up
             pbV5bis.Visible = false;
             pbF5bis.Visible = true;
 
-            CR_note = "2";
+            // CR_note = "2";
         }
 
         private void pbV3bis_Click(object sender, EventArgs e)
@@ -284,7 +358,7 @@ namespace PPE4_Stars_up
             pbV5bis.Visible = false;
             pbF5bis.Visible = true;
 
-            CR_note = "3";
+            // CR_note = "3";
         }
 
         private void pbV4bis_Click(object sender, EventArgs e)
@@ -304,7 +378,7 @@ namespace PPE4_Stars_up
             pbV5bis.Visible = false;
             pbF5bis.Visible = true;
 
-            CR_note = "4";
+            // CR_note = "4";
         }
 
         private void pbV5bis_Click(object sender, EventArgs e)
@@ -324,7 +398,7 @@ namespace PPE4_Stars_up
             pbV5bis.Visible = true;
             pbF5bis.Visible = false;
 
-            CR_note = "5";
+            // CR_note = "5";
         }
 
         private void pbF1bis_Click(object sender, EventArgs e)
@@ -344,7 +418,7 @@ namespace PPE4_Stars_up
             pbV5bis.Visible = false;
             pbF5bis.Visible = true;
 
-            CR_note = "1";
+            // CR_note = "1";
         }
 
         private void pbF2bis_Click(object sender, EventArgs e)
@@ -364,7 +438,7 @@ namespace PPE4_Stars_up
             pbV5bis.Visible = false;
             pbF5bis.Visible = true;
 
-            CR_note = "2";
+            // CR_note = "2";
         }
 
         private void pbF3bis_Click(object sender, EventArgs e)
@@ -384,7 +458,7 @@ namespace PPE4_Stars_up
             pbV5bis.Visible = false;
             pbF5bis.Visible = true;
 
-            CR_note = "3";
+            // CR_note = "3";
         }
 
         private void pbF4bis_Click(object sender, EventArgs e)
@@ -404,7 +478,7 @@ namespace PPE4_Stars_up
             pbV5bis.Visible = false;
             pbF5bis.Visible = true;
 
-            CR_note = "4";
+            // CR_note = "4";
         }
 
         private void pbF5bis_Click(object sender, EventArgs e)
@@ -424,7 +498,7 @@ namespace PPE4_Stars_up
             pbV5bis.Visible = true;
             pbF5bis.Visible = false;
 
-            CR_note = "5";
+            // CR_note = "5";
         }
 
         private void pbEtoile0_Click(object sender, EventArgs e)
@@ -444,7 +518,7 @@ namespace PPE4_Stars_up
             pbV5bis.Visible = false;
             pbF5bis.Visible = true;
 
-            CR_note = "0";
+            // CR_note = "0";
         }
 
         private void lblNote_Click(object sender, EventArgs e)
@@ -464,7 +538,7 @@ namespace PPE4_Stars_up
             pbV5bis.Visible = false;
             pbF5bis.Visible = true;
 
-            CR_note = "0";
+            // CR_note = "0";
         }
 
         private void pbF1bis_MouseHover(object sender, EventArgs e)
@@ -681,6 +755,46 @@ namespace PPE4_Stars_up
 
             pbV5bis.Visible = false;
             pbF5bis.Visible = true;
+        }
+
+        private void btnAnnule_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void lireFichier()
+        {
+
+            // string[] lines = System.IO.File.ReadAllLines(@"C:\PPE4_DR\Preferences_PPE4_DR.txt");
+
+            int counter = 0;
+            string line;
+
+            // Read the file and display it line by line.
+            System.IO.StreamReader file = new System.IO.StreamReader(@"C:\PPE4_DR\Preferences_PPE4_DR.txt");
+
+            while ((line = file.ReadLine()) != null)
+            {
+                counter++;
+                if (counter == 1)
+                {
+
+                    test = line.ToString();
+                }
+            }
+
+            file.Close();
+
+            // test = lines[0].ToString();
+        }
+
+        public int recup()
+        {
+            // Id de l'inspecteur connecté
+
+            lireFichier();
+            idI = Convert.ToInt32(test);
+            return idI;
         }
     }
 }

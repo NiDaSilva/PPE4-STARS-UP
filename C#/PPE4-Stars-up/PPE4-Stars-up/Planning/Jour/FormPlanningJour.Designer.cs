@@ -33,6 +33,11 @@
             PPE4_Stars_up.CalendarHighlightRange calendarHighlightRange3 = new PPE4_Stars_up.CalendarHighlightRange();
             PPE4_Stars_up.CalendarHighlightRange calendarHighlightRange4 = new PPE4_Stars_up.CalendarHighlightRange();
             PPE4_Stars_up.CalendarHighlightRange calendarHighlightRange5 = new PPE4_Stars_up.CalendarHighlightRange();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -45,11 +50,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.calendar1 = new PPE4_Stars_up.Calendar();
+            this.dGMaj = new System.Windows.Forms.DataGridView();
             this.dataGridViewNbEtoiles = new System.Windows.Forms.DataGridView();
             this.dataGridViewPersonnes = new System.Windows.Forms.DataGridView();
             this.monthView1 = new PPE4_Stars_up.MonthView2();
             this.btnRetour = new System.Windows.Forms.Button();
             this.calendar1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dGMaj)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewNbEtoiles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPersonnes)).BeginInit();
             this.monthView1.SuspendLayout();
@@ -102,6 +109,58 @@
             this.calendar1.ItemDoubleClick += new PPE4_Stars_up.Calendar.CalendarItemEventHandler(this.calendar1_ItemDoubleClick);
             this.calendar1.ItemMouseHover += new PPE4_Stars_up.Calendar.CalendarItemEventHandler(this.calendar1_ItemMouseHover);
             // 
+            // dGMaj
+            // 
+            this.dGMaj.AllowUserToAddRows = false;
+            this.dGMaj.AllowUserToDeleteRows = false;
+            this.dGMaj.AllowUserToResizeColumns = false;
+            this.dGMaj.AllowUserToResizeRows = false;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
+            this.dGMaj.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
+            this.dGMaj.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dGMaj.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dGMaj.BackgroundColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dGMaj.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            this.dGMaj.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dGMaj.DefaultCellStyle = dataGridViewCellStyle13;
+            this.dGMaj.GridColor = System.Drawing.Color.Black;
+            this.dGMaj.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.dGMaj.Location = new System.Drawing.Point(-533, 430);
+            this.dGMaj.MultiSelect = false;
+            this.dGMaj.Name = "dGMaj";
+            this.dGMaj.ReadOnly = true;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dGMaj.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.Black;
+            this.dGMaj.RowsDefaultCellStyle = dataGridViewCellStyle15;
+            this.dGMaj.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dGMaj.Size = new System.Drawing.Size(578, 229);
+            this.dGMaj.TabIndex = 40;
+            this.dGMaj.Visible = false;
+            // 
             // dataGridViewNbEtoiles
             // 
             this.dataGridViewNbEtoiles.AllowUserToAddRows = false;
@@ -134,7 +193,7 @@
             this.dataGridViewNbEtoiles.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewNbEtoiles.GridColor = System.Drawing.Color.Black;
             this.dataGridViewNbEtoiles.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.dataGridViewNbEtoiles.Location = new System.Drawing.Point(6, 244);
+            this.dataGridViewNbEtoiles.Location = new System.Drawing.Point(566, 430);
             this.dataGridViewNbEtoiles.MultiSelect = false;
             this.dataGridViewNbEtoiles.Name = "dataGridViewNbEtoiles";
             this.dataGridViewNbEtoiles.ReadOnly = true;
@@ -186,7 +245,7 @@
             this.dataGridViewPersonnes.DefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridViewPersonnes.GridColor = System.Drawing.Color.Black;
             this.dataGridViewPersonnes.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.dataGridViewPersonnes.Location = new System.Drawing.Point(6, 8);
+            this.dataGridViewPersonnes.Location = new System.Drawing.Point(557, -188);
             this.dataGridViewPersonnes.MultiSelect = false;
             this.dataGridViewPersonnes.Name = "dataGridViewPersonnes";
             this.dataGridViewPersonnes.ReadOnly = true;
@@ -210,6 +269,7 @@
             // 
             this.monthView1.ArrowsColor = System.Drawing.SystemColors.Window;
             this.monthView1.ArrowsSelectedColor = System.Drawing.Color.Gold;
+            this.monthView1.Controls.Add(this.dGMaj);
             this.monthView1.Controls.Add(this.btnRetour);
             this.monthView1.DayBackgroundColor = System.Drawing.Color.Transparent;
             this.monthView1.DayGrayedText = System.Drawing.SystemColors.GrayText;
@@ -254,6 +314,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormPlanningJour_Load);
             this.calendar1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dGMaj)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewNbEtoiles)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPersonnes)).EndInit();
             this.monthView1.ResumeLayout(false);
@@ -269,5 +330,6 @@
         private System.Windows.Forms.DataGridView dataGridViewPersonnes;
         private System.Windows.Forms.Button btnRetour;
         private System.Windows.Forms.DataGridView dataGridViewNbEtoiles;
+        private System.Windows.Forms.DataGridView dGMaj;
     }
 }

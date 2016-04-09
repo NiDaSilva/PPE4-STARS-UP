@@ -250,7 +250,7 @@ namespace PPE4_Stars_up
 
             for (int i = 0; i < 100; i++)
             {
-                Thread.Sleep(15); // --> Timer au tick
+                Thread.Sleep(12); // --> Timer au tick
 
                 Progress.Value += 1;
                 form.Show();

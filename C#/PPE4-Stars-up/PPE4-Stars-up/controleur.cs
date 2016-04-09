@@ -1,14 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace PPE4_Stars_up
 {
     class controleur
     {
         private static bdd vmodele;
+        static int idI;
+        static string test;
 
         public static bdd Vmodele
         {
@@ -19,6 +25,129 @@ namespace PPE4_Stars_up
         public static void init()
         {
             vmodele = new bdd();
+        }
+
+        public static void modif_bdd(Char c, string commentaire, int nb_Etoile, int index2) // String cle, 
+        {
+            // Le Char c correspond à l'action : c:create, u update, d delete,
+            // la cle est celle de l'enregistrement sélectionné, vide si action d’ajout (c = ‘c’)
+            int index = 0;
+            
+            if (c == 'u') // modif
+            {
+                string sortExpression = "ID_HEBERGEMENT";
+                vmodele.Dv_maj_etoile_commentaire.Sort = sortExpression; // on trie le DataView sur les ID_HEBERGEMENT
+                                                                    // on recherche l’indice où se trouve l'inspecteur sélectionné
+                                                                    // grâce à la valeur passée en paramètre donc grâce à son Id
+
+                // MessageBox.Show(recup().ToString());
+
+                index = recup() - 1;
+                // index = vmodele.Dv_login.Find(recup());
+                // on remplit les zones par les valeurs du dataView correspondantes
+
+                /*
+                MessageBox.Show("Nom : " + vmodele.Dv_login[index][2].ToString());
+                MessageBox.Show("Prénom : " + vmodele.Dv_login[index][3].ToString());
+                MessageBox.Show("Login : " + vmodele.Dv_login[index][4].ToString());
+                MessageBox.Show("Mdp : " + vmodele.Dv_login[index][5].ToString());
+                */
+
+                // MessageBox.Show("Etoile avant : " + vmodele.Dv_maj_etoile_commentaire[index2]["NOMBRE_ETOILE_VISITE"].ToString());
+                // MessageBox.Show("Commentaire avant : " + vmodele.Dv_maj_etoile_commentaire[index2]["COMMENTAIRE_VISITE"].ToString());
+
+                // MessageBox.Show("Etoile apres : " + nb_Etoile.ToString());
+                // MessageBox.Show("Commentaire apres : " + commentaire);
+
+
+                // on met à jour le dataView avec les nouvelles valeurs
+                vmodele.Dv_maj_etoile_commentaire[index2]["NOMBRE_ETOILE_VISITE"] = nb_Etoile;
+                vmodele.Dv_maj_etoile_commentaire[index2]["COMMENTAIRE_VISITE"] = commentaire;
+            }
+
+            InputBox("Enregistrement des données..", "");
+
+            // MessageBox.Show("OK : données enregistrées");
+        }
+
+        private static void lireFichier()
+        {
+
+            // string[] lines = System.IO.File.ReadAllLines(@"C:\PPE4_DR\Preferences_PPE4_DR.txt");
+
+            int counter = 0;
+            string line;
+
+            // Read the file and display it line by line.
+            System.IO.StreamReader file = new System.IO.StreamReader(@"C:\PPE4_DR\Preferences_PPE4_DR.txt");
+
+            while ((line = file.ReadLine()) != null)
+            {
+                counter++;
+                if (counter == 1)
+                {
+
+                    test = line.ToString();
+                }
+            }
+
+            file.Close();
+
+            // test = lines[0].ToString();
+        }
+
+        public static int recup()
+        {
+            // Id de l'inspecteur connecté
+
+            lireFichier();
+            idI = Convert.ToInt32(test);
+            return idI;
+        }
+
+        public static int InputBox(string title, string promptText)
+        {
+
+            Form form = new Form();
+            LinkLabel texte = new LinkLabel();
+            ProgressBar Progress = new ProgressBar();
+
+            Progress.Minimum = 0;
+            Progress.Maximum = 100;
+
+            form.Text = title;
+            texte.Text = promptText;
+            texte.SetBounds(9, 20, 372, 13);
+            Progress.SetBounds(9, 30, 372, 20);
+
+            texte.AutoSize = true;
+            Progress.Anchor = Progress.Anchor | AnchorStyles.Right;
+
+            form.ClientSize = new Size(396, 91);
+            form.Controls.AddRange(new Control[] { texte, Progress });
+            form.ClientSize = new Size(Math.Max(300, texte.Right + 10), form.ClientSize.Height);
+            form.FormBorderStyle = FormBorderStyle.FixedDialog;
+            form.StartPosition = FormStartPosition.CenterScreen;
+            form.MinimizeBox = false;
+            form.MaximizeBox = false;
+
+            Progress.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+
+            form.Show();
+
+            for (int i = 0; i < 100; i++)
+            {
+                Thread.Sleep(15); // --> Timer au tick
+
+                Progress.Value += 1;
+                form.Show();
+            }
+
+            int Res = Progress.Value;
+            if (Res == 100)
+                form.Close();
+
+            return Res;
         }
     }
 }

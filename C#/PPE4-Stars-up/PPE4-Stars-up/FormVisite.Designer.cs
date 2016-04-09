@@ -28,6 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormVisite));
             this.lblVisite = new System.Windows.Forms.Label();
             this.rtbCommentaire = new System.Windows.Forms.RichTextBox();
@@ -67,6 +72,8 @@
             this.lblDateTitre = new System.Windows.Forms.Label();
             this.btnRetour = new System.Windows.Forms.Button();
             this.pbEtoile0 = new System.Windows.Forms.PictureBox();
+            this.btnAnnule = new System.Windows.Forms.Button();
+            this.dataGridViewPersonnes = new System.Windows.Forms.DataGridView();
             this.gbInformations.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbV5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbF5)).BeginInit();
@@ -89,6 +96,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbV2bis)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbV1bis)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbEtoile0)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPersonnes)).BeginInit();
             this.SuspendLayout();
             // 
             // lblVisite
@@ -534,6 +542,69 @@
             this.pbEtoile0.Click += new System.EventHandler(this.pbEtoile0_Click);
             this.pbEtoile0.MouseHover += new System.EventHandler(this.pbEtoile0_MouseHover);
             // 
+            // btnAnnule
+            // 
+            this.btnAnnule.Font = new System.Drawing.Font("Gentium Basic", 16.25F);
+            this.btnAnnule.Location = new System.Drawing.Point(592, 378);
+            this.btnAnnule.Name = "btnAnnule";
+            this.btnAnnule.Size = new System.Drawing.Size(106, 39);
+            this.btnAnnule.TabIndex = 20;
+            this.btnAnnule.Text = "Annuler";
+            this.btnAnnule.UseVisualStyleBackColor = true;
+            this.btnAnnule.Click += new System.EventHandler(this.btnAnnule_Click);
+            // 
+            // dataGridViewPersonnes
+            // 
+            this.dataGridViewPersonnes.AllowUserToAddRows = false;
+            this.dataGridViewPersonnes.AllowUserToDeleteRows = false;
+            this.dataGridViewPersonnes.AllowUserToResizeColumns = false;
+            this.dataGridViewPersonnes.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            this.dataGridViewPersonnes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewPersonnes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewPersonnes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewPersonnes.BackgroundColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewPersonnes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewPersonnes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewPersonnes.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridViewPersonnes.GridColor = System.Drawing.Color.Black;
+            this.dataGridViewPersonnes.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.dataGridViewPersonnes.Location = new System.Drawing.Point(748, 433);
+            this.dataGridViewPersonnes.MultiSelect = false;
+            this.dataGridViewPersonnes.Name = "dataGridViewPersonnes";
+            this.dataGridViewPersonnes.ReadOnly = true;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewPersonnes.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            this.dataGridViewPersonnes.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.dataGridViewPersonnes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewPersonnes.Size = new System.Drawing.Size(578, 229);
+            this.dataGridViewPersonnes.TabIndex = 39;
+            this.dataGridViewPersonnes.Visible = false;
+            // 
             // FormVisite
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -542,6 +613,8 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(784, 462);
             this.ControlBox = false;
+            this.Controls.Add(this.dataGridViewPersonnes);
+            this.Controls.Add(this.btnAnnule);
             this.Controls.Add(this.btnRetour);
             this.Controls.Add(this.lblDateTitre);
             this.Controls.Add(this.pbV5bis);
@@ -588,6 +661,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbV2bis)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbV1bis)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbEtoile0)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPersonnes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -633,5 +707,7 @@
         private System.Windows.Forms.Label lblDateTitre;
         private System.Windows.Forms.Button btnRetour;
         private System.Windows.Forms.PictureBox pbEtoile0;
+        private System.Windows.Forms.Button btnAnnule;
+        private System.Windows.Forms.DataGridView dataGridViewPersonnes;
     }
 }
