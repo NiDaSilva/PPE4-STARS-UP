@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormIndex));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.planningToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,6 +43,7 @@
             this.lblinfo2 = new System.Windows.Forms.Label();
             this.lblSpecialite = new System.Windows.Forms.Label();
             this.lblheure = new System.Windows.Forms.Label();
+            this.timerHHmm = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -177,11 +180,16 @@
             this.lblheure.AutoSize = true;
             this.lblheure.BackColor = System.Drawing.Color.Transparent;
             this.lblheure.Font = new System.Drawing.Font("Gentium Basic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblheure.Location = new System.Drawing.Point(734, 440);
+            this.lblheure.Location = new System.Drawing.Point(717, 440);
             this.lblheure.Name = "lblheure";
-            this.lblheure.Size = new System.Drawing.Size(61, 19);
+            this.lblheure.Size = new System.Drawing.Size(79, 19);
             this.lblheure.TabIndex = 9;
-            this.lblheure.Text = "HH:mm";
+            this.lblheure.Text = "HH:mm:ss";
+            // 
+            // timerHHmm
+            // 
+            this.timerHHmm.Interval = 1000;
+            this.timerHHmm.Tick += new System.EventHandler(this.timerHHmm_Tick);
             // 
             // FormIndex
             // 
@@ -198,6 +206,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
@@ -252,6 +261,7 @@
         private System.Windows.Forms.Label lblinfo2;
         private System.Windows.Forms.Label lblSpecialite;
         private System.Windows.Forms.Label lblheure;
+        private System.Windows.Forms.Timer timerHHmm;
     }
 }
 

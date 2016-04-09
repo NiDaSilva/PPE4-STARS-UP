@@ -156,6 +156,7 @@ namespace PPE4_Stars_up
             form.HistoriqueDesVisitesToolStripMenuItem.Enabled = true;
             form.PlanningToolStripMenuItem.Enabled = true;
             form.Background();
+            form.MAJHeure();
             this.Close();
         }
 
@@ -216,6 +217,7 @@ namespace PPE4_Stars_up
         {
 
         }
+
         public static int InputBox(string title, string promptText)
         {
 

@@ -121,20 +121,23 @@
   <data name="Fleche-navigation-bleue-gauche" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Fleche-navigation-bleue-gauche.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="2395551-5-x11-wide-spread-professional-high-res-background-template-layout-that-can-be-used-for-any-kind-of-marketing-material-magazines-articles-scrapbook-and-even-advertisements" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\2395551-5-x11-wide-spread-professional-high-res-background-template-layout-that-can-be-used-for-any-kind-of-marketing-material-magazines-articles-scrapbook-and-even-advertisements.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="etoileF" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\etoileF.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="white-wallpaper-18" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\white-wallpaper-18.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="vista-wallpaper-aurora-2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\vista-wallpaper-aurora-2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ombre0" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ombre0.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="2395551-5-x11-wide-spread-professional-high-res-background-template-layout-that-can-be-used-for-any-kind-of-marketing-material-magazines-articles-scrapbook-and-even-advertisements" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\2395551-5-x11-wide-spread-professional-high-res-background-template-layout-that-can-be-used-for-any-kind-of-marketing-material-magazines-articles-scrapbook-and-even-advertisements.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="19057-bubka-totalCommander" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\19057-bubka-totalCommander.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cool_washing_basic_collor_blue_black_rain_hd-wallpaper-112685" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cool_washing_basic_collor_blue_black_rain_hd-wallpaper-112685.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Accept-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Accept-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="etoileV" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\etoileV.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -148,19 +151,22 @@
   <data name="Wallpaper-Gray-Bars-Opera" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Wallpaper-Gray-Bars-Opera.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="vista-wallpaper-aurora-2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\vista-wallpaper-aurora-2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="téléchargement" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\téléchargement.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="15679-babasse-cadenas" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\15679-babasse-cadenas.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="abstract blue microsoft windows 1920x1080 wallpaper_www.wallpaperfo.com_92" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\abstract blue microsoft windows 1920x1080 wallpaper_www.wallpaperfo.com_92.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="19057-bubka-totalCommander" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\19057-bubka-totalCommander.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="white-wallpaper-18" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\white-wallpaper-18.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cool_washing_basic_collor_blue_black_rain_hd-wallpaper-112685" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cool_washing_basic_collor_blue_black_rain_hd-wallpaper-112685.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="15679-babasse-cadenas" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\15679-babasse-cadenas.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Erreur-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Erreur-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -105,6 +105,16 @@ namespace PPE4_Stars_up.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Accept_icon {
+            get {
+                object obj = ResourceManager.GetObject("Accept-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cool_washing_basic_collor_blue_black_rain_hd_wallpaper_112685 {
             get {
                 object obj = ResourceManager.GetObject("cool_washing_basic_collor_blue_black_rain_hd-wallpaper-112685", resourceCulture);
@@ -118,6 +128,16 @@ namespace PPE4_Stars_up.Properties {
         internal static System.Drawing.Bitmap couleur_degrade_gris_metal {
             get {
                 object obj = ResourceManager.GetObject("couleur-degrade-gris-metal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Erreur_icon {
+            get {
+                object obj = ResourceManager.GetObject("Erreur-icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

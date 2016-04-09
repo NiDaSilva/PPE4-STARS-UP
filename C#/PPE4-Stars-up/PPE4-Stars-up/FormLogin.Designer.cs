@@ -28,15 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLogin));
             this.tbNom = new System.Windows.Forms.TextBox();
             this.tbMdp = new System.Windows.Forms.TextBox();
             this.btnOK = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.cbAfficherMdp = new System.Windows.Forms.CheckBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.rtbLogin = new System.Windows.Forms.RichTextBox();
-            this.rtbMdp = new System.Windows.Forms.RichTextBox();
+            this.pbCorrect1 = new System.Windows.Forms.PictureBox();
+            this.pbCorrect2 = new System.Windows.Forms.PictureBox();
+            this.pbIncorrect2 = new System.Windows.Forms.PictureBox();
+            this.pbIncorrect1 = new System.Windows.Forms.PictureBox();
+            this.lbLogin = new System.Windows.Forms.ListBox();
+            this.lbMdp = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCorrect1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCorrect2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbIncorrect2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbIncorrect1)).BeginInit();
             this.SuspendLayout();
             // 
             // tbNom
@@ -49,6 +58,7 @@
             this.tbNom.TabIndex = 0;
             this.tbNom.Text = "Nom";
             this.tbNom.Click += new System.EventHandler(this.tbNom_Click);
+            this.tbNom.TextChanged += new System.EventHandler(this.tbNom_TextChanged);
             this.tbNom.Enter += new System.EventHandler(this.tbNom_Enter);
             this.tbNom.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbNom_KeyDown);
             this.tbNom.Leave += new System.EventHandler(this.tbNom_Leave);
@@ -63,6 +73,7 @@
             this.tbMdp.TabIndex = 1;
             this.tbMdp.Text = "Mot de passe";
             this.tbMdp.Click += new System.EventHandler(this.tbMdp_Click);
+            this.tbMdp.TextChanged += new System.EventHandler(this.tbMdp_TextChanged);
             this.tbMdp.Enter += new System.EventHandler(this.tbMdp_Enter);
             this.tbMdp.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbMdp_KeyDown);
             this.tbMdp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbMdp_KeyPress);
@@ -71,9 +82,9 @@
             // btnOK
             // 
             this.btnOK.Font = new System.Drawing.Font("Gentium Basic", 14.25F);
-            this.btnOK.Location = new System.Drawing.Point(143, 173);
+            this.btnOK.Location = new System.Drawing.Point(139, 168);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(130, 33);
+            this.btnOK.Size = new System.Drawing.Size(139, 33);
             this.btnOK.TabIndex = 2;
             this.btnOK.Text = "Se connecter";
             this.btnOK.UseVisualStyleBackColor = true;
@@ -112,23 +123,67 @@
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
             // 
-            // rtbLogin
+            // pbCorrect1
             // 
-            this.rtbLogin.Location = new System.Drawing.Point(12, 46);
-            this.rtbLogin.Name = "rtbLogin";
-            this.rtbLogin.Size = new System.Drawing.Size(100, 96);
-            this.rtbLogin.TabIndex = 9;
-            this.rtbLogin.Text = "";
-            this.rtbLogin.Visible = false;
+            this.pbCorrect1.BackgroundImage = global::PPE4_Stars_up.Properties.Resources.Accept_icon;
+            this.pbCorrect1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pbCorrect1.Location = new System.Drawing.Point(267, 54);
+            this.pbCorrect1.Name = "pbCorrect1";
+            this.pbCorrect1.Size = new System.Drawing.Size(16, 16);
+            this.pbCorrect1.TabIndex = 11;
+            this.pbCorrect1.TabStop = false;
+            this.pbCorrect1.Visible = false;
             // 
-            // rtbMdp
+            // pbCorrect2
             // 
-            this.rtbMdp.Location = new System.Drawing.Point(315, 46);
-            this.rtbMdp.Name = "rtbMdp";
-            this.rtbMdp.Size = new System.Drawing.Size(100, 96);
-            this.rtbMdp.TabIndex = 10;
-            this.rtbMdp.Text = "";
-            this.rtbMdp.Visible = false;
+            this.pbCorrect2.BackgroundImage = global::PPE4_Stars_up.Properties.Resources.Accept_icon;
+            this.pbCorrect2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pbCorrect2.Location = new System.Drawing.Point(267, 113);
+            this.pbCorrect2.Name = "pbCorrect2";
+            this.pbCorrect2.Size = new System.Drawing.Size(16, 16);
+            this.pbCorrect2.TabIndex = 12;
+            this.pbCorrect2.TabStop = false;
+            this.pbCorrect2.Visible = false;
+            // 
+            // pbIncorrect2
+            // 
+            this.pbIncorrect2.BackgroundImage = global::PPE4_Stars_up.Properties.Resources.Erreur_icon;
+            this.pbIncorrect2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pbIncorrect2.Location = new System.Drawing.Point(267, 113);
+            this.pbIncorrect2.Name = "pbIncorrect2";
+            this.pbIncorrect2.Size = new System.Drawing.Size(16, 16);
+            this.pbIncorrect2.TabIndex = 13;
+            this.pbIncorrect2.TabStop = false;
+            this.pbIncorrect2.Visible = false;
+            // 
+            // pbIncorrect1
+            // 
+            this.pbIncorrect1.BackgroundImage = global::PPE4_Stars_up.Properties.Resources.Erreur_icon;
+            this.pbIncorrect1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pbIncorrect1.Location = new System.Drawing.Point(267, 54);
+            this.pbIncorrect1.Name = "pbIncorrect1";
+            this.pbIncorrect1.Size = new System.Drawing.Size(16, 16);
+            this.pbIncorrect1.TabIndex = 14;
+            this.pbIncorrect1.TabStop = false;
+            this.pbIncorrect1.Visible = false;
+            // 
+            // lbLogin
+            // 
+            this.lbLogin.FormattingEnabled = true;
+            this.lbLogin.Location = new System.Drawing.Point(2, 31);
+            this.lbLogin.Name = "lbLogin";
+            this.lbLogin.Size = new System.Drawing.Size(93, 199);
+            this.lbLogin.TabIndex = 15;
+            this.lbLogin.Visible = false;
+            // 
+            // lbMdp
+            // 
+            this.lbMdp.FormattingEnabled = true;
+            this.lbMdp.Location = new System.Drawing.Point(332, 31);
+            this.lbMdp.Name = "lbMdp";
+            this.lbMdp.Size = new System.Drawing.Size(93, 199);
+            this.lbMdp.TabIndex = 16;
+            this.lbMdp.Visible = false;
             // 
             // FormLogin
             // 
@@ -137,15 +192,20 @@
             this.BackgroundImage = global::PPE4_Stars_up.Properties.Resources.cool_washing_basic_collor_blue_black_rain_hd_wallpaper_112685;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(427, 237);
+            this.Controls.Add(this.pbIncorrect1);
+            this.Controls.Add(this.pbIncorrect2);
+            this.Controls.Add(this.pbCorrect2);
+            this.Controls.Add(this.pbCorrect1);
             this.Controls.Add(this.tbMdp);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.cbAfficherMdp);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.tbNom);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.rtbMdp);
-            this.Controls.Add(this.rtbLogin);
+            this.Controls.Add(this.lbMdp);
+            this.Controls.Add(this.lbLogin);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "FormLogin";
             this.Text = "Se connecter";
@@ -153,6 +213,10 @@
             this.Load += new System.EventHandler(this.FormLogin_Load);
             this.Leave += new System.EventHandler(this.FormLogin_Leave);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCorrect1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCorrect2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbIncorrect2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbIncorrect1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -166,7 +230,11 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.CheckBox cbAfficherMdp;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.RichTextBox rtbLogin;
-        private System.Windows.Forms.RichTextBox rtbMdp;
+        private System.Windows.Forms.PictureBox pbCorrect1;
+        private System.Windows.Forms.PictureBox pbCorrect2;
+        private System.Windows.Forms.PictureBox pbIncorrect2;
+        private System.Windows.Forms.PictureBox pbIncorrect1;
+        private System.Windows.Forms.ListBox lbLogin;
+        private System.Windows.Forms.ListBox lbMdp;
     }
 }

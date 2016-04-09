@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.IO;
+using System.Threading;
 
 namespace PPE4_Stars_up
 {
@@ -65,14 +66,11 @@ namespace PPE4_Stars_up
 
         private void quitterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           Visible = false;
-            //this.Close();
-
+            timerHHmm.Stop();
+            Visible = false;
             
             FormLogin FL = new FormLogin();
-            FL.Show();
-
-            //FormLogin.ActiveForm.Visible = true;          
+            FL.Show();       
         }
 
         private void FormIndex_Enter(object sender, EventArgs e)
@@ -82,8 +80,21 @@ namespace PPE4_Stars_up
 
         private void importToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // Il faut gérer l'export avant l'import car dans le cas contraire, l'import s'effectue et change de nom en "export" ce qui declenche la condition
+
+            // Gestion de l'export
+
+            if (importToolStripMenuItem.Text == "Export")
+            {
+                InputBox("Exportation des données..", "");
+
+            }
+
+
             if (importToolStripMenuItem.Text == "Import")
-            {                
+            {
+                InputBox("Connexion à la base de données..", "");
+
                 controleur.init();
                 controleur.Vmodele.seconnecter();
 
@@ -93,8 +104,12 @@ namespace PPE4_Stars_up
                 }
                 else
                 {
+                    InputBox("Connecté. Importation des données..", "");
+
                     // MessageBox.Show("Connexion à la base de donnée effectuée avec succès", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     controleur.Vmodele.import();
+
+                    InputBox("Données importées. Déconnexion..", "");
 
                     controleur.Vmodele.sedeconnecter();
                 }
@@ -112,6 +127,7 @@ namespace PPE4_Stars_up
 
         private void FormIndex_FormClosed(object sender, FormClosedEventArgs e)
         {
+            timerHHmm.Stop();
             Application.Exit();
         }
 
@@ -165,31 +181,21 @@ namespace PPE4_Stars_up
             lblheure.BackColor = Color.Transparent;
         }
 
+        public void MAJHeure()
+        {
+            lblInspecteur.Text = NI + " " + PI;
+            lblheure.Text = DateTime.Now.ToString("HH:mm:ss");
+        }
+
         private void FormIndex_Load(object sender, EventArgs e)
         {
-            /*
-            if (importToolStripMenuItem.Text == "Export")
-            {
-                if (planningToolStripMenuItem.Enabled == false)
-                {
-                    planningToolStripMenuItem.Enabled = true;
-                }
-
-                if (historiqueDesVisitesToolStripMenuItem.Enabled == false)
-                {
-                    historiqueDesVisitesToolStripMenuItem.Enabled = true;
-                }
-            }
-            */
+            timerHHmm.Start();
 
             chargedgv();
             Background();
+            MAJHeure();
             
-
             FormLogin FL = new FormLogin();
-            
-            lblInspecteur.Text = NI + " " + PI;
-            lblheure.Text = DateTime.Now.ToString("HH:mm");
         }
 
         private void historiqueDesVisitesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -227,6 +233,56 @@ namespace PPE4_Stars_up
         private void FormIndex_Activated(object sender, EventArgs e)
         {
 
+        }
+
+        private void timerHHmm_Tick(object sender, EventArgs e)
+        {
+            MAJHeure();
+        }
+
+        public static int InputBox(string title, string promptText)
+        {
+
+            Form form = new Form();
+            LinkLabel texte = new LinkLabel();
+            ProgressBar Progress = new ProgressBar();
+
+            Progress.Minimum = 0;
+            Progress.Maximum = 100;
+
+            form.Text = title;
+            texte.Text = promptText;
+            texte.SetBounds(9, 20, 372, 13);
+            Progress.SetBounds(9, 30, 372, 20);
+
+            texte.AutoSize = true;
+            Progress.Anchor = Progress.Anchor | AnchorStyles.Right;
+
+            form.ClientSize = new Size(396, 91);
+            form.Controls.AddRange(new Control[] { texte, Progress });
+            form.ClientSize = new Size(Math.Max(300, texte.Right + 10), form.ClientSize.Height);
+            form.FormBorderStyle = FormBorderStyle.FixedDialog;
+            form.StartPosition = FormStartPosition.CenterScreen;
+            form.MinimizeBox = false;
+            form.MaximizeBox = false;
+
+            Progress.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+
+            form.Show();
+
+            for (int i = 0; i < 100; i++)
+            {
+                Thread.Sleep(15); // --> Timer au tick
+
+                Progress.Value += 1;
+                form.Show();
+            }
+
+            int Res = Progress.Value;
+            if (Res == 100)
+                form.Close();
+
+            return Res;
         }
     }
 }

@@ -474,6 +474,7 @@ namespace PPE4_Stars_up
             form.HistoriqueDesVisitesToolStripMenuItem.Enabled = true;
             form.PlanningToolStripMenuItem.Enabled = true;
             form.Background();
+            form.MAJHeure();
             this.Close();
         }
     }

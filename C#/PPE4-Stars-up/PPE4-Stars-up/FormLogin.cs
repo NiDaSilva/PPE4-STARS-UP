@@ -9,19 +9,16 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.IO;
+using System.Threading;
 
 namespace PPE4_Stars_up
 {
     public partial class FormLogin : Form
     {
-       // public static Cursor IBeam { get; }
-        // public static Cursor Default { get; }
-        // public bool IsBalloon { get; set; }
-        // public Brush BorderBrush { get; set; } // fonctionne pas 
-
         private BindingSource bindingSource1 = new BindingSource();
         public int click = 0;
         public int click3 = 0;
+        int countt = 0;
 
         private string nomInspecteur;
         private string prenomInspecteur;
@@ -92,12 +89,36 @@ namespace PPE4_Stars_up
 
         private void btnOK_Click(object sender, EventArgs e)
         {
+            InputBox("Vérification du login..", "");
 
-            if (rtbLogin.Text.Contains(tbNom.Text))
-            {
-                if (rtbMdp.Text.Contains(tbMdp.Text))
+            if (lbLogin.Items.Contains(tbNom.Text))
+            {                
+                // login correct 
+
+                foreach(var o in lbLogin.Items)
                 {
-                    if(tbNom.Text == "NGrondin")
+                    if(lbLogin.Items[countt].ToString() == tbNom.Text)
+                    {
+                        // recupérer la valeur count
+                        // MessageBox.Show(countt.ToString());   
+                    }
+                    else
+                    {
+                        countt++;
+                    }
+                }
+
+                InputBox("Correct. Vérification du mot de passe..", "");
+
+                // MessageBox.Show(lbLogin.Items[countt].ToString());
+                // MessageBox.Show(lbMdp.Items[countt].ToString());
+                
+                if (tbMdp.Text== lbMdp.Items[countt].ToString()) 
+                {
+                    // mdp correct
+
+                    #region confidentiel
+                    if (tbNom.Text == "NGrondin")
                     {
                         nomInspecteur = "Grondin";
                         prenomInspecteur = "Nicolas";
@@ -144,7 +165,8 @@ namespace PPE4_Stars_up
                         idInspecteur = 6;
                         idINSP = 6;
                     }
-                    
+                    #endregion confidentiel
+
                     ecrireFichier();
 
                     FormIndex FI = new FormIndex(nomInspecteur, prenomInspecteur, idInspecteur);
@@ -153,6 +175,8 @@ namespace PPE4_Stars_up
                 }
                 else
                 {
+                    // mdp incorrect
+
                     MessageBox.Show("Mot de passe incorrect", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     tbMdp.Clear();
 
@@ -168,6 +192,8 @@ namespace PPE4_Stars_up
             }
             else
             {
+                // login incorrect
+
                 MessageBox.Show("Login incorrect", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 tbNom.Clear();
 
@@ -282,6 +308,10 @@ namespace PPE4_Stars_up
 
         private void FormLogin_Load(object sender, EventArgs e)
         {
+            pbCorrect1.Visible = false;
+            pbCorrect2.Visible = false;
+            pbIncorrect1.Visible = false;
+            pbIncorrect2.Visible = false;
 
             creationFichier();
             Visible = true;
@@ -304,13 +334,15 @@ namespace PPE4_Stars_up
             for (int i = 0; i < controleur.Vmodele.Dv_login.ToTable().Rows.Count; i++)
             {
                 FListLogin.Add(new KeyValuePair<int, string>((int)controleur.Vmodele.Dv_login.ToTable().Rows[i][0], controleur.Vmodele.Dv_login.ToTable().Rows[i][4].ToString()));
-                rtbLogin.Text += controleur.Vmodele.Dv_login.ToTable().Rows[i][4].ToString() + "\n";
+                // rtbLogin.Text += controleur.Vmodele.Dv_login.ToTable().Rows[i][4].ToString() + "\n";
+                lbLogin.Items.Add(controleur.Vmodele.Dv_login.ToTable().Rows[i][4].ToString());
             }
 
             for (int i = 0; i < controleur.Vmodele.Dv_login.ToTable().Rows.Count; i++)
             {
                 FListMdp.Add(new KeyValuePair<int, string>((int)controleur.Vmodele.Dv_login.ToTable().Rows[i][0], controleur.Vmodele.Dv_login.ToTable().Rows[i][5].ToString()));
-                rtbMdp.Text += controleur.Vmodele.Dv_login.ToTable().Rows[i][5].ToString() + "\n";
+                // rtbMdp.Text += controleur.Vmodele.Dv_login.ToTable().Rows[i][5].ToString() + "\n";
+                lbMdp.Items.Add(controleur.Vmodele.Dv_login.ToTable().Rows[i][5].ToString());
             }
         }
 
@@ -339,6 +371,99 @@ namespace PPE4_Stars_up
             if (e.KeyChar == (char)Keys.Enter)
             {
                 btnOK_Click(sender, e);
+            }
+        }
+
+        public static int InputBox(string title, string promptText)
+        {
+            Form form = new Form();
+            LinkLabel texte = new LinkLabel();
+            ProgressBar Progress = new ProgressBar();
+
+            Progress.Minimum = 0;
+            Progress.Maximum = 100;
+
+            form.Text = title;
+            texte.Text = promptText;
+            texte.SetBounds(9, 20, 372, 13);
+            Progress.SetBounds(9, 30, 372, 20);
+
+            texte.AutoSize = true;
+            Progress.Anchor = Progress.Anchor | AnchorStyles.Right;
+
+            form.ClientSize = new Size(396, 91);
+            form.Controls.AddRange(new Control[] { texte, Progress });
+            form.ClientSize = new Size(Math.Max(300, texte.Right + 10), form.ClientSize.Height);
+            form.FormBorderStyle = FormBorderStyle.FixedDialog;
+            form.StartPosition = FormStartPosition.CenterScreen;
+            form.MinimizeBox = false;
+            form.MaximizeBox = false;
+
+            Progress.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+
+            form.Show();
+
+            for (int i = 0; i < 100; i++)
+            {
+                Thread.Sleep(10); // --> Timer au tick
+
+                Progress.Value += 1;
+                form.Show();
+            }
+
+            int Res = Progress.Value;
+            if (Res == 100)
+                form.Close();
+
+            return Res;
+        }
+
+        private void tbNom_TextChanged(object sender, EventArgs e)
+        {
+            if (tbNom.Text != "")
+            {
+                if (lbLogin.Items.Contains(tbNom.Text))
+                {
+                    pbCorrect1.Visible = true;
+                    pbIncorrect1.Visible = false;
+                }
+                else
+                {
+                    pbCorrect1.Visible = false;
+                    pbIncorrect1.Visible = true;
+                }
+            }
+        }
+
+        private void tbMdp_TextChanged(object sender, EventArgs e)
+        {
+            int countt2 = 0;
+
+            foreach (var o in lbLogin.Items)
+            {
+                if (lbLogin.Items[countt2].ToString() == tbNom.Text)
+                {
+                    // recupérer la valeur count
+                    // MessageBox.Show(countt.ToString());   
+                }
+                else
+                {
+                    countt2++;
+                }
+            }
+
+            if (tbMdp.Text != "")
+            {
+                if (tbMdp.Text == lbMdp.Items[countt2].ToString())
+                {
+                    pbCorrect2.Visible = true;
+                    pbIncorrect2.Visible = false;
+                }
+                else
+                {
+                    pbCorrect2.Visible = false;
+                    pbIncorrect2.Visible = true;
+                }
             }
         }
     }
