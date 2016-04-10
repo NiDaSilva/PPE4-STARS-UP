@@ -115,6 +115,36 @@ namespace PPE4_Stars_up.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap allemagne {
+            get {
+                object obj = ResourceManager.GetObject("allemagne", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap anglais {
+            get {
+                object obj = ResourceManager.GetObject("anglais", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap angleterre {
+            get {
+                object obj = ResourceManager.GetObject("angleterre", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cool_washing_basic_collor_blue_black_rain_hd_wallpaper_112685 {
             get {
                 object obj = ResourceManager.GetObject("cool_washing_basic_collor_blue_black_rain_hd-wallpaper-112685", resourceCulture);
@@ -168,6 +198,16 @@ namespace PPE4_Stars_up.Properties {
         internal static System.Drawing.Bitmap Fleche_navigation_bleue_gauche {
             get {
                 object obj = ResourceManager.GetObject("Fleche-navigation-bleue-gauche", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap france {
+            get {
+                object obj = ResourceManager.GetObject("france", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -270,6 +270,10 @@
     <None Include="Resources\Erreur-icon.png" />
     <None Include="Resources\jourJ.PNG" />
     <None Include="Resources\jourJ1.PNG" />
+    <None Include="Resources\france.jpeg" />
+    <None Include="Resources\anglais.jpeg" />
+    <None Include="Resources\angleterre.jpg" />
+    <None Include="Resources\allemagne.jpg" />
     <Content Include="simple-blue-calendar-128.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

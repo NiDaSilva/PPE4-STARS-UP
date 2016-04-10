@@ -44,8 +44,29 @@
             this.lblSpecialite = new System.Windows.Forms.Label();
             this.lblheure = new System.Windows.Forms.Label();
             this.timerHHmm = new System.Windows.Forms.Timer(this.components);
+            this.lblDate = new System.Windows.Forms.Label();
+            this.pbFrance = new System.Windows.Forms.PictureBox();
+            this.pbAngleterre = new System.Windows.Forms.PictureBox();
+            this.pbAllemagne = new System.Windows.Forms.PictureBox();
+            this.lblInfoNbVisiteTotal = new System.Windows.Forms.Label();
+            this.lbldont = new System.Windows.Forms.Label();
+            this.lblNbVisiteTotal = new System.Windows.Forms.Label();
+            this.lblNbVisitePassees = new System.Windows.Forms.Label();
+            this.lblTiret = new System.Windows.Forms.Label();
+            this.lblPassees = new System.Windows.Forms.Label();
+            this.lblToday = new System.Windows.Forms.Label();
+            this.lblTiret2 = new System.Windows.Forms.Label();
+            this.lblNbVisiteToday = new System.Windows.Forms.Label();
+            this.lblPasseeNonEvaluee = new System.Windows.Forms.Label();
+            this.lblNbVisitePasseeNonRemplie = new System.Windows.Forms.Label();
+            this.lblPrevue = new System.Windows.Forms.Label();
+            this.lblTiret4 = new System.Windows.Forms.Label();
+            this.lblNbVisitePrevue = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFrance)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAngleterre)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAllemagne)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -182,14 +203,212 @@
             this.lblheure.Font = new System.Drawing.Font("Gentium Basic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblheure.Location = new System.Drawing.Point(717, 440);
             this.lblheure.Name = "lblheure";
-            this.lblheure.Size = new System.Drawing.Size(79, 19);
+            this.lblheure.Size = new System.Drawing.Size(52, 19);
             this.lblheure.TabIndex = 9;
-            this.lblheure.Text = "HH:mm:ss";
+            this.lblheure.Text = "Heure";
             // 
             // timerHHmm
             // 
             this.timerHHmm.Interval = 1000;
             this.timerHHmm.Tick += new System.EventHandler(this.timerHHmm_Tick);
+            // 
+            // lblDate
+            // 
+            this.lblDate.AutoSize = true;
+            this.lblDate.BackColor = System.Drawing.Color.Transparent;
+            this.lblDate.Font = new System.Drawing.Font("Gentium Basic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDate.Location = new System.Drawing.Point(3, 36);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(41, 19);
+            this.lblDate.TabIndex = 11;
+            this.lblDate.Text = "Date";
+            // 
+            // pbFrance
+            // 
+            this.pbFrance.BackgroundImage = global::PPE4_Stars_up.Properties.Resources.france;
+            this.pbFrance.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbFrance.Location = new System.Drawing.Point(683, 40);
+            this.pbFrance.Name = "pbFrance";
+            this.pbFrance.Size = new System.Drawing.Size(30, 15);
+            this.pbFrance.TabIndex = 12;
+            this.pbFrance.TabStop = false;
+            this.pbFrance.Click += new System.EventHandler(this.pbFrance_Click);
+            // 
+            // pbAngleterre
+            // 
+            this.pbAngleterre.BackgroundImage = global::PPE4_Stars_up.Properties.Resources.angleterre;
+            this.pbAngleterre.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbAngleterre.Location = new System.Drawing.Point(715, 40);
+            this.pbAngleterre.Name = "pbAngleterre";
+            this.pbAngleterre.Size = new System.Drawing.Size(30, 15);
+            this.pbAngleterre.TabIndex = 14;
+            this.pbAngleterre.TabStop = false;
+            this.pbAngleterre.Click += new System.EventHandler(this.pbAngleterre_Click);
+            // 
+            // pbAllemagne
+            // 
+            this.pbAllemagne.BackgroundImage = global::PPE4_Stars_up.Properties.Resources.allemagne;
+            this.pbAllemagne.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbAllemagne.Location = new System.Drawing.Point(747, 40);
+            this.pbAllemagne.Name = "pbAllemagne";
+            this.pbAllemagne.Size = new System.Drawing.Size(30, 15);
+            this.pbAllemagne.TabIndex = 16;
+            this.pbAllemagne.TabStop = false;
+            this.pbAllemagne.Click += new System.EventHandler(this.pbAllemagne_Click);
+            // 
+            // lblInfoNbVisiteTotal
+            // 
+            this.lblInfoNbVisiteTotal.AutoSize = true;
+            this.lblInfoNbVisiteTotal.BackColor = System.Drawing.Color.Transparent;
+            this.lblInfoNbVisiteTotal.Font = new System.Drawing.Font("Gentium Basic", 12.25F);
+            this.lblInfoNbVisiteTotal.Location = new System.Drawing.Point(3, 106);
+            this.lblInfoNbVisiteTotal.Name = "lblInfoNbVisiteTotal";
+            this.lblInfoNbVisiteTotal.Size = new System.Drawing.Size(230, 20);
+            this.lblInfoNbVisiteTotal.TabIndex = 18;
+            this.lblInfoNbVisiteTotal.Text = "Vous êtes et avez été assigné à ";
+            // 
+            // lbldont
+            // 
+            this.lbldont.AutoSize = true;
+            this.lbldont.BackColor = System.Drawing.Color.Transparent;
+            this.lbldont.Font = new System.Drawing.Font("Gentium Basic", 12.25F);
+            this.lbldont.Location = new System.Drawing.Point(257, 106);
+            this.lbldont.Name = "lbldont";
+            this.lbldont.Size = new System.Drawing.Size(100, 20);
+            this.lbldont.TabIndex = 19;
+            this.lbldont.Text = "visites dont :";
+            // 
+            // lblNbVisiteTotal
+            // 
+            this.lblNbVisiteTotal.AutoSize = true;
+            this.lblNbVisiteTotal.BackColor = System.Drawing.Color.Transparent;
+            this.lblNbVisiteTotal.Font = new System.Drawing.Font("Gentium Basic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNbVisiteTotal.Location = new System.Drawing.Point(230, 107);
+            this.lblNbVisiteTotal.Name = "lblNbVisiteTotal";
+            this.lblNbVisiteTotal.Size = new System.Drawing.Size(23, 19);
+            this.lblNbVisiteTotal.TabIndex = 20;
+            this.lblNbVisiteTotal.Text = "??";
+            // 
+            // lblNbVisitePassees
+            // 
+            this.lblNbVisitePassees.AutoSize = true;
+            this.lblNbVisitePassees.BackColor = System.Drawing.Color.Transparent;
+            this.lblNbVisitePassees.Font = new System.Drawing.Font("Gentium Basic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNbVisitePassees.Location = new System.Drawing.Point(22, 177);
+            this.lblNbVisitePassees.Name = "lblNbVisitePassees";
+            this.lblNbVisitePassees.Size = new System.Drawing.Size(23, 19);
+            this.lblNbVisitePassees.TabIndex = 21;
+            this.lblNbVisitePassees.Text = "??";
+            // 
+            // lblTiret
+            // 
+            this.lblTiret.AutoSize = true;
+            this.lblTiret.BackColor = System.Drawing.Color.Transparent;
+            this.lblTiret.Font = new System.Drawing.Font("Gentium Basic", 12.25F);
+            this.lblTiret.Location = new System.Drawing.Point(12, 177);
+            this.lblTiret.Name = "lblTiret";
+            this.lblTiret.Size = new System.Drawing.Size(15, 20);
+            this.lblTiret.TabIndex = 22;
+            this.lblTiret.Text = "-";
+            // 
+            // lblPassees
+            // 
+            this.lblPassees.AutoSize = true;
+            this.lblPassees.BackColor = System.Drawing.Color.Transparent;
+            this.lblPassees.Font = new System.Drawing.Font("Gentium Basic", 12.25F);
+            this.lblPassees.Location = new System.Drawing.Point(51, 176);
+            this.lblPassees.Name = "lblPassees";
+            this.lblPassees.Size = new System.Drawing.Size(134, 20);
+            this.lblPassees.TabIndex = 23;
+            this.lblPassees.Text = "sont passées mais";
+            // 
+            // lblToday
+            // 
+            this.lblToday.AutoSize = true;
+            this.lblToday.BackColor = System.Drawing.Color.Transparent;
+            this.lblToday.Font = new System.Drawing.Font("Gentium Basic", 12.25F);
+            this.lblToday.Location = new System.Drawing.Point(51, 143);
+            this.lblToday.Name = "lblToday";
+            this.lblToday.Size = new System.Drawing.Size(190, 20);
+            this.lblToday.TabIndex = 27;
+            this.lblToday.Text = "sont prévues aujourd\'hui.";
+            // 
+            // lblTiret2
+            // 
+            this.lblTiret2.AutoSize = true;
+            this.lblTiret2.BackColor = System.Drawing.Color.Transparent;
+            this.lblTiret2.Font = new System.Drawing.Font("Gentium Basic", 12.25F);
+            this.lblTiret2.Location = new System.Drawing.Point(12, 144);
+            this.lblTiret2.Name = "lblTiret2";
+            this.lblTiret2.Size = new System.Drawing.Size(15, 20);
+            this.lblTiret2.TabIndex = 26;
+            this.lblTiret2.Text = "-";
+            // 
+            // lblNbVisiteToday
+            // 
+            this.lblNbVisiteToday.AutoSize = true;
+            this.lblNbVisiteToday.BackColor = System.Drawing.Color.Transparent;
+            this.lblNbVisiteToday.Font = new System.Drawing.Font("Gentium Basic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNbVisiteToday.Location = new System.Drawing.Point(22, 144);
+            this.lblNbVisiteToday.Name = "lblNbVisiteToday";
+            this.lblNbVisiteToday.Size = new System.Drawing.Size(23, 19);
+            this.lblNbVisiteToday.TabIndex = 25;
+            this.lblNbVisiteToday.Text = "??";
+            // 
+            // lblPasseeNonEvaluee
+            // 
+            this.lblPasseeNonEvaluee.AutoSize = true;
+            this.lblPasseeNonEvaluee.BackColor = System.Drawing.Color.Transparent;
+            this.lblPasseeNonEvaluee.Font = new System.Drawing.Font("Gentium Basic", 12.25F);
+            this.lblPasseeNonEvaluee.Location = new System.Drawing.Point(217, 176);
+            this.lblPasseeNonEvaluee.Name = "lblPasseeNonEvaluee";
+            this.lblPasseeNonEvaluee.Size = new System.Drawing.Size(145, 20);
+            this.lblPasseeNonEvaluee.TabIndex = 30;
+            this.lblPasseeNonEvaluee.Text = "reste non évaluées.";
+            // 
+            // lblNbVisitePasseeNonRemplie
+            // 
+            this.lblNbVisitePasseeNonRemplie.AutoSize = true;
+            this.lblNbVisitePasseeNonRemplie.BackColor = System.Drawing.Color.Transparent;
+            this.lblNbVisitePasseeNonRemplie.Font = new System.Drawing.Font("Gentium Basic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNbVisitePasseeNonRemplie.Location = new System.Drawing.Point(188, 177);
+            this.lblNbVisitePasseeNonRemplie.Name = "lblNbVisitePasseeNonRemplie";
+            this.lblNbVisitePasseeNonRemplie.Size = new System.Drawing.Size(23, 19);
+            this.lblNbVisitePasseeNonRemplie.TabIndex = 28;
+            this.lblNbVisitePasseeNonRemplie.Text = "??";
+            // 
+            // lblPrevue
+            // 
+            this.lblPrevue.AutoSize = true;
+            this.lblPrevue.BackColor = System.Drawing.Color.Transparent;
+            this.lblPrevue.Font = new System.Drawing.Font("Gentium Basic", 12.25F);
+            this.lblPrevue.Location = new System.Drawing.Point(51, 210);
+            this.lblPrevue.Name = "lblPrevue";
+            this.lblPrevue.Size = new System.Drawing.Size(258, 20);
+            this.lblPrevue.TabIndex = 33;
+            this.lblPrevue.Text = "sont prévues dans les jours à venir.";
+            // 
+            // lblTiret4
+            // 
+            this.lblTiret4.AutoSize = true;
+            this.lblTiret4.BackColor = System.Drawing.Color.Transparent;
+            this.lblTiret4.Font = new System.Drawing.Font("Gentium Basic", 12.25F);
+            this.lblTiret4.Location = new System.Drawing.Point(12, 211);
+            this.lblTiret4.Name = "lblTiret4";
+            this.lblTiret4.Size = new System.Drawing.Size(15, 20);
+            this.lblTiret4.TabIndex = 32;
+            this.lblTiret4.Text = "-";
+            // 
+            // lblNbVisitePrevue
+            // 
+            this.lblNbVisitePrevue.AutoSize = true;
+            this.lblNbVisitePrevue.BackColor = System.Drawing.Color.Transparent;
+            this.lblNbVisitePrevue.Font = new System.Drawing.Font("Gentium Basic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNbVisitePrevue.Location = new System.Drawing.Point(22, 211);
+            this.lblNbVisitePrevue.Name = "lblNbVisitePrevue";
+            this.lblNbVisitePrevue.Size = new System.Drawing.Size(23, 19);
+            this.lblNbVisitePrevue.TabIndex = 31;
+            this.lblNbVisitePrevue.Text = "??";
             // 
             // FormIndex
             // 
@@ -198,6 +417,24 @@
             this.BackgroundImage = global::PPE4_Stars_up.Properties.Resources.Wallpaper_Gray_Bars_Opera;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(784, 462);
+            this.Controls.Add(this.lblPrevue);
+            this.Controls.Add(this.lblTiret4);
+            this.Controls.Add(this.lblNbVisitePrevue);
+            this.Controls.Add(this.lblPasseeNonEvaluee);
+            this.Controls.Add(this.lblNbVisitePasseeNonRemplie);
+            this.Controls.Add(this.lblToday);
+            this.Controls.Add(this.lblTiret2);
+            this.Controls.Add(this.lblNbVisiteToday);
+            this.Controls.Add(this.lblPassees);
+            this.Controls.Add(this.lblTiret);
+            this.Controls.Add(this.lblNbVisitePassees);
+            this.Controls.Add(this.lblNbVisiteTotal);
+            this.Controls.Add(this.lbldont);
+            this.Controls.Add(this.lblInfoNbVisiteTotal);
+            this.Controls.Add(this.pbAllemagne);
+            this.Controls.Add(this.pbAngleterre);
+            this.Controls.Add(this.pbFrance);
+            this.Controls.Add(this.lblDate);
             this.Controls.Add(this.lblheure);
             this.Controls.Add(this.lblinfo2);
             this.Controls.Add(this.lblSpecialite);
@@ -220,6 +457,9 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFrance)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAngleterre)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAllemagne)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -262,6 +502,24 @@
         private System.Windows.Forms.Label lblSpecialite;
         private System.Windows.Forms.Label lblheure;
         private System.Windows.Forms.Timer timerHHmm;
+        private System.Windows.Forms.Label lblDate;
+        private System.Windows.Forms.PictureBox pbFrance;
+        private System.Windows.Forms.PictureBox pbAngleterre;
+        private System.Windows.Forms.PictureBox pbAllemagne;
+        private System.Windows.Forms.Label lblInfoNbVisiteTotal;
+        private System.Windows.Forms.Label lbldont;
+        private System.Windows.Forms.Label lblNbVisiteTotal;
+        private System.Windows.Forms.Label lblNbVisitePassees;
+        private System.Windows.Forms.Label lblTiret;
+        private System.Windows.Forms.Label lblPassees;
+        private System.Windows.Forms.Label lblToday;
+        private System.Windows.Forms.Label lblTiret2;
+        private System.Windows.Forms.Label lblNbVisiteToday;
+        private System.Windows.Forms.Label lblPasseeNonEvaluee;
+        private System.Windows.Forms.Label lblNbVisitePasseeNonRemplie;
+        private System.Windows.Forms.Label lblPrevue;
+        private System.Windows.Forms.Label lblTiret4;
+        private System.Windows.Forms.Label lblNbVisitePrevue;
     }
 }
 
