@@ -39,3 +39,4 @@ C:\wamp64\www\PPE4-STARS-UP\C#\PPE4-Stars-up\PPE4-Stars-up\bin\Debug\AutoItX3.Po
 C:\wamp64\www\PPE4-STARS-UP\C#\PPE4-Stars-up\PPE4-Stars-up\bin\Debug\AutoItX3.Assembly.xml
 C:\wamp64\www\PPE4-STARS-UP\C#\PPE4-Stars-up\PPE4-Stars-up\obj\Debug\PPE4_Stars_up.FormHistorique.resources
 C:\wamp64\www\PPE4-STARS-UP\C#\PPE4-Stars-up\PPE4-Stars-up\obj\Debug\PPE4_Stars_up.FormVisite.resources
+C:\wamp64\www\PPE4-STARS-UP\C#\PPE4-Stars-up\PPE4-Stars-up\bin\Debug\de\PdfSharp.resources.dll

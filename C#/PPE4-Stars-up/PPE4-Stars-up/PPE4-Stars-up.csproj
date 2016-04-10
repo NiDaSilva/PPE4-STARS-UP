@@ -57,6 +57,9 @@
       <HintPath>..\..\..\..\..\..\Program Files (x86)\AutoIt3\AutoItX\AutoItX3.PowerShell.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="PdfSharp">
+      <HintPath>..\..\..\..\..\..\Users\Dimy\Desktop\Nouveau dossier\GDI+\PdfSharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms.Calendar">
@@ -147,6 +150,7 @@
     <Compile Include="Planning\Jour\MonthViewMonth.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScreenCapture.cs" />
     <EmbeddedResource Include="FormHistorique.resx">
       <DependentUpon>FormHistorique.cs</DependentUpon>
     </EmbeddedResource>
@@ -264,6 +268,8 @@
   <ItemGroup>
     <None Include="Resources\Accept-icon.png" />
     <None Include="Resources\Erreur-icon.png" />
+    <None Include="Resources\jourJ.PNG" />
+    <None Include="Resources\jourJ1.PNG" />
     <Content Include="simple-blue-calendar-128.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

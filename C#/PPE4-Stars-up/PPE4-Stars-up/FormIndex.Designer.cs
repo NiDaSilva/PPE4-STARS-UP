@@ -127,9 +127,9 @@
             this.lblInspecteur.Font = new System.Drawing.Font("Gentium Basic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInspecteur.Location = new System.Drawing.Point(175, 440);
             this.lblInspecteur.Name = "lblInspecteur";
-            this.lblInspecteur.Size = new System.Drawing.Size(99, 19);
+            this.lblInspecteur.Size = new System.Drawing.Size(167, 19);
             this.lblInspecteur.TabIndex = 2;
-            this.lblInspecteur.Text = "Prénom Nom";
+            this.lblInspecteur.Text = "Import données requis";
             // 
             // lblinfo
             // 

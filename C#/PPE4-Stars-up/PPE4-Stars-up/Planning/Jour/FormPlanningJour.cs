@@ -1,11 +1,15 @@
-﻿using System;
+﻿using PdfSharp.Drawing;
+using PdfSharp.Pdf;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Serialization;
@@ -16,6 +20,8 @@ namespace PPE4_Stars_up
     {
         List<CalendarItem> _items = new List<CalendarItem>();
         CalendarItem contextItem = null;
+
+        ScreenCapture capScreen = new ScreenCapture();
 
         string nbEtoile;
         string test;
@@ -47,6 +53,26 @@ namespace PPE4_Stars_up
 
         private void FormPlanningJour_Load(object sender, EventArgs e)
         {
+            if (WindowState == FormWindowState.Maximized)
+            {
+                btnRetour.Text = "Imprimer";
+                DialogResult DR = MessageBox.Show("Séléctionnez le(s) jour(s) ou la semaine que vous souhaitez imprimer.\nPuis cliquez sur le bouton, en haut à gauche, \"Imprimer\".", "Processus planning PDF", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+                
+                if(DR == DialogResult.OK)
+                {
+                    // il selectionne
+                }
+                else
+                {
+                    this.Close();
+                }
+
+            }
+            else
+            {
+                btnRetour.Text = "Retour";
+            }
+
             if (ItemsFile.Exists)
             {
                 List<ItemInfo> lst = new List<ItemInfo>();
@@ -545,14 +571,95 @@ namespace PPE4_Stars_up
             test = lines[0].ToString();
         }
 
+        private void captureScreen()
+        {
+            try
+            {
+                // Call the CaptureAndSave method from the ScreenCapture class 
+                // And create a temporary file in C:\Temp
+                capScreen.CaptureAndSave
+                (@"C:\Temp\test.png", CaptureMode.Window, ImageFormat.Png);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message.ToString());
+            }
+        }
+
+        public static Image resizeImage(Image imgToResize, Size size)
+        {
+            return (Image)(new Bitmap(imgToResize, size));
+        }
+
         private void btnRetour_Click(object sender, EventArgs e)
         {
-            FormIndex form = (FormIndex)this.MdiParent;
-            form.HistoriqueDesVisitesToolStripMenuItem.Enabled = true;
-            form.PlanningToolStripMenuItem.Enabled = true;
-            form.Background();
-            form.MAJHeure();
-            this.Close();
+            if (btnRetour.Text == "Imprimer")
+            {
+                // On appelle la fonction qui va prendre la capture du planning
+                captureScreen();
+
+                InputBox("Démarrage du processus. Capture du planning..", "");
+
+                InputBox("Création d'un document pdf et d'une page..", "");
+
+                // On crée un nouveau document et une nouvelle page PDF
+                PdfDocument doc = new PdfDocument();
+                PdfPage oPage = new PdfPage();
+
+                InputBox("Association capture | page et page | document..", "");
+
+                // oPage.Size = PdfSharp.PageSize.A1;
+                oPage.Size = PdfSharp.PageSize.Crown;
+
+                // On ajoute la page au pdf et l'image au document
+                doc.Pages.Add(oPage);
+                XGraphics xgr = XGraphics.FromPdfPage(oPage);
+                XImage img = XImage.FromFile(@"C:\Temp\test.png");
+
+                xgr.DrawImage(img, 0, 0);
+
+                // 210*297mm PDF
+
+                InputBox("Demande d'enregistrement au format pdf..", "");
+
+                saveFileDialog.Filter = ("PDF File|*.pdf");
+                DialogResult btnSave = saveFileDialog.ShowDialog();
+                if (btnSave.Equals(DialogResult.OK))
+                {
+                    InputBox("Sauvegarde du document..", "");
+
+                    doc.Save(saveFileDialog.FileName);
+
+                    InputBox("Fermeture du document..", "");
+
+                    doc.Close();
+
+                }
+
+                InputBox("Libération de toutes les références liées à l'image..", "");
+
+                // Pour parré aux erreurs éventuelles
+                img.Dispose();
+
+                InputBox("Fin du processus. Fermeture..", "");
+                /*
+                //FormIndex form = (FormIndex)this.MdiParent;
+                FormIndex form = new FormIndex();
+
+                form.Background();
+                form.MAJHeure();
+                */
+                this.Close();
+            }
+            else
+            {
+                FormIndex form = (FormIndex)this.MdiParent;
+                form.HistoriqueDesVisitesToolStripMenuItem.Enabled = true;
+                form.PlanningToolStripMenuItem.Enabled = true;
+                form.Background();
+                form.MAJHeure();
+                this.Close();
+            }            
         }
 
         private void lireFichier2()
@@ -588,6 +695,50 @@ namespace PPE4_Stars_up
             lireFichier2();
             idI2 = Convert.ToInt32(test2);
             return idI2;
+        }
+
+        public static int InputBox(string title, string promptText)
+        {
+            Form form = new Form();
+            LinkLabel texte = new LinkLabel();
+            ProgressBar Progress = new ProgressBar();
+
+            Progress.Minimum = 0;
+            Progress.Maximum = 100;
+
+            form.Text = title;
+            texte.Text = promptText;
+            texte.SetBounds(9, 20, 372, 13);
+            Progress.SetBounds(9, 30, 372, 20);
+
+            texte.AutoSize = true;
+            Progress.Anchor = Progress.Anchor | AnchorStyles.Right;
+
+            form.ClientSize = new Size(396, 91);
+            form.Controls.AddRange(new Control[] { texte, Progress });
+            form.ClientSize = new Size(Math.Max(300, texte.Right + 10), form.ClientSize.Height);
+            form.FormBorderStyle = FormBorderStyle.FixedDialog;
+            form.StartPosition = FormStartPosition.CenterScreen;
+            form.MinimizeBox = false;
+            form.MaximizeBox = false;
+
+            Progress.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+
+            form.Show();
+
+            for (int i = 0; i < 100; i++)
+            {
+                Thread.Sleep(10); // --> Timer au tick
+
+                Progress.Value += 1;
+                form.Show();
+            }
+
+            int Res = Progress.Value;
+            if (Res == 100)
+                form.Close();
+
+            return Res;
         }
     }
 }

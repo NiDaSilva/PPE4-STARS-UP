@@ -10,6 +10,10 @@ using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.IO;
 using System.Threading;
+using PdfSharp.Pdf;
+using PdfSharp.Drawing;
+using System.Drawing.Imaging;
+using AutoItX3Lib;
 
 namespace PPE4_Stars_up
 {
@@ -21,6 +25,12 @@ namespace PPE4_Stars_up
         private MySqlDataAdapter mySqlDataAdapterTP7 = new MySqlDataAdapter();
         private DataSet dataSetTP7 = new DataSet();
         private DataView dv_specialite = new DataView();
+
+        ScreenCapture capScreen = new ScreenCapture();
+
+        AutoItX3 au3 = new AutoItX3();
+
+        int XX, YY;
 
 
         // creation d’une liste des logins inspecteurs
@@ -304,7 +314,30 @@ namespace PPE4_Stars_up
 
         private void imprimerPDFToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            pictureBox1.Visible = false;
+            // pictureBox1.Visible = false;
+
+            // On affiche le planning sur tout l'écran
+
+            InputBox("Affichage maximisé du planning..", "");
+
+            FormPlanningJour FPJPDF = new FormPlanningJour();
+            FPJPDF.WindowState = FormWindowState.Maximized;
+            FPJPDF.Show();
+        }
+
+        private void captureScreen()
+        {
+            try
+            {
+                // Call the CaptureAndSave method from the ScreenCapture class 
+                // And create a temporary file in C:\Temp
+                capScreen.CaptureAndSave
+                (@"C:\Temp\test.png", CaptureMode.Window, ImageFormat.Png);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message.ToString());
+            }
         }
 
         public void chargedgv()
@@ -375,6 +408,6 @@ namespace PPE4_Stars_up
                 form.Close();
 
             return Res;
-        }
+        }        
     }
 }

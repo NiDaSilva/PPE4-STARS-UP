@@ -175,6 +175,26 @@ namespace PPE4_Stars_up.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap jourJ {
+            get {
+                object obj = ResourceManager.GetObject("jourJ", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap jourJ1 {
+            get {
+                object obj = ResourceManager.GetObject("jourJ1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ombre0 {
             get {
                 object obj = ResourceManager.GetObject("ombre0", resourceCulture);
