@@ -21,10 +21,14 @@ namespace PPE4_Stars_up
         string nbEtoile, comment;
         AutoItX3 au3 = new AutoItX3();
 
+        string FichierLangue = "";
+        List<string> LangueElement = new List<string>();
+
+        string fileName2 = @"C:\PPE4_DR\Preferences_PPE4_DR.txt";
+
         public FormHistorique()
         {
             InitializeComponent();
-            chargedgv();
 
         }
 
@@ -35,25 +39,25 @@ namespace PPE4_Stars_up
         {
             try
             {
-                InputBox("Recherche du fichier..", "");
+                InputBox(LangueElement[98], "");
 
                 if (File.Exists("C:\\PPE4_DR\\HistoriqueVisites.xml"))
                 {
                     using (Stream flux = new FileStream("C:\\PPE4_DR\\HistoriqueVisites.xml", FileMode.Open, FileAccess.Read))
                     {
-                        InputBox("Fichier trouvé. Ouverture..", "");
+                        InputBox(LangueElement[99], "");
                     }
                 }
                 else
                 {
                     // MessageBox.Show("Fichier xml inexistant!\nCliquez sur OK pour finaliser le processus.", "Avertissement", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    InputBox("Fichier inexistant. Création..", "");
-                    InputBox("Ouverture..", "");
+                    InputBox(LangueElement[100], "");
+                    InputBox(LangueElement[101], "");
                 }
             }
             catch (Exception err)
             {
-                MessageBox.Show("Erreur dans la récupération du fichier : " + err.ToString());
+                MessageBox.Show(LangueElement[102] + err.ToString());
             }
         }
 
@@ -64,7 +68,7 @@ namespace PPE4_Stars_up
         {
             try
             {
-                InputBox("Ecriture des données..", "");
+                InputBox(LangueElement[103], "");
 
                 XmlSerializer serialXml = new XmlSerializer(typeof(String));
                 using (Stream flux = new FileStream("C:\\PPE4_DR\\HistoriqueVisites.xml", FileMode.OpenOrCreate, FileAccess.Write))
@@ -80,12 +84,12 @@ namespace PPE4_Stars_up
                         serialXml.Serialize(flux, dataGridViewHistorique.Rows[i].Cells[4].Value.ToString());
                     }
 
-                    MessageBox.Show("Données enregistrées dans le répertoire : \"C:\\PPE4_DR\\\" au format .xml.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(LangueElement[104], LangueElement[105], MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception err)
             {
-                MessageBox.Show("Erreur dans l'écriture du fichier : " + err.ToString());
+                MessageBox.Show(LangueElement[106] + err.ToString());
             }
         }
 
@@ -133,11 +137,11 @@ namespace PPE4_Stars_up
                 }
 
                 // Remplissage de la liste
-                listBoxHistorique.Items.Add("Date & Heure : " + dataGridViewHistorique.Rows[i].Cells[0].Value.ToString());
-                listBoxHistorique.Items.Add("Département : " + dataGridViewHistorique.Rows[i].Cells[1].Value.ToString());
-                listBoxHistorique.Items.Add("Hébergement : " + dataGridViewHistorique.Rows[i].Cells[2].Value.ToString());
-                listBoxHistorique.Items.Add("Nombre d'étoiles attribuées : " + nbEtoile);
-                listBoxHistorique.Items.Add("Commentaire : " + comment);
+                listBoxHistorique.Items.Add(LangueElement[107] + dataGridViewHistorique.Rows[i].Cells[0].Value.ToString());
+                listBoxHistorique.Items.Add(LangueElement[108] + dataGridViewHistorique.Rows[i].Cells[1].Value.ToString());
+                listBoxHistorique.Items.Add(LangueElement[109] + dataGridViewHistorique.Rows[i].Cells[2].Value.ToString());
+                listBoxHistorique.Items.Add(LangueElement[110] + nbEtoile);
+                listBoxHistorique.Items.Add(LangueElement[111] + comment);
 
                 if (i < (dataGridViewHistorique.Rows.Count - 1))
                 {
@@ -169,7 +173,61 @@ namespace PPE4_Stars_up
 
         private void FormHistorique_Load(object sender, EventArgs e)
         {
+            // Gestion de la langue
+            StreamReader reader = File.OpenText(fileName2);
+            string ligne;
+
+            List<string> listeElement = new List<string>();
+            while (!reader.EndOfStream)
+            {
+                ligne = reader.ReadLine();
+                listeElement.Add(ligne);
+            }
+            reader.Close();
+
+            if (listeElement[1] == "Francais")
+            {
+                FichierLangue = "Francais.txt";
+            }
+
+            if (listeElement[1] == "Anglais")
+            {
+                FichierLangue = "Anglais.txt";
+            }
+
+            if (listeElement[1] == "Allemand")
+            {
+                FichierLangue = "Allemand.txt";
+            }
+
+            if (listeElement[1] == "Espagnol")
+            {
+                FichierLangue = "Espagne.txt";
+            }
+
+            StreamReader reader2 = File.OpenText(FichierLangue);
+            string ligne2;
+
+            while (!reader2.EndOfStream)
+            {
+                ligne2 = reader2.ReadLine();
+                LangueElement.Add(ligne2);
+            }
+            reader.Close();
+
+            chargedgv();
+
             listBoxHistorique.Visible = false;
+
+            this.Text = LangueElement[90];
+            lblTitre.Text = LangueElement[90];
+            gbAffichage.Text = LangueElement[91];
+            rbTableau.Text = LangueElement[92];
+            rbListe.Text = LangueElement[93];
+            gbTri.Text = LangueElement[94];
+            rbTriDate.Text = LangueElement[95];
+            rbTriDepartement.Text = LangueElement[96];
+            rbTriEtoile.Text = LangueElement[97];
         }
 
         private void rbListe_CheckedChanged(object sender, EventArgs e)

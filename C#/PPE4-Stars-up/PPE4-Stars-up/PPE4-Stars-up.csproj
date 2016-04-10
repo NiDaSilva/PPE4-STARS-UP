@@ -274,6 +274,7 @@
     <None Include="Resources\anglais.jpeg" />
     <None Include="Resources\angleterre.jpg" />
     <None Include="Resources\allemagne.jpg" />
+    <None Include="Resources\espagne.jpg" />
     <Content Include="simple-blue-calendar-128.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,0 +1,112 @@
+﻿Nom
+Mot de passe
+Afficher / Cacher le mot de passe
+Se connecter
+Vérification du login..
+Correct. Vérification du mot de passe..
+Mot de passe incorrect
+Erreur
+Login incorrect
+Vous devez entrer une chaîne de caractère !
+
+Accueil
+Import
+Export
+Planning
+Historique des visites
+Imprimer PDF
+Paramètre
+Quitter
+Connecté en tant que :
+Import données requis
+Spécialité :
+Vous êtes et avez été assigné à 
+visites dont :
+visite dont :
+sont prévues aujourd'hui.
+est prévue aujourd'hui.
+sont passées mais
+est passée mais
+sont passées.
+est passée.
+reste non évaluées.
+reste non évaluée.
+sont prévues dans les jours à venir.
+est prévue dans les jours à venir.
+Connexion à la base de données..
+La connexion n'a pas eu lieu
+Connecté. Exportation des données..
+Connecté. Importation des données..
+Données exportées. Déconnexion..
+Données importées. Déconnexion..
+Affichage maximisé du planning..
+Information
+L'application est déjà en allemand.
+L'application est déjà en francais.
+L'application est déjà en anglais.
+L'application est déjà en espagnol.
+La langue sera modifiée au redémarrage de l'application.
+
+Planning - Jour
+Retour
+Imprimer
+Séléctionnez le(s) jour(s) ou la semaine que vous souhaitez imprimer.
+Processus planning PDF
+Vous avez déjà remplit un compte-rendu pour cette visite :
+- Note : 
+Si vous continuez, la note et le commentaire précedemment ajoutés seront remplacés par les nouvelles valeurs.
+Avertissement
+Démarrage du processus. Capture du planning..
+Création d'un document pdf et d'une page..
+Association capture | page et page | document..
+Demande d'enregistrement au format pdf..
+Sauvegarde du document..
+Fermeture du document..
+Libération de toutes les références liées à l'image..
+Fin du processus. Fermeture..
+Puis cliquez sur le bouton, en haut à gauche, "Imprimer".
+- Commentaire : 
+Souhaitez-vous continuer ?
+
+Visite
+Compte-rendu visite
+Nom :
+Adresse :
+Nombre d'étoiles actuels :
+Ville :
+Horaires :
+Commentaire :
+Note :
+Retour
+Sauvegarder
+Annuler
+Veuillez confirmer l'envoie des données suivantes :
+- Commentaire : 
+- Note : 
+Vous ne pourrez pas revenir en arrière après confirmation, souhaitez-vous continuer ?
+Confirmation
+
+Enregistrement des données..
+
+Historique des visites
+Affichage
+Tableau
+Liste
+Trier par
+Date
+Département
+Etoile
+Recherche du fichier..
+Fichier trouvé. Ouverture..
+Fichier inexistant. Création..
+Ouverture..
+Erreur dans la récupération du fichier : 
+Ecriture des données..
+Données enregistrées dans le répertoire : "C:\PPE4_DR\" au format .xml.
+Information
+Erreur dans l'écriture du fichier : 
+Date & Heure : 
+Département : 
+Hébergement : 
+Nombre d'étoiles attribuées : 
+Commentaire : 

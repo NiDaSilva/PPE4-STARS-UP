@@ -1,0 +1,112 @@
+﻿Name
+Password
+Show / Hide password
+To log in
+Login verification ..
+Correct. Checking password ..
+Incorrect password
+Error
+Login incorrect
+You must enter a string !
+
+Home
+Import
+Export
+Schedule
+Visit history
+Print PDF
+Parameter
+Leave
+Logged as : 
+Import data required
+Specialty : 
+You are and have been assigned to
+visits including : 
+visit including : 
+are planned today.
+is scheduled for today.
+increased but
+increased but
+happened.
+has passed.
+remains unevaluated.
+remains unevaluated.
+are planned in the coming days.
+is expected in the coming days.
+Connecting to the database ..
+The connection has not occurred
+Connected. Exporting data ..
+Connected. Importing data ..
+Exported data. Logout ..
+Imported data. Logout ..
+Viewing maximized schedule ..
+Information
+The application is already in German.
+The application is already in french.
+The application is already in English.
+The application is already in Spanish.
+The language will be changed to start the application.
+
+Planning - Day
+Return
+To print
+Select the days or the week you want to print.
+PDF Planning Process
+You've already filled a report for this visit : 
+- Note : 
+If you continue, the previously added note and comment will be replaced with the new values.
+Warning
+Starting the process. Capture schedule ..
+Creating a PDF document and a page ..
+Capture Association | page and page | document..
+Registration Application in pdf format ..
+Save the document ..
+Close the document ..
+Release all references linked to the image ..
+Completion. Closing..
+And click the button in the top left, "Print".
+- Comment : 
+Do you want to continue ?
+
+Visit
+Report visit
+Name : 
+Address :
+Number of current stars : 
+City :
+Schedules :
+Comment : 
+Note : 
+Return
+Save
+Cancel
+Please confirm sends the following data : 
+- Comment : 
+- Note : 
+You can not go back after confirmation, would you continue ?
+Confirmation
+
+Data recording ..
+
+Visit history
+Viewing
+Board
+Listing
+Sorted by
+Dated
+Department
+Star
+Search the file ..
+File found. Opening..
+Nonexistent file. Creation..
+Opening..
+Error retrieving file : 
+Writing data ..
+Data stored in the directory "C:\PPE4_DR\" in .xml format.
+Information
+Error writing file : 
+Date hour : 
+Department : 
+Accommodation : 
+Star rating assigned : 
+Comment : 

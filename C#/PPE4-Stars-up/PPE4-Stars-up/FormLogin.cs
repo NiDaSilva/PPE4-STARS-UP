@@ -20,6 +20,12 @@ namespace PPE4_Stars_up
         public int click3 = 0;
         int countt = 0;
 
+        string FichierLangue = "";
+        List<string> LangueElement = new List<string>();
+
+        string langue = "Francais";
+        string fileName2 = @"C:\PPE4_DR\Preferences_PPE4_DR.txt";
+
         private string nomInspecteur;
         private string prenomInspecteur;
         private int idInspecteur;
@@ -41,55 +47,90 @@ namespace PPE4_Stars_up
 
         private void creationFichier()
         {
-            string folderName = @"c:\";
-            string pathString = System.IO.Path.Combine(folderName, "PPE4_DR");
-            System.IO.Directory.CreateDirectory(pathString);
-            string fileName = "Preferences_PPE4_DR.txt";
-            pathString = System.IO.Path.Combine(pathString, fileName);
+            string curFile = @"C:\PPE4_DR\Preferences_PPE4_DR.txt";
 
-
-            Console.WriteLine("Path to my file: {0}\n", pathString);
-
-
-            using (System.IO.FileStream fs = new System.IO.FileStream(pathString, FileMode.Append))
+            if(File.Exists(curFile))
             {
+                // on fait rien
+            }
+            else
+            {
+                string folderName = @"c:\";
+                string pathString = System.IO.Path.Combine(folderName, "PPE4_DR");
+                System.IO.Directory.CreateDirectory(pathString);
+                string fileName = "Preferences_PPE4_DR.txt";
+                pathString = System.IO.Path.Combine(pathString, fileName);
 
-                for (byte i = 0; i < 100; i++)
+
+                Console.WriteLine("Path to my file: {0}\n", pathString);
+
+
+                using (System.IO.FileStream fs = new System.IO.FileStream(pathString, FileMode.Append))
                 {
-                    fs.WriteByte(i);
+
+                    for (byte i = 0; i < 100; i++)
+                    {
+                        fs.WriteByte(i);
+                    }
+
                 }
 
-            }
-
-            try
-            {
-                byte[] readBuffer = System.IO.File.ReadAllBytes(pathString);
-                foreach (byte b in readBuffer)
+                try
                 {
-                    Console.Write(b + " ");
+                    byte[] readBuffer = System.IO.File.ReadAllBytes(pathString);
+                    foreach (byte b in readBuffer)
+                    {
+                        Console.Write(b + " ");
+                    }
+                    Console.WriteLine();
                 }
-                Console.WriteLine();
-            }
-            catch (System.IO.IOException e)
-            {
-                Console.WriteLine(e.Message);
-            }
+                catch (System.IO.IOException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
 
-            string[] lines = { idINSP.ToString()};
-            System.IO.File.WriteAllLines(@"C:\PPE4_DR\Preferences_PPE4_DR.txt", lines);
+                List<string> listeElement = new List<string>();
+
+                listeElement.Add(idINSP.ToString());
+                listeElement.Add(langue);
+
+                
+                StreamWriter writer = new StreamWriter(fileName2);
+
+                foreach (var item in listeElement)
+                {
+                    writer.WriteLine(item);
+                }
+                writer.Close();
+            }
         }
 
         private void ecrireFichier()
         {
-            idInspecteur = idINSP; 
+            StreamReader reader = File.OpenText(fileName2);
+            string ligne;
 
-            string[] lines = { idINSP.ToString() };
-            System.IO.File.WriteAllLines(@"C:\PPE4_DR\Preferences_PPE4_DR.txt", lines);
+            List<string> listeElement = new List<string>();
+            while (!reader.EndOfStream)
+            {
+                ligne = reader.ReadLine();
+                listeElement.Add(ligne);
+            }
+            reader.Close();
+
+            listeElement[0] = idINSP.ToString();
+
+            StreamWriter writer = new StreamWriter(fileName2);
+            foreach (var item in listeElement)
+            {
+                writer.WriteLine(item);
+            }
+            writer.Close();
         }
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            InputBox("Vérification du login..", "");
+            InputBox(LangueElement[4], "");
 
             if (lbLogin.Items.Contains(tbNom.Text))
             {                
@@ -99,8 +140,7 @@ namespace PPE4_Stars_up
                 {
                     if(lbLogin.Items[countt].ToString() == tbNom.Text)
                     {
-                        // recupérer la valeur count
-                        // MessageBox.Show(countt.ToString());   
+
                     }
                     else
                     {
@@ -108,10 +148,7 @@ namespace PPE4_Stars_up
                     }
                 }
 
-                InputBox("Correct. Vérification du mot de passe..", "");
-
-                // MessageBox.Show(lbLogin.Items[countt].ToString());
-                // MessageBox.Show(lbMdp.Items[countt].ToString());
+                InputBox(LangueElement[5], "");
                 
                 if (tbMdp.Text== lbMdp.Items[countt].ToString()) 
                 {
@@ -177,7 +214,7 @@ namespace PPE4_Stars_up
                 {
                     // mdp incorrect
 
-                    MessageBox.Show("Mot de passe incorrect", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(LangueElement[6], LangueElement[7], MessageBoxButtons.OK, MessageBoxIcon.Error);
                     tbMdp.Clear();
 
                     tbMdp.ForeColor = Color.Black;
@@ -204,7 +241,7 @@ namespace PPE4_Stars_up
             {
                 // login incorrect
 
-                MessageBox.Show("Login incorrect", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(LangueElement[8], LangueElement[7], MessageBoxButtons.OK, MessageBoxIcon.Error);
                 tbNom.Clear();
 
                 tbNom.ForeColor = Color.DarkGray;
@@ -212,7 +249,7 @@ namespace PPE4_Stars_up
 
                 tbNom.ForeColor = Color.DarkGray;
                 // tbMdp.Cursor = Default;
-                tbNom.Text = "Nom";
+                tbNom.Text = LangueElement[0];
             }
         }
 
@@ -244,7 +281,7 @@ namespace PPE4_Stars_up
 
                 tbMdp.ForeColor = Color.DarkGray;
                 // tbMdp.Cursor = Default;
-                tbMdp.Text = "Mot de passe";
+                tbMdp.Text = LangueElement[1];
             }
         }
 
@@ -257,19 +294,19 @@ namespace PPE4_Stars_up
         {
             if (e.KeyCode == Keys.NumPad0 || e.KeyCode == Keys.NumPad1 || e.KeyCode == Keys.NumPad2 || e.KeyCode == Keys.NumPad3 || e.KeyCode == Keys.NumPad4 || e.KeyCode == Keys.NumPad5 || e.KeyCode == Keys.NumPad6 || e.KeyCode == Keys.NumPad7 || e.KeyCode == Keys.NumPad8 || e.KeyCode == Keys.NumPad9)
             {
-                MessageBox.Show("Vous devez entrer une chaîne de caractère !", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show(LangueElement[9], LangueElement[7], MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 tbNom.Clear();
             }
         }
 
         private void tbNom_Leave(object sender, EventArgs e)
         {
-            if (tbNom.Text == "Nom" || tbNom.Text == "" || tbNom.Text == " ")
+            if (tbNom.Text == LangueElement[0] || tbNom.Text == "" || tbNom.Text == " ")
             {
                 tbNom.ForeColor = Color.DarkGray;
 
                // tbNom.Cursor = Default;
-                tbNom.Text = "Nom";
+                tbNom.Text = LangueElement[0];
             }
         }
 
@@ -293,7 +330,7 @@ namespace PPE4_Stars_up
 
                 tbNom.ForeColor = Color.DarkGray;
                 // tbMdp.Cursor = Default;
-                tbNom.Text = "Nom";
+                tbNom.Text = LangueElement[0];
             }
         }
 
@@ -309,18 +346,63 @@ namespace PPE4_Stars_up
 
         private void tbMdp_Leave(object sender, EventArgs e)
         {
-            if (tbMdp.Text == "Mot de passe" || tbMdp.Text == "" || tbMdp.Text == " ")
+            if (tbMdp.Text == LangueElement[1] || tbMdp.Text == "" || tbMdp.Text == " ")
             {
                 tbMdp.ForeColor = Color.DarkGray;
 
                 // tbNom.Cursor = Default;
                 tbMdp.PasswordChar = '\0';
-                tbMdp.Text = "Mot de passe";
+                tbMdp.Text = LangueElement[1];
             }
         }
 
         private void FormLogin_Load(object sender, EventArgs e)
         {
+            // Gestion de la langue
+            StreamReader reader = File.OpenText(fileName2);
+            string ligne;
+
+            List<string> listeElement = new List<string>();
+            while (!reader.EndOfStream)
+            {
+                ligne = reader.ReadLine();
+                listeElement.Add(ligne);
+            }
+            reader.Close();
+
+            if(listeElement[1] == "Francais")
+            {
+                FichierLangue = "Francais.txt";
+            }
+
+            if (listeElement[1] == "Anglais")
+            {
+                FichierLangue = "Anglais.txt";
+            }
+
+            if (listeElement[1] == "Allemand")
+            {
+                FichierLangue = "Allemand.txt";
+            }
+
+            if (listeElement[1] == "Espagnol")
+            {
+                FichierLangue = "Espagne.txt";
+            }
+
+            StreamReader reader2 = File.OpenText(FichierLangue);
+            string ligne2;
+
+            while (!reader2.EndOfStream)
+            {
+                ligne2 = reader2.ReadLine();
+                LangueElement.Add(ligne2);
+            }
+            reader.Close();
+
+
+            // Fin Gestion langue
+
             pbCorrect1.Visible = false;
             pbCorrect2.Visible = false;
             pbIncorrect1.Visible = false;
@@ -335,8 +417,16 @@ namespace PPE4_Stars_up
 
             controleur.Vmodele.import();
             controleur.Vmodele.sedeconnecter();
-            
+
             chargedgv();
+
+
+            tbNom.Text = LangueElement[0];
+            tbMdp.Text = LangueElement[1];
+            cbAfficherMdp.Text = LangueElement[2];
+            this.Text = LangueElement[3];
+            btnOK.Text = LangueElement[3];
+
         }
 
         public void chargedgv()
@@ -366,7 +456,7 @@ namespace PPE4_Stars_up
 
         private void cbAfficherMdp_Click(object sender, EventArgs e)
         {
-            if (tbMdp.Text != "Mot de passe")
+            if (tbMdp.Text != LangueElement[1])
             {
                 if (cbAfficherMdp.Checked == true)
                 {
@@ -472,6 +562,9 @@ namespace PPE4_Stars_up
 
             if (tbMdp.Text != "")
             {
+
+                // MessageBox.Show(countt2.ToString());
+                
                 if (tbMdp.Text == lbMdp.Items[countt2].ToString())
                 {
                     pbCorrect2.Visible = true;
@@ -482,6 +575,7 @@ namespace PPE4_Stars_up
                     pbCorrect2.Visible = false;
                     pbIncorrect2.Visible = true;
                 }
+                
             }
         }
     }

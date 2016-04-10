@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,11 @@ namespace PPE4_Stars_up
     public partial class FormVisite : Form
     {
         private BindingSource bindingSource1 = new BindingSource();
+
+        string FichierLangue = "";
+        List<string> LangueElement = new List<string>();
+
+        string fileName2 = @"C:\PPE4_DR\Preferences_PPE4_DR.txt";
 
         string RecupDateHeureVisite;
         string nom;
@@ -48,6 +54,48 @@ namespace PPE4_Stars_up
 
         private void FormVisite_Load(object sender, EventArgs e)
         {
+            // Gestion de la langue
+            StreamReader reader = File.OpenText(fileName2);
+            string ligne;
+
+            List<string> listeElement = new List<string>();
+            while (!reader.EndOfStream)
+            {
+                ligne = reader.ReadLine();
+                listeElement.Add(ligne);
+            }
+            reader.Close();
+
+            if (listeElement[1] == "Francais")
+            {
+                FichierLangue = "Francais.txt";
+            }
+
+            if (listeElement[1] == "Anglais")
+            {
+                FichierLangue = "Anglais.txt";
+            }
+
+            if (listeElement[1] == "Allemand")
+            {
+                FichierLangue = "Allemand.txt";
+            }
+
+            if (listeElement[1] == "Espagnol")
+            {
+                FichierLangue = "Espagne.txt";
+            }
+
+            StreamReader reader2 = File.OpenText(FichierLangue);
+            string ligne2;
+
+            while (!reader2.EndOfStream)
+            {
+                ligne2 = reader2.ReadLine();
+                LangueElement.Add(ligne2);
+            }
+            reader.Close();
+
             lbladresse.Text = adresse;
             lblville.Text = ville;
             lblhoraire.Text = horaires;
@@ -243,6 +291,19 @@ namespace PPE4_Stars_up
             // MessageBox.Show("id heber recu : " + ide.ToString());
             // MessageBox.Show("index : " + compte2.ToString());
 
+            this.Text = LangueElement[70];
+            lblVisite.Text = LangueElement[71];
+            lblNomHebergemenr.Text = LangueElement[72];
+            lblAdresseHebergement.Text = LangueElement[73];
+            lblNbEtoiles.Text = LangueElement[74];
+            lblVilleHebergement.Text = LangueElement[75];
+            lblHoraires.Text = LangueElement[76];
+            lblCommentaire.Text = LangueElement[77];
+            lblNote.Text = LangueElement[78];
+            btnRetour.Text = LangueElement[79];
+            btnSauvegarderVisite.Text = LangueElement[80];
+            btnAnnule.Text = LangueElement[81];
+
         }
 
         private void btnSauvegarderVisite_Click(object sender, EventArgs e)
@@ -281,7 +342,7 @@ namespace PPE4_Stars_up
 
             CR_commentaire = rtbCommentaire.Text;
 
-            DialogResult DR = MessageBox.Show("Veuillez confirmer l'envoie des données suivantes :\n\n- Commentaire : " + CR_commentaire + "\n- Note : " + CR_note + "\n\nVous ne pourrez pas revenir en arrière après confirmation, souhaitez-vous continuer ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult DR = MessageBox.Show(LangueElement[82] + "\n\n" + LangueElement[83] + CR_commentaire + "\n" + LangueElement[84] + CR_note + "\n\n" + LangueElement[85], LangueElement[86], MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             if(DR == DialogResult.Yes)
             {

@@ -20,6 +20,11 @@ namespace PPE4_Stars_up
     {
         List<CalendarItem> _items = new List<CalendarItem>();
         CalendarItem contextItem = null;
+        
+        string FichierLangue = "";
+        List<string> LangueElement = new List<string>();
+
+        string fileName2 = @"C:\PPE4_DR\Preferences_PPE4_DR.txt";
 
         ScreenCapture capScreen = new ScreenCapture();
 
@@ -53,10 +58,56 @@ namespace PPE4_Stars_up
 
         private void FormPlanningJour_Load(object sender, EventArgs e)
         {
+            // Gestion de la langue
+            StreamReader reader = File.OpenText(fileName2);
+            string ligne;
+
+            List<string> listeElement = new List<string>();
+            while (!reader.EndOfStream)
+            {
+                ligne = reader.ReadLine();
+                listeElement.Add(ligne);
+            }
+            reader.Close();
+
+            if (listeElement[1] == "Francais")
+            {
+                FichierLangue = "Francais.txt";
+            }
+
+            if (listeElement[1] == "Anglais")
+            {
+                FichierLangue = "Anglais.txt";
+            }
+
+            if (listeElement[1] == "Allemand")
+            {
+                FichierLangue = "Allemand.txt";
+            }
+
+            if (listeElement[1] == "Espagnol")
+            {
+                FichierLangue = "Espagne.txt";
+            }
+
+            StreamReader reader2 = File.OpenText(FichierLangue);
+            string ligne2;
+
+            while (!reader2.EndOfStream)
+            {
+                ligne2 = reader2.ReadLine();
+                LangueElement.Add(ligne2);
+            }
+            reader.Close();
+
+            this.Text = LangueElement[49];
+            btnRetour.Text = LangueElement[50];
+
+
             if (WindowState == FormWindowState.Maximized)
             {
-                btnRetour.Text = "Imprimer";
-                DialogResult DR = MessageBox.Show("Séléctionnez le(s) jour(s) ou la semaine que vous souhaitez imprimer.\nPuis cliquez sur le bouton, en haut à gauche, \"Imprimer\".", "Processus planning PDF", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+                btnRetour.Text = LangueElement[51];
+                DialogResult DR = MessageBox.Show(LangueElement[52] + "\n" + LangueElement[66], LangueElement[53], MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
                 
                 if(DR == DialogResult.OK)
                 {
@@ -70,7 +121,7 @@ namespace PPE4_Stars_up
             }
             else
             {
-                btnRetour.Text = "Retour";
+                btnRetour.Text = LangueElement[50];
             }
 
             if (ItemsFile.Exists)
@@ -341,7 +392,7 @@ namespace PPE4_Stars_up
             {
                 if (com != controleur.Vmodele.Dv_maj_etoile_commentaire[compte2]["COMMENTAIRE_VISITE"].ToString())
                 {
-                    DialogResult DR = MessageBox.Show("Vous avez déjà remplit un compte-rendu pour cette visite :\n\n- Commentaire : " + controleur.Vmodele.Dv_maj_etoile_commentaire[compte2]["COMMENTAIRE_VISITE"].ToString() + "\n- Note : " + controleur.Vmodele.Dv_maj_etoile_commentaire[compte2]["NOMBRE_ETOILE_VISITE"].ToString() + "\n\nSi vous continuez, la note et le commentaire précedemment ajoutés seront remplacés par les nouvelles valeurs.\n\nSouhaitez-vous continuer ?", "Avertissement", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    DialogResult DR = MessageBox.Show(LangueElement[54] + "\n\n" + LangueElement[67] + controleur.Vmodele.Dv_maj_etoile_commentaire[compte2]["COMMENTAIRE_VISITE"].ToString() + "\n" + LangueElement[55] + controleur.Vmodele.Dv_maj_etoile_commentaire[compte2]["NOMBRE_ETOILE_VISITE"].ToString() + "\n\n" + LangueElement[56] + "\n\n" + LangueElement[68], LangueElement[57], MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                     if (DR == DialogResult.Yes)
                     {
@@ -512,33 +563,6 @@ namespace PPE4_Stars_up
             bindingSource1.DataSource = controleur.Vmodele.Dv_visite;
             dataGridViewPersonnes.DataSource = bindingSource1;
 
-
-            // TEST AJOUT ITEM EN DUR
-
-            /*
-            DateTime date = new DateTime(2016, 1, 02);
-            TimeSpan time = new TimeSpan(9, 0, 0);
-            TimeSpan time2 = new TimeSpan(10, 0, 0);
-            string test = string.Format("{0}", date.ToString("dd-MM-yyyy")).Trim();
-            string test2 = string.Format("{0}", time.Hours).Trim();
-            string test3 = string.Format("{0}", time2.Hours).Trim();
-
-            string test4 = string.Format("{0} {1}", test, time).Trim();
-            string test5 = string.Format("{0} {1}", test, time2).Trim();
-
-            
-            MessageBox.Show("date : " + test);
-            MessageBox.Show("heure debut : " + test2);
-            MessageBox.Show("heure fin : " + test3);
-            
-
-            CalendarItem cal = new CalendarItem(calendar1, Convert.ToDateTime(test4), Convert.ToDateTime(test5), "test"); 
-
-            _items.Add(cal);
-
-            PlaceItems();
-            */
-
             for (int i = 0; i < dataGridViewPersonnes.Rows.Count; i++) // parcours le datagridview
             {
                 DateTime DateEntiere = Convert.ToDateTime(dataGridViewPersonnes.Rows[i].Cells[4].Value.ToString()); // recupere date + heure
@@ -593,20 +617,20 @@ namespace PPE4_Stars_up
 
         private void btnRetour_Click(object sender, EventArgs e)
         {
-            if (btnRetour.Text == "Imprimer")
+            if (btnRetour.Text == LangueElement[51])
             {
                 // On appelle la fonction qui va prendre la capture du planning
                 captureScreen();
 
-                InputBox("Démarrage du processus. Capture du planning..", "");
+                InputBox(LangueElement[58], "");
 
-                InputBox("Création d'un document pdf et d'une page..", "");
+                InputBox(LangueElement[59], "");
 
                 // On crée un nouveau document et une nouvelle page PDF
                 PdfDocument doc = new PdfDocument();
                 PdfPage oPage = new PdfPage();
 
-                InputBox("Association capture | page et page | document..", "");
+                InputBox(LangueElement[60], "");
 
                 // oPage.Size = PdfSharp.PageSize.A1;
                 oPage.Size = PdfSharp.PageSize.Crown;
@@ -620,28 +644,28 @@ namespace PPE4_Stars_up
 
                 // 210*297mm PDF
 
-                InputBox("Demande d'enregistrement au format pdf..", "");
+                InputBox(LangueElement[61], "");
 
                 saveFileDialog.Filter = ("PDF File|*.pdf");
                 DialogResult btnSave = saveFileDialog.ShowDialog();
                 if (btnSave.Equals(DialogResult.OK))
                 {
-                    InputBox("Sauvegarde du document..", "");
+                    InputBox(LangueElement[62], "");
 
                     doc.Save(saveFileDialog.FileName);
 
-                    InputBox("Fermeture du document..", "");
+                    InputBox(LangueElement[63], "");
 
                     doc.Close();
 
                 }
 
-                InputBox("Libération de toutes les références liées à l'image..", "");
+                InputBox(LangueElement[64], "");
 
                 // Pour parré aux erreurs éventuelles
                 img.Dispose();
 
-                InputBox("Fin du processus. Fermeture..", "");
+                InputBox(LangueElement[65], "");
                 /*
                 //FormIndex form = (FormIndex)this.MdiParent;
                 FormIndex form = new FormIndex();

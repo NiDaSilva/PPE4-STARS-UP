@@ -26,11 +26,16 @@ namespace PPE4_Stars_up
         private DataSet dataSetTP7 = new DataSet();
         private DataView dv_specialite = new DataView();
 
+        string FichierLangue = "";
+        List<string> LangueElement = new List<string>();
+
+        string fileName2 = @"C:\PPE4_DR\Preferences_PPE4_DR.txt";
+
         ScreenCapture capScreen = new ScreenCapture();
 
         AutoItX3 au3 = new AutoItX3();
 
-        int XX, YY;
+        // int XX, YY;
 
 
         // creation d’une liste des logins inspecteurs
@@ -79,22 +84,22 @@ namespace PPE4_Stars_up
         {
             // Exportation des données
 
-            InputBox("Connexion à la base de données..", "");
+            InputBox(LangueElement[35], "");
 
             controleur.Vmodele.seconnecter();
 
             if (controleur.Vmodele.Connopen == false)  // si la connexion échoue : propriété connopen de vmmodele à faux
             {
-                MessageBox.Show("La connexion n'a pas eu lieu", "Erreur !", MessageBoxButtons.OK, MessageBoxIcon.Error);  // messageBox d’erreur
+                MessageBox.Show(LangueElement[36], LangueElement[7], MessageBoxButtons.OK, MessageBoxIcon.Error);  // messageBox d’erreur
             }
             else  // sinon
             {
-                InputBox("Connecté. Exportation des données..", "");
+                InputBox(LangueElement[37], "");
 
                 // MessageBox.Show("Connexion à la base de donnée effectuée avec succès", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 controleur.Vmodele.export();  // appel de la méthode export() via Vmodele du controleur
 
-                InputBox("Données exportées. Déconnexion..", "");
+                InputBox(LangueElement[39], "");
 
                 controleur.Vmodele.sedeconnecter();  // se déconnecter de la BD.
 
@@ -122,24 +127,24 @@ namespace PPE4_Stars_up
 
             // Gestion de l'export
 
-            if (importToolStripMenuItem.Text == "Export")
+            if (importToolStripMenuItem.Text == LangueElement[13])
             {
-                InputBox("Connexion à la base de données..", "");
+                InputBox(LangueElement[35], "");
 
                 controleur.Vmodele.seconnecter();
 
                 if (controleur.Vmodele.Connopen == false)  // si la connexion échoue : propriété connopen de vmmodele à faux
                 {
-                    MessageBox.Show("La connexion n'a pas eu lieu", "Erreur !", MessageBoxButtons.OK, MessageBoxIcon.Error);  // messageBox d’erreur
+                    MessageBox.Show(LangueElement[36], LangueElement[7], MessageBoxButtons.OK, MessageBoxIcon.Error);  // messageBox d’erreur
                 }
                 else  // sinon
                 {
-                    InputBox("Connecté. Exportation des données..", "");
+                    InputBox(LangueElement[37], "");
 
                     // MessageBox.Show("Connexion à la base de donnée effectuée avec succès", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     controleur.Vmodele.export();  // appel de la méthode export() via Vmodele du controleur
                     
-                    InputBox("Données exportées. Déconnexion..", "");
+                    InputBox(LangueElement[39], "");
 
                     controleur.Vmodele.sedeconnecter();  // se déconnecter de la BD.
                     
@@ -159,29 +164,29 @@ namespace PPE4_Stars_up
 
             // Gestion de l'import
 
-            if (importToolStripMenuItem.Text == "Import")
+            if (importToolStripMenuItem.Text == LangueElement[12])
             {
-                InputBox("Connexion à la base de données..", "");
+                InputBox(LangueElement[35], "");
 
                 controleur.init();
                 controleur.Vmodele.seconnecter();
 
                 if (controleur.Vmodele.Connopen == false)
                 {
-                    MessageBox.Show("La connexion n'a pas eu lieu.", "Erreur !", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(LangueElement[36], LangueElement[7], MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
-                    InputBox("Connecté. Importation des données..", "");
+                    InputBox(LangueElement[38], "");
 
                     // MessageBox.Show("Connexion à la base de donnée effectuée avec succès", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     controleur.Vmodele.import();
 
-                    InputBox("Données importées. Déconnexion..", "");
+                    InputBox(LangueElement[40], "");
 
                     controleur.Vmodele.sedeconnecter();
 
-                    importToolStripMenuItem.Text = "Export";
+                    importToolStripMenuItem.Text = LangueElement[13];
                     planningToolStripMenuItem.Enabled = true;
                     historiqueDesVisitesToolStripMenuItem.Enabled = true;
                     imprimerPDFToolStripMenuItem.Enabled = true;
@@ -206,22 +211,22 @@ namespace PPE4_Stars_up
         {
             // Exportation des données
 
-            InputBox("Connexion à la base de données..", "");
+            InputBox(LangueElement[35], "");
 
             controleur.Vmodele.seconnecter();
 
             if (controleur.Vmodele.Connopen == false)  // si la connexion échoue : propriété connopen de vmmodele à faux
             {
-                MessageBox.Show("La connexion n'a pas eu lieu", "Erreur !", MessageBoxButtons.OK, MessageBoxIcon.Error);  // messageBox d’erreur
+                MessageBox.Show(LangueElement[36], LangueElement[7], MessageBoxButtons.OK, MessageBoxIcon.Error);  // messageBox d’erreur
             }
             else  // sinon
             {
-                InputBox("Connecté. Exportation des données..", "");
+                InputBox(LangueElement[37], "");
 
                 // MessageBox.Show("Connexion à la base de donnée effectuée avec succès", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 controleur.Vmodele.export();  // appel de la méthode export() via Vmodele du controleur
 
-                InputBox("Données exportées. Déconnexion..", "");
+                InputBox(LangueElement[39], "");
 
                 controleur.Vmodele.sedeconnecter();  // se déconnecter de la BD.
 
@@ -254,6 +259,7 @@ namespace PPE4_Stars_up
             pbAllemagne.Visible = false;
             pbAngleterre.Visible = false;
             pbFrance.Visible = false;
+            pbEspagne.Visible = false;
             FormPlanningJour FPJ = new FormPlanningJour();
             FPJ.MdiParent = this;
 
@@ -302,6 +308,7 @@ namespace PPE4_Stars_up
             pbAllemagne.Visible = true;
             pbAngleterre.Visible = true;
             pbFrance.Visible = true;
+            pbEspagne.Visible = true;
 
             var pos8 = this.PointToScreen(lblInfoNbVisiteTotal.Location);
             pos8 = pictureBox1.PointToClient(pos8);
@@ -394,18 +401,18 @@ namespace PPE4_Stars_up
             lblheure.Text = DateTime.Now.ToString("HH:mm:ss");
             lblDate.Text = DateTime.Now.ToString("ddd dd MMMM yyyy");
 
-            if (importToolStripMenuItem.Text == "Export")
+            if (importToolStripMenuItem.Text == LangueElement[13])
             {
                 lblInfoNbVisiteTotal.Visible = true;
                 lblNbVisiteTotal.Visible = true;
 
                 if(controleur.Vmodele.Dv_nb_visite_total.ToTable().Rows[0][0].ToString() == "0" || controleur.Vmodele.Dv_nb_visite_total.ToTable().Rows[0][0].ToString() == "1")
                 {
-                    lbldont.Text = "visite dont :";
+                    lbldont.Text = LangueElement[24];
                 }
                 else
                 {
-                    lbldont.Text = "visites dont :";
+                    lbldont.Text = LangueElement[23];
                 }
 
                 lbldont.Visible = true;
@@ -419,11 +426,11 @@ namespace PPE4_Stars_up
 
                 if (controleur.Vmodele.Dv_nb_visite_today.ToTable().Rows[0][0].ToString() == "0" || controleur.Vmodele.Dv_nb_visite_today.ToTable().Rows[0][0].ToString() == "1")
                 {
-                    lblToday.Text = "est prévue aujourd'hui.";
+                    lblToday.Text = LangueElement[26];
                 }
                 else
                 {
-                    lblToday.Text = "sont prévues aujourd'hui.";
+                    lblToday.Text = LangueElement[25];
                 }
 
                 lblToday.Visible = true;
@@ -435,11 +442,11 @@ namespace PPE4_Stars_up
 
                     if (controleur.Vmodele.Dv_nb_visite_passee.ToTable().Rows[0][0].ToString() == "0" || controleur.Vmodele.Dv_nb_visite_passee.ToTable().Rows[0][0].ToString() == "1")
                     {
-                        lblPassees.Text = "est passée.";
+                        lblPassees.Text = LangueElement[30];
                     }
                     else
                     {
-                        lblPassees.Text = "sont passées.";
+                        lblPassees.Text = LangueElement[29];
                     }
                 }
                 else
@@ -448,22 +455,22 @@ namespace PPE4_Stars_up
 
                     if (controleur.Vmodele.Dv_nb_visite_passee_non_evaluee.ToTable().Rows[0][0].ToString() == "0" || controleur.Vmodele.Dv_nb_visite_passee_non_evaluee.ToTable().Rows[0][0].ToString() == "1")
                     {
-                        lblPasseeNonEvaluee.Text = "reste non évaluée.";
+                        lblPasseeNonEvaluee.Text = LangueElement[32];
                     }
                     else
                     {
-                        lblPasseeNonEvaluee.Text = "reste non évaluées.";
+                        lblPasseeNonEvaluee.Text = LangueElement[31];
                     }
 
                     lblPasseeNonEvaluee.Visible = true;
 
                     if (controleur.Vmodele.Dv_nb_visite_passee.ToTable().Rows[0][0].ToString() == "0" || controleur.Vmodele.Dv_nb_visite_passee.ToTable().Rows[0][0].ToString() == "1")
                     {
-                        lblPassees.Text = "est passée mais";
+                        lblPassees.Text = LangueElement[28];
                     }
                     else
                     {
-                        lblPassees.Text = "sont passées mais";
+                        lblPassees.Text = LangueElement[27];
                     }
                 }
 
@@ -473,11 +480,11 @@ namespace PPE4_Stars_up
 
                 if (controleur.Vmodele.Dv_nb_visite_prevue.ToTable().Rows[0][0].ToString() == "0" || controleur.Vmodele.Dv_nb_visite_prevue.ToTable().Rows[0][0].ToString() == "1")
                 {
-                    lblPrevue.Text = "est prévue dans les jours à venir.";
+                    lblPrevue.Text = LangueElement[34];
                 }
                 else
                 {
-                    lblPrevue.Text = "sont prévues dans les jours à venir.";
+                    lblPrevue.Text = LangueElement[33];
                 }
 
                 lblPrevue.Visible = true;
@@ -507,12 +514,72 @@ namespace PPE4_Stars_up
 
         private void FormIndex_Load(object sender, EventArgs e)
         {
+            // Gestion de la langue
+            StreamReader reader = File.OpenText(fileName2);
+            string ligne;
+
+            List<string> listeElement = new List<string>();
+            while (!reader.EndOfStream)
+            {
+                ligne = reader.ReadLine();
+                listeElement.Add(ligne);
+            }
+            reader.Close();
+
+            if (listeElement[1] == "Francais")
+            {
+                FichierLangue = "Francais.txt";
+            }
+
+            if (listeElement[1] == "Anglais")
+            {
+                FichierLangue = "Anglais.txt";
+            }
+
+            if (listeElement[1] == "Allemand")
+            {
+                FichierLangue = "Allemand.txt";
+            }
+
+            if (listeElement[1] == "Espagnol")
+            {
+                FichierLangue = "Espagne.txt";
+            }
+
+            StreamReader reader2 = File.OpenText(FichierLangue);
+            string ligne2;
+
+            while (!reader2.EndOfStream)
+            {
+                ligne2 = reader2.ReadLine();
+                LangueElement.Add(ligne2);
+            }
+            reader.Close();
+
             timerHHmm.Start();
 
             chargedgv();
             Background();
             MAJHeure();
-            
+
+            this.Text = LangueElement[11];
+            importToolStripMenuItem.Text = LangueElement[12];
+            planningToolStripMenuItem.Text = LangueElement[14];
+            historiqueDesVisitesToolStripMenuItem.Text = LangueElement[15];
+            imprimerPDFToolStripMenuItem.Text = LangueElement[16];
+            paramètreToolStripMenuItem.Text = LangueElement[17];
+            quitterToolStripMenuItem.Text = LangueElement[18];
+            lblinfo.Text = LangueElement[19];
+            lblInspecteur.Text = LangueElement[20];
+            lblSpecialite.Text = LangueElement[20];
+            lblinfo2.Text = LangueElement[21];
+            lblInfoNbVisiteTotal.Text = LangueElement[22];
+            lbldont.Text = LangueElement[23];
+            lblToday.Text = LangueElement[25];
+            lblPassees.Text = LangueElement[27];
+            lblPasseeNonEvaluee.Text = LangueElement[31];
+            lblPrevue.Text = LangueElement[33];
+
             FormLogin FL = new FormLogin();
         }
 
@@ -524,6 +591,7 @@ namespace PPE4_Stars_up
             pbAllemagne.Visible = false;
             pbAngleterre.Visible = false;
             pbFrance.Visible = false;
+            pbEspagne.Visible = false;
             FormHistorique FH = new FormHistorique();
             FH.MdiParent = this;
 
@@ -536,7 +604,7 @@ namespace PPE4_Stars_up
 
             // On affiche le planning sur tout l'écran
 
-            InputBox("Affichage maximisé du planning..", "");
+            InputBox(LangueElement[41], "");
 
             FormPlanningJour FPJPDF = new FormPlanningJour();
             FPJPDF.WindowState = FormWindowState.Maximized;
@@ -564,9 +632,33 @@ namespace PPE4_Stars_up
         }
 
         private void ecrireFichier()
-        {
-            string lines = lblSpecialite.Text;
-            System.IO.File.AppendAllText(@"C:\PPE4_DR\Preferences_PPE4_DR.txt", lines);
+        {            
+            StreamReader reader = File.OpenText(fileName2);
+            string ligne;
+
+            List<string> listeElement = new List<string>();
+            while (!reader.EndOfStream)
+            {
+                ligne = reader.ReadLine();
+                listeElement.Add(ligne);
+            }
+            reader.Close();
+
+            if(listeElement.Count() < 3)
+            {
+                listeElement.Add(lblSpecialite.Text);
+            }
+            else
+            {
+                listeElement[2] = lblSpecialite.Text;
+            }
+
+            StreamWriter writer = new StreamWriter(fileName2);
+            foreach (var item in listeElement)
+            {
+                writer.WriteLine(item);
+            }
+            writer.Close();
         }
 
         private void FormIndex_MouseHover(object sender, EventArgs e)
@@ -581,22 +673,139 @@ namespace PPE4_Stars_up
 
         private void pbAllemagne_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Langage en cours de traduction", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            StreamReader reader = File.OpenText(fileName2);
+            string ligne;
+
+            List<string> listeElement = new List<string>();
+            while (!reader.EndOfStream)
+            {
+                ligne = reader.ReadLine();
+                listeElement.Add(ligne);
+            }
+            reader.Close();
+
+            if (listeElement[1] == "Allemand")
+            {
+                MessageBox.Show(LangueElement[43], LangueElement[42], MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                listeElement[1] = "Allemand";
+
+                StreamWriter writer = new StreamWriter(fileName2);
+
+                foreach (var item in listeElement)
+                {
+                    writer.WriteLine(item);
+                }
+                writer.Close();
+
+                MessageBox.Show(LangueElement[47], LangueElement[42], MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void pbFrance_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Langage en cours de traduction", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            StreamReader reader = File.OpenText(fileName2);
+            string ligne;
+
+            List<string> listeElement = new List<string>();
+            while (!reader.EndOfStream)
+            {
+                ligne = reader.ReadLine();
+                listeElement.Add(ligne);
+            }
+            reader.Close();
+
+            if(listeElement[1] == "Francais")
+            {
+                MessageBox.Show(LangueElement[44], LangueElement[42], MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                listeElement[1] = "Francais";
+
+                StreamWriter writer = new StreamWriter(fileName2);
+
+                foreach (var item in listeElement)
+                {
+                    writer.WriteLine(item);
+                }
+                writer.Close();
+
+                MessageBox.Show(LangueElement[47], LangueElement[42], MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void pbAngleterre_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Langage en cours de traduction", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            StreamReader reader = File.OpenText(fileName2);
+            string ligne;
+
+            List<string> listeElement = new List<string>();
+            while (!reader.EndOfStream)
+            {
+                ligne = reader.ReadLine();
+                listeElement.Add(ligne);
+            }
+            reader.Close();
+
+            if (listeElement[1] == "Anglais")
+            {
+                MessageBox.Show(LangueElement[45], LangueElement[42], MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                listeElement[1] = "Anglais";
+
+                StreamWriter writer = new StreamWriter(fileName2);
+
+                foreach (var item in listeElement)
+                {
+                    writer.WriteLine(item);
+                }
+                writer.Close();
+
+                MessageBox.Show(LangueElement[47], LangueElement[42], MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void timerHHmm_Tick(object sender, EventArgs e)
         {
             MAJHeure();
+        }
+
+        private void pbEspagne_Click(object sender, EventArgs e)
+        {
+            StreamReader reader = File.OpenText(fileName2);
+            string ligne;
+
+            List<string> listeElement = new List<string>();
+            while (!reader.EndOfStream)
+            {
+                ligne = reader.ReadLine();
+                listeElement.Add(ligne);
+            }
+            reader.Close();
+
+            if (listeElement[1] == "Espagnol")
+            {
+                MessageBox.Show(LangueElement[46], LangueElement[42], MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                listeElement[1] = "Espagnol";
+
+                StreamWriter writer = new StreamWriter(fileName2);
+
+                foreach (var item in listeElement)
+                {
+                    writer.WriteLine(item);
+                }
+                writer.Close();
+
+                MessageBox.Show(LangueElement[47], LangueElement[42], MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         public static int InputBox(string title, string promptText)

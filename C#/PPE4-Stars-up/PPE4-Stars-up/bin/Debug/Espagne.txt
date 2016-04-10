@@ -1,0 +1,112 @@
+﻿Nombre
+Contraseña
+Mostrar / Ocultar la contraseña
+Conectarse
+La verificación de inicio de sesión ..
+Correcta. Comprobación de la contraseña ..
+Código incorrecto
+Error
+Inicio de sesión incorrecto
+Debe introducir una cadena !
+
+Bienvenida
+Importación
+Exportación
+Horario
+Visita la historia
+Imprimir PDF
+Parámetro
+Dejar
+Usuario:
+Importar datos requeridos
+especialidad : 
+Usted es y ha sido asignado a
+visitas que incluyen : 
+visitar, incluyendo : 
+Está previsto realizar hoy.
+está prevista para hoy.
+aumentado, pero
+aumentado, pero
+sucedido.
+ha pasado.
+permanece sin evaluar.
+permanece sin evaluar.
+se han previsto en los próximos días.
+se espera que en los próximos días.
+Conexión a la base de datos ..
+La conexión no se ha producido
+Conectado. La exportación de datos ..
+Conectado. La importación de datos ..
+datos exportados. Cerrar sesión ..
+datos importados. Cerrar sesión ..
+Viendo el calendario maximizado ..
+Información
+La aplicación ya está en alemán.
+La aplicación ya está en francés.
+La aplicación ya está en Inglés.
+La aplicación ya está en español.
+El idioma será cambiado para iniciar la aplicación.
+
+Planificación - Día
+Retorno
+Impresión
+Seleccione los días o la semana que desea imprimir.
+Proceso de Planificación PDF
+Usted ya ha llenado un informe de esta visita : 
+- Nota : 
+Si continuar, la nota añadida o comentario serán reemplazados por los nuevos valores.
+Advertencia
+Inicio del proceso. Horario de captura ..
+Creación de un documento PDF y una página ..
+Capturar Asociación | página y la página | papel ..
+Solicitud de Inscripción en formato pdf ..
+Guarde el documento ..
+Cierre el documento ..
+Liberar todas las referencias vinculadas a la imagen ..
+Finalización. Cerrando ..
+Y haga clic en el botón en la parte superior izquierda, "Print".
+- Comentario : 
+¿Desea continuar ?
+
+Visita
+Informe de la visita
+Nombre : 
+Dirección : 
+Número de estrellas actuales : 
+Ciudad : 
+Horas : 
+Comentar : 
+Nota : 
+retorno
+Guardar
+Cancelar
+Por favor confirmar envía los siguientes datos : 
+- Comentario : 
+- Nota : 
+No se puede volver atrás después de la confirmación, le seguirá ?
+Confirmación
+
+El registro de datos ..
+
+Visita la historia
+Visualización
+Mesa
+Lista
+Ordenados por
+Fecha
+Departamento
+Etoile
+Buscar en el archivo ..
+Se encuentra el archivo. Apertura ..
+Archivo no existente. Creación ..
+Apertura ..
+Error al recuperar el archivo:
+La escritura de datos ..
+Los datos almacenados en el directorio "C:\PPE4_DR\" en formato .xml.
+Información
+Error al escribir el archivo : 
+Fecha y hora : 
+Departamento : 
+Alojamiento : 
+Estrellas otorgadas : 
+Comentar : 

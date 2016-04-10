@@ -1,0 +1,112 @@
+﻿Name
+Kennwort
+Show / Hide Passwort
+Einloggen
+Anmeldung Überprüfung ..
+Richtig. Überprüfen Passwort ..
+Falsches Passwort
+Fehler
+Login incorrect
+Sie müssen eine Zeichenfolge eingeben !
+
+Willkommen
+Import
+Export
+Zeitplan
+Besuchen Sie Geschichte
+Drucken PDF
+Parameter
+Verlassen
+Angemeldet als : 
+Importieren von Daten erforderlich
+Spezialität:
+Sie sind und zugeordnet wurden
+Besuche einschließlich : 
+besuchen, einschließlich : 
+heute sind geplant.
+ist für heute geplant.
+erhöht, aber
+erhöht, aber
+passiert ist.
+verstrichen ist.
+bleibt unbewertet .
+bleibt unbewertet .
+werden in den kommenden Tagen geplant.
+wird in den kommenden Tagen erwartet.
+Mit der Datenbank ..
+Die Verbindung nicht aufgetreten ist
+Verbunden. Exportieren von Daten ..
+Verbunden. Das Importieren von Daten ..
+Exportierten Daten. Abmelden ..
+Importierten Daten. Abmelden ..
+Anzeigen maximiert Zeitplan ..
+Informationen
+Die Anwendung ist bereits in deutscher Sprache.
+Die Anwendung ist bereits in französisch.
+Die Anwendung ist bereits in englischer Sprache.
+Die Anwendung ist bereits in Spanisch.
+Die Sprache wird geändert, um die Anwendung zu starten.
+
+Planung - Day
+Rückkehr
+Drucken
+Wählen Sie die Tage oder die Woche möchten Sie drucken.
+PDF Planungsprozess 
+Sie haben bereits einen Bericht für diesen Besuch gefüllt : 
+- Hinweis : 
+Wenn Sie weiterhin, die zuvor hinzugefügt Note und Kommentar wird mit den neuen Werten.
+Warnung
+Starten des Prozesses. Capture-Zeitplan ..
+Erstellen von PDF-Dokumenten und eine Seite ..
+erfassen Verein | Seite und Seite | Papier ..
+Antrag auf Registrierung im PDF-Format ..
+Speichern Sie das Dokument ..
+Schließen Sie das Dokument ..
+Lassen Sie alle Verweise auf das Bild verknüpft ..
+Die Fertigstellung. Schließen ..
+And klicken Sie auf die Schaltfläche in der oberen linken, "Print".
+- Kommentar : 
+Möchten Sie fortfahren möchten ersetzt werden ?
+
+Besuch
+Bericht Besuch
+Name : 
+Adresse : 
+Anzahl der aktuellen Stars : 
+Stadt : 
+Öffnungszeiten : 
+Kommentar : 
+Hinweis : 
+Rückkehr
+Speichern
+Stornieren
+Bitte bestätigen Sie sendet die folgenden Daten : 
+- Kommentar : 
+- Hinweis : 
+Sie können nicht nach der Bestätigung zurückgehen, würden Sie weitermachen ?
+Bestätigung
+
+Die Datenaufzeichnung ..
+
+Besuchen Sie Geschichte
+Anzeigen
+Tabelle
+Liste
+Sortiert nach
+Datum
+Abteilung
+Etoile
+Durchsuchen Sie die Datei ..
+Datei gefunden. Eröffnung ..
+Nicht vorhandene Datei. Schöpfung ..
+Eröffnung ..
+Fehler beim Abrufen der Datei : 
+Das Schreiben von Daten ..
+Gespeicherte Daten im Verzeichnis "C:\PPE4_DR\" in .xml-Format.
+Informationen
+Fehler beim Schreiben der Datei : 
+Datum und Uhrzeit : 
+Abteilung : 
+Unterkunft : 
+Sternebewertung zugeordnet : 
+Kommentar : 

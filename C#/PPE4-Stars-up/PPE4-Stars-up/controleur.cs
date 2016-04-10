@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -16,6 +17,11 @@ namespace PPE4_Stars_up
         static int idI;
         static string test;
 
+        static string FichierLangue = "";
+        static List<string> LangueElement = new List<string>();
+
+        static string fileName2 = @"C:\PPE4_DR\Preferences_PPE4_DR.txt";
+
         public static bdd Vmodele
         {
             get { return controleur.vmodele; }
@@ -29,6 +35,48 @@ namespace PPE4_Stars_up
 
         public static void modif_bdd(Char c, string commentaire, int nb_Etoile, int index2) // String cle, 
         {
+            // Gestion de la langue
+            StreamReader reader = File.OpenText(fileName2);
+            string ligne;
+
+            List<string> listeElement = new List<string>();
+            while (!reader.EndOfStream)
+            {
+                ligne = reader.ReadLine();
+                listeElement.Add(ligne);
+            }
+            reader.Close();
+
+            if (listeElement[1] == "Francais")
+            {
+                FichierLangue = "Francais.txt";
+            }
+
+            if (listeElement[1] == "Anglais")
+            {
+                FichierLangue = "Anglais.txt";
+            }
+
+            if (listeElement[1] == "Allemand")
+            {
+                FichierLangue = "Allemand.txt";
+            }
+
+            if (listeElement[1] == "Espagnol")
+            {
+                FichierLangue = "Espagne.txt";
+            }
+
+            StreamReader reader2 = File.OpenText(FichierLangue);
+            string ligne2;
+
+            while (!reader2.EndOfStream)
+            {
+                ligne2 = reader2.ReadLine();
+                LangueElement.Add(ligne2);
+            }
+            reader.Close();
+
             // Le Char c correspond à l'action : c:create, u update, d delete,
             // la cle est celle de l'enregistrement sélectionné, vide si action d’ajout (c = ‘c’)
             int index = 0;
@@ -65,7 +113,7 @@ namespace PPE4_Stars_up
                 vmodele.Dv_maj_etoile_commentaire[index2]["COMMENTAIRE_VISITE"] = commentaire;
             }
 
-            InputBox("Enregistrement des données..", "");
+            InputBox(LangueElement[88], "");
 
             // MessageBox.Show("OK : données enregistrées");
         }
