@@ -15,7 +15,7 @@ Exportación
 Horario
 Visita la historia
 Imprimir PDF
-Parámetro
+Ajustes
 Dejar
 Usuario:
 Importar datos requeridos
@@ -45,7 +45,7 @@ La aplicación ya está en alemán.
 La aplicación ya está en francés.
 La aplicación ya está en Inglés.
 La aplicación ya está en español.
-El idioma será cambiado para iniciar la aplicación.
+El idioma será cambiado para iniciar la aplicación para que sea efectiva en la totalidad de ella.
 
 Planificación - Día
 Retorno
@@ -110,3 +110,17 @@ Departamento :
 Alojamiento : 
 Estrellas otorgadas : 
 Comentar : 
+
+Ajustes
+La transparencia : 
+Reiniciar necesaria para la transparencia es eficaz en la totalidad de la aplicación.
+Mostrar ventanas de carga : 
+Sí
+No
+Ver Tutorial
+Idioma : 
+La aplicación del color : 
+Memorización de los parámetros ..
+Por defecto
+El color ya es el valor predeterminado.
+Reiniciar requerido para que el color sea eficaz en la totalidad de la aplicación.

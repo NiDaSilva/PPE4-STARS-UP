@@ -9,6 +9,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -100,8 +101,63 @@ namespace PPE4_Stars_up
             }
             reader.Close();
 
+            // Gestion transparence
+            if (listeElement[3] != "")
+            {
+                Opacity = Convert.ToDouble(listeElement[3]);
+            }
+
             this.Text = LangueElement[49];
             btnRetour.Text = LangueElement[50];
+
+            // Gestion couleur background
+
+            if (listeElement[6] != "Par défaut")
+            {
+                this.BackgroundImage = null;
+
+                int AA = 0;
+                int RR = 0;
+                int GG = 0;
+                int BB = 0;
+
+                // Get first match.
+                Match match = Regex.Match(listeElement[6], @"\d+");
+                if (match.Success)
+                {
+                    AA = Convert.ToInt32(match.Value);
+                }
+
+                // Get second match.
+                match = match.NextMatch();
+                if (match.Success)
+                {
+                    RR = Convert.ToInt32(match.Value);
+                }
+
+                // Get 3 match.
+                match = match.NextMatch();
+                if (match.Success)
+                {
+                    GG = Convert.ToInt32(match.Value);
+                }
+
+                // Get 4 match.
+                match = match.NextMatch();
+                if (match.Success)
+                {
+                    BB = Convert.ToInt32(match.Value); ;
+                }
+
+                Color c = Color.FromArgb(AA, RR, GG, BB);
+                this.BackColor = c;
+                monthView1.BackColor = c;
+            }
+            else
+            {
+                this.BackgroundImage = null;
+                monthView1.BackColor = SystemColors.Control;
+            }
 
 
             if (WindowState == FormWindowState.Maximized)
@@ -622,15 +678,26 @@ namespace PPE4_Stars_up
                 // On appelle la fonction qui va prendre la capture du planning
                 captureScreen();
 
-                InputBox(LangueElement[58], "");
+                if (AffichageInputBox() == "Oui")
+                {
+                    InputBox(LangueElement[58], "");
+                }
 
-                InputBox(LangueElement[59], "");
+
+                if (AffichageInputBox() == "Oui")
+                {
+                    InputBox(LangueElement[59], "");
+                }
 
                 // On crée un nouveau document et une nouvelle page PDF
                 PdfDocument doc = new PdfDocument();
                 PdfPage oPage = new PdfPage();
 
-                InputBox(LangueElement[60], "");
+
+                if (AffichageInputBox() == "Oui")
+                {
+                    InputBox(LangueElement[60], "");
+                }
 
                 // oPage.Size = PdfSharp.PageSize.A1;
                 oPage.Size = PdfSharp.PageSize.Crown;
@@ -644,28 +711,48 @@ namespace PPE4_Stars_up
 
                 // 210*297mm PDF
 
-                InputBox(LangueElement[61], "");
+
+                if (AffichageInputBox() == "Oui")
+                {
+                    InputBox(LangueElement[61], "");
+                }
 
                 saveFileDialog.Filter = ("PDF File|*.pdf");
                 DialogResult btnSave = saveFileDialog.ShowDialog();
                 if (btnSave.Equals(DialogResult.OK))
                 {
-                    InputBox(LangueElement[62], "");
+
+                    if (AffichageInputBox() == "Oui")
+                    {
+                        InputBox(LangueElement[62], "");
+                    }
 
                     doc.Save(saveFileDialog.FileName);
 
-                    InputBox(LangueElement[63], "");
+
+                    if (AffichageInputBox() == "Oui")
+                    {
+                        InputBox(LangueElement[63], "");
+                    }
 
                     doc.Close();
 
                 }
 
-                InputBox(LangueElement[64], "");
+
+                if (AffichageInputBox() == "Oui")
+                {
+                    InputBox(LangueElement[64], "");
+                }
 
                 // Pour parré aux erreurs éventuelles
                 img.Dispose();
 
-                InputBox(LangueElement[65], "");
+
+                if (AffichageInputBox() == "Oui")
+                {
+                    InputBox(LangueElement[65], "");
+                }
                 /*
                 //FormIndex form = (FormIndex)this.MdiParent;
                 FormIndex form = new FormIndex();
@@ -763,6 +850,34 @@ namespace PPE4_Stars_up
                 form.Close();
 
             return Res;
+        }
+
+        public string AffichageInputBox()
+        {
+            string resultat = "";
+
+            StreamReader reader = File.OpenText(fileName2);
+            string ligne;
+
+            List<string> listeElement = new List<string>();
+            while (!reader.EndOfStream)
+            {
+                ligne = reader.ReadLine();
+                listeElement.Add(ligne);
+            }
+            reader.Close();
+
+            // Gestion Affichage InputBox
+            if (listeElement[4] == "Oui")
+            {
+                resultat = "Oui";
+            }
+            else if (listeElement[4] == "Non")
+            {
+                resultat = "Non";
+            }
+
+            return resultat;
         }
     }
 }

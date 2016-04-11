@@ -145,6 +145,36 @@ namespace PPE4_Stars_up.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bbb {
+            get {
+                object obj = ResourceManager.GetObject("bbb", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap colors_palette {
+            get {
+                object obj = ResourceManager.GetObject("colors-palette", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap colorwheel {
+            get {
+                object obj = ResourceManager.GetObject("colorwheel", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cool_washing_basic_collor_blue_black_rain_hd_wallpaper_112685 {
             get {
                 object obj = ResourceManager.GetObject("cool_washing_basic_collor_blue_black_rain_hd-wallpaper-112685", resourceCulture);
@@ -205,6 +235,16 @@ namespace PPE4_Stars_up.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap fig2 {
+            get {
+                object obj = ResourceManager.GetObject("fig2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Fleche_navigation_bleue_gauche {
             get {
                 object obj = ResourceManager.GetObject("Fleche-navigation-bleue-gauche", resourceCulture);
@@ -218,6 +258,16 @@ namespace PPE4_Stars_up.Properties {
         internal static System.Drawing.Bitmap france {
             get {
                 object obj = ResourceManager.GetObject("france", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap honeycomb_grey_pattern_wallpapers {
+            get {
+                object obj = ResourceManager.GetObject("honeycomb_grey_pattern_wallpapers", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -248,6 +298,16 @@ namespace PPE4_Stars_up.Properties {
         internal static System.Drawing.Bitmap ombre0 {
             get {
                 object obj = ResourceManager.GetObject("ombre0", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap palette_couleur_2 {
+            get {
+                object obj = ResourceManager.GetObject("palette-couleur-2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

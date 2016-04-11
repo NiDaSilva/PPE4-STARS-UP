@@ -15,7 +15,7 @@ Export
 Schedule
 Visit history
 Print PDF
-Parameter
+Settings
 Leave
 Logged as : 
 Import data required
@@ -45,7 +45,7 @@ The application is already in German.
 The application is already in french.
 The application is already in English.
 The application is already in Spanish.
-The language will be changed to start the application.
+The language will be changed to start the application for it to be effective on the whole of it.
 
 Planning - Day
 Return
@@ -110,3 +110,17 @@ Department :
 Accommodation : 
 Star rating assigned : 
 Comment : 
+
+Settings
+Transparency : 
+Restart required for transparency is effective on the whole of the application.
+Show loading windows : 
+Yes
+No
+View Tutorial
+Language : 
+The application of color : 
+Saving parameters ..
+By default
+Color is already the default.
+Restart required for the color to be effective on the whole of the application.

@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -96,12 +97,65 @@ namespace PPE4_Stars_up
             }
             reader.Close();
 
+            // Gestion transparence
+            if (listeElement[3] != "")
+            {
+                Opacity = Convert.ToDouble(listeElement[3]);
+            }
+
             lbladresse.Text = adresse;
             lblville.Text = ville;
             lblhoraire.Text = horaires;
             lblnom.Text = nom;
             lblDateTitre.Text = RecupDateHeureVisite;
             rtbCommentaire.Text = commentaireV;
+
+            // Gestion couleur background
+
+            if (listeElement[6] != "Par défaut")
+            {
+                this.BackgroundImage = null;
+
+                int AA = 0;
+                int RR = 0;
+                int GG = 0;
+                int BB = 0;
+
+                // Get first match.
+                Match match = Regex.Match(listeElement[6], @"\d+");
+                if (match.Success)
+                {
+                    AA = Convert.ToInt32(match.Value);
+                }
+
+                // Get second match.
+                match = match.NextMatch();
+                if (match.Success)
+                {
+                    RR = Convert.ToInt32(match.Value);
+                }
+
+                // Get 3 match.
+                match = match.NextMatch();
+                if (match.Success)
+                {
+                    GG = Convert.ToInt32(match.Value);
+                }
+
+                // Get 4 match.
+                match = match.NextMatch();
+                if (match.Success)
+                {
+                    BB = Convert.ToInt32(match.Value); ;
+                }
+
+                Color c = Color.FromArgb(AA, RR, GG, BB);
+                this.BackColor = c;
+            }
+            else
+            {
+                this.BackgroundImage = PPE4_Stars_up.Properties.Resources.bbb;
+            }
 
             // Cache Etoile jaune après visite
             pbV1bis.Visible = false;

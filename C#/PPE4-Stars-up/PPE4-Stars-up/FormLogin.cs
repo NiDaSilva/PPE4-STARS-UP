@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.IO;
 using System.Threading;
+using System.Text.RegularExpressions;
 
 namespace PPE4_Stars_up
 {
@@ -93,8 +94,13 @@ namespace PPE4_Stars_up
 
                 listeElement.Add(idINSP.ToString());
                 listeElement.Add(langue);
+                listeElement.Add("Spécialité");
+                listeElement.Add("100");
+                listeElement.Add("Oui");
+                listeElement.Add("Oui");
+                listeElement.Add("Défaut");
 
-                
+
                 StreamWriter writer = new StreamWriter(fileName2);
 
                 foreach (var item in listeElement)
@@ -128,9 +134,41 @@ namespace PPE4_Stars_up
             writer.Close();
         }
 
+        public string AffichageInputBox()
+        {
+            string resultat = "";
+
+            StreamReader reader = File.OpenText(fileName2);
+            string ligne;
+
+            List<string> listeElement = new List<string>();
+            while (!reader.EndOfStream)
+            {
+                ligne = reader.ReadLine();
+                listeElement.Add(ligne);
+            }
+            reader.Close();
+
+            // Gestion Affichage InputBox
+            if (listeElement[4] == "Oui")
+            {
+                resultat = "Oui";
+            }
+            else if (listeElement[4] == "Non")
+            {
+                resultat = "Non";
+            }
+
+            return resultat;
+        }
+
         private void btnOK_Click(object sender, EventArgs e)
         {
-            InputBox(LangueElement[4], "");
+            if (AffichageInputBox() == "Oui")
+            {
+                InputBox(LangueElement[4], "");
+            }
+            
 
             if (lbLogin.Items.Contains(tbNom.Text))
             {                
@@ -148,7 +186,10 @@ namespace PPE4_Stars_up
                     }
                 }
 
-                InputBox(LangueElement[5], "");
+                if (AffichageInputBox() == "Oui")
+                {
+                    InputBox(LangueElement[5], "");
+                }
                 
                 if (tbMdp.Text== lbMdp.Items[countt].ToString()) 
                 {
@@ -358,6 +399,8 @@ namespace PPE4_Stars_up
 
         private void FormLogin_Load(object sender, EventArgs e)
         {
+            creationFichier();
+
             // Gestion de la langue
             StreamReader reader = File.OpenText(fileName2);
             string ligne;
@@ -403,12 +446,17 @@ namespace PPE4_Stars_up
 
             // Fin Gestion langue
 
+            // Gestion transparence
+            if (listeElement[3] != "")
+            {
+                Opacity = Convert.ToDouble(listeElement[3]);
+            }
+
             pbCorrect1.Visible = false;
             pbCorrect2.Visible = false;
             pbIncorrect1.Visible = false;
             pbIncorrect2.Visible = false;
 
-            creationFichier();
             Visible = true;
             this.ActiveControl = textBox1;
 
@@ -426,6 +474,53 @@ namespace PPE4_Stars_up
             cbAfficherMdp.Text = LangueElement[2];
             this.Text = LangueElement[3];
             btnOK.Text = LangueElement[3];
+
+            // Gestion couleur background
+
+            if (listeElement[6] != "Par défaut")
+            {
+                this.BackgroundImage = null;
+
+                int AA = 0;
+                int RR = 0;
+                int GG = 0;
+                int BB = 0;
+
+                // Get first match.
+                Match match = Regex.Match(listeElement[6], @"\d+");
+                if (match.Success)
+                {
+                    AA = Convert.ToInt32(match.Value);
+                }
+
+                // Get second match.
+                match = match.NextMatch();
+                if (match.Success)
+                {
+                    RR = Convert.ToInt32(match.Value);
+                }
+
+                // Get 3 match.
+                match = match.NextMatch();
+                if (match.Success)
+                {
+                    GG = Convert.ToInt32(match.Value);
+                }
+
+                // Get 4 match.
+                match = match.NextMatch();
+                if (match.Success)
+                {
+                    BB = Convert.ToInt32(match.Value); ;
+                }
+
+                Color c = Color.FromArgb(AA, RR, GG, BB);
+                this.BackColor = c;
+            }
+            else
+            {
+                this.BackgroundImage = PPE4_Stars_up.Properties.Resources.cool_washing_basic_collor_blue_black_rain_hd_wallpaper_112685;
+            }
 
         }
 

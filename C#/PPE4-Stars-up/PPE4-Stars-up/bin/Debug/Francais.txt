@@ -15,7 +15,7 @@ Export
 Planning
 Historique des visites
 Imprimer PDF
-Paramètre
+Paramètres
 Quitter
 Connecté en tant que :
 Import données requis
@@ -45,7 +45,7 @@ L'application est déjà en allemand.
 L'application est déjà en francais.
 L'application est déjà en anglais.
 L'application est déjà en espagnol.
-La langue sera modifiée au redémarrage de l'application.
+La langue sera modifiée au redémarrage de l'application pour qu'elle soit effective sur la globalité de celle-ci.
 
 Planning - Jour
 Retour
@@ -110,3 +110,17 @@ Département :
 Hébergement : 
 Nombre d'étoiles attribuées : 
 Commentaire : 
+
+Paramètres
+Transparence :
+Redémarrage requis pour que la transparence soit effective sur la globalité de l'application.
+Afficher les fenêtres de chargement :
+Oui
+Non
+Afficher Tutoriel :
+Langue :
+Couleur de l'application :
+Sauvegarde des paramètres..
+Par défaut
+La couleur est déjà par défaut.
+Redémarrage requis pour que la couleur soit effective sur la globalité de l'application.

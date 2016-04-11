@@ -95,6 +95,12 @@
     <Compile Include="FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormParametre.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormParametre.Designer.cs">
+      <DependentUpon>FormParametre.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormVisite.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -159,6 +165,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormParametre.resx">
+      <DependentUpon>FormParametre.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormVisite.resx">
       <DependentUpon>FormVisite.cs</DependentUpon>
@@ -275,6 +284,12 @@
     <None Include="Resources\angleterre.jpg" />
     <None Include="Resources\allemagne.jpg" />
     <None Include="Resources\espagne.jpg" />
+    <None Include="Resources\honeycomb_grey_pattern_wallpapers.jpg" />
+    <None Include="Resources\colors-palette.png" />
+    <None Include="Resources\fig2.png" />
+    <None Include="Resources\palette-couleur-2.png" />
+    <None Include="Resources\colorwheel.png" />
+    <None Include="Resources\bbb.jpg" />
     <Content Include="simple-blue-calendar-128.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

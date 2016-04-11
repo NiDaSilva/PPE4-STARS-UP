@@ -13,9 +13,9 @@ Willkommen
 Import
 Export
 Zeitplan
-Besuchen Sie Geschichte
+Historical Besuch
 Drucken PDF
-Parameter
+Einstellungen
 Verlassen
 Angemeldet als : 
 Importieren von Daten erforderlich
@@ -45,7 +45,7 @@ Die Anwendung ist bereits in deutscher Sprache.
 Die Anwendung ist bereits in französisch.
 Die Anwendung ist bereits in englischer Sprache.
 Die Anwendung ist bereits in Spanisch.
-Die Sprache wird geändert, um die Anwendung zu starten.
+Die Sprache wird geändert, um die Anwendung zu starten, für sie auf der ganzen es wirksam zu sein.
 
 Planung - Day
 Rückkehr
@@ -110,3 +110,17 @@ Abteilung :
 Unterkunft : 
 Sternebewertung zugeordnet : 
 Kommentar : 
+
+Einstellungen
+Transparenz : 
+Restart Transparenz erforderlich ist wirksam auf die gesamte Anwendung.
+Zeigen Laden Fenster : 
+Ja
+Nein
+View Tutorial
+Sprache : 
+Die Anwendung von Farbe : 
+Speichern von Parametern ..
+Standardmäßig
+Die Farbe ist bereits voreingestellt.
+Neustart für die Farbe erforderlich wirksam auf die gesamte Anwendung zu sein.

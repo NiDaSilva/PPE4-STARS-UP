@@ -140,8 +140,9 @@
             this.paramètreToolStripMenuItem.Font = new System.Drawing.Font("Gentium Basic", 14.25F);
             this.paramètreToolStripMenuItem.Name = "paramètreToolStripMenuItem";
             this.paramètreToolStripMenuItem.Padding = new System.Windows.Forms.Padding(25, 0, 4, 0);
-            this.paramètreToolStripMenuItem.Size = new System.Drawing.Size(127, 26);
-            this.paramètreToolStripMenuItem.Text = "Paramètre";
+            this.paramètreToolStripMenuItem.Size = new System.Drawing.Size(134, 26);
+            this.paramètreToolStripMenuItem.Text = "Paramètres";
+            this.paramètreToolStripMenuItem.Click += new System.EventHandler(this.paramètreToolStripMenuItem_Click);
             // 
             // lblInspecteur
             // 

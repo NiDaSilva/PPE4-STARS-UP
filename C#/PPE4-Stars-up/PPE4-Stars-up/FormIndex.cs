@@ -14,6 +14,7 @@ using PdfSharp.Pdf;
 using PdfSharp.Drawing;
 using System.Drawing.Imaging;
 using AutoItX3Lib;
+using System.Text.RegularExpressions;
 
 namespace PPE4_Stars_up
 {
@@ -84,7 +85,10 @@ namespace PPE4_Stars_up
         {
             // Exportation des données
 
-            InputBox(LangueElement[35], "");
+            if (AffichageInputBox() == "Oui")
+            {
+                InputBox(LangueElement[35], "");
+            }
 
             controleur.Vmodele.seconnecter();
 
@@ -94,12 +98,18 @@ namespace PPE4_Stars_up
             }
             else  // sinon
             {
-                InputBox(LangueElement[37], "");
+                if (AffichageInputBox() == "Oui")
+                {
+                    InputBox(LangueElement[37], "");
+                }
 
                 // MessageBox.Show("Connexion à la base de donnée effectuée avec succès", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 controleur.Vmodele.export();  // appel de la méthode export() via Vmodele du controleur
 
-                InputBox(LangueElement[39], "");
+                if (AffichageInputBox() == "Oui")
+                {
+                    InputBox(LangueElement[39], "");
+                }
 
                 controleur.Vmodele.sedeconnecter();  // se déconnecter de la BD.
 
@@ -129,7 +139,10 @@ namespace PPE4_Stars_up
 
             if (importToolStripMenuItem.Text == LangueElement[13])
             {
-                InputBox(LangueElement[35], "");
+                if (AffichageInputBox() == "Oui")
+                {
+                    InputBox(LangueElement[35], "");
+                }
 
                 controleur.Vmodele.seconnecter();
 
@@ -139,12 +152,18 @@ namespace PPE4_Stars_up
                 }
                 else  // sinon
                 {
-                    InputBox(LangueElement[37], "");
+                    if (AffichageInputBox() == "Oui")
+                    {
+                        InputBox(LangueElement[37], "");
+                    }
 
                     // MessageBox.Show("Connexion à la base de donnée effectuée avec succès", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     controleur.Vmodele.export();  // appel de la méthode export() via Vmodele du controleur
-                    
-                    InputBox(LangueElement[39], "");
+
+                    if (AffichageInputBox() == "Oui")
+                    {
+                        InputBox(LangueElement[39], "");
+                    }
 
                     controleur.Vmodele.sedeconnecter();  // se déconnecter de la BD.
                     
@@ -166,7 +185,10 @@ namespace PPE4_Stars_up
 
             if (importToolStripMenuItem.Text == LangueElement[12])
             {
-                InputBox(LangueElement[35], "");
+                if (AffichageInputBox() == "Oui")
+                {
+                    InputBox(LangueElement[35], "");
+                }
 
                 controleur.init();
                 controleur.Vmodele.seconnecter();
@@ -177,12 +199,18 @@ namespace PPE4_Stars_up
                 }
                 else
                 {
-                    InputBox(LangueElement[38], "");
+                    if (AffichageInputBox() == "Oui")
+                    {
+                        InputBox(LangueElement[38], "");
+                    }
 
                     // MessageBox.Show("Connexion à la base de donnée effectuée avec succès", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     controleur.Vmodele.import();
 
-                    InputBox(LangueElement[40], "");
+                    if (AffichageInputBox() == "Oui")
+                    {
+                        InputBox(LangueElement[40], "");
+                    }
 
                     controleur.Vmodele.sedeconnecter();
 
@@ -192,13 +220,13 @@ namespace PPE4_Stars_up
                     imprimerPDFToolStripMenuItem.Enabled = true;
                     quitterToolStripMenuItem.Enabled = true;
 
-                    lblSpecialite.Text = controleur.Vmodele.Dv_specialite.ToTable().Rows[0][0].ToString() + "\n"; // Récupère la spécialité 
-                    lblInspecteur.Text = controleur.Vmodele.Dv_inspecteur.ToTable().Rows[0][0].ToString() + "\n"; // Récupère le nom et prénom de l'inspecteur 
-                    lblNbVisiteTotal.Text = controleur.Vmodele.Dv_nb_visite_total.ToTable().Rows[0][0].ToString() + "\n"; // Récupère le nombre total de visite de l'inspecteur 
-                    lblNbVisitePassees.Text = controleur.Vmodele.Dv_nb_visite_passee.ToTable().Rows[0][0].ToString() + "\n"; // Récupère le nombre de visite passées de l'inspecteur 
-                    lblNbVisiteToday.Text = controleur.Vmodele.Dv_nb_visite_today.ToTable().Rows[0][0].ToString() + "\n"; // Récupère le nombre de visite prévue aujourd'hui de l'inspecteur 
-                    lblNbVisitePasseeNonRemplie.Text = controleur.Vmodele.Dv_nb_visite_passee_non_evaluee.ToTable().Rows[0][0].ToString() + "\n"; // Récupère le nombre de visite passées non évaluées de l'inspecteur
-                    lblNbVisitePrevue.Text = controleur.Vmodele.Dv_nb_visite_prevue.ToTable().Rows[0][0].ToString() + "\n"; // Récupère le nombre de visite prévue de l'inspecteur 
+                    lblSpecialite.Text = controleur.Vmodele.Dv_specialite.ToTable().Rows[0][0].ToString(); // Récupère la spécialité 
+                    lblInspecteur.Text = controleur.Vmodele.Dv_inspecteur.ToTable().Rows[0][0].ToString(); // Récupère le nom et prénom de l'inspecteur 
+                    lblNbVisiteTotal.Text = controleur.Vmodele.Dv_nb_visite_total.ToTable().Rows[0][0].ToString(); // Récupère le nombre total de visite de l'inspecteur 
+                    lblNbVisitePassees.Text = controleur.Vmodele.Dv_nb_visite_passee.ToTable().Rows[0][0].ToString(); // Récupère le nombre de visite passées de l'inspecteur 
+                    lblNbVisiteToday.Text = controleur.Vmodele.Dv_nb_visite_today.ToTable().Rows[0][0].ToString(); // Récupère le nombre de visite prévue aujourd'hui de l'inspecteur 
+                    lblNbVisitePasseeNonRemplie.Text = controleur.Vmodele.Dv_nb_visite_passee_non_evaluee.ToTable().Rows[0][0].ToString(); // Récupère le nombre de visite passées non évaluées de l'inspecteur
+                    lblNbVisitePrevue.Text = controleur.Vmodele.Dv_nb_visite_prevue.ToTable().Rows[0][0].ToString(); // Récupère le nombre de visite prévue de l'inspecteur 
 
                     MAJHeure();
 
@@ -211,7 +239,10 @@ namespace PPE4_Stars_up
         {
             // Exportation des données
 
-            InputBox(LangueElement[35], "");
+            if (AffichageInputBox() == "Oui")
+            {
+                InputBox(LangueElement[35], "");
+            }
 
             controleur.Vmodele.seconnecter();
 
@@ -221,12 +252,18 @@ namespace PPE4_Stars_up
             }
             else  // sinon
             {
-                InputBox(LangueElement[37], "");
+                if (AffichageInputBox() == "Oui")
+                {
+                    InputBox(LangueElement[37], "");
+                }
 
                 // MessageBox.Show("Connexion à la base de donnée effectuée avec succès", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 controleur.Vmodele.export();  // appel de la méthode export() via Vmodele du controleur
 
-                InputBox(LangueElement[39], "");
+                if (AffichageInputBox() == "Oui")
+                {
+                    InputBox(LangueElement[39], "");
+                }
 
                 controleur.Vmodele.sedeconnecter();  // se déconnecter de la BD.
 
@@ -556,6 +593,12 @@ namespace PPE4_Stars_up
             }
             reader.Close();
 
+            // Gestion transparence
+            if (listeElement[3] != "")
+            {
+                Opacity = Convert.ToDouble(listeElement[3]);
+            }
+
             timerHHmm.Start();
 
             chargedgv();
@@ -579,6 +622,53 @@ namespace PPE4_Stars_up
             lblPassees.Text = LangueElement[27];
             lblPasseeNonEvaluee.Text = LangueElement[31];
             lblPrevue.Text = LangueElement[33];
+
+            // Gestion couleur background
+
+            if (listeElement[6] != "Par défaut")
+            {
+                pictureBox1.BackgroundImage = null;
+
+                int AA = 0;
+                int RR = 0;
+                int GG = 0;
+                int BB = 0;
+
+                // Get first match.
+                Match match = Regex.Match(listeElement[6], @"\d+");
+                if (match.Success)
+                {
+                    AA = Convert.ToInt32(match.Value);
+                }
+
+                // Get second match.
+                match = match.NextMatch();
+                if (match.Success)
+                {
+                    RR = Convert.ToInt32(match.Value);
+                }
+
+                // Get 3 match.
+                match = match.NextMatch();
+                if (match.Success)
+                {
+                    GG = Convert.ToInt32(match.Value);
+                }
+
+                // Get 4 match.
+                match = match.NextMatch();
+                if (match.Success)
+                {
+                    BB = Convert.ToInt32(match.Value); ;
+                }
+
+                Color c = Color.FromArgb(AA, RR, GG, BB);
+                this.BackColor = c;
+            }
+            else
+            {
+                pictureBox1.BackgroundImage = PPE4_Stars_up.Properties.Resources.Wallpaper_Gray_Bars_Opera;
+            }
 
             FormLogin FL = new FormLogin();
         }
@@ -604,7 +694,10 @@ namespace PPE4_Stars_up
 
             // On affiche le planning sur tout l'écran
 
-            InputBox(LangueElement[41], "");
+            if (AffichageInputBox() == "Oui")
+            {
+                InputBox(LangueElement[41], "");
+            }
 
             FormPlanningJour FPJPDF = new FormPlanningJour();
             FPJPDF.WindowState = FormWindowState.Maximized;
@@ -632,7 +725,7 @@ namespace PPE4_Stars_up
         }
 
         private void ecrireFichier()
-        {            
+        {
             StreamReader reader = File.OpenText(fileName2);
             string ligne;
 
@@ -644,6 +737,9 @@ namespace PPE4_Stars_up
             }
             reader.Close();
 
+            listeElement[2] = lblSpecialite.Text;
+
+            /*
             if(listeElement.Count() < 3)
             {
                 listeElement.Add(lblSpecialite.Text);
@@ -652,6 +748,7 @@ namespace PPE4_Stars_up
             {
                 listeElement[2] = lblSpecialite.Text;
             }
+            */
 
             StreamWriter writer = new StreamWriter(fileName2);
             foreach (var item in listeElement)
@@ -808,6 +905,12 @@ namespace PPE4_Stars_up
             }
         }
 
+        private void paramètreToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormParametre FP = new FormParametre();
+            FP.Show();
+        }
+
         public static int InputBox(string title, string promptText)
         {
             Form form = new Form();
@@ -850,6 +953,34 @@ namespace PPE4_Stars_up
                 form.Close();
 
             return Res;
-        }        
+        }
+
+        public string AffichageInputBox()
+        {
+            string resultat = "";
+
+            StreamReader reader = File.OpenText(fileName2);
+            string ligne;
+
+            List<string> listeElement = new List<string>();
+            while (!reader.EndOfStream)
+            {
+                ligne = reader.ReadLine();
+                listeElement.Add(ligne);
+            }
+            reader.Close();
+
+            // Gestion Affichage InputBox
+            if (listeElement[4] == "Oui")
+            {
+                resultat = "Oui";
+            }
+            else if (listeElement[4] == "Non")
+            {
+                resultat = "Non";
+            }
+
+            return resultat;
+        }
     }
 }

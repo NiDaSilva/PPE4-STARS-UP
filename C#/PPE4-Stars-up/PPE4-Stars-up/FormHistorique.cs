@@ -39,20 +39,32 @@ namespace PPE4_Stars_up
         {
             try
             {
-                InputBox(LangueElement[98], "");
+                if (AffichageInputBox() == "Oui")
+                {
+                    InputBox(LangueElement[98], "");
+                }
 
                 if (File.Exists("C:\\PPE4_DR\\HistoriqueVisites.xml"))
                 {
                     using (Stream flux = new FileStream("C:\\PPE4_DR\\HistoriqueVisites.xml", FileMode.Open, FileAccess.Read))
                     {
-                        InputBox(LangueElement[99], "");
+
+                        if (AffichageInputBox() == "Oui")
+                        {
+                            InputBox(LangueElement[99], "");
+                        }
                     }
                 }
                 else
                 {
                     // MessageBox.Show("Fichier xml inexistant!\nCliquez sur OK pour finaliser le processus.", "Avertissement", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    InputBox(LangueElement[100], "");
-                    InputBox(LangueElement[101], "");
+
+                    if (AffichageInputBox() == "Oui")
+                    {
+                        InputBox(LangueElement[100], "");
+                        InputBox(LangueElement[101], "");
+                    }
+                    
                 }
             }
             catch (Exception err)
@@ -68,7 +80,11 @@ namespace PPE4_Stars_up
         {
             try
             {
-                InputBox(LangueElement[103], "");
+
+                if (AffichageInputBox() == "Oui")
+                {
+                    InputBox(LangueElement[103], "");
+                }
 
                 XmlSerializer serialXml = new XmlSerializer(typeof(String));
                 using (Stream flux = new FileStream("C:\\PPE4_DR\\HistoriqueVisites.xml", FileMode.OpenOrCreate, FileAccess.Write))
@@ -215,6 +231,12 @@ namespace PPE4_Stars_up
             }
             reader.Close();
 
+            // Gestion transparence
+            if (listeElement[3] != "")
+            {
+                Opacity = Convert.ToDouble(listeElement[3]);
+            }
+
             chargedgv();
 
             listBoxHistorique.Visible = false;
@@ -228,6 +250,56 @@ namespace PPE4_Stars_up
             rbTriDate.Text = LangueElement[95];
             rbTriDepartement.Text = LangueElement[96];
             rbTriEtoile.Text = LangueElement[97];
+
+            // Gestion couleur background
+
+            if (listeElement[6] != "Par défaut")
+            {
+                this.BackgroundImage = null;
+                panel1.BackgroundImage = null;
+
+                int AA = 0;
+                int RR = 0;
+                int GG = 0;
+                int BB = 0;
+
+                // Get first match.
+                Match match = Regex.Match(listeElement[6], @"\d+");
+                if (match.Success)
+                {
+                    AA = Convert.ToInt32(match.Value);
+                }
+
+                // Get second match.
+                match = match.NextMatch();
+                if (match.Success)
+                {
+                    RR = Convert.ToInt32(match.Value);
+                }
+
+                // Get 3 match.
+                match = match.NextMatch();
+                if (match.Success)
+                {
+                    GG = Convert.ToInt32(match.Value);
+                }
+
+                // Get 4 match.
+                match = match.NextMatch();
+                if (match.Success)
+                {
+                    BB = Convert.ToInt32(match.Value); ;
+                }
+
+                Color c = Color.FromArgb(AA, RR, GG, BB);
+                this.BackColor = c;
+                panel1.BackColor = c;
+            }
+            else
+            {
+                this.BackgroundImage = PPE4_Stars_up.Properties.Resources.Wallpaper_Gray_Bars_Opera;
+                panel1.BackgroundImage = PPE4_Stars_up.Properties.Resources._2395551_5_x11_wide_spread_professional_high_res_background_template_layout_that_can_be_used_for_any_kind_of_marketing_material_magazines_articles_scrapbook_and_even_advertisements;
+            }
         }
 
         private void rbListe_CheckedChanged(object sender, EventArgs e)
@@ -319,6 +391,34 @@ namespace PPE4_Stars_up
               form.Close();
 
             return Res;
+        }
+
+        public string AffichageInputBox()
+        {
+            string resultat = "";
+
+            StreamReader reader = File.OpenText(fileName2);
+            string ligne;
+
+            List<string> listeElement = new List<string>();
+            while (!reader.EndOfStream)
+            {
+                ligne = reader.ReadLine();
+                listeElement.Add(ligne);
+            }
+            reader.Close();
+
+            // Gestion Affichage InputBox
+            if (listeElement[4] == "Oui")
+            {
+                resultat = "Oui";
+            }
+            else if (listeElement[4] == "Non")
+            {
+                resultat = "Non";
+            }
+
+            return resultat;
         }
     }
 }
