@@ -104,7 +104,14 @@ namespace PPE4_Stars_up
             // Gestion transparence
             if (listeElement[3] != "")
             {
-                Opacity = Convert.ToDouble(listeElement[3]);
+                if (WindowState != FormWindowState.Maximized)
+                {
+                    Opacity = Convert.ToDouble(listeElement[3]);
+                }       
+                else
+                {
+                    Opacity = 1;
+                }             
             }
 
             this.Text = LangueElement[49];
@@ -150,8 +157,17 @@ namespace PPE4_Stars_up
                 }
 
                 Color c = Color.FromArgb(AA, RR, GG, BB);
-                this.BackColor = c;
-                monthView1.BackColor = c;
+
+                try
+                {
+                    this.BackColor = c;
+                    monthView1.BackColor = c;
+                }
+                catch
+                {
+                    this.BackgroundImage = null;
+                    monthView1.BackColor = SystemColors.Control;
+                }
             }
             else
             {

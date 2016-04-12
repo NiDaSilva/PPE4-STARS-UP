@@ -61,7 +61,7 @@
             this.lblRedemRequis.BackColor = System.Drawing.Color.Transparent;
             this.lblRedemRequis.Font = new System.Drawing.Font("Palatino Linotype", 10.25F, System.Drawing.FontStyle.Italic);
             this.lblRedemRequis.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblRedemRequis.Location = new System.Drawing.Point(45, 132);
+            this.lblRedemRequis.Location = new System.Drawing.Point(45, 120);
             this.lblRedemRequis.Name = "lblRedemRequis";
             this.lblRedemRequis.Size = new System.Drawing.Size(510, 20);
             this.lblRedemRequis.TabIndex = 53;
@@ -73,8 +73,9 @@
             // cbTutorielNon
             // 
             this.cbTutorielNon.AutoSize = true;
+            this.cbTutorielNon.Enabled = false;
             this.cbTutorielNon.Font = new System.Drawing.Font("Palatino Linotype", 12.25F);
-            this.cbTutorielNon.Location = new System.Drawing.Point(266, 224);
+            this.cbTutorielNon.Location = new System.Drawing.Point(266, 212);
             this.cbTutorielNon.Name = "cbTutorielNon";
             this.cbTutorielNon.Size = new System.Drawing.Size(62, 27);
             this.cbTutorielNon.TabIndex = 50;
@@ -87,8 +88,9 @@
             this.cbTutorielOui.AutoSize = true;
             this.cbTutorielOui.Checked = true;
             this.cbTutorielOui.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbTutorielOui.Enabled = false;
             this.cbTutorielOui.Font = new System.Drawing.Font("Palatino Linotype", 12.25F);
-            this.cbTutorielOui.Location = new System.Drawing.Point(203, 224);
+            this.cbTutorielOui.Location = new System.Drawing.Point(203, 212);
             this.cbTutorielOui.Name = "cbTutorielOui";
             this.cbTutorielOui.Size = new System.Drawing.Size(57, 27);
             this.cbTutorielOui.TabIndex = 49;
@@ -102,7 +104,7 @@
             this.lblPercent.BackColor = System.Drawing.Color.Transparent;
             this.lblPercent.Font = new System.Drawing.Font("Palatino Linotype", 12.25F);
             this.lblPercent.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblPercent.Location = new System.Drawing.Point(402, 101);
+            this.lblPercent.Location = new System.Drawing.Point(402, 89);
             this.lblPercent.Name = "lblPercent";
             this.lblPercent.Size = new System.Drawing.Size(24, 23);
             this.lblPercent.TabIndex = 46;
@@ -115,7 +117,7 @@
             this.lblNbTransparence.BackColor = System.Drawing.Color.Transparent;
             this.lblNbTransparence.Font = new System.Drawing.Font("Palatino Linotype", 12.25F);
             this.lblNbTransparence.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblNbTransparence.Location = new System.Drawing.Point(370, 101);
+            this.lblNbTransparence.Location = new System.Drawing.Point(370, 89);
             this.lblNbTransparence.Name = "lblNbTransparence";
             this.lblNbTransparence.Size = new System.Drawing.Size(37, 23);
             this.lblNbTransparence.TabIndex = 45;
@@ -124,7 +126,7 @@
             // 
             // hsTransparence
             // 
-            this.hsTransparence.Location = new System.Drawing.Point(179, 101);
+            this.hsTransparence.Location = new System.Drawing.Point(179, 89);
             this.hsTransparence.Maximum = 109;
             this.hsTransparence.Name = "hsTransparence";
             this.hsTransparence.Size = new System.Drawing.Size(170, 23);
@@ -136,7 +138,7 @@
             // 
             this.cbBoiteInputNon.AutoSize = true;
             this.cbBoiteInputNon.Font = new System.Drawing.Font("Palatino Linotype", 12.25F);
-            this.cbBoiteInputNon.Location = new System.Drawing.Point(414, 177);
+            this.cbBoiteInputNon.Location = new System.Drawing.Point(414, 165);
             this.cbBoiteInputNon.Name = "cbBoiteInputNon";
             this.cbBoiteInputNon.Size = new System.Drawing.Size(62, 27);
             this.cbBoiteInputNon.TabIndex = 43;
@@ -150,7 +152,7 @@
             this.cbBoiteInputOui.Checked = true;
             this.cbBoiteInputOui.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbBoiteInputOui.Font = new System.Drawing.Font("Palatino Linotype", 12.25F);
-            this.cbBoiteInputOui.Location = new System.Drawing.Point(351, 177);
+            this.cbBoiteInputOui.Location = new System.Drawing.Point(351, 165);
             this.cbBoiteInputOui.Name = "cbBoiteInputOui";
             this.cbBoiteInputOui.Size = new System.Drawing.Size(57, 27);
             this.cbBoiteInputOui.TabIndex = 42;
@@ -163,9 +165,10 @@
             // 
             this.lblTutoriel.AutoSize = true;
             this.lblTutoriel.BackColor = System.Drawing.Color.Transparent;
+            this.lblTutoriel.Enabled = false;
             this.lblTutoriel.Font = new System.Drawing.Font("Palatino Linotype", 12.25F);
             this.lblTutoriel.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblTutoriel.Location = new System.Drawing.Point(29, 224);
+            this.lblTutoriel.Location = new System.Drawing.Point(29, 212);
             this.lblTutoriel.Name = "lblTutoriel";
             this.lblTutoriel.Size = new System.Drawing.Size(143, 23);
             this.lblTutoriel.TabIndex = 41;
@@ -178,7 +181,7 @@
             this.lblInputBox.BackColor = System.Drawing.Color.Transparent;
             this.lblInputBox.Font = new System.Drawing.Font("Palatino Linotype", 12.25F);
             this.lblInputBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblInputBox.Location = new System.Drawing.Point(29, 177);
+            this.lblInputBox.Location = new System.Drawing.Point(29, 165);
             this.lblInputBox.Name = "lblInputBox";
             this.lblInputBox.Size = new System.Drawing.Size(285, 23);
             this.lblInputBox.TabIndex = 39;
@@ -203,7 +206,7 @@
             this.lblTransparence.BackColor = System.Drawing.Color.Transparent;
             this.lblTransparence.Font = new System.Drawing.Font("Palatino Linotype", 12.25F);
             this.lblTransparence.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblTransparence.Location = new System.Drawing.Point(29, 101);
+            this.lblTransparence.Location = new System.Drawing.Point(29, 89);
             this.lblTransparence.Name = "lblTransparence";
             this.lblTransparence.Size = new System.Drawing.Size(123, 23);
             this.lblTransparence.TabIndex = 37;
@@ -216,7 +219,7 @@
             this.lblLangue.BackColor = System.Drawing.Color.Transparent;
             this.lblLangue.Font = new System.Drawing.Font("Palatino Linotype", 12.25F);
             this.lblLangue.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblLangue.Location = new System.Drawing.Point(29, 269);
+            this.lblLangue.Location = new System.Drawing.Point(29, 257);
             this.lblLangue.Name = "lblLangue";
             this.lblLangue.Size = new System.Drawing.Size(74, 23);
             this.lblLangue.TabIndex = 54;
@@ -233,7 +236,7 @@
             "Anglais",
             "Allemand",
             "Espagnol"});
-            this.combobLangue.Location = new System.Drawing.Point(124, 269);
+            this.combobLangue.Location = new System.Drawing.Point(124, 257);
             this.combobLangue.Name = "combobLangue";
             this.combobLangue.Size = new System.Drawing.Size(135, 26);
             this.combobLangue.TabIndex = 55;
@@ -245,7 +248,7 @@
             this.lblCouleurAppli.BackColor = System.Drawing.Color.Transparent;
             this.lblCouleurAppli.Font = new System.Drawing.Font("Palatino Linotype", 12.25F);
             this.lblCouleurAppli.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblCouleurAppli.Location = new System.Drawing.Point(29, 316);
+            this.lblCouleurAppli.Location = new System.Drawing.Point(29, 304);
             this.lblCouleurAppli.Name = "lblCouleurAppli";
             this.lblCouleurAppli.Size = new System.Drawing.Size(199, 23);
             this.lblCouleurAppli.TabIndex = 56;
@@ -263,7 +266,7 @@
             this.lblCouleur.BackColor = System.Drawing.Color.Transparent;
             this.lblCouleur.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCouleur.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblCouleur.Location = new System.Drawing.Point(300, 317);
+            this.lblCouleur.Location = new System.Drawing.Point(300, 305);
             this.lblCouleur.Name = "lblCouleur";
             this.lblCouleur.Size = new System.Drawing.Size(86, 22);
             this.lblCouleur.TabIndex = 58;
@@ -275,7 +278,7 @@
             this.pbPalette.BackColor = System.Drawing.SystemColors.Control;
             this.pbPalette.BackgroundImage = global::PPE4_Stars_up.Properties.Resources.colorwheel;
             this.pbPalette.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbPalette.Location = new System.Drawing.Point(271, 319);
+            this.pbPalette.Location = new System.Drawing.Point(271, 307);
             this.pbPalette.Name = "pbPalette";
             this.pbPalette.Size = new System.Drawing.Size(20, 20);
             this.pbPalette.TabIndex = 57;
@@ -303,7 +306,7 @@
             // btnDefaut
             // 
             this.btnDefaut.Font = new System.Drawing.Font("Palatino Linotype", 12.25F);
-            this.btnDefaut.Location = new System.Drawing.Point(229, 313);
+            this.btnDefaut.Location = new System.Drawing.Point(229, 301);
             this.btnDefaut.Name = "btnDefaut";
             this.btnDefaut.Size = new System.Drawing.Size(30, 30);
             this.btnDefaut.TabIndex = 59;
@@ -317,7 +320,7 @@
             this.lblRedemRequis2.BackColor = System.Drawing.Color.Transparent;
             this.lblRedemRequis2.Font = new System.Drawing.Font("Palatino Linotype", 10.25F, System.Drawing.FontStyle.Italic);
             this.lblRedemRequis2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblRedemRequis2.Location = new System.Drawing.Point(45, 346);
+            this.lblRedemRequis2.Location = new System.Drawing.Point(45, 334);
             this.lblRedemRequis2.Name = "lblRedemRequis2";
             this.lblRedemRequis2.Size = new System.Drawing.Size(479, 20);
             this.lblRedemRequis2.TabIndex = 60;

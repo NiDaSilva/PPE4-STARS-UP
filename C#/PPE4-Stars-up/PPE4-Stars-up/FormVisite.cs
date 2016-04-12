@@ -150,7 +150,15 @@ namespace PPE4_Stars_up
                 }
 
                 Color c = Color.FromArgb(AA, RR, GG, BB);
-                this.BackColor = c;
+
+                try
+                {
+                    this.BackColor = c;
+                }
+                catch
+                {
+                    this.BackgroundImage = PPE4_Stars_up.Properties.Resources.bbb;
+                }
             }
             else
             {

@@ -11,6 +11,7 @@ using System.Runtime.InteropServices;
 using System.IO;
 using System.Threading;
 using System.Text.RegularExpressions;
+using System.Diagnostics;
 
 namespace PPE4_Stars_up
 {
@@ -98,7 +99,7 @@ namespace PPE4_Stars_up
                 listeElement.Add("100");
                 listeElement.Add("Oui");
                 listeElement.Add("Oui");
-                listeElement.Add("Défaut");
+                listeElement.Add("Par défaut");
 
 
                 StreamWriter writer = new StreamWriter(fileName2);
@@ -301,10 +302,17 @@ namespace PPE4_Stars_up
 
         private void FormLogin_FormClosed(object sender, FormClosedEventArgs e)
         {
-            // Application.Exit();
+            // System.Diagnostics.Process monProcess = System.Diagnostics.Process.Start("CefSharp.BrowserSubprocess.exe");
+            // monProcess.Kill();
 
-           // System.Diagnostics.Process monProcess = System.Diagnostics.Process.Start("CefSharp.BrowserSubprocess.exe");
-            //monProcess.Kill();
+            Process[] processesList = Process.GetProcessesByName("IHMCefSharp.BrowserSubprocess");
+
+            foreach (Process p in processesList)
+            {
+                p.Kill();
+            }
+
+            Application.Exit();
         }
 
         private void tbNom_Click(object sender, EventArgs e)
@@ -515,7 +523,15 @@ namespace PPE4_Stars_up
                 }
 
                 Color c = Color.FromArgb(AA, RR, GG, BB);
-                this.BackColor = c;
+
+                try
+                {
+                    this.BackColor = c;
+                }
+                catch
+                {
+                    this.BackgroundImage = PPE4_Stars_up.Properties.Resources.cool_washing_basic_collor_blue_black_rain_hd_wallpaper_112685;
+                }
             }
             else
             {

@@ -13,7 +13,6 @@ using System.Threading;
 using PdfSharp.Pdf;
 using PdfSharp.Drawing;
 using System.Drawing.Imaging;
-using AutoItX3Lib;
 using System.Text.RegularExpressions;
 
 namespace PPE4_Stars_up
@@ -33,8 +32,6 @@ namespace PPE4_Stars_up
         string fileName2 = @"C:\PPE4_DR\Preferences_PPE4_DR.txt";
 
         ScreenCapture capScreen = new ScreenCapture();
-
-        AutoItX3 au3 = new AutoItX3();
 
         // int XX, YY;
 
@@ -663,7 +660,15 @@ namespace PPE4_Stars_up
                 }
 
                 Color c = Color.FromArgb(AA, RR, GG, BB);
-                this.BackColor = c;
+                
+                try
+                {
+                    this.BackColor = c;
+                }
+                catch
+                {
+                    pictureBox1.BackgroundImage = PPE4_Stars_up.Properties.Resources.Wallpaper_Gray_Bars_Opera;
+                }
             }
             else
             {
@@ -701,7 +706,8 @@ namespace PPE4_Stars_up
 
             FormPlanningJour FPJPDF = new FormPlanningJour();
             FPJPDF.WindowState = FormWindowState.Maximized;
-            FPJPDF.Show();
+            FPJPDF.ShowDialog();
+            // FPJPDF.Show();
         }
 
         private void captureScreen()
@@ -908,7 +914,8 @@ namespace PPE4_Stars_up
         private void paramètreToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormParametre FP = new FormParametre();
-            FP.Show();
+            // FP.Show();
+            FP.ShowDialog();
         }
 
         public static int InputBox(string title, string promptText)

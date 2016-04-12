@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 using System.IO;
-using AutoItX3Lib;
 using System.Threading;
 
 namespace PPE4_Stars_up
@@ -19,7 +18,6 @@ namespace PPE4_Stars_up
     {
         private BindingSource bindingSource1 = new BindingSource();
         string nbEtoile, comment;
-        AutoItX3 au3 = new AutoItX3();
 
         string FichierLangue = "";
         List<string> LangueElement = new List<string>();
@@ -292,8 +290,18 @@ namespace PPE4_Stars_up
                 }
 
                 Color c = Color.FromArgb(AA, RR, GG, BB);
-                this.BackColor = c;
-                panel1.BackColor = c;
+
+                try
+                {
+                    this.BackColor = c;
+                    panel1.BackColor = c;
+                }
+                catch
+                {
+                    this.BackgroundImage = PPE4_Stars_up.Properties.Resources.Wallpaper_Gray_Bars_Opera;
+                    panel1.BackgroundImage = PPE4_Stars_up.Properties.Resources._2395551_5_x11_wide_spread_professional_high_res_background_template_layout_that_can_be_used_for_any_kind_of_marketing_material_magazines_articles_scrapbook_and_even_advertisements;
+
+                }
             }
             else
             {

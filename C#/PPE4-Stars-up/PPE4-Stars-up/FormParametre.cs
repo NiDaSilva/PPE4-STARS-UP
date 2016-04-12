@@ -252,7 +252,15 @@ namespace PPE4_Stars_up
                 }
                 
                 Color c = Color.FromArgb(AA, RR, GG, BB);
-                this.BackColor = c;
+
+                try
+                {
+                    this.BackColor = c;
+                }
+                catch
+                {
+                    this.BackColor = SystemColors.Control;
+                }
             }
         }
 
