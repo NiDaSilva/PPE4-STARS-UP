@@ -542,21 +542,29 @@ namespace PPE4_Stars_up
 
         public void chargedgv()
         {
-            bindingSource1.DataSource = controleur.Vmodele.Dv_login;
-
-            // on parcourt le dataView des inspecteurs Dv_login de la classe bdd pour compléter la FList
-            for (int i = 0; i < controleur.Vmodele.Dv_login.ToTable().Rows.Count; i++)
+            try
             {
-                FListLogin.Add(new KeyValuePair<int, string>((int)controleur.Vmodele.Dv_login.ToTable().Rows[i][0], controleur.Vmodele.Dv_login.ToTable().Rows[i][4].ToString()));
-                // rtbLogin.Text += controleur.Vmodele.Dv_login.ToTable().Rows[i][4].ToString() + "\n";
-                lbLogin.Items.Add(controleur.Vmodele.Dv_login.ToTable().Rows[i][4].ToString());
+                bindingSource1.DataSource = controleur.Vmodele.Dv_login;
+                       
+
+                // on parcourt le dataView des inspecteurs Dv_login de la classe bdd pour compléter la FList
+                for (int i = 0; i < controleur.Vmodele.Dv_login.ToTable().Rows.Count; i++)
+                {
+                    FListLogin.Add(new KeyValuePair<int, string>((int)controleur.Vmodele.Dv_login.ToTable().Rows[i][0], controleur.Vmodele.Dv_login.ToTable().Rows[i][4].ToString()));
+                    // rtbLogin.Text += controleur.Vmodele.Dv_login.ToTable().Rows[i][4].ToString() + "\n";
+                    lbLogin.Items.Add(controleur.Vmodele.Dv_login.ToTable().Rows[i][4].ToString());
+                }
+
+                for (int i = 0; i < controleur.Vmodele.Dv_login.ToTable().Rows.Count; i++)
+                {
+                    FListMdp.Add(new KeyValuePair<int, string>((int)controleur.Vmodele.Dv_login.ToTable().Rows[i][0], controleur.Vmodele.Dv_login.ToTable().Rows[i][5].ToString()));
+                    // rtbMdp.Text += controleur.Vmodele.Dv_login.ToTable().Rows[i][5].ToString() + "\n";
+                    lbMdp.Items.Add(controleur.Vmodele.Dv_login.ToTable().Rows[i][5].ToString());
+                }
             }
-
-            for (int i = 0; i < controleur.Vmodele.Dv_login.ToTable().Rows.Count; i++)
+            catch
             {
-                FListMdp.Add(new KeyValuePair<int, string>((int)controleur.Vmodele.Dv_login.ToTable().Rows[i][0], controleur.Vmodele.Dv_login.ToTable().Rows[i][5].ToString()));
-                // rtbMdp.Text += controleur.Vmodele.Dv_login.ToTable().Rows[i][5].ToString() + "\n";
-                lbMdp.Items.Add(controleur.Vmodele.Dv_login.ToTable().Rows[i][5].ToString());
+                MessageBox.Show("Impossible de se connecter au serveur", "Erreur de connexion", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

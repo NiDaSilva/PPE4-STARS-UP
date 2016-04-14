@@ -635,26 +635,33 @@ namespace PPE4_Stars_up
             bindingSource1.DataSource = controleur.Vmodele.Dv_visite;
             dataGridViewPersonnes.DataSource = bindingSource1;
 
-            for (int i = 0; i < dataGridViewPersonnes.Rows.Count; i++) // parcours le datagridview
+            try {
+
+                for (int i = 0; i < dataGridViewPersonnes.Rows.Count; i++) // parcours le datagridview
+                {
+                    DateTime DateEntiere = Convert.ToDateTime(dataGridViewPersonnes.Rows[i].Cells[4].Value.ToString()); // recupere date + heure
+                    string DateSeulement = string.Format("{0}", DateEntiere.ToString("dd-MM-yyyy")).Trim(); // recupere date
+                    TimeSpan HeureDebutEntiere = new TimeSpan(DateEntiere.Hour, DateEntiere.Minute, DateEntiere.Second); // recupere heure, minute, seconde
+                    TimeSpan HeureFinEntiere = new TimeSpan(Convert.ToInt32(HeureDebutEntiere.Hours) + 2, 0, 0);
+
+                    string HeureDebut = string.Format("{0} {1}", DateSeulement, HeureDebutEntiere).Trim(); // Bon format
+                    string HeureFin = string.Format("{0} {1}", DateSeulement, HeureFinEntiere).Trim(); // Bon format
+
+                    string commentaire = dataGridViewPersonnes.Rows[i].Cells[1].Value.ToString() + "\n"; // recupere NOM
+                    commentaire += dataGridViewPersonnes.Rows[i].Cells[2].Value.ToString() + "\n"; // recupere Adresse
+                    commentaire += dataGridViewPersonnes.Rows[i].Cells[3].Value.ToString(); // recupere Ville
+
+                    // MessageBox.Show("debut : " + HeureDebutSeulement + "/nFin : " + HeureFin);
+                    CalendarItem cal = new CalendarItem(calendar1, Convert.ToDateTime(HeureDebut), Convert.ToDateTime(HeureFin), commentaire);
+
+                    _items.Add(cal);
+
+                    PlaceItems();
+                }
+            }
+            catch
             {
-                DateTime DateEntiere = Convert.ToDateTime(dataGridViewPersonnes.Rows[i].Cells[4].Value.ToString()); // recupere date + heure
-                string DateSeulement = string.Format("{0}", DateEntiere.ToString("dd-MM-yyyy")).Trim(); // recupere date
-                TimeSpan HeureDebutEntiere = new TimeSpan(DateEntiere.Hour, DateEntiere.Minute, DateEntiere.Second); // recupere heure, minute, seconde
-                TimeSpan HeureFinEntiere = new TimeSpan(Convert.ToInt32(HeureDebutEntiere.Hours) + 2, 0, 0);
 
-                string HeureDebut = string.Format("{0} {1}", DateSeulement, HeureDebutEntiere).Trim(); // Bon format
-                string HeureFin = string.Format("{0} {1}", DateSeulement, HeureFinEntiere).Trim(); // Bon format
-
-                string commentaire = dataGridViewPersonnes.Rows[i].Cells[1].Value.ToString() + "\n"; // recupere NOM
-                commentaire += dataGridViewPersonnes.Rows[i].Cells[2].Value.ToString() + "\n"; // recupere Adresse
-                commentaire += dataGridViewPersonnes.Rows[i].Cells[3].Value.ToString(); // recupere Ville
-
-                // MessageBox.Show("debut : " + HeureDebutSeulement + "/nFin : " + HeureFin);
-                CalendarItem cal = new CalendarItem(calendar1, Convert.ToDateTime(HeureDebut), Convert.ToDateTime(HeureFin), commentaire);
-
-                _items.Add(cal);
-
-                PlaceItems();
             }
 
         }
