@@ -17,7 +17,10 @@ var user= {
                     if (data.type == "gerant") {
                         document.location.href = "../index.php";
                     }
-                }, 2000 );
+                    else if (data.type == "inspecteur") {
+                        document.location.href = "agenda.php";
+                    }
+                }, 1000 );
 
             }
             else

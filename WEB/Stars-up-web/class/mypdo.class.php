@@ -2,7 +2,7 @@
 
 class mypdo extends PDO
 {
-    private $PARAM_hote = '192.168.215.10'; // le chemin vers le serveur : 192.168.215.10
+    private $PARAM_hote ='localhost'; //'192.168.215.10'; // le chemin vers le serveur : 192.168.215.10
     private $PARAM_utilisateur = 'root'; // nom d'utilisateur pour se connecter
     private $PARAM_mot_passe = ''; // mot de passe de l'utilisateur pour se connecter
     private $PARAM_nom_bd = 'ppe4';
@@ -79,8 +79,6 @@ class mypdo extends PDO
     public function insert($tab){
         $requete = 'INSERT INTO hebergement (ID_HEBERGEMENT,ID_DEPARTEMENT, NOM_HEBERGEMENT,ADRESSE_HEBERGEMENT,VILLE_HEBERGEMENT, HORAIRES)
         VALUES('.$tab['id'].','.$tab['departement'].','.$tab['nom'].','.$tab['adresse'].','.$tab['ville'].','.$tab['horaire'].'); ';
-
-
         switch ($tab['table']) {
             case 'hotel':
             {
@@ -97,6 +95,27 @@ class mypdo extends PDO
                 $requete = $requete. 'INSERT INTO chambre_hote VALUES('.$tab['id'].','.$tab['nbchambre'].','.$tab['nbcuisine'].');';
             }
                 break;
+        }
+        $this->connexion->query($requete);
+    }
+
+    public function update($tab){
+        switch ($tab['table']) {
+            case 'visiter':
+            {
+                $requete = 'UPDATE visiter SET ID_INSPECTEUR='.$tab['id'].', DATE_HEURE_VISITE="'.$tab['date'].'" WHERE ID_VISITE='.$tab['idv'].';';
+            }
+                break;
+//            case 'camping':
+//            {
+//                $requete ='INSERT INTO camping VALUES('.$tab['id'].');';
+//            }
+//                break;
+//            case 'chambre':
+//            {
+//                $requete ='INSERT INTO chambre_hote VALUES('.$tab['id'].','.$tab['nbchambre'].','.$tab['nbcuisine'].');';
+//            }
+//                break;
         }
         $this->connexion->query($requete);
     }
@@ -121,6 +140,31 @@ class mypdo extends PDO
         }
     }
 
+
+
+    public function get_visites($id)
+    {
+        $requete=$this->connexion->prepare('select v.ID_VISITE as "IDV", v.ID_HEBERGEMENT as "ID", h.NOM_HEBERGEMENT as "NOM", h.ADRESSE_HEBERGEMENT as "ADRESSE", h.VILLE_HEBERGEMENT as "VILLE", v.DATE_HEURE_VISITE as "DATE", h.HORAIRES, v.COMMENTAIRE_VISITE from visiter as v inner join hebergement as h on v.ID_HEBERGEMENT = h.ID_HEBERGEMENT where id_inspecteur ='.$id.';');
+        $requete->execute();
+        $result = $requete->fetchAll(PDO::FETCH_ASSOC);
+        if($result)
+        {
+            return ($result);
+        }
+        return null;
+    }
+
+    public function get_demandes($id)
+    {
+        $requete=$this->connexion->prepare('SELECT v.ID_VISITE as "IDV", h.NOM_HEBERGEMENT as "NOM", h.ADRESSE_HEBERGEMENT as "ADRESSE", h.VILLE_HEBERGEMENT as "VILLE", h.HORAIRES as "HORAIRES" FROM visiter as v INNER JOIN hebergement as h on v.ID_HEBERGEMENT = h.ID_HEBERGEMENT INNER join correspondre as c on h.ID_HEBERGEMENT = c.ID_HEBERGEMENT WHERE v.ID_INSPECTEUR is null AND v.DATE_HEURE_VISITE is null AND c.ID_SPECIALITE = (Select i.ID_SPECIALITE FROM inspecteur as i WHERE i.ID_INSPECTEUR ='.$id.');');
+        $requete->execute();
+        $result = $requete->fetchAll(PDO::FETCH_ASSOC);
+        if($result)
+        {
+            return ($result);
+        }
+        return null;
+    }
 
     public function delete($table,$id){
         $requete ='DELETE FROM '.$table.' WHERE ID_'.$table.' = '.$id.';';

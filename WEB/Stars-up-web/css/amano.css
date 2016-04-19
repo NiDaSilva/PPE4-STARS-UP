@@ -3,3 +3,23 @@
     height: 350px !important;
     font-size: 25px;
 }
+#external-events {
+    float: left;
+    width: 150px;
+    padding: 0 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+    background-color: white !important;
+}
+.fc-event {
+    margin: 10px 0;
+    cursor: pointer;
+}
+#calendar{
+    width: 900px;
+    background-color: white;
+}
+td.fc-day.fc-past {
+    background-color: red;
+    opacity: 0.5;
+}

@@ -80,7 +80,6 @@ class page_base {
 	                    <li>
 	                        <a class="page-scroll" href="#">Contact</a>
 	                    </li>
-	                    if($_S
 	                    <li>
 	                        <a class="page-scroll" href="../view/deconnexion.php">Deconnexion</a>
 	                    </li>
@@ -121,23 +120,31 @@ class page_base {
         </footer>';
         echo $r;
 	}
-	/****************************** Affichage de la partie sciprt ***************************************/	
+	/****************************** Affichage de la partie script ***************************************/
 	private function script() {
 		$r='
-		    <!-- jQuery -->
+  <header>
+            <link rel="stylesheet" href="../fullcalendar/fullcalendar.css" />
+            <link rel="stylesheet" href="../css/amano.css" />
+            <link rel="stylesheet" href="../jquery-ui/jquery-ui.theme.min.css" />
+            <link rel="stylesheet" href="../jquery-ui/jquery-ui.structure.min.css" />
+            <!-- jQuery -->
 		    <script src="../js/jquery.js"></script>
-
 		    <!-- Bootstrap Core JavaScript -->
 		    <script src="../js/bootstrap.min.js"></script>
 
 		    <!-- Plugin JavaScript -->
 		    <script src="../js/jquery.easing.min.js"></script>
 
-		    <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
-		    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
-
 		    <!-- Custom Theme JavaScript -->
-		    <script src="../js/grayscale.js"></script>';
+		    <script src="../js/grayscale.js"></script>
+            <script src="../fullcalendar/lib/moment.min.js"></script>
+            <script src="../fullcalendar/fullcalendar.js"></script>
+            <script src="../class/agenda.js"></script>
+            <script src="../jquery-ui/jquery-ui.min.js"></script>
+            <script src="../fullcalendar/fullcalendar.js"></script>
+            <script src="../fullcalendar/lang-all.js"></script>
+        </header>';
 		    echo $r;
 	}
 	private function head(){

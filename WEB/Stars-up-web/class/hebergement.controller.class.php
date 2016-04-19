@@ -32,8 +32,6 @@ class controller{
         {
             $retour = $retour . '
             <div class="owl-item">
-
-
             <div class="col-sm-6 col-md-4">
                 <div class="thumbnail">
                     <img src="http://placehold.it/350x150" alt="320x150">
