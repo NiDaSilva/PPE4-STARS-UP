@@ -124,3 +124,6 @@ Memorización de los parámetros ..
 Por defecto
 El color ya es el valor predeterminado.
 Reiniciar requerido para que el color sea eficaz en la totalidad de la aplicación.
+Policía
+Se requiere reiniciar para que la policía sea eficaz en el conjunto de la aplicación.
+La policía ya son por defecto.

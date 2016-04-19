@@ -21,7 +21,9 @@ namespace PPE4_Stars_up
     {
         List<CalendarItem> _items = new List<CalendarItem>();
         CalendarItem contextItem = null;
-        
+
+        string family = "Gentium Basic";
+
         string FichierLangue = "";
         List<string> LangueElement = new List<string>();
 
@@ -220,6 +222,43 @@ namespace PPE4_Stars_up
                 }
 
                 PlaceItems();
+            }
+
+            // Gestion Police
+
+            if (listeElement[7] != "Par défaut")
+            {
+                try
+                {
+                    foreach (Control x in this.Controls)
+                    {
+                        if (x is MonthView2 || x is Calendar || x is TextBox || x is RichTextBox || x is Label || x is Button || x is GroupBox || x is ListBox || x is DataGridView)
+                        {
+                            x.Font = new Font(listeElement[7], x.Font.SizeInPoints, x.Font.Style);
+                        }
+                    }
+                }
+                catch
+                {
+                    foreach (Control x in this.Controls)
+                    {
+                        if (x is MonthView2 || x is Calendar || x is TextBox || x is RichTextBox || x is Label || x is Button || x is GroupBox || x is ListBox || x is DataGridView)
+                        {
+                            x.Font = new Font(family, x.Font.SizeInPoints, x.Font.Style);
+                        }
+                    }
+                }
+
+            }
+            else
+            {
+                foreach (Control x in this.Controls)
+                {
+                    if (x is MonthView2 || x is Calendar || x is TextBox || x is RichTextBox || x is Label || x is Button || x is GroupBox || x is ListBox || x is DataGridView)
+                    {
+                        x.Font = new Font(family, x.Font.SizeInPoints, x.Font.Style);
+                    }
+                }
             }
         }
 

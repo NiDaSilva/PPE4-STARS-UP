@@ -274,6 +274,8 @@
     <None Include="Resources\colorwheel.png" />
     <None Include="Resources\bbb.jpg" />
     <None Include="Resources\interface.png" />
+    <None Include="Resources\tool.png" />
+    <None Include="Resources\letter.png" />
     <Content Include="simple-blue-calendar-128.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -124,3 +124,6 @@ Sauvegarde des paramètres..
 Par défaut
 La couleur est déjà par défaut.
 Redémarrage requis pour que la couleur soit effective sur la globalité de l'application.
+Police
+Redémarrage requis pour que la police soit effective sur la globalité de l'application.
+La police est déjà par défaut.

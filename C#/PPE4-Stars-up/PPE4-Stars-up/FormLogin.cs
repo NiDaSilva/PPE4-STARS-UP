@@ -12,6 +12,7 @@ using System.IO;
 using System.Threading;
 using System.Text.RegularExpressions;
 using System.Diagnostics;
+using System.Security.Cryptography;
 
 namespace PPE4_Stars_up
 {
@@ -42,7 +43,44 @@ namespace PPE4_Stars_up
         // creation d’une liste des mot de passe inspecteurs
         List<KeyValuePair<int, string>> FListMdp = new List<KeyValuePair<int, string>>();
 
+        static string GetMd5Hash(MD5 md5Hash, string input)
+        {
 
+            // Convert the input string to a byte array and compute the hash.
+            byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
+
+            // Create a new Stringbuilder to collect the bytes
+            // and create a string.
+            StringBuilder sBuilder = new StringBuilder();
+
+            // Loop through each byte of the hashed data 
+            // and format each one as a hexadecimal string.
+            for (int i = 0; i < data.Length; i++)
+            {
+                sBuilder.Append(data[i].ToString("x2"));
+            }
+
+            // Return the hexadecimal string.
+            return sBuilder.ToString();
+        }
+
+        static bool VerifyMd5Hash(MD5 md5Hash, string input, string hash)
+        {
+            // Hash the input.
+            string hashOfInput = GetMd5Hash(md5Hash, input);
+
+            // Create a StringComparer an compare the hashes.
+            StringComparer comparer = StringComparer.OrdinalIgnoreCase;
+
+            if (0 == comparer.Compare(hashOfInput, hash))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
         public FormLogin()
         {
@@ -194,8 +232,26 @@ namespace PPE4_Stars_up
                 {
                     InputBox(LangueElement[5], "");
                 }
-                
-                if (tbMdp.Text== lbMdp.Items[countt].ToString()) 
+
+                string mdp = "";
+
+                // MessageBox.Show(countt2.ToString());
+
+                // MD5
+
+                /*
+                using (MD5 md5Hash = MD5.Create())
+                {
+                    mdp = GetMd5Hash(md5Hash, tbMdp.Text);   
+                }
+
+                */
+
+                // SHA1
+
+                mdp = SHA1HashStringForUTF8String(tbMdp.Text);
+
+                if (mdp == lbMdp.Items[countt].ToString()) 
                 {
                     // mdp correct
 
@@ -575,14 +631,14 @@ namespace PPE4_Stars_up
             try
             {
                 bindingSource1.DataSource = controleur.Vmodele.Dv_login;
-                       
-
+                
                 // on parcourt le dataView des inspecteurs Dv_login de la classe bdd pour compléter la FList
                 for (int i = 0; i < controleur.Vmodele.Dv_login.ToTable().Rows.Count; i++)
                 {
                     FListLogin.Add(new KeyValuePair<int, string>((int)controleur.Vmodele.Dv_login.ToTable().Rows[i][0], controleur.Vmodele.Dv_login.ToTable().Rows[i][4].ToString()));
                     // rtbLogin.Text += controleur.Vmodele.Dv_login.ToTable().Rows[i][4].ToString() + "\n";
-                    lbLogin.Items.Add(controleur.Vmodele.Dv_login.ToTable().Rows[i][4].ToString());
+
+                    lbLogin.Items.Add(controleur.Vmodele.Dv_login.ToTable().Rows[i][4].ToString());                    
                 }
 
                 for (int i = 0; i < controleur.Vmodele.Dv_login.ToTable().Rows.Count; i++)
@@ -596,6 +652,29 @@ namespace PPE4_Stars_up
             {
                 MessageBox.Show("Impossible de se connecter au serveur", "Erreur de connexion", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        public static string SHA1HashStringForUTF8String(string s)
+        {
+            byte[] bytes = Encoding.UTF8.GetBytes(s);
+
+            using (var sha1 = SHA1.Create())
+            {
+                byte[] hashBytes = sha1.ComputeHash(bytes);
+
+                return HexStringFromBytes(hashBytes);
+            }
+        }
+
+        public static string HexStringFromBytes(byte[] bytes)
+        {
+            var sb = new StringBuilder();
+            foreach (byte b in bytes)
+            {
+                var hex = b.ToString("x2");
+                sb.Append(hex);
+            }
+            return sb.ToString();
         }
 
         private void cbAfficherMdp_CheckedChanged(object sender, EventArgs e)
@@ -712,9 +791,25 @@ namespace PPE4_Stars_up
             if (tbMdp.Text != "")
             {
 
+                string mdp = "";
+
                 // MessageBox.Show(countt2.ToString());
+
+                // MD5
+
+                /*
+                using (MD5 md5Hash = MD5.Create())
+                {
+                    mdp = GetMd5Hash(md5Hash, tbMdp.Text);   
+                }
+
+                */
+
+                // SHA1
+
+                mdp = SHA1HashStringForUTF8String(tbMdp.Text);
                 
-                if (tbMdp.Text == lbMdp.Items[countt2].ToString())
+                if (mdp == lbMdp.Items[countt2].ToString())
                 {
                     pbCorrect2.Visible = true;
                     pbIncorrect2.Visible = false;

@@ -124,3 +124,6 @@ Speichern von Parametern ..
 Standardmäßig
 Die Farbe ist bereits voreingestellt.
 Neustart für die Farbe erforderlich wirksam auf die gesamte Anwendung zu sein.
+Polizei
+Neustart für die Polizei erforderlich wirksam auf die Gesamtheit der Anwendung sein.
+Die Polizei ist bereits standardmäßig aktiviert.

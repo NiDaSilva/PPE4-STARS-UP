@@ -51,11 +51,11 @@
             this.lblInfoPolice = new System.Windows.Forms.Label();
             this.btnDefautPolice = new System.Windows.Forms.Button();
             this.lblPolice = new System.Windows.Forms.Label();
+            this.lblRedemRequis3 = new System.Windows.Forms.Label();
             this.pbPolice = new System.Windows.Forms.PictureBox();
             this.pbPalette = new System.Windows.Forms.PictureBox();
             this.pbPara2 = new System.Windows.Forms.PictureBox();
             this.pbPara1 = new System.Windows.Forms.PictureBox();
-            this.lblRedemRequis3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbPolice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPalette)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPara2)).BeginInit();
@@ -342,12 +342,26 @@
             this.lblPolice.Text = "Par défaut";
             this.lblPolice.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // lblRedemRequis3
+            // 
+            this.lblRedemRequis3.AutoSize = true;
+            this.lblRedemRequis3.BackColor = System.Drawing.Color.Transparent;
+            this.lblRedemRequis3.Font = new System.Drawing.Font("Palatino Linotype", 10.25F, System.Drawing.FontStyle.Italic);
+            this.lblRedemRequis3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.lblRedemRequis3.Location = new System.Drawing.Point(45, 251);
+            this.lblRedemRequis3.Name = "lblRedemRequis3";
+            this.lblRedemRequis3.Size = new System.Drawing.Size(470, 20);
+            this.lblRedemRequis3.TabIndex = 65;
+            this.lblRedemRequis3.Text = "Redémarrage requis pour que la police soit effective sur la globalité de l\'applic" +
+    "ation.";
+            this.lblRedemRequis3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // pbPolice
             // 
             this.pbPolice.BackColor = System.Drawing.SystemColors.Control;
-            this.pbPolice.BackgroundImage = global::PPE4_Stars_up.Properties.Resources._interface;
+            this.pbPolice.BackgroundImage = global::PPE4_Stars_up.Properties.Resources.letter;
             this.pbPolice.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pbPolice.Location = new System.Drawing.Point(141, 224);
+            this.pbPolice.Location = new System.Drawing.Point(145, 223);
             this.pbPolice.Name = "pbPolice";
             this.pbPolice.Size = new System.Drawing.Size(20, 20);
             this.pbPolice.TabIndex = 63;
@@ -383,20 +397,6 @@
             this.pbPara1.Size = new System.Drawing.Size(643, 2);
             this.pbPara1.TabIndex = 51;
             this.pbPara1.TabStop = false;
-            // 
-            // lblRedemRequis3
-            // 
-            this.lblRedemRequis3.AutoSize = true;
-            this.lblRedemRequis3.BackColor = System.Drawing.Color.Transparent;
-            this.lblRedemRequis3.Font = new System.Drawing.Font("Palatino Linotype", 10.25F, System.Drawing.FontStyle.Italic);
-            this.lblRedemRequis3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.lblRedemRequis3.Location = new System.Drawing.Point(45, 251);
-            this.lblRedemRequis3.Name = "lblRedemRequis3";
-            this.lblRedemRequis3.Size = new System.Drawing.Size(470, 20);
-            this.lblRedemRequis3.TabIndex = 65;
-            this.lblRedemRequis3.Text = "Redémarrage requis pour que la police soit effective sur la globalité de l\'applic" +
-    "ation.";
-            this.lblRedemRequis3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // FormParametre
             // 

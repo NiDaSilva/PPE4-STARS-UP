@@ -374,36 +374,23 @@ namespace PPE4_Stars_up
 
             if (listeElement[7] != "Par défaut")
             {
-
                 try
                 {
                     foreach (Control x in this.Controls)
                     {
-                        if (x is TextBox || x is RichTextBox || x is Label || x is Button || x is GroupBox || x is GroupCollection || x is ListBox || x is DataGridView)
+                        if (x is TextBox || x is RichTextBox || x is Label || x is Button || x is GroupBox || x is ListBox || x is DataGridView)
                         {
                             x.Font = new Font(listeElement[7], x.Font.SizeInPoints, x.Font.Style);
                         }
-                    }
 
-                    /*
-                    lblVisite.Font = new Font(listeElement[7], lblVisite.Font.SizeInPoints, lblVisite.Font.Style);
-                    lblNomHebergemenr.Font = new Font(listeElement[7], lblNomHebergemenr.Font.SizeInPoints, lblNomHebergemenr.Font.Style);
-                    lblAdresseHebergement.Font = new Font(listeElement[7], lblAdresseHebergement.Font.SizeInPoints, lblAdresseHebergement.Font.Style);
-                    lblNbEtoiles.Font = new Font(listeElement[7], lblNbEtoiles.Font.SizeInPoints, lblNbEtoiles.Font.Style);
-                    lblnom.Font = new Font(listeElement[7], lblnom.Font.SizeInPoints, lblnom.Font.Style);
-                    lbladresse.Font = new Font(listeElement[7], lbladresse.Font.SizeInPoints, lbladresse.Font.Style);
-                    lblville.Font = new Font(listeElement[7], tbNom.Font.SizeInPoints, tbNom.Font.Style);
-                    lblhoraire.Font = new Font(listeElement[7], tbNom.Font.SizeInPoints, tbNom.Font.Style);
-                    lblHoraires.Font = new Font(listeElement[7], tbNom.Font.SizeInPoints, tbNom.Font.Style);
-                    lblCommentaire.Font = new Font(listeElement[7], tbNom.Font.SizeInPoints, tbNom.Font.Style);
-                    rtbCommentaire.Font = new Font(listeElement[7], tbNom.Font.SizeInPoints, tbNom.Font.Style);
-                    lblNote.Font = new Font(listeElement[7], tbNom.Font.SizeInPoints, tbNom.Font.Style);
-                     = new Font(listeElement[7], tbNom.Font.SizeInPoints, tbNom.Font.Style);
-                    btnAnnule.Font = new Font(listeElement[7], tbNom.Font.SizeInPoints, tbNom.Font.Style);
-                    btnRetour.Font = new Font(listeElement[7], tbNom.Font.SizeInPoints, tbNom.Font.Style);
-                    btnSauvegarderVisite.Font = new Font(listeElement[7], tbNom.Font.SizeInPoints, tbNom.Font.Style);
-                    lblDateTitre.Font = new Font(listeElement[7], tbNom.Font.SizeInPoints, tbNom.Font.Style);
-                    */
+                        foreach (Control c in gbInformations.Controls)
+                        {
+                            if (c is TextBox || c is RichTextBox || c is Label || c is Button || c is GroupBox || c is ListBox || c is DataGridView)
+                            {
+                                c.Font = new Font(listeElement[7], c.Font.SizeInPoints, c.Font.Style);
+                            }
+                        }
+                    }
                 }
                 catch
                 {
@@ -413,8 +400,15 @@ namespace PPE4_Stars_up
                         {
                             x.Font = new Font(family, x.Font.SizeInPoints, x.Font.Style);
                         }
+
+                        foreach (Control c in gbInformations.Controls)
+                        {
+                            if (c is TextBox || c is RichTextBox || c is Label || c is Button || c is GroupBox || c is ListBox || c is DataGridView)
+                            {
+                                c.Font = new Font(family, c.Font.SizeInPoints, c.Font.Style);
+                            }
+                        }
                     }
-                    // tbNom.Font = new Font(family, tbNom.Font.SizeInPoints, tbNom.Font.Style);
                 }
 
             }
@@ -426,8 +420,15 @@ namespace PPE4_Stars_up
                     {
                         x.Font = new Font(family, x.Font.SizeInPoints, x.Font.Style);
                     }
+
+                    foreach (Control c in gbInformations.Controls)
+                    {
+                        if (c is TextBox || c is RichTextBox || c is Label || c is Button || c is GroupBox || c is ListBox || c is DataGridView)
+                        {
+                            c.Font = new Font(family, c.Font.SizeInPoints, c.Font.Style);
+                        }
+                    }
                 }
-                // tbNom.Font = new Font(family, tbNom.Font.SizeInPoints, tbNom.Font.Style);
             }
 
         }

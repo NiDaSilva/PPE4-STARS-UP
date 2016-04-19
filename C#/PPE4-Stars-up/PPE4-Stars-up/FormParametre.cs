@@ -93,7 +93,7 @@ namespace PPE4_Stars_up
 
             if(lblCouleur.Text != LangueElement[123]) // diff de "par défaut"
             {
-                MessageBox.Show(couleur);
+               // MessageBox.Show(couleur);
                 listeElement[6] = couleur;
             }
             else
@@ -179,6 +179,9 @@ namespace PPE4_Stars_up
             lblLangue.Text = LangueElement[120];
             lblCouleurAppli.Text = LangueElement[121];
             lblRedemRequis2.Text = LangueElement[125];
+
+            lblInfoPolice.Text = LangueElement[126];
+            lblRedemRequis3.Text = LangueElement[127];
 
             // Gestion transparence
             if (listeElement[3] != "")
@@ -309,6 +312,7 @@ namespace PPE4_Stars_up
                     btnDefaut.Font = new Font(lblPolice.Text, btnDefaut.Font.SizeInPoints, btnDefaut.Font.Style);
                     lblCouleur.Font = new Font(lblPolice.Text, lblCouleur.Font.SizeInPoints, lblCouleur.Font.Style);
                     lblRedemRequis2.Font = new Font(lblPolice.Text, lblRedemRequis2.Font.SizeInPoints, lblRedemRequis2.Font.Style);
+                    lblRedemRequis3.Font = new Font(lblPolice.Text, lblRedemRequis3.Font.SizeInPoints, lblRedemRequis3.Font.Style);
                 }
                 catch
                 {
@@ -332,7 +336,32 @@ namespace PPE4_Stars_up
                     btnDefaut.Font = new Font(family, btnDefaut.Font.SizeInPoints, btnDefaut.Font.Style);
                     lblCouleur.Font = new Font(family, lblCouleur.Font.SizeInPoints, lblCouleur.Font.Style);
                     lblRedemRequis2.Font = new Font(family, lblRedemRequis2.Font.SizeInPoints, lblRedemRequis2.Font.Style);
+                    lblRedemRequis3.Font = new Font(family, lblRedemRequis3.Font.SizeInPoints, lblRedemRequis3.Font.Style);
                 }
+            }
+            else
+            {
+                lblTitrePara.Font = new Font(family, lblTitrePara.Font.SizeInPoints, lblTitrePara.Font.Style);
+                lblTransparence.Font = new Font(family, lblTransparence.Font.SizeInPoints, lblTransparence.Font.Style);
+                lblNbTransparence.Font = new Font(family, lblNbTransparence.Font.SizeInPoints, lblNbTransparence.Font.Style);
+                lblPercent.Font = new Font(family, lblPercent.Font.SizeInPoints, lblPercent.Font.Style);
+                lblRedemRequis.Font = new Font(family, lblRedemRequis.Font.SizeInPoints, lblRedemRequis.Font.Style);
+                lblInputBox.Font = new Font(family, lblInputBox.Font.SizeInPoints, lblInputBox.Font.Style);
+                cbBoiteInputOui.Font = new Font(family, cbBoiteInputOui.Font.SizeInPoints, cbBoiteInputOui.Font.Style);
+                cbBoiteInputNon.Font = new Font(family, cbBoiteInputNon.Font.SizeInPoints, cbBoiteInputNon.Font.Style);
+                lblTutoriel.Font = new Font(family, lblTutoriel.Font.SizeInPoints, lblTutoriel.Font.Style);
+                cbTutorielOui.Font = new Font(family, cbTutorielOui.Font.SizeInPoints, cbTutorielOui.Font.Style);
+                cbTutorielNon.Font = new Font(family, cbTutorielNon.Font.SizeInPoints, cbTutorielNon.Font.Style);
+                lblLangue.Font = new Font(family, lblLangue.Font.SizeInPoints, lblLangue.Font.Style);
+                combobLangue.Font = new Font(family, combobLangue.Font.SizeInPoints, combobLangue.Font.Style);
+                lblInfoPolice.Font = new Font(family, lblInfoPolice.Font.SizeInPoints, lblInfoPolice.Font.Style);
+                btnDefautPolice.Font = new Font(family, btnDefautPolice.Font.SizeInPoints, btnDefautPolice.Font.Style);
+                lblPolice.Font = new Font(family, lblPolice.Font.SizeInPoints, lblPolice.Font.Style);
+                lblCouleurAppli.Font = new Font(family, lblCouleurAppli.Font.SizeInPoints, lblCouleurAppli.Font.Style);
+                btnDefaut.Font = new Font(family, btnDefaut.Font.SizeInPoints, btnDefaut.Font.Style);
+                lblCouleur.Font = new Font(family, lblCouleur.Font.SizeInPoints, lblCouleur.Font.Style);
+                lblRedemRequis2.Font = new Font(family, lblRedemRequis2.Font.SizeInPoints, lblRedemRequis2.Font.Style);
+                lblRedemRequis3.Font = new Font(family, lblRedemRequis3.Font.SizeInPoints, lblRedemRequis3.Font.Style);
             }
         }
 
@@ -552,6 +581,7 @@ namespace PPE4_Stars_up
                         btnDefaut.Font = new Font(lblPolice.Text, btnDefaut.Font.SizeInPoints, btnDefaut.Font.Style);
                         lblCouleur.Font = new Font(lblPolice.Text, lblCouleur.Font.SizeInPoints, lblCouleur.Font.Style);
                         lblRedemRequis2.Font = new Font(lblPolice.Text, lblRedemRequis2.Font.SizeInPoints, lblRedemRequis2.Font.Style);
+                        lblRedemRequis3.Font = new Font(lblPolice.Text, lblRedemRequis3.Font.SizeInPoints, lblRedemRequis3.Font.Style);
                     }
                     catch
                     {
@@ -575,7 +605,32 @@ namespace PPE4_Stars_up
                         btnDefaut.Font = new Font(family, btnDefaut.Font.SizeInPoints, btnDefaut.Font.Style);
                         lblCouleur.Font = new Font(family, lblCouleur.Font.SizeInPoints, lblCouleur.Font.Style);
                         lblRedemRequis2.Font = new Font(family, lblRedemRequis2.Font.SizeInPoints, lblRedemRequis2.Font.Style);
+                        lblRedemRequis3.Font = new Font(family, lblRedemRequis3.Font.SizeInPoints, lblRedemRequis3.Font.Style);
                     }
+                }
+                else
+                {
+                    lblTitrePara.Font = new Font(family, lblTitrePara.Font.SizeInPoints, lblTitrePara.Font.Style);
+                    lblTransparence.Font = new Font(family, lblTransparence.Font.SizeInPoints, lblTransparence.Font.Style);
+                    lblNbTransparence.Font = new Font(family, lblNbTransparence.Font.SizeInPoints, lblNbTransparence.Font.Style);
+                    lblPercent.Font = new Font(family, lblPercent.Font.SizeInPoints, lblPercent.Font.Style);
+                    lblRedemRequis.Font = new Font(family, lblRedemRequis.Font.SizeInPoints, lblRedemRequis.Font.Style);
+                    lblInputBox.Font = new Font(family, lblInputBox.Font.SizeInPoints, lblInputBox.Font.Style);
+                    cbBoiteInputOui.Font = new Font(family, cbBoiteInputOui.Font.SizeInPoints, cbBoiteInputOui.Font.Style);
+                    cbBoiteInputNon.Font = new Font(family, cbBoiteInputNon.Font.SizeInPoints, cbBoiteInputNon.Font.Style);
+                    lblTutoriel.Font = new Font(family, lblTutoriel.Font.SizeInPoints, lblTutoriel.Font.Style);
+                    cbTutorielOui.Font = new Font(family, cbTutorielOui.Font.SizeInPoints, cbTutorielOui.Font.Style);
+                    cbTutorielNon.Font = new Font(family, cbTutorielNon.Font.SizeInPoints, cbTutorielNon.Font.Style);
+                    lblLangue.Font = new Font(family, lblLangue.Font.SizeInPoints, lblLangue.Font.Style);
+                    combobLangue.Font = new Font(family, combobLangue.Font.SizeInPoints, combobLangue.Font.Style);
+                    lblInfoPolice.Font = new Font(family, lblInfoPolice.Font.SizeInPoints, lblInfoPolice.Font.Style);
+                    btnDefautPolice.Font = new Font(family, btnDefautPolice.Font.SizeInPoints, btnDefautPolice.Font.Style);
+                    lblPolice.Font = new Font(family, lblPolice.Font.SizeInPoints, lblPolice.Font.Style);
+                    lblCouleurAppli.Font = new Font(family, lblCouleurAppli.Font.SizeInPoints, lblCouleurAppli.Font.Style);
+                    btnDefaut.Font = new Font(family, btnDefaut.Font.SizeInPoints, btnDefaut.Font.Style);
+                    lblCouleur.Font = new Font(family, lblCouleur.Font.SizeInPoints, lblCouleur.Font.Style);
+                    lblRedemRequis2.Font = new Font(family, lblRedemRequis2.Font.SizeInPoints, lblRedemRequis2.Font.Style);
+                    lblRedemRequis3.Font = new Font(family, lblRedemRequis3.Font.SizeInPoints, lblRedemRequis3.Font.Style);
                 }
                 
             }
@@ -586,7 +641,7 @@ namespace PPE4_Stars_up
             if (lblTitrePara.Font.Name == family)
             {
                 // MessageBox.Show(LangueElement[124], LangueElement[105], MessageBoxButtons.OK, MessageBoxIcon.Information);
-                MessageBox.Show("La police est déjà par défaut.", LangueElement[105], MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(LangueElement[128], LangueElement[105], MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
@@ -610,6 +665,7 @@ namespace PPE4_Stars_up
                 btnDefaut.Font = new Font(family, btnDefaut.Font.SizeInPoints, btnDefaut.Font.Style);
                 lblCouleur.Font = new Font(family, lblCouleur.Font.SizeInPoints, lblCouleur.Font.Style);
                 lblRedemRequis2.Font = new Font(family, lblRedemRequis2.Font.SizeInPoints, lblRedemRequis2.Font.Style);
+                lblRedemRequis3.Font = new Font(family, lblRedemRequis3.Font.SizeInPoints, lblRedemRequis3.Font.Style);
 
                 lblPolice.Text = LangueElement[123];
             }

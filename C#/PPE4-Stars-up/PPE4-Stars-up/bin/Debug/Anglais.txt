@@ -124,3 +124,6 @@ Saving parameters ..
 By default
 Color is already the default.
 Restart required for the color to be effective on the whole of the application.
+Police
+Restart required for the police to be effective on the whole of the application.
+The police are already by default.

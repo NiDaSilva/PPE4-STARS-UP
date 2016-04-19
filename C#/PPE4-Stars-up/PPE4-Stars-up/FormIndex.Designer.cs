@@ -63,12 +63,16 @@
             this.lblTiret4 = new System.Windows.Forms.Label();
             this.lblNbVisitePrevue = new System.Windows.Forms.Label();
             this.pbEspagne = new System.Windows.Forms.PictureBox();
+            this.pbParametre = new System.Windows.Forms.PictureBox();
+            this.pbPDP = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbFrance)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbAngleterre)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbAllemagne)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbEspagne)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbParametre)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPDP)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -204,7 +208,7 @@
             this.lblheure.AutoSize = true;
             this.lblheure.BackColor = System.Drawing.Color.Transparent;
             this.lblheure.Font = new System.Drawing.Font("Gentium Basic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblheure.Location = new System.Drawing.Point(717, 440);
+            this.lblheure.Location = new System.Drawing.Point(647, 66);
             this.lblheure.Name = "lblheure";
             this.lblheure.Size = new System.Drawing.Size(52, 19);
             this.lblheure.TabIndex = 9;
@@ -424,6 +428,28 @@
             this.pbEspagne.TabStop = false;
             this.pbEspagne.Click += new System.EventHandler(this.pbEspagne_Click);
             // 
+            // pbParametre
+            // 
+            this.pbParametre.BackgroundImage = global::PPE4_Stars_up.Properties.Resources.tool;
+            this.pbParametre.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbParametre.Location = new System.Drawing.Point(744, 61);
+            this.pbParametre.Name = "pbParametre";
+            this.pbParametre.Size = new System.Drawing.Size(30, 30);
+            this.pbParametre.TabIndex = 37;
+            this.pbParametre.TabStop = false;
+            this.pbParametre.Click += new System.EventHandler(this.pbParametre_Click);
+            // 
+            // pbPDP
+            // 
+            this.pbPDP.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbPDP.ImageLocation = "";
+            this.pbPDP.Location = new System.Drawing.Point(712, 356);
+            this.pbPDP.Name = "pbPDP";
+            this.pbPDP.Size = new System.Drawing.Size(56, 100);
+            this.pbPDP.TabIndex = 39;
+            this.pbPDP.TabStop = false;
+            this.pbPDP.Visible = false;
+            // 
             // FormIndex
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -431,6 +457,8 @@
             this.BackgroundImage = global::PPE4_Stars_up.Properties.Resources.Wallpaper_Gray_Bars_Opera;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(784, 462);
+            this.Controls.Add(this.pbPDP);
+            this.Controls.Add(this.pbParametre);
             this.Controls.Add(this.pbEspagne);
             this.Controls.Add(this.lblPrevue);
             this.Controls.Add(this.lblTiret4);
@@ -476,6 +504,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbAngleterre)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbAllemagne)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbEspagne)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbParametre)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPDP)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -537,6 +567,8 @@
         private System.Windows.Forms.Label lblTiret4;
         private System.Windows.Forms.Label lblNbVisitePrevue;
         private System.Windows.Forms.PictureBox pbEspagne;
+        private System.Windows.Forms.PictureBox pbParametre;
+        private System.Windows.Forms.PictureBox pbPDP;
     }
 }
 

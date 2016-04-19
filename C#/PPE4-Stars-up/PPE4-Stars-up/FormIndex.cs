@@ -227,6 +227,10 @@ namespace PPE4_Stars_up
                     lblNbVisitePasseeNonRemplie.Text = controleur.Vmodele.Dv_nb_visite_passee_non_evaluee.ToTable().Rows[0][0].ToString(); // Récupère le nombre de visite passées non évaluées de l'inspecteur
                     lblNbVisitePrevue.Text = controleur.Vmodele.Dv_nb_visite_prevue.ToTable().Rows[0][0].ToString(); // Récupère le nombre de visite prévue de l'inspecteur 
 
+                    pbPDP.ImageLocation = controleur.Vmodele.Dv_pdp.ToTable().Rows[0][0].ToString(); // Récupère le chemin de la photo
+
+                    pbPDP.Visible = true;
+
                     MAJHeure();
 
                     ecrireFichier();
@@ -296,6 +300,8 @@ namespace PPE4_Stars_up
             pbAngleterre.Visible = false;
             pbFrance.Visible = false;
             pbEspagne.Visible = false;
+            pbParametre.Visible = false;
+            pbPDP.Visible = false;
             FormPlanningJour FPJ = new FormPlanningJour();
             FPJ.MdiParent = this;
 
@@ -345,6 +351,16 @@ namespace PPE4_Stars_up
             pbAngleterre.Visible = true;
             pbFrance.Visible = true;
             pbEspagne.Visible = true;
+            pbParametre.Visible = true;
+
+            if (importToolStripMenuItem.Text == LangueElement[12])
+            {
+                pbPDP.Visible = false;
+            }
+            else
+            {
+                pbPDP.Visible = true;
+            }
 
             var pos8 = this.PointToScreen(lblInfoNbVisiteTotal.Location);
             pos8 = pictureBox1.PointToClient(pos8);
@@ -550,6 +566,8 @@ namespace PPE4_Stars_up
 
         private void FormIndex_Load(object sender, EventArgs e)
         {
+            pbPDP.SizeMode = PictureBoxSizeMode.AutoSize;
+
             // Gestion de la langue
             StreamReader reader = File.OpenText(fileName2);
             string ligne;
@@ -708,6 +726,7 @@ namespace PPE4_Stars_up
                     lblPrevue.Font = new Font(listeElement[7], lblPrevue.Font.SizeInPoints, lblPrevue.Font.Style);
                     lblPassees.Font = new Font(listeElement[7], lblPassees.Font.SizeInPoints, lblPassees.Font.Style);
                     lblPasseeNonEvaluee.Font = new Font(listeElement[7], lblPasseeNonEvaluee.Font.SizeInPoints, lblPasseeNonEvaluee.Font.Style);
+                    quitterToolStripMenuItem.Font = new Font(listeElement[7], quitterToolStripMenuItem.Font.SizeInPoints, quitterToolStripMenuItem.Font.Style);
                 }
                 catch
                 {
@@ -736,6 +755,7 @@ namespace PPE4_Stars_up
                     lblPrevue.Font = new Font(family, lblPrevue.Font.SizeInPoints, lblPrevue.Font.Style);
                     lblPassees.Font = new Font(family, lblPassees.Font.SizeInPoints, lblPassees.Font.Style);
                     lblPasseeNonEvaluee.Font = new Font(family, lblPasseeNonEvaluee.Font.SizeInPoints, lblPasseeNonEvaluee.Font.Style);
+                    quitterToolStripMenuItem.Font = new Font(family, quitterToolStripMenuItem.Font.SizeInPoints, quitterToolStripMenuItem.Font.Style);
                 }
             }
             else
@@ -765,6 +785,7 @@ namespace PPE4_Stars_up
                 lblPrevue.Font = new Font(family, lblPrevue.Font.SizeInPoints, lblPrevue.Font.Style);
                 lblPassees.Font = new Font(family, lblPassees.Font.SizeInPoints, lblPassees.Font.Style);
                 lblPasseeNonEvaluee.Font = new Font(family, lblPasseeNonEvaluee.Font.SizeInPoints, lblPasseeNonEvaluee.Font.Style);
+                quitterToolStripMenuItem.Font = new Font(family, quitterToolStripMenuItem.Font.SizeInPoints, quitterToolStripMenuItem.Font.Style);
             }
 
             FormLogin FL = new FormLogin();
@@ -779,6 +800,8 @@ namespace PPE4_Stars_up
             pbAngleterre.Visible = false;
             pbFrance.Visible = false;
             pbEspagne.Visible = false;
+            pbParametre.Visible = false;
+            pbPDP.Visible = false;
             FormHistorique FH = new FormHistorique();
             FH.MdiParent = this;
 
@@ -1052,6 +1075,13 @@ namespace PPE4_Stars_up
                 form.Close();
 
             return Res;
+        }
+
+        private void pbParametre_Click(object sender, EventArgs e)
+        {
+            FormParametre FP = new FormParametre();
+            // FP.Show();
+            FP.ShowDialog();
         }
 
         public string AffichageInputBox()
