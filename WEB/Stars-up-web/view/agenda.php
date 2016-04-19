@@ -55,11 +55,11 @@ $agenda->afficher();
             eventDrop: function(event) {
                 agenda.update_visite(event.id,event.start.format());
             },
+            eventAfterRender: function(event, element){
+                $(element).css("margin","1");
+            },
             eventReceive:function(event) {
-                var id=event.id;
-                var date=event.start.format();
-                $(this).remove();
-                agenda.update_visite(id,date);
+                agenda.update_visite(event.id,event.start.format());
             },
             events: agenda.lesvisites
 

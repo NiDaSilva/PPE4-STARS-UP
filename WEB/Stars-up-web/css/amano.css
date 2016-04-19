@@ -20,6 +20,6 @@
     background-color: white;
 }
 td.fc-day.fc-past {
-    background-color: red;
-    opacity: 0.5;
+    background-color: grey;
+
 }

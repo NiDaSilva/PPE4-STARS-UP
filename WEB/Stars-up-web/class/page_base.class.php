@@ -141,6 +141,7 @@ class page_base {
             <script src="../fullcalendar/lib/moment.min.js"></script>
             <script src="../fullcalendar/fullcalendar.js"></script>
             <script src="../class/agenda.js"></script>
+            <script src="../fullcalendar/lib/jquery-ui.custom.min.js"></script>
             <script src="../jquery-ui/jquery-ui.min.js"></script>
             <script src="../fullcalendar/fullcalendar.js"></script>
             <script src="../fullcalendar/lang-all.js"></script>
