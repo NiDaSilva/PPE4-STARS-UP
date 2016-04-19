@@ -29,6 +29,7 @@ namespace PPE4_Stars_up
         private DataSet dataSetTP7 = new DataSet();
         private DataView dv_login, dv_visite, dv_specialite, dv_NbEtoiles, dv_Historique, dv_Historique_Dep, dv_Historique_Etoile, dv_maj_etoile_commentaire, dv_inspecteur, dv_nb_visite_total, dv_nb_visite_passee, dv_nb_visite_today, dv_nb_visite_passee_non_evaluee, dv_nb_visite_prevue = new DataView();
 
+        #region Lecture du fichier
         private void lireFichier()
         {
 
@@ -63,7 +64,7 @@ namespace PPE4_Stars_up
             idI = Convert.ToInt32(test);
             return idI;
         }
-       
+#endregion
 
         #region instanciation des variables
 
@@ -261,8 +262,8 @@ namespace PPE4_Stars_up
         #region seconnecter()
         public void seconnecter()
         {
-            // string myConnectionString = "Database=ppe4;Data Source=192.168.215.10;User Id=root; "; // SERVEUR, ne fonctionne pas
-            string myConnectionString = "Database=ppe4;Data Source=localhost;User Id=root; "; // localhost
+            string myConnectionString = "Database=ppe4;Data Source=192.168.215.10;User Id=root; "; // SERVEUR
+            // string myConnectionString = "Database=ppe4;Data Source=localhost;User Id=root; "; // LOCAL
 
             myConnection = new MySqlConnection(myConnectionString);
             try // tentative
