@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.14
+-- version 4.5.2
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 19 Avril 2016 à 12:12
--- Version du serveur :  5.6.17
--- Version de PHP :  5.5.12
+-- Généré le :  Mar 19 Avril 2016 à 20:46
+-- Version du serveur :  5.7.9
+-- Version de PHP :  5.6.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Base de données :  `ppe4`
@@ -26,6 +26,7 @@ SET time_zone = "+00:00";
 -- Structure de la table `avoir`
 --
 
+DROP TABLE IF EXISTS `avoir`;
 CREATE TABLE IF NOT EXISTS `avoir` (
   `ID_TYPE_CUISINE` int(11) NOT NULL,
   `ID_HEBERGEMENT` int(11) NOT NULL,
@@ -40,6 +41,7 @@ CREATE TABLE IF NOT EXISTS `avoir` (
 -- Structure de la table `camping`
 --
 
+DROP TABLE IF EXISTS `camping`;
 CREATE TABLE IF NOT EXISTS `camping` (
   `ID_HEBERGEMENT` int(11) NOT NULL,
   `NOM_HEBERGEMENT` varchar(128) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
@@ -54,6 +56,7 @@ CREATE TABLE IF NOT EXISTS `camping` (
 -- Structure de la table `chambre_hote`
 --
 
+DROP TABLE IF EXISTS `chambre_hote`;
 CREATE TABLE IF NOT EXISTS `chambre_hote` (
   `ID_HEBERGEMENT` int(11) NOT NULL,
   `NOMBRE_CHAMBRE_HOTE` smallint(6) DEFAULT NULL,
@@ -70,11 +73,12 @@ CREATE TABLE IF NOT EXISTS `chambre_hote` (
 -- Structure de la table `departement`
 --
 
+DROP TABLE IF EXISTS `departement`;
 CREATE TABLE IF NOT EXISTS `departement` (
   `ID_DEPARTEMENT` int(11) NOT NULL AUTO_INCREMENT,
   `LIBELLE_DEPARTEMENT` varchar(128) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`ID_DEPARTEMENT`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=977 ;
+) ENGINE=InnoDB AUTO_INCREMENT=977 DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `departement`
@@ -189,11 +193,12 @@ INSERT INTO `departement` (`ID_DEPARTEMENT`, `LIBELLE_DEPARTEMENT`) VALUES
 -- Structure de la table `equipement_camping`
 --
 
+DROP TABLE IF EXISTS `equipement_camping`;
 CREATE TABLE IF NOT EXISTS `equipement_camping` (
   `ID_EQUIPEMENT_CAMPING` int(11) NOT NULL AUTO_INCREMENT,
   `LIBELLE_EQUIPEMENT_CAMPING` varchar(128) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`ID_EQUIPEMENT_CAMPING`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `equipement_camping`
@@ -212,6 +217,7 @@ INSERT INTO `equipement_camping` (`ID_EQUIPEMENT_CAMPING`, `LIBELLE_EQUIPEMENT_C
 -- Structure de la table `gerant`
 --
 
+DROP TABLE IF EXISTS `gerant`;
 CREATE TABLE IF NOT EXISTS `gerant` (
   `ID_GERANT` int(11) NOT NULL AUTO_INCREMENT,
   `NOM_GERANT` varchar(128) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
@@ -219,7 +225,7 @@ CREATE TABLE IF NOT EXISTS `gerant` (
   `LOGIN` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `MDP` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`ID_GERANT`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=56 ;
+) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `gerant`
@@ -240,6 +246,7 @@ INSERT INTO `gerant` (`ID_GERANT`, `NOM_GERANT`, `PRENOM_GERANT`, `LOGIN`, `MDP`
 -- Structure de la table `hebergement`
 --
 
+DROP TABLE IF EXISTS `hebergement`;
 CREATE TABLE IF NOT EXISTS `hebergement` (
   `ID_HEBERGEMENT` int(11) NOT NULL AUTO_INCREMENT,
   `ID_GERANT` int(11) DEFAULT NULL,
@@ -253,7 +260,7 @@ CREATE TABLE IF NOT EXISTS `hebergement` (
   KEY `I_FK_HEBERGEMENT_DEPARTEMENT` (`ID_DEPARTEMENT`),
   KEY `ID_GERANT` (`ID_GERANT`),
   KEY `ID_SPECIALITE` (`ID_SPECIALITE`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `hebergement`
@@ -281,6 +288,7 @@ INSERT INTO `hebergement` (`ID_HEBERGEMENT`, `ID_GERANT`, `ID_DEPARTEMENT`, `NOM
 -- Structure de la table `hotel`
 --
 
+DROP TABLE IF EXISTS `hotel`;
 CREATE TABLE IF NOT EXISTS `hotel` (
   `ID_HEBERGEMENT` int(11) NOT NULL,
   `RESTAURANT_HOTEL` tinyint(1) DEFAULT NULL,
@@ -314,6 +322,7 @@ INSERT INTO `hotel` (`ID_HEBERGEMENT`, `RESTAURANT_HOTEL`, `CHEF_RESTAURANT_HOTE
 -- Structure de la table `inspecteur`
 --
 
+DROP TABLE IF EXISTS `inspecteur`;
 CREATE TABLE IF NOT EXISTS `inspecteur` (
   `ID_INSPECTEUR` int(11) NOT NULL AUTO_INCREMENT,
   `ID_SPECIALITE` int(11) NOT NULL,
@@ -321,21 +330,22 @@ CREATE TABLE IF NOT EXISTS `inspecteur` (
   `PERNOM_INSPECTEUR` varchar(128) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   `LOGIN` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `MDP` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `PHOTO` varchar(150) DEFAULT NULL,
   PRIMARY KEY (`ID_INSPECTEUR`),
   KEY `I_FK_INSPECTEUR_SPECIALITE` (`ID_SPECIALITE`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `inspecteur`
 --
 
-INSERT INTO `inspecteur` (`ID_INSPECTEUR`, `ID_SPECIALITE`, `NOM_INSPECTEUR`, `PERNOM_INSPECTEUR`, `LOGIN`, `MDP`) VALUES
-(1, 2, 'Grondin', 'Nicolas', 'NGrondin', 'azerty1234'),
-(2, 3, 'Bouhours', 'Natacha', 'NBouhours', 'azerty1234'),
-(3, 1, 'Da Silva', 'Nicolas', 'NDSilva', 'azerty1234'),
-(4, 1, 'Robin', 'Dimitry', 'Drobin', 'vtyde'),
-(5, 3, 'Hermange', 'Pierre', 'PHermange', 'azerty1234'),
-(6, 1, 'Menant', 'KÃ©vin', 'KMenant', 'azerty1234');
+INSERT INTO `inspecteur` (`ID_INSPECTEUR`, `ID_SPECIALITE`, `NOM_INSPECTEUR`, `PERNOM_INSPECTEUR`, `LOGIN`, `MDP`, `PHOTO`) VALUES
+(1, 2, 'Grondin', 'Nicolas', 'NGrondin', 'c6c4940b323ff81c66e02a02e0281c370c535008', 'PDP/NG.jpg'),
+(2, 3, 'Bouhours', 'Natacha', 'NBouhours', 'c6c4940b323ff81c66e02a02e0281c370c535008', 'PDP/NB.jpg'),
+(3, 1, 'Da Silva', 'Nicolas', 'NDSilva', 'c6c4940b323ff81c66e02a02e0281c370c535008', 'PDP/NDS.jpg'),
+(4, 1, 'Robin', 'Dimitry', 'Drobin', 'f356a267d8cd8a5f8b3d4ac4164a5ed1a101603f', 'PDP/DR.jpg'),
+(5, 3, 'Hermange', 'Pierre', 'PHermange', 'c6c4940b323ff81c66e02a02e0281c370c535008', 'PDP/PH.jpg'),
+(6, 1, 'Menant', 'KÃ©vin', 'KMenant', 'c6c4940b323ff81c66e02a02e0281c370c535008', 'PDP/KM.jpg');
 
 -- --------------------------------------------------------
 
@@ -343,6 +353,7 @@ INSERT INTO `inspecteur` (`ID_INSPECTEUR`, `ID_SPECIALITE`, `NOM_INSPECTEUR`, `P
 -- Structure de la table `posseder`
 --
 
+DROP TABLE IF EXISTS `posseder`;
 CREATE TABLE IF NOT EXISTS `posseder` (
   `ID_EQUIPEMENT_CAMPING` int(11) NOT NULL,
   `ID_HEBERGEMENT` int(11) NOT NULL,
@@ -357,11 +368,12 @@ CREATE TABLE IF NOT EXISTS `posseder` (
 -- Structure de la table `saison`
 --
 
+DROP TABLE IF EXISTS `saison`;
 CREATE TABLE IF NOT EXISTS `saison` (
   `ID_SAISON` int(11) NOT NULL AUTO_INCREMENT,
   `LIBELLE_SAISON` varchar(128) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`ID_SAISON`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `saison`
@@ -379,11 +391,12 @@ INSERT INTO `saison` (`ID_SAISON`, `LIBELLE_SAISON`) VALUES
 -- Structure de la table `specialite`
 --
 
+DROP TABLE IF EXISTS `specialite`;
 CREATE TABLE IF NOT EXISTS `specialite` (
   `ID_SPECIALITE` int(11) NOT NULL AUTO_INCREMENT,
   `LIBELLE_SPECIALITE` varchar(128) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`ID_SPECIALITE`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `specialite`
@@ -400,11 +413,12 @@ INSERT INTO `specialite` (`ID_SPECIALITE`, `LIBELLE_SPECIALITE`) VALUES
 -- Structure de la table `type_cuisine`
 --
 
+DROP TABLE IF EXISTS `type_cuisine`;
 CREATE TABLE IF NOT EXISTS `type_cuisine` (
   `ID_TYPE_CUISINE` int(11) NOT NULL AUTO_INCREMENT,
   `LIBELLE_TYPE_CUISINE` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`ID_TYPE_CUISINE`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `type_cuisine`
@@ -418,10 +432,11 @@ INSERT INTO `type_cuisine` (`ID_TYPE_CUISINE`, `LIBELLE_TYPE_CUISINE`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `visiter`
+-- Structure de la table `visite`
 --
 
-CREATE TABLE IF NOT EXISTS `visiter` (
+DROP TABLE IF EXISTS `visite`;
+CREATE TABLE IF NOT EXISTS `visite` (
   `ID_VISITE` int(11) NOT NULL AUTO_INCREMENT,
   `ID_HEBERGEMENT` int(11) DEFAULT NULL,
   `ID_INSPECTEUR` int(11) DEFAULT NULL,
@@ -436,16 +451,16 @@ CREATE TABLE IF NOT EXISTS `visiter` (
   KEY `I_FK_VISITER_INSPECTEUR` (`ID_INSPECTEUR`),
   KEY `I_FK_VISITER_SAISON` (`ID_SAISON`),
   KEY `ID_CONTREVISITE` (`ID_CONTREVISITE`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `visiter`
+-- Contenu de la table `visite`
 --
 
-INSERT INTO `visiter` (`ID_VISITE`, `ID_HEBERGEMENT`, `ID_INSPECTEUR`, `ID_SAISON`, `NOMBRE_ETOILE_VISITE`, `DATE_HEURE_VISITE`, `CONTRE_VISITE`, `COMMENTAIRE_VISITE`, `ID_CONTREVISITE`) VALUES
+INSERT INTO `visite` (`ID_VISITE`, `ID_HEBERGEMENT`, `ID_INSPECTEUR`, `ID_SAISON`, `NOMBRE_ETOILE_VISITE`, `DATE_HEURE_VISITE`, `CONTRE_VISITE`, `COMMENTAIRE_VISITE`, `ID_CONTREVISITE`) VALUES
 (20, 1, NULL, 1, NULL, NULL, NULL, NULL, NULL),
-(21, 3, 3, 1, NULL, '2016-04-21 11:00:00', NULL, NULL, NULL),
-(22, 8, 3, 1, NULL, '2016-04-18 09:00:00', NULL, NULL, NULL),
+(21, 3, 4, 1, NULL, '2016-04-21 11:00:00', NULL, NULL, NULL),
+(22, 8, 4, 1, NULL, '2016-04-18 09:00:00', NULL, NULL, NULL),
 (23, 14, NULL, 1, NULL, NULL, NULL, NULL, NULL),
 (24, 5, NULL, 1, NULL, NULL, NULL, NULL, NULL);
 
@@ -457,8 +472,8 @@ INSERT INTO `visiter` (`ID_VISITE`, `ID_HEBERGEMENT`, `ID_INSPECTEUR`, `ID_SAISO
 -- Contraintes pour la table `avoir`
 --
 ALTER TABLE `avoir`
-  ADD CONSTRAINT `avoir_ibfk_2` FOREIGN KEY (`ID_HEBERGEMENT`) REFERENCES `hotel` (`ID_HEBERGEMENT`),
-  ADD CONSTRAINT `avoir_ibfk_1` FOREIGN KEY (`ID_TYPE_CUISINE`) REFERENCES `type_cuisine` (`ID_TYPE_CUISINE`);
+  ADD CONSTRAINT `avoir_ibfk_1` FOREIGN KEY (`ID_TYPE_CUISINE`) REFERENCES `type_cuisine` (`ID_TYPE_CUISINE`),
+  ADD CONSTRAINT `avoir_ibfk_2` FOREIGN KEY (`ID_HEBERGEMENT`) REFERENCES `hotel` (`ID_HEBERGEMENT`);
 
 --
 -- Contraintes pour la table `camping`
@@ -476,9 +491,9 @@ ALTER TABLE `chambre_hote`
 -- Contraintes pour la table `hebergement`
 --
 ALTER TABLE `hebergement`
-  ADD CONSTRAINT `hebergement_ibfk_3` FOREIGN KEY (`ID_SPECIALITE`) REFERENCES `specialite` (`ID_SPECIALITE`),
   ADD CONSTRAINT `hebergement_ibfk_1` FOREIGN KEY (`ID_DEPARTEMENT`) REFERENCES `departement` (`ID_DEPARTEMENT`),
-  ADD CONSTRAINT `hebergement_ibfk_2` FOREIGN KEY (`ID_GERANT`) REFERENCES `gerant` (`ID_GERANT`);
+  ADD CONSTRAINT `hebergement_ibfk_2` FOREIGN KEY (`ID_GERANT`) REFERENCES `gerant` (`ID_GERANT`),
+  ADD CONSTRAINT `hebergement_ibfk_3` FOREIGN KEY (`ID_SPECIALITE`) REFERENCES `specialite` (`ID_SPECIALITE`);
 
 --
 -- Contraintes pour la table `hotel`
@@ -496,17 +511,17 @@ ALTER TABLE `inspecteur`
 -- Contraintes pour la table `posseder`
 --
 ALTER TABLE `posseder`
-  ADD CONSTRAINT `posseder_ibfk_2` FOREIGN KEY (`ID_HEBERGEMENT`) REFERENCES `camping` (`ID_HEBERGEMENT`),
-  ADD CONSTRAINT `posseder_ibfk_1` FOREIGN KEY (`ID_EQUIPEMENT_CAMPING`) REFERENCES `equipement_camping` (`ID_EQUIPEMENT_CAMPING`);
+  ADD CONSTRAINT `posseder_ibfk_1` FOREIGN KEY (`ID_EQUIPEMENT_CAMPING`) REFERENCES `equipement_camping` (`ID_EQUIPEMENT_CAMPING`),
+  ADD CONSTRAINT `posseder_ibfk_2` FOREIGN KEY (`ID_HEBERGEMENT`) REFERENCES `camping` (`ID_HEBERGEMENT`);
 
 --
--- Contraintes pour la table `visiter`
+-- Contraintes pour la table `visite`
 --
-ALTER TABLE `visiter`
-  ADD CONSTRAINT `visiter_ibfk_5` FOREIGN KEY (`ID_CONTREVISITE`) REFERENCES `visiter` (`ID_VISITE`),
-  ADD CONSTRAINT `visiter_ibfk_1` FOREIGN KEY (`ID_HEBERGEMENT`) REFERENCES `hebergement` (`ID_HEBERGEMENT`),
-  ADD CONSTRAINT `visiter_ibfk_3` FOREIGN KEY (`ID_SAISON`) REFERENCES `saison` (`ID_SAISON`),
-  ADD CONSTRAINT `visiter_ibfk_4` FOREIGN KEY (`ID_INSPECTEUR`) REFERENCES `inspecteur` (`ID_INSPECTEUR`);
+ALTER TABLE `visite`
+  ADD CONSTRAINT `visite_ibfk_1` FOREIGN KEY (`ID_HEBERGEMENT`) REFERENCES `hebergement` (`ID_HEBERGEMENT`),
+  ADD CONSTRAINT `visite_ibfk_3` FOREIGN KEY (`ID_SAISON`) REFERENCES `saison` (`ID_SAISON`),
+  ADD CONSTRAINT `visite_ibfk_4` FOREIGN KEY (`ID_INSPECTEUR`) REFERENCES `inspecteur` (`ID_INSPECTEUR`),
+  ADD CONSTRAINT `visite_ibfk_5` FOREIGN KEY (`ID_CONTREVISITE`) REFERENCES `visite` (`ID_VISITE`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
