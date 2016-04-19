@@ -47,57 +47,6 @@ class mypdo extends PDO
         return null;
     }
 
-    /****ADMIN****/
-
-    public function count_row($nomtable)
-    {
-        $requete = 'SELECT * FROM '.$nomtable.';';
-        $result = $this->connexion->query($requete);
-        return ($result->rowCount());
-    }
-
-
-    public function return_table($nomtable,$cPage,$limit)
-    {
-        if($limit == 0)
-        {
-            $requete = 'SELECT * FROM '.$nomtable.';';
-        }
-        else
-        {
-            $cPage=($cPage-1)*$limit;
-            $requete = 'SELECT * FROM '.$nomtable.' LIMIT '.$cPage.','.$limit.';';
-        }
-        $result = $this->connexion->query($requete);
-        if ($result) {
-            if ($result->rowCount() >= 1) {
-                return ($result);
-            }
-        }
-    }
-
-    public function insert($tab){
-        $requete = 'INSERT INTO hebergement (ID_HEBERGEMENT,ID_DEPARTEMENT, NOM_HEBERGEMENT,ADRESSE_HEBERGEMENT,VILLE_HEBERGEMENT, HORAIRES)
-        VALUES('.$tab['id'].','.$tab['departement'].','.$tab['nom'].','.$tab['adresse'].','.$tab['ville'].','.$tab['horaire'].'); ';
-        switch ($tab['table']) {
-            case 'hotel':
-            {
-                $requete = $requete. 'INSERT INTO hotel VALUES('.$tab['id'].','.$tab['nbresto'].','.$tab['chefresto'].');';
-            }
-                break;
-            case 'camping':
-            {
-                $requete = $requete. 'INSERT INTO camping VALUES('.$tab['id'].');';
-            }
-                break;
-            case 'chambre':
-            {
-                $requete = $requete. 'INSERT INTO chambre_hote VALUES('.$tab['id'].','.$tab['nbchambre'].','.$tab['nbcuisine'].');';
-            }
-                break;
-        }
-        $this->connexion->query($requete);
-    }
 
     public function update($tab){
         switch ($tab['table']) {
@@ -154,9 +103,9 @@ class mypdo extends PDO
         return null;
     }
 
-    public function get_demandes($id)
+        public function get_demandes($id)
     {
-        $requete=$this->connexion->prepare('SELECT v.ID_VISITE as "IDV", h.NOM_HEBERGEMENT as "NOM", h.ADRESSE_HEBERGEMENT as "ADRESSE", h.VILLE_HEBERGEMENT as "VILLE", h.HORAIRES as "HORAIRES" FROM visiter as v INNER JOIN hebergement as h on v.ID_HEBERGEMENT = h.ID_HEBERGEMENT INNER join correspondre as c on h.ID_HEBERGEMENT = c.ID_HEBERGEMENT WHERE v.ID_INSPECTEUR is null AND v.DATE_HEURE_VISITE is null AND c.ID_SPECIALITE = (Select i.ID_SPECIALITE FROM inspecteur as i WHERE i.ID_INSPECTEUR ='.$id.');');
+        $requete=$this->connexion->prepare('SELECT v.ID_VISITE as "IDV", h.NOM_HEBERGEMENT as "NOM", h.ADRESSE_HEBERGEMENT as "ADRESSE", h.VILLE_HEBERGEMENT as "VILLE", h.HORAIRES as "HORAIRES" FROM visiter as v INNER JOIN hebergement as h on v.ID_HEBERGEMENT = h.ID_HEBERGEMENT WHERE v.ID_INSPECTEUR is null AND v.DATE_HEURE_VISITE is null AND h.ID_SPECIALITE = (Select i.ID_SPECIALITE FROM inspecteur as i WHERE i.ID_INSPECTEUR ='.$id.');');
         $requete->execute();
         $result = $requete->fetchAll(PDO::FETCH_ASSOC);
         if($result)
@@ -166,10 +115,111 @@ class mypdo extends PDO
         return null;
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+///**********************************************************C.R.U.D ADMIM*************************************************************///
+
+
+/*********************CREATE*******************************/
+
+    public function insert_hebergement($tab){
+        $requete = 'INSERT INTO hebergement (ID_HEBERGEMENT,ID_DEPARTEMENT,ID_GERANT, NOM_HEBERGEMENT,ADRESSE_HEBERGEMENT,VILLE_HEBERGEMENT, HORAIRES, ID_SPECIALITE)
+        VALUES('.$tab['id'].','.$tab['departement'].','.$tab['gerant'].','.$tab['nom'].','.$tab['adresse'].','.$tab['ville'].','.$tab['horaire'].','.$tab['table'].'); ';
+        switch ($tab['table']) {
+            case 1:
+            {
+                $requete = $requete. 'INSERT INTO hotel VALUES('.$tab['id'].','.$tab['nbresto'].','.$tab['chefresto'].');';
+            }
+                break;
+            case 2:
+            {
+                $requete = $requete. 'INSERT INTO camping VALUES('.$tab['id'].');';
+            }
+                break;
+            case 3:
+            {
+                $requete = $requete. 'INSERT INTO chambre_hote VALUES('.$tab['id'].','.$tab['nbchambre'].','.$tab['nbcuisine'].');';
+            }
+                break;
+        }
+        $this->connexion->query($requete);
+    }
+    public function insert_inspecteur($tab)
+    {
+
+    }
+    public function insert_gerant($tab)
+    {
+        
+    }
+    public function insert_visite($tab)
+    {
+        
+    }
+/************************READ***********************************/
+    public function count_row($nomtable)
+    {
+        $requete = 'SELECT * FROM '.$nomtable.';';
+        $result = $this->connexion->query($requete);
+        return ($result->rowCount());
+    }
+
+
+    public function return_table($nomtable,$cPage,$limit)
+    {
+        if($limit == 0)
+        {
+            $requete = 'SELECT * FROM '.$nomtable.';';
+        }
+        else
+        {
+            $cPage=($cPage-1)*$limit;
+            $requete = 'SELECT * FROM '.$nomtable.' LIMIT '.$cPage.','.$limit.';';
+        }
+        $result = $this->connexion->query($requete);
+        if ($result) {
+            if ($result->rowCount() >= 1) {
+                return ($result);
+            }
+        }
+    }
+/************************UPDATE*************************************/
+    public function update_hebergement($tab)
+    {
+        
+    }
+    public function update_inspecteur($tab)
+    {
+        
+    }
+    public function update_gerant($tab)
+    {
+        
+    }
+    public function update_visite($tab)
+    {
+        
+    }
+/**************************DELETE**********************************/
     public function delete($table,$id){
         $requete ='DELETE FROM '.$table.' WHERE ID_'.$table.' = '.$id.';';
         $this->connexion->query($requete);
     }
+
+
 
 
 }

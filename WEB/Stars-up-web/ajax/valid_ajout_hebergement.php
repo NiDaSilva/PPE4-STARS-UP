@@ -7,7 +7,9 @@ $tab=array();
 //test validation frd champ a faire.
 if($_REQUEST['departement']!= 0){
 $tab['departement']=intval($_REQUEST['departement']);
+$tab['gerant']=intval($_REQUEST['gerant']);
 $tab['nom']=$_REQUEST['nom'];
+
 $tab['adresse']=$_REQUEST['adresse'];
 $tab['ville']=$_REQUEST['ville'];
 $tab['horaire']=$_REQUEST['horaire'];
@@ -20,26 +22,26 @@ while ($row = $result->fetch()) {
 
 	if(isset($_REQUEST['table']))
 	{
-		$tab['table']=$_REQUEST['table'];
+		$tab['table']=intval($_REQUEST['table']);
 		$tab['alert']='
 			<div class="alert alert-success alert-dismissible" role="alert">
 					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					'.$_REQUEST['table'].' Ajouté !
+					 l\'hebergement '.$tab['nom'].' Ajouté !
 			</div>
 			';
-		switch ($_REQUEST['table']) {
-			case 'hotel':
+		switch ($tab['table']) {
+			case 1: //hotel
 			{
 				$tab['nbresto']=intval($_REQUEST['nbresto']);
 				$tab['chefresto']=$_REQUEST['chefresto'];
 			}
 				break;
-			case 'camping':
+			case 2: //camping
 			{
 
 			}
 				break;
-			case 'chambre':
+			case 3: //chambre d'hote
 			{
 				$tab['nbchambre']=intval($_REQUEST['nbchambre']);
 				$tab['nbcuisine']=intval($_REQUEST['nbcuisine']);
@@ -47,7 +49,7 @@ while ($row = $result->fetch()) {
 				break;
 		}
 	}
-	$vpdo->insert($tab);
+	$vpdo->insert_hebergement($tab);
 
 
 }

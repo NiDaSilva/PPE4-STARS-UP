@@ -15,6 +15,7 @@ $("#submit").click(function(){
 
                     table : $("#table").val(),
                     departement : $("#departement").val(),
+                    gerant : $("#gerant").val(),
                     nom : $("#nom").val(),
                     adresse : $("#adresse").val(),
                     ville : $("#ville").val(),
@@ -53,7 +54,7 @@ if(isset($_REQUEST['categ']))
 	{
 		case "hotel" :
 		{
-			$data='<div id="alertsubmit"></div><input type="hidden" class="form-control" id="table" value="'.$_REQUEST['categ'].'">
+			$data='<div id="alertsubmit"></div><input type="hidden" class="form-control" id="table" value="1">
 	            <div class="form-group row">
 	                <label for="departement" class="col-sm-2 form-control-label">Département</label>
 	                <div class="col-sm-10">
@@ -68,6 +69,20 @@ if(isset($_REQUEST['categ']))
 	                    </select>
 	                </div>
 	            </div>
+                <div class="form-group row">
+                    <label for="gerant" class="col-sm-2 form-control-label">Gérant</label>
+                    <div class="col-sm-10">
+                        <select class="form-control" id="gerant" name="gerant">
+                            <option selected>- Gérant -</option>';
+                            $result= $vpdo->return_table('gerant',0,0);
+                            while ($row =$result->fetch())
+                            {
+                                $data=$data.'<option value="'.$row['ID_GERANT'].'">'.strtoupper($row['NOM_GERANT']).' '.$row['PRENOM_GERANT'].'</option>';
+                            }
+                            $data=$data.'                                        
+                        </select>
+                    </div>
+                </div>
 	            <div class="form-group row">
 	                <label for="nom" class="col-sm-2 form-control-label">Nom hébergement</label>
 	                <div class="col-sm-10">
@@ -110,7 +125,7 @@ if(isset($_REQUEST['categ']))
 	    	break;
 	    case "camping" :
 	    {
-	    	$data='<div id="alertsubmit"></div><input type="hidden" class="form-control" id="table" value="'.$_REQUEST['categ'].'">
+	    	$data='<div id="alertsubmit"></div><input type="hidden" class="form-control" id="table" value="2">
                	<div class="form-group row">
                     <label for="departement" class="col-sm-2 form-control-label">Département</label>
                     <div class="col-sm-10">
@@ -120,6 +135,20 @@ if(isset($_REQUEST['categ']))
                             while ($row =$result->fetch())
                             {
                                 $data=$data.'<option value="'.$row['ID_DEPARTEMENT'].'">'.$row['LIBELLE_DEPARTEMENT'].'</option>';
+                            }
+                            $data=$data.'                                        
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="gerant" class="col-sm-2 form-control-label">Gérant</label>
+                    <div class="col-sm-10">
+                        <select class="form-control" id="gerant" name="gerant">
+                            <option selected>- Gérant -</option>';
+                            $result= $vpdo->return_table('gerant',0,0);
+                            while ($row =$result->fetch())
+                            {
+                                $data=$data.'<option value="'.$row['ID_GERANT'].'">'.strtoupper($row['NOM_GERANT']).' '.$row['PRENOM_GERANT'].'</option>';
                             }
                             $data=$data.'                                        
                         </select>
@@ -155,7 +184,7 @@ if(isset($_REQUEST['categ']))
 	    	break;
 	    case "chambre" :
 	    {	    
-	    	$data='<div id="alertsubmit"></div><input type="hidden" class="form-control" id="table" value="'.$_REQUEST['categ'].'">
+	    	$data='<div id="alertsubmit"></div><input type="hidden" class="form-control" id="table" value="3">
             	<div class="form-group row">
                     <label for="departement" class="col-sm-2 form-control-label">Département</label>
                     <div class="col-sm-10">
@@ -165,6 +194,20 @@ if(isset($_REQUEST['categ']))
                             while ($row =$result->fetch())
                             {
                                 $data=$data.'<option value="'.$row['ID_DEPARTEMENT'].'">'.$row['LIBELLE_DEPARTEMENT'].'</option>';
+                            }
+                            $data=$data.'                                        
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="gerant" class="col-sm-2 form-control-label">Gérant</label>
+                    <div class="col-sm-10">
+                        <select class="form-control" id="gerant" name="gerant">
+                            <option selected>- Gérant -</option>';
+                            $result= $vpdo->return_table('gerant',0,0);
+                            while ($row =$result->fetch())
+                            {
+                                $data=$data.'<option value="'.$row['ID_GERANT'].'">'.strtoupper($row['NOM_GERANT']).' '.$row['PRENOM_GERANT'].'</option>';
                             }
                             $data=$data.'                                        
                         </select>
