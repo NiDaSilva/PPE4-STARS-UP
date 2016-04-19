@@ -52,7 +52,7 @@ class mypdo extends PDO
         switch ($tab['table']) {
             case 'visiter':
             {
-                $requete = 'UPDATE visiter SET ID_INSPECTEUR='.$tab['id'].', DATE_HEURE_VISITE="'.$tab['date'].'" WHERE ID_VISITE='.$tab['idv'].';';
+                $requete = 'UPDATE visite SET ID_INSPECTEUR='.$tab['id'].', DATE_HEURE_VISITE="'.$tab['date'].'" WHERE ID_VISITE='.$tab['idv'].';';
             }
                 break;
 //            case 'camping':
@@ -93,7 +93,7 @@ class mypdo extends PDO
 
     public function get_visites($id)
     {
-        $requete=$this->connexion->prepare('select v.ID_VISITE as "IDV", v.ID_HEBERGEMENT as "ID", h.NOM_HEBERGEMENT as "NOM", h.ADRESSE_HEBERGEMENT as "ADRESSE", h.VILLE_HEBERGEMENT as "VILLE", v.DATE_HEURE_VISITE as "DATE", h.HORAIRES, v.COMMENTAIRE_VISITE from visiter as v inner join hebergement as h on v.ID_HEBERGEMENT = h.ID_HEBERGEMENT where id_inspecteur ='.$id.';');
+        $requete=$this->connexion->prepare('select v.ID_VISITE as "IDV", v.ID_HEBERGEMENT as "ID", h.NOM_HEBERGEMENT as "NOM", h.ADRESSE_HEBERGEMENT as "ADRESSE", h.VILLE_HEBERGEMENT as "VILLE", v.DATE_HEURE_VISITE as "DATE", h.HORAIRES, v.COMMENTAIRE_VISITE from visite as v inner join hebergement as h on v.ID_HEBERGEMENT = h.ID_HEBERGEMENT where id_inspecteur ='.$id.';');
         $requete->execute();
         $result = $requete->fetchAll(PDO::FETCH_ASSOC);
         if($result)
@@ -105,7 +105,7 @@ class mypdo extends PDO
 
         public function get_demandes($id)
     {
-        $requete=$this->connexion->prepare('SELECT v.ID_VISITE as "IDV", h.NOM_HEBERGEMENT as "NOM", h.ADRESSE_HEBERGEMENT as "ADRESSE", h.VILLE_HEBERGEMENT as "VILLE", h.HORAIRES as "HORAIRES" FROM visiter as v INNER JOIN hebergement as h on v.ID_HEBERGEMENT = h.ID_HEBERGEMENT WHERE v.ID_INSPECTEUR is null AND v.DATE_HEURE_VISITE is null AND h.ID_SPECIALITE = (Select i.ID_SPECIALITE FROM inspecteur as i WHERE i.ID_INSPECTEUR ='.$id.');');
+        $requete=$this->connexion->prepare('SELECT v.ID_VISITE as "IDV", h.NOM_HEBERGEMENT as "NOM", h.ADRESSE_HEBERGEMENT as "ADRESSE", h.VILLE_HEBERGEMENT as "VILLE", h.HORAIRES as "HORAIRES" FROM visite as v INNER JOIN hebergement as h on v.ID_HEBERGEMENT = h.ID_HEBERGEMENT WHERE v.ID_INSPECTEUR is null AND v.DATE_HEURE_VISITE is null AND h.ID_SPECIALITE = (Select i.ID_SPECIALITE FROM inspecteur as i WHERE i.ID_INSPECTEUR ='.$id.');');
         $requete->execute();
         $result = $requete->fetchAll(PDO::FETCH_ASSOC);
         if($result)

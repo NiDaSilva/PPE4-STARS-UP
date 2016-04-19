@@ -29,6 +29,7 @@ var agenda= {
         }).done(function (data) {
             data = JSON.parse(data);
             agenda.lesvisites=data.visites;
+            console.log($(".fc-event").attr('data-id', $id));
         });
     }
 
