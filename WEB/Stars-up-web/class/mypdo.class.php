@@ -137,11 +137,11 @@ class mypdo extends PDO
 
     public function insert_hebergement($tab){
         $requete = 'INSERT INTO hebergement (ID_HEBERGEMENT,ID_DEPARTEMENT,ID_GERANT, NOM_HEBERGEMENT,ADRESSE_HEBERGEMENT,VILLE_HEBERGEMENT, HORAIRES, ID_SPECIALITE)
-        VALUES('.$tab['id'].','.$tab['departement'].','.$tab['gerant'].','.$tab['nom'].','.$tab['adresse'].','.$tab['ville'].','.$tab['horaire'].','.$tab['table'].'); ';
+        VALUES('.$tab['id'].','.$tab['departement'].','.$tab['gerant'].',"'.$tab['nom'].'","'.$tab['adresse'].'","'.$tab['ville'].'","'.$tab['horaire'].'",'.$tab['table'].'); ';
         switch ($tab['table']) {
             case 1:
             {
-                $requete = $requete. 'INSERT INTO hotel VALUES('.$tab['id'].','.$tab['nbresto'].','.$tab['chefresto'].');';
+                $requete = $requete. 'INSERT INTO hotel VALUES('.$tab['id'].','.$tab['nbresto'].',"'.$tab['chefresto'].'");';
             }
                 break;
             case 2:
@@ -196,6 +196,12 @@ class mypdo extends PDO
             }
         }
     }
+    public function get_item($table, $id)
+    {
+        $requete = 'SELECT * FROM '.$table.' WHERE id_'.$table.' = '.$id.' ;';
+        $result = $this->connexion->query($requete);
+        return $result;
+    }
 /************************UPDATE*************************************/
     public function update_hebergement($tab)
     {
@@ -218,8 +224,4 @@ class mypdo extends PDO
         $requete ='DELETE FROM '.$table.' WHERE ID_'.$table.' = '.$id.';';
         $this->connexion->query($requete);
     }
-
-
-
-
 }

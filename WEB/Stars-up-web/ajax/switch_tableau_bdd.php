@@ -82,8 +82,8 @@ if(isset($_REQUEST['table']))
                         <td>'.$row['NOM_HEBERGEMENT'].'</td>
                         <td>'.$row['VILLE_HEBERGEMENT'].'</td>
                         <td>
-                            <div class="btn-group btn-group-xs" role="group" aria-label="...">  
-                              <button type="button" class="btn btn-success">Update</button>
+                            <div class="btn-group btn-group-xs" role="group" aria-label="...">
+                              <a class="btn btn-success"href="admin_update.php?type='.$_REQUEST['table'].'&id='.$row['ID_HEBERGEMENT'].'">UPDATE</a>
                               <a class="btn btn-danger delete" name="'.$row['ID_HEBERGEMENT'].'">Delete</a>
                             </div>
                         </td>
@@ -148,7 +148,7 @@ if(isset($_REQUEST['table']))
                         <td>'.$row['PERNOM_INSPECTEUR'].'</td>
                         <td>
                             <div class="btn-group btn-group-xs" role="group" aria-label="...">  
-                              <button type="button" class="btn btn-success">Update</button>
+                              <a class="btn btn-success"href="admin_update.php?type='.$_REQUEST['table'].'&id='.$row['ID_INSPECTEUR'].'">UPDATE</a>
                               <a class="btn btn-danger delete" name="'.$row['ID_INSPECTEUR'].'">Delete</a>
                             </div>
                         </td>
@@ -211,7 +211,7 @@ if(isset($_REQUEST['table']))
                         <td>'.$row['NOM_GERANT'].'</td>
                         <td>'.$row['PRENOM_GERANT'].'</td>
                         <td>
-                            <div class="btn-group btn-group-xs" role="group" aria-label="...">  
+                            <div class="btn-group btn-group-xs" role="group" aria-label="...">
                               <a href="admin_update.php?type='.$_REQUEST['table'].'&id='.$row['ID_GERANT'].'" class="btn btn-success">Update</a>
                               <a class="btn btn-danger delete" name="'.$row['ID_GERANT'].'">Delete</a>
                             </div>

@@ -14,25 +14,6 @@ $new->afficher();
 
 
 <script type="text/javascript">
-$("#submit").click(function () {
-	var params =     {  	departement : "nico aime la bite"
-        }
-    $.ajax({
-        url: "../ajax/valid_ajout_hebergement.php",
-        type: "GET",
-        data :  params,
-
-        success: function (data) {
-        	$("#resultajax").append(data);
-        	console.log(data);
-        },
-        error: function () {
-            alert("fail");
-        }
-    })
-});</script>
-
-<script type="text/javascript">
 $("#hotel").click(function () {
     $.ajax({
         url: "../ajax/switch_hebergement.php",

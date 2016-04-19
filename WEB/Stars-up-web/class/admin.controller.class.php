@@ -74,11 +74,13 @@ class admin_controller{
             case "inspecteur" :
             {
                 $form=$form.'
+                <input type="hidden" class="form-control" id="table" value='.$_GET['type'].'>
+                <input type="hidden" class="form-control" id="id" value='.$_GET['id'].'>
                 <div class="well well-lg">
                     <div class="form-group row">
                         <label for="departement" class="col-sm-2 form-control-label">Département</label>
                         <div class="col-sm-10">
-                            <select class="form-control" id="departement" name="departement">
+                            <select class="form-control" id="specialite" name="specialite">
                                 <option selected>- Spécialité -</option>';
                                 $result= $this->vpdo->return_table('specialite',0,0);
                                 while ($row =$result->fetch())
@@ -92,25 +94,25 @@ class admin_controller{
                     <div class="form-group row">
                         <label for="nom" class="col-sm-2 form-control-label">Nom</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="nom" placeholder="nom">
+                            <input type="text" class="form-control" id="nom" placeholder="nom">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="prenom" class="col-sm-2 form-control-label">Prenom</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="prenom" placeholder="Prenom">
+                            <input type="text" class="form-control" id="prenom" placeholder="Prenom">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="login" class="col-sm-2 form-control-label">Login</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="login" placeholder="Login">
+                            <input type="text" class="form-control" id="login" placeholder="Login">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="mdp" class="col-sm-2 form-control-label">Password</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="mdp" placeholder="••••••••">
+                            <input type="text" class="form-control" id="mdp" placeholder="••••••••">
                         </div>
                     </div>                    
                     <button type="button" id="submit" name="submit" class="btn btn-primary">Submit</button>
