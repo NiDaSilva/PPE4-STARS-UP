@@ -33,6 +33,8 @@ namespace PPE4_Stars_up
 
         ScreenCapture capScreen = new ScreenCapture();
 
+        string family = "Gentium Basic";
+
         // int XX, YY;
 
 
@@ -673,6 +675,96 @@ namespace PPE4_Stars_up
             else
             {
                 pictureBox1.BackgroundImage = PPE4_Stars_up.Properties.Resources.Wallpaper_Gray_Bars_Opera;
+            }
+
+            // Gestion Police
+
+            if (listeElement[7] != "Par défaut")
+            {
+                try
+                {
+                    importToolStripMenuItem.Font = new Font(listeElement[7], importToolStripMenuItem.Font.SizeInPoints, importToolStripMenuItem.Font.Style);
+                    planningToolStripMenuItem.Font = new Font(listeElement[7], planningToolStripMenuItem.Font.SizeInPoints, planningToolStripMenuItem.Font.Style);
+                    historiqueDesVisitesToolStripMenuItem.Font = new Font(listeElement[7], historiqueDesVisitesToolStripMenuItem.Font.SizeInPoints, historiqueDesVisitesToolStripMenuItem.Font.Style);
+                    imprimerPDFToolStripMenuItem.Font = new Font(listeElement[7], imprimerPDFToolStripMenuItem.Font.SizeInPoints, imprimerPDFToolStripMenuItem.Font.Style);
+                    paramètreToolStripMenuItem.Font = new Font(listeElement[7], paramètreToolStripMenuItem.Font.SizeInPoints, paramètreToolStripMenuItem.Font.Style);
+                    lblDate.Font = new Font(listeElement[7], lblDate.Font.SizeInPoints, lblDate.Font.Style);
+                    lblinfo.Font = new Font(listeElement[7], lblinfo.Font.SizeInPoints, lblinfo.Font.Style);
+                    lblInspecteur.Font = new Font(listeElement[7], lblInspecteur.Font.SizeInPoints, lblInspecteur.Font.Style);
+                    lblinfo2.Font = new Font(listeElement[7], lblinfo2.Font.SizeInPoints, lblinfo2.Font.Style);
+                    lblSpecialite.Font = new Font(listeElement[7], lblSpecialite.Font.SizeInPoints, lblSpecialite.Font.Style);
+                    lblheure.Font = new Font(listeElement[7], lblheure.Font.SizeInPoints, lblheure.Font.Style);
+                    lblInfoNbVisiteTotal.Font = new Font(listeElement[7], lblInfoNbVisiteTotal.Font.SizeInPoints, lblInfoNbVisiteTotal.Font.Style);
+                    lblNbVisiteTotal.Font = new Font(listeElement[7], lblNbVisiteTotal.Font.SizeInPoints, lblNbVisiteTotal.Font.Style);
+                    lblNbVisiteToday.Font = new Font(listeElement[7], lblNbVisiteToday.Font.SizeInPoints, lblNbVisiteToday.Font.Style);
+                    lblNbVisitePrevue.Font = new Font(listeElement[7], lblNbVisitePrevue.Font.SizeInPoints, lblNbVisitePrevue.Font.Style);
+                    lblNbVisitePassees.Font = new Font(listeElement[7], lblNbVisitePassees.Font.SizeInPoints, lblNbVisitePassees.Font.Style);
+                    lblNbVisitePasseeNonRemplie.Font = new Font(listeElement[7], lblNbVisitePasseeNonRemplie.Font.SizeInPoints, lblNbVisitePasseeNonRemplie.Font.Style);
+                    lblTiret.Font = new Font(listeElement[7], lblTiret.Font.SizeInPoints, lblTiret.Font.Style);
+                    lblTiret2.Font = new Font(listeElement[7], lblTiret2.Font.SizeInPoints, lblTiret2.Font.Style);
+                    lblTiret4.Font = new Font(listeElement[7], lblTiret4.Font.SizeInPoints, lblTiret4.Font.Style);
+                    lblToday.Font = new Font(listeElement[7], lblToday.Font.SizeInPoints, lblToday.Font.Style);
+                    lbldont.Font = new Font(listeElement[7], lbldont.Font.SizeInPoints, lbldont.Font.Style);
+                    lblPrevue.Font = new Font(listeElement[7], lblPrevue.Font.SizeInPoints, lblPrevue.Font.Style);
+                    lblPassees.Font = new Font(listeElement[7], lblPassees.Font.SizeInPoints, lblPassees.Font.Style);
+                    lblPasseeNonEvaluee.Font = new Font(listeElement[7], lblPasseeNonEvaluee.Font.SizeInPoints, lblPasseeNonEvaluee.Font.Style);
+                }
+                catch
+                {
+                    importToolStripMenuItem.Font = new Font(family, importToolStripMenuItem.Font.SizeInPoints, importToolStripMenuItem.Font.Style);
+                    planningToolStripMenuItem.Font = new Font(family, planningToolStripMenuItem.Font.SizeInPoints, planningToolStripMenuItem.Font.Style);
+                    historiqueDesVisitesToolStripMenuItem.Font = new Font(family, historiqueDesVisitesToolStripMenuItem.Font.SizeInPoints, historiqueDesVisitesToolStripMenuItem.Font.Style);
+                    imprimerPDFToolStripMenuItem.Font = new Font(family, imprimerPDFToolStripMenuItem.Font.SizeInPoints, imprimerPDFToolStripMenuItem.Font.Style);
+                    paramètreToolStripMenuItem.Font = new Font(family, paramètreToolStripMenuItem.Font.SizeInPoints, paramètreToolStripMenuItem.Font.Style);
+                    lblDate.Font = new Font(family, lblDate.Font.SizeInPoints, lblDate.Font.Style);
+                    lblinfo.Font = new Font(family, lblinfo.Font.SizeInPoints, lblinfo.Font.Style);
+                    lblInspecteur.Font = new Font(family, lblInspecteur.Font.SizeInPoints, lblInspecteur.Font.Style);
+                    lblinfo2.Font = new Font(family, lblinfo2.Font.SizeInPoints, lblinfo2.Font.Style);
+                    lblSpecialite.Font = new Font(family, lblSpecialite.Font.SizeInPoints, lblSpecialite.Font.Style);
+                    lblheure.Font = new Font(family, lblheure.Font.SizeInPoints, lblheure.Font.Style);
+                    lblInfoNbVisiteTotal.Font = new Font(family, lblInfoNbVisiteTotal.Font.SizeInPoints, lblInfoNbVisiteTotal.Font.Style);
+                    lblNbVisiteTotal.Font = new Font(family, lblNbVisiteTotal.Font.SizeInPoints, lblNbVisiteTotal.Font.Style);
+                    lblNbVisiteToday.Font = new Font(family, lblNbVisiteToday.Font.SizeInPoints, lblNbVisiteToday.Font.Style);
+                    lblNbVisitePrevue.Font = new Font(family, lblNbVisitePrevue.Font.SizeInPoints, lblNbVisitePrevue.Font.Style);
+                    lblNbVisitePassees.Font = new Font(family, lblNbVisitePassees.Font.SizeInPoints, lblNbVisitePassees.Font.Style);
+                    lblNbVisitePasseeNonRemplie.Font = new Font(family, lblNbVisitePasseeNonRemplie.Font.SizeInPoints, lblNbVisitePasseeNonRemplie.Font.Style);
+                    lblTiret.Font = new Font(family, lblTiret.Font.SizeInPoints, lblTiret.Font.Style);
+                    lblTiret2.Font = new Font(family, lblTiret2.Font.SizeInPoints, lblTiret2.Font.Style);
+                    lblTiret4.Font = new Font(family, lblTiret4.Font.SizeInPoints, lblTiret4.Font.Style);
+                    lblToday.Font = new Font(family, lblToday.Font.SizeInPoints, lblToday.Font.Style);
+                    lbldont.Font = new Font(family, lbldont.Font.SizeInPoints, lbldont.Font.Style);
+                    lblPrevue.Font = new Font(family, lblPrevue.Font.SizeInPoints, lblPrevue.Font.Style);
+                    lblPassees.Font = new Font(family, lblPassees.Font.SizeInPoints, lblPassees.Font.Style);
+                    lblPasseeNonEvaluee.Font = new Font(family, lblPasseeNonEvaluee.Font.SizeInPoints, lblPasseeNonEvaluee.Font.Style);
+                }
+            }
+            else
+            {
+                importToolStripMenuItem.Font = new Font(family, importToolStripMenuItem.Font.SizeInPoints, importToolStripMenuItem.Font.Style);
+                planningToolStripMenuItem.Font = new Font(family, planningToolStripMenuItem.Font.SizeInPoints, planningToolStripMenuItem.Font.Style);
+                historiqueDesVisitesToolStripMenuItem.Font = new Font(family, historiqueDesVisitesToolStripMenuItem.Font.SizeInPoints, historiqueDesVisitesToolStripMenuItem.Font.Style);
+                imprimerPDFToolStripMenuItem.Font = new Font(family, imprimerPDFToolStripMenuItem.Font.SizeInPoints, imprimerPDFToolStripMenuItem.Font.Style);
+                paramètreToolStripMenuItem.Font = new Font(family, paramètreToolStripMenuItem.Font.SizeInPoints, paramètreToolStripMenuItem.Font.Style);
+                lblDate.Font = new Font(family, lblDate.Font.SizeInPoints, lblDate.Font.Style);
+                lblinfo.Font = new Font(family, lblinfo.Font.SizeInPoints, lblinfo.Font.Style);
+                lblInspecteur.Font = new Font(family, lblInspecteur.Font.SizeInPoints, lblInspecteur.Font.Style);
+                lblinfo2.Font = new Font(family, lblinfo2.Font.SizeInPoints, lblinfo2.Font.Style);
+                lblSpecialite.Font = new Font(family, lblSpecialite.Font.SizeInPoints, lblSpecialite.Font.Style);
+                lblheure.Font = new Font(family, lblheure.Font.SizeInPoints, lblheure.Font.Style);
+                lblInfoNbVisiteTotal.Font = new Font(family, lblInfoNbVisiteTotal.Font.SizeInPoints, lblInfoNbVisiteTotal.Font.Style);
+                lblNbVisiteTotal.Font = new Font(family, lblNbVisiteTotal.Font.SizeInPoints, lblNbVisiteTotal.Font.Style);
+                lblNbVisiteToday.Font = new Font(family, lblNbVisiteToday.Font.SizeInPoints, lblNbVisiteToday.Font.Style);
+                lblNbVisitePrevue.Font = new Font(family, lblNbVisitePrevue.Font.SizeInPoints, lblNbVisitePrevue.Font.Style);
+                lblNbVisitePassees.Font = new Font(family, lblNbVisitePassees.Font.SizeInPoints, lblNbVisitePassees.Font.Style);
+                lblNbVisitePasseeNonRemplie.Font = new Font(family, lblNbVisitePasseeNonRemplie.Font.SizeInPoints, lblNbVisitePasseeNonRemplie.Font.Style);
+                lblTiret.Font = new Font(family, lblTiret.Font.SizeInPoints, lblTiret.Font.Style);
+                lblTiret2.Font = new Font(family, lblTiret2.Font.SizeInPoints, lblTiret2.Font.Style);
+                lblTiret4.Font = new Font(family, lblTiret4.Font.SizeInPoints, lblTiret4.Font.Style);
+                lblToday.Font = new Font(family, lblToday.Font.SizeInPoints, lblToday.Font.Style);
+                lbldont.Font = new Font(family, lbldont.Font.SizeInPoints, lbldont.Font.Style);
+                lblPrevue.Font = new Font(family, lblPrevue.Font.SizeInPoints, lblPrevue.Font.Style);
+                lblPassees.Font = new Font(family, lblPassees.Font.SizeInPoints, lblPassees.Font.Style);
+                lblPasseeNonEvaluee.Font = new Font(family, lblPasseeNonEvaluee.Font.SizeInPoints, lblPasseeNonEvaluee.Font.Style);
             }
 
             FormLogin FL = new FormLogin();

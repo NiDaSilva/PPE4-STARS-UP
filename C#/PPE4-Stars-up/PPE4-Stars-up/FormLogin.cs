@@ -28,6 +28,8 @@ namespace PPE4_Stars_up
         string langue = "Francais";
         string fileName2 = @"C:\PPE4_DR\Preferences_PPE4_DR.txt";
 
+        string family = "Gentium Basic";
+
         private string nomInspecteur;
         private string prenomInspecteur;
         private int idInspecteur;
@@ -99,6 +101,7 @@ namespace PPE4_Stars_up
                 listeElement.Add("100");
                 listeElement.Add("Oui");
                 listeElement.Add("Oui");
+                listeElement.Add("Par défaut");
                 listeElement.Add("Par défaut");
 
 
@@ -536,6 +539,33 @@ namespace PPE4_Stars_up
             else
             {
                 this.BackgroundImage = PPE4_Stars_up.Properties.Resources.cool_washing_basic_collor_blue_black_rain_hd_wallpaper_112685;
+            }
+
+            // Gestion Police
+
+            if (listeElement[7] != "Par défaut")
+            {
+                try
+                {
+                    tbNom.Font = new Font(listeElement[7], tbNom.Font.SizeInPoints, tbNom.Font.Style);
+                    tbMdp.Font = new Font(listeElement[7], tbMdp.Font.SizeInPoints, tbMdp.Font.Style);
+                    cbAfficherMdp.Font = new Font(listeElement[7], cbAfficherMdp.Font.SizeInPoints, cbAfficherMdp.Font.Style);
+                    btnOK.Font = new Font(listeElement[7], btnOK.Font.SizeInPoints, btnOK.Font.Style);
+                }
+                catch
+                {
+                    tbNom.Font = new Font(family, tbNom.Font.SizeInPoints, tbNom.Font.Style);
+                    tbMdp.Font = new Font(family, tbMdp.Font.SizeInPoints, tbMdp.Font.Style);
+                    cbAfficherMdp.Font = new Font(family, cbAfficherMdp.Font.SizeInPoints, cbAfficherMdp.Font.Style);
+                    btnOK.Font = new Font(family, btnOK.Font.SizeInPoints, btnOK.Font.Style);
+                }
+            }
+            else
+            {
+                tbNom.Font = new Font(family, tbNom.Font.SizeInPoints, tbNom.Font.Style);
+                tbMdp.Font = new Font(family, tbMdp.Font.SizeInPoints, tbMdp.Font.Style);
+                cbAfficherMdp.Font = new Font(family, cbAfficherMdp.Font.SizeInPoints, cbAfficherMdp.Font.Style);
+                btnOK.Font = new Font(family, btnOK.Font.SizeInPoints, btnOK.Font.Style);
             }
 
         }

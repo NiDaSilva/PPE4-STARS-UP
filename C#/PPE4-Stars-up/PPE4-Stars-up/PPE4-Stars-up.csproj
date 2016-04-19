@@ -273,6 +273,7 @@
     <None Include="Resources\palette-couleur-2.png" />
     <None Include="Resources\colorwheel.png" />
     <None Include="Resources\bbb.jpg" />
+    <None Include="Resources\interface.png" />
     <Content Include="simple-blue-calendar-128.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -24,6 +24,8 @@ namespace PPE4_Stars_up
 
         string fileName2 = @"C:\PPE4_DR\Preferences_PPE4_DR.txt";
 
+        string family = "Gentium Basic";
+
         public FormHistorique()
         {
             InitializeComponent();
@@ -307,6 +309,52 @@ namespace PPE4_Stars_up
             {
                 this.BackgroundImage = PPE4_Stars_up.Properties.Resources.Wallpaper_Gray_Bars_Opera;
                 panel1.BackgroundImage = PPE4_Stars_up.Properties.Resources._2395551_5_x11_wide_spread_professional_high_res_background_template_layout_that_can_be_used_for_any_kind_of_marketing_material_magazines_articles_scrapbook_and_even_advertisements;
+            }
+
+
+            // Gestion Police
+
+            if (listeElement[7] != "Par défaut")
+            {
+                try
+                {
+                    lblTitre.Font = new Font(listeElement[7], lblTitre.Font.SizeInPoints, lblTitre.Font.Style);
+                    gbAffichage.Font = new Font(listeElement[7], gbAffichage.Font.SizeInPoints, gbAffichage.Font.Style);
+                    gbTri.Font = new Font(listeElement[7], gbTri.Font.SizeInPoints, gbTri.Font.Style);
+                    rbTableau.Font = new Font(listeElement[7], rbTableau.Font.SizeInPoints, rbTableau.Font.Style);
+                    rbListe.Font = new Font(listeElement[7], rbListe.Font.SizeInPoints, rbListe.Font.Style);
+                    rbTriDate.Font = new Font(listeElement[7], rbTriDate.Font.SizeInPoints, rbTriDate.Font.Style);
+                    rbTriDepartement.Font = new Font(listeElement[7], rbTriDepartement.Font.SizeInPoints, rbTriDepartement.Font.Style);
+                    rbTriEtoile.Font = new Font(listeElement[7], rbTriEtoile.Font.SizeInPoints, rbTriEtoile.Font.Style);
+                    listBoxHistorique.Font = new Font(listeElement[7], listBoxHistorique.Font.SizeInPoints, listBoxHistorique.Font.Style);
+                    dataGridViewHistorique.Font = new Font(listeElement[7], dataGridViewHistorique.Font.SizeInPoints, dataGridViewHistorique.Font.Style);
+                }
+                catch
+                {
+                    lblTitre.Font = new Font(family, lblTitre.Font.SizeInPoints, lblTitre.Font.Style);
+                    gbAffichage.Font = new Font(family, gbAffichage.Font.SizeInPoints, gbAffichage.Font.Style);
+                    gbTri.Font = new Font(family, gbTri.Font.SizeInPoints, gbTri.Font.Style);
+                    rbTableau.Font = new Font(family, rbTableau.Font.SizeInPoints, rbTableau.Font.Style);
+                    rbListe.Font = new Font(family, rbListe.Font.SizeInPoints, rbListe.Font.Style);
+                    rbTriDate.Font = new Font(family, rbTriDate.Font.SizeInPoints, rbTriDate.Font.Style);
+                    rbTriDepartement.Font = new Font(family, rbTriDepartement.Font.SizeInPoints, rbTriDepartement.Font.Style);
+                    rbTriEtoile.Font = new Font(family, rbTriEtoile.Font.SizeInPoints, rbTriEtoile.Font.Style);
+                    listBoxHistorique.Font = new Font(family, listBoxHistorique.Font.SizeInPoints, listBoxHistorique.Font.Style);
+                    dataGridViewHistorique.Font = new Font(family, dataGridViewHistorique.Font.SizeInPoints, dataGridViewHistorique.Font.Style);
+                }
+            }
+            else
+            {
+                lblTitre.Font = new Font(family, lblTitre.Font.SizeInPoints, lblTitre.Font.Style);
+                gbAffichage.Font = new Font(family, gbAffichage.Font.SizeInPoints, gbAffichage.Font.Style);
+                gbTri.Font = new Font(family, gbTri.Font.SizeInPoints, gbTri.Font.Style);
+                rbTableau.Font = new Font(family, rbTableau.Font.SizeInPoints, rbTableau.Font.Style);
+                rbListe.Font = new Font(family, rbListe.Font.SizeInPoints, rbListe.Font.Style);
+                rbTriDate.Font = new Font(family, rbTriDate.Font.SizeInPoints, rbTriDate.Font.Style);
+                rbTriDepartement.Font = new Font(family, rbTriDepartement.Font.SizeInPoints, rbTriDepartement.Font.Style);
+                rbTriEtoile.Font = new Font(family, rbTriEtoile.Font.SizeInPoints, rbTriEtoile.Font.Style);
+                listBoxHistorique.Font = new Font(family, listBoxHistorique.Font.SizeInPoints, listBoxHistorique.Font.Style);
+                dataGridViewHistorique.Font = new Font(family, dataGridViewHistorique.Font.SizeInPoints, dataGridViewHistorique.Font.Style);
             }
         }
 

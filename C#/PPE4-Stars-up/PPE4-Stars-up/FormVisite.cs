@@ -19,6 +19,8 @@ namespace PPE4_Stars_up
         string FichierLangue = "";
         List<string> LangueElement = new List<string>();
 
+        string family = "Gentium Basic";
+
         string fileName2 = @"C:\PPE4_DR\Preferences_PPE4_DR.txt";
 
         string RecupDateHeureVisite;
@@ -164,6 +166,8 @@ namespace PPE4_Stars_up
             {
                 this.BackgroundImage = PPE4_Stars_up.Properties.Resources.bbb;
             }
+
+            
 
             // Cache Etoile jaune après visite
             pbV1bis.Visible = false;
@@ -365,6 +369,66 @@ namespace PPE4_Stars_up
             btnRetour.Text = LangueElement[79];
             btnSauvegarderVisite.Text = LangueElement[80];
             btnAnnule.Text = LangueElement[81];
+
+            // Gestion Police
+
+            if (listeElement[7] != "Par défaut")
+            {
+
+                try
+                {
+                    foreach (Control x in this.Controls)
+                    {
+                        if (x is TextBox || x is RichTextBox || x is Label || x is Button || x is GroupBox || x is GroupCollection || x is ListBox || x is DataGridView)
+                        {
+                            x.Font = new Font(listeElement[7], x.Font.SizeInPoints, x.Font.Style);
+                        }
+                    }
+
+                    /*
+                    lblVisite.Font = new Font(listeElement[7], lblVisite.Font.SizeInPoints, lblVisite.Font.Style);
+                    lblNomHebergemenr.Font = new Font(listeElement[7], lblNomHebergemenr.Font.SizeInPoints, lblNomHebergemenr.Font.Style);
+                    lblAdresseHebergement.Font = new Font(listeElement[7], lblAdresseHebergement.Font.SizeInPoints, lblAdresseHebergement.Font.Style);
+                    lblNbEtoiles.Font = new Font(listeElement[7], lblNbEtoiles.Font.SizeInPoints, lblNbEtoiles.Font.Style);
+                    lblnom.Font = new Font(listeElement[7], lblnom.Font.SizeInPoints, lblnom.Font.Style);
+                    lbladresse.Font = new Font(listeElement[7], lbladresse.Font.SizeInPoints, lbladresse.Font.Style);
+                    lblville.Font = new Font(listeElement[7], tbNom.Font.SizeInPoints, tbNom.Font.Style);
+                    lblhoraire.Font = new Font(listeElement[7], tbNom.Font.SizeInPoints, tbNom.Font.Style);
+                    lblHoraires.Font = new Font(listeElement[7], tbNom.Font.SizeInPoints, tbNom.Font.Style);
+                    lblCommentaire.Font = new Font(listeElement[7], tbNom.Font.SizeInPoints, tbNom.Font.Style);
+                    rtbCommentaire.Font = new Font(listeElement[7], tbNom.Font.SizeInPoints, tbNom.Font.Style);
+                    lblNote.Font = new Font(listeElement[7], tbNom.Font.SizeInPoints, tbNom.Font.Style);
+                     = new Font(listeElement[7], tbNom.Font.SizeInPoints, tbNom.Font.Style);
+                    btnAnnule.Font = new Font(listeElement[7], tbNom.Font.SizeInPoints, tbNom.Font.Style);
+                    btnRetour.Font = new Font(listeElement[7], tbNom.Font.SizeInPoints, tbNom.Font.Style);
+                    btnSauvegarderVisite.Font = new Font(listeElement[7], tbNom.Font.SizeInPoints, tbNom.Font.Style);
+                    lblDateTitre.Font = new Font(listeElement[7], tbNom.Font.SizeInPoints, tbNom.Font.Style);
+                    */
+                }
+                catch
+                {
+                    foreach (Control x in this.Controls)
+                    {
+                        if (x is TextBox || x is RichTextBox || x is Label || x is Button || x is GroupBox)
+                        {
+                            x.Font = new Font(family, x.Font.SizeInPoints, x.Font.Style);
+                        }
+                    }
+                    // tbNom.Font = new Font(family, tbNom.Font.SizeInPoints, tbNom.Font.Style);
+                }
+
+            }
+            else
+            {
+                foreach (Control x in this.Controls)
+                {
+                    if (x is TextBox || x is RichTextBox || x is Label || x is Button || x is GroupBox)
+                    {
+                        x.Font = new Font(family, x.Font.SizeInPoints, x.Font.Style);
+                    }
+                }
+                // tbNom.Font = new Font(family, tbNom.Font.SizeInPoints, tbNom.Font.Style);
+            }
 
         }
 
