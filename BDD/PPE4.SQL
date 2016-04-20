@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mer 20 Avril 2016 à 12:11
+-- Généré le :  Mer 20 Avril 2016 à 19:41
 -- Version du serveur :  5.7.9
 -- Version de PHP :  5.6.16
 
@@ -330,7 +330,7 @@ CREATE TABLE IF NOT EXISTS `inspecteur` (
   `LOGIN` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `MDP` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `PHOTO` varchar(150) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
-  `TEMPS_CONNEXION` time NOT NULL,
+  `TEMPS_CONNEXION` bigint(255) NOT NULL,
   `ID_DEPARTEMENT` int(11) DEFAULT NULL,
   `DATE_NAISSANCE` date DEFAULT NULL,
   `NATIONALITE` varchar(30) NOT NULL,
@@ -345,12 +345,12 @@ CREATE TABLE IF NOT EXISTS `inspecteur` (
 --
 
 INSERT INTO `inspecteur` (`ID_INSPECTEUR`, `ID_SPECIALITE`, `NOM_INSPECTEUR`, `PERNOM_INSPECTEUR`, `LOGIN`, `MDP`, `PHOTO`, `TEMPS_CONNEXION`, `ID_DEPARTEMENT`, `DATE_NAISSANCE`, `NATIONALITE`) VALUES
-(1, 2, 'Grondin', 'Nicolas', 'NGrondin', 'c6c4940b323ff81c66e02a02e0281c370c535008', 'PDP/NG.jpg', '00:00:00', 49, NULL, 'Française'),
-(2, 3, 'Bouhours', 'Natacha', 'NBouhours', 'c6c4940b323ff81c66e02a02e0281c370c535008', 'PDP/NB.jpg', '00:00:00', 49, '1996-12-05', 'Française'),
-(3, 1, 'Da Silva', 'Nicolas', 'NDSilva', 'c6c4940b323ff81c66e02a02e0281c370c535008', 'PDP/NDS.jpg', '00:00:00', 49, '1995-05-30', 'Française'),
-(4, 1, 'Robin', 'Dimitry', 'Drobin', 'f356a267d8cd8a5f8b3d4ac4164a5ed1a101603f', 'PDP/DR.jpg', '120:00:00', 49, '1996-11-03', 'Française'),
-(5, 3, 'Hermange', 'Pierre', 'PHermange', 'c6c4940b323ff81c66e02a02e0281c370c535008', 'PDP/PH.jpg', '00:00:00', 49, '1997-02-02', 'Française'),
-(6, 1, 'Menant', 'Kévin', 'KMenant', 'c6c4940b323ff81c66e02a02e0281c370c535008', 'PDP/KM.jpg', '00:00:00', 49, '1995-10-05', 'Française');
+(1, 2, 'Grondin', 'Nicolas', 'NGrondin', 'c6c4940b323ff81c66e02a02e0281c370c535008', 'PDP/NG.png', 0, 49, '1971-01-01', 'Française'),
+(2, 3, 'Bouhours', 'Natacha', 'NBouhours', 'c6c4940b323ff81c66e02a02e0281c370c535008', 'PDP/NB.jpg', 0, 49, '1996-12-05', 'Française'),
+(3, 1, 'Da Silva', 'Nicolas', 'NDSilva', 'c6c4940b323ff81c66e02a02e0281c370c535008', 'PDP/NDS.jpg', 0, 49, '1995-05-30', 'Française'),
+(4, 1, 'Robin', 'Dimitry', 'Drobin', 'f356a267d8cd8a5f8b3d4ac4164a5ed1a101603f', 'PDP/DR.jpg', 6548335674445, 49, '1996-11-03', 'Française'),
+(5, 3, 'Hermange', 'Pierre', 'PHermange', 'c6c4940b323ff81c66e02a02e0281c370c535008', 'PDP/PH.jpg', 0, 49, '1997-02-02', 'Française'),
+(6, 1, 'Menant', 'Kévin', 'KMenant', 'c6c4940b323ff81c66e02a02e0281c370c535008', 'PDP/KM.jpg', 0, 49, '1995-10-05', 'Française');
 
 -- --------------------------------------------------------
 
@@ -433,12 +433,12 @@ CREATE TABLE IF NOT EXISTS `temps_connexion` (
 --
 
 INSERT INTO `temps_connexion` (`ID_CONNEXION`, `ID_INSPECTEUR`, `DEBUT_CONNEXION`, `FIN_CONNEXION`) VALUES
-(1, 1, NULL, NULL),
+(1, 1, '2016-04-20 21:35:18', '2016-04-20 21:36:33'),
 (2, 2, NULL, NULL),
 (3, 3, NULL, NULL),
-(4, 4, NULL, NULL),
+(4, 4, '2016-04-20 21:36:38', '2016-04-20 21:36:40'),
 (5, 5, NULL, NULL),
-(6, 6, NULL, NULL);
+(6, 6, '2016-04-20 21:39:33', '2016-04-20 21:39:45');
 
 -- --------------------------------------------------------
 
