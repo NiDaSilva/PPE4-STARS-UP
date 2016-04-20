@@ -151,6 +151,12 @@ namespace PPE4_Stars_up
                 }
                 else  // sinon
                 {
+                    // Fin de connexion
+
+                    // MessageBox.Show(controleur.Vmodele.Dv_temps_con.ToTable().Rows[0][2].ToString());
+                    // MessageBox.Show(DateTime.Now.ToString());
+                    controleur.Vmodele.Dv_temps_con.ToTable().Rows[0][3] = DateTime.Now;
+
                     if (AffichageInputBox() == "Oui")
                     {
                         InputBox(LangueElement[37], "");
@@ -213,6 +219,12 @@ namespace PPE4_Stars_up
 
                     controleur.Vmodele.sedeconnecter();
 
+                    // Début de connexion
+
+                    // MessageBox.Show(controleur.Vmodele.Dv_temps_con.ToTable().Rows[0][2].ToString());
+                    // MessageBox.Show(DateTime.Now.ToString());
+                    controleur.Vmodele.Dv_temps_con.ToTable().Rows[0][2] = DateTime.Now;
+
                     importToolStripMenuItem.Text = LangueElement[13];
                     planningToolStripMenuItem.Enabled = true;
                     historiqueDesVisitesToolStripMenuItem.Enabled = true;
@@ -227,7 +239,17 @@ namespace PPE4_Stars_up
                     lblNbVisitePasseeNonRemplie.Text = controleur.Vmodele.Dv_nb_visite_passee_non_evaluee.ToTable().Rows[0][0].ToString(); // Récupère le nombre de visite passées non évaluées de l'inspecteur
                     lblNbVisitePrevue.Text = controleur.Vmodele.Dv_nb_visite_prevue.ToTable().Rows[0][0].ToString(); // Récupère le nombre de visite prévue de l'inspecteur 
 
-                    pbPDP.ImageLocation = controleur.Vmodele.Dv_pdp.ToTable().Rows[0][0].ToString(); // Récupère le chemin de la photo
+                    if (controleur.Vmodele.Dv_pdp.ToTable().Rows[0][0].ToString() != "")
+                    {
+                        pbPDP.Location = new Point(712, 356);
+                        pbPDP.SizeMode = PictureBoxSizeMode.AutoSize;
+                        pbPDP.ImageLocation = controleur.Vmodele.Dv_pdp.ToTable().Rows[0][6].ToString(); // Récupère le chemin de la photo
+                    }
+                    else
+                    {
+                        pbPDP.ImageLocation = @"PDP/anonyme.png";
+                        pbPDP.Location = new Point(680, 359);
+                    }
 
                     pbPDP.Visible = true;
 
@@ -1082,6 +1104,23 @@ namespace PPE4_Stars_up
             FormParametre FP = new FormParametre();
             // FP.Show();
             FP.ShowDialog();
+        }
+
+        private void pbPDP_Click(object sender, EventArgs e)
+        {
+            historiqueDesVisitesToolStripMenuItem.Enabled = false;
+            planningToolStripMenuItem.Enabled = false;
+            pictureBox1.Visible = false;
+            pbAllemagne.Visible = false;
+            pbAngleterre.Visible = false;
+            pbFrance.Visible = false;
+            pbEspagne.Visible = false;
+            pbParametre.Visible = false;
+            pbPDP.Visible = false;
+            FormProfil FP = new FormProfil();
+            FP.MdiParent = this;
+
+            FP.Show();
         }
 
         public string AffichageInputBox()

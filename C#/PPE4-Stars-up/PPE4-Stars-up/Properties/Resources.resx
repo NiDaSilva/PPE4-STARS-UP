@@ -142,9 +142,6 @@
   <data name="white-wallpaper-18" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\white-wallpaper-18.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="france" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\france.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="etoileV" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\etoileV.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -154,14 +151,20 @@
   <data name="jourJ1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\jourJ1.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="letter" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\letter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="cool_washing_basic_collor_blue_black_rain_hd-wallpaper-112685" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cool_washing_basic_collor_blue_black_rain_hd-wallpaper-112685.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="19057-bubka-totalCommander" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\19057-bubka-totalCommander.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="colors-palette" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\colors-palette.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="jourJ" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\jourJ.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="france" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\france.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bbb" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bbb.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -171,6 +174,9 @@
   </data>
   <data name="palette-couleur-2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\palette-couleur-2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tool" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tool.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Erreur-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Erreur-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -187,17 +193,17 @@
   <data name="2395551-5-x11-wide-spread-professional-high-res-background-template-layout-that-can-be-used-for-any-kind-of-marketing-material-magazines-articles-scrapbook-and-even-advertisements" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\2395551-5-x11-wide-spread-professional-high-res-background-template-layout-that-can-be-used-for-any-kind-of-marketing-material-magazines-articles-scrapbook-and-even-advertisements.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="tool" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\tool.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="jourJ" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\jourJ.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="colors-palette" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\colors-palette.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="colorwheel" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\colorwheel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="abstract blue microsoft windows 1920x1080 wallpaper_www.wallpaperfo.com_92" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\abstract blue microsoft windows 1920x1080 wallpaper_www.wallpaperfo.com_92.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sortie" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sortie.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="espagne" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\espagne.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -214,7 +220,7 @@
   <data name="allemagne" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\allemagne.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="letter" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\letter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="background_profil" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\background_profil.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

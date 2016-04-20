@@ -95,6 +95,12 @@
     <Compile Include="FormParametre.Designer.cs">
       <DependentUpon>FormParametre.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormProfil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormProfil.Designer.cs">
+      <DependentUpon>FormProfil.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormVisite.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,6 +168,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormParametre.resx">
       <DependentUpon>FormParametre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormProfil.resx">
+      <DependentUpon>FormProfil.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormVisite.resx">
       <DependentUpon>FormVisite.cs</DependentUpon>
@@ -276,6 +285,8 @@
     <None Include="Resources\interface.png" />
     <None Include="Resources\tool.png" />
     <None Include="Resources\letter.png" />
+    <None Include="Resources\sortie.png" />
+    <None Include="Resources\background_profil.jpg" />
     <Content Include="simple-blue-calendar-128.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

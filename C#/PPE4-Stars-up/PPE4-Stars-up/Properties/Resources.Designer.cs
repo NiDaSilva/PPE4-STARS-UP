@@ -155,6 +155,16 @@ namespace PPE4_Stars_up.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap background_profil {
+            get {
+                object obj = ResourceManager.GetObject("background_profil", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bbb {
             get {
                 object obj = ResourceManager.GetObject("bbb", resourceCulture);
@@ -328,6 +338,16 @@ namespace PPE4_Stars_up.Properties {
         internal static System.Drawing.Bitmap palette_couleur_2 {
             get {
                 object obj = ResourceManager.GetObject("palette-couleur-2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sortie {
+            get {
+                object obj = ResourceManager.GetObject("sortie", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

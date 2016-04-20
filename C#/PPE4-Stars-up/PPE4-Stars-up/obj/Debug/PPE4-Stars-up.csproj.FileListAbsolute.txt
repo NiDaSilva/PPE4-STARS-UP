@@ -33,3 +33,4 @@ C:\wamp64\www\PPE4-STARS-UP\C#\PPE4-Stars-up\PPE4-Stars-up\bin\Debug\de\PdfSharp
 C:\wamp64\www\PPE4-STARS-UP\C#\PPE4-Stars-up\PPE4-Stars-up\obj\Debug\PPE4_Stars_up.FormParametre.resources
 C:\wamp\www\PPE4-STARS-UP\C#\PPE4-Stars-up\PPE4-Stars-up\bin\Debug\de\PdfSharp.resources.dll
 C:\wamp\www\PPE4-STARS-UP\C#\PPE4-Stars-up\PPE4-Stars-up\obj\Debug\PPE4_Stars_up.FormParametre.resources
+C:\wamp64\www\PPE4-STARS-UP\C#\PPE4-Stars-up\PPE4-Stars-up\obj\Debug\PPE4_Stars_up.FormProfil.resources

@@ -441,6 +441,7 @@
             // 
             // pbPDP
             // 
+            this.pbPDP.BackColor = System.Drawing.Color.Transparent;
             this.pbPDP.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbPDP.ImageLocation = "";
             this.pbPDP.Location = new System.Drawing.Point(712, 356);
@@ -449,6 +450,7 @@
             this.pbPDP.TabIndex = 39;
             this.pbPDP.TabStop = false;
             this.pbPDP.Visible = false;
+            this.pbPDP.Click += new System.EventHandler(this.pbPDP_Click);
             // 
             // FormIndex
             // 

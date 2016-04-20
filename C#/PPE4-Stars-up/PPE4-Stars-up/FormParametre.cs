@@ -60,7 +60,7 @@ namespace PPE4_Stars_up
             reader.Close();
 
 
-            if (AffichageInputBox() == "Oui")
+            if (cbBoiteInputOui.Checked == true)
             {
                 InputBox(LangueElement[122], "");
             }

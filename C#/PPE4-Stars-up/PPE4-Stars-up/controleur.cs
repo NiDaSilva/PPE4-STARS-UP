@@ -83,11 +83,12 @@ namespace PPE4_Stars_up
             
             if (c == 'u') // modif
             {
-                string sortExpression = "ID_HEBERGEMENT";
+                /*
+                string sortExpression = "ID_INSPECTEUR";
                 vmodele.Dv_maj_etoile_commentaire.Sort = sortExpression; // on trie le DataView sur les ID_HEBERGEMENT
                                                                     // on recherche l’indice où se trouve l'inspecteur sélectionné
                                                                     // grâce à la valeur passée en paramètre donc grâce à son Id
-
+*/
                 // MessageBox.Show(recup().ToString());
 
                 index = recup() - 1;
@@ -113,9 +114,41 @@ namespace PPE4_Stars_up
                 vmodele.Dv_maj_etoile_commentaire[index2]["COMMENTAIRE_VISITE"] = commentaire;
             }
 
-            InputBox(LangueElement[88], "");
+            if (AffichageInputBox() == "Oui")
+            {
+                InputBox(LangueElement[88], "");
+            }
+            
 
             // MessageBox.Show("OK : données enregistrées");
+        }
+
+        public static string AffichageInputBox()
+        {
+            string resultat = "";
+
+            StreamReader reader = File.OpenText(fileName2);
+            string ligne;
+
+            List<string> listeElement = new List<string>();
+            while (!reader.EndOfStream)
+            {
+                ligne = reader.ReadLine();
+                listeElement.Add(ligne);
+            }
+            reader.Close();
+
+            // Gestion Affichage InputBox
+            if (listeElement[4] == "Oui")
+            {
+                resultat = "Oui";
+            }
+            else if (listeElement[4] == "Non")
+            {
+                resultat = "Non";
+            }
+
+            return resultat;
         }
 
         private static void lireFichier()

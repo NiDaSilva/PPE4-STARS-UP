@@ -493,7 +493,7 @@ namespace PPE4_Stars_up
             {
                 com = controleur.Vmodele.Dv_maj_etoile_commentaire[compte2]["COMMENTAIRE_VISITE"].ToString();
             }
-
+            
             iii++;
 
             // MessageBox.Show(controleur.Vmodele.Dv_maj_etoile_commentaire[compte2]["COMMENTAIRE_VISITE"].ToString());
