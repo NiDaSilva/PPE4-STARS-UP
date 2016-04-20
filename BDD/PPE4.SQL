@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 19 Avril 2016 à 20:46
+-- Généré le :  Mer 20 Avril 2016 à 12:11
 -- Version du serveur :  5.7.9
 -- Version de PHP :  5.6.16
 
@@ -104,83 +104,82 @@ INSERT INTO `departement` (`ID_DEPARTEMENT`, `LIBELLE_DEPARTEMENT`) VALUES
 (17, 'Charente-Maritime'),
 (18, 'Cher'),
 (19, 'Corrèze'),
-(20, 'Corse-du-sud'),
-(21, 'Haute-corse'),
-(22, 'Côte-d''or'),
-(23, 'Côtes-d''armor'),
-(24, 'Creuse'),
-(25, 'Dordogne'),
-(26, 'Doubs'),
-(27, 'Drôme'),
-(28, 'Eure'),
-(29, 'Eure-et-Loir'),
-(30, 'Finistère'),
-(31, 'Gard'),
-(32, 'Haute-Garonne'),
-(33, 'Gers'),
-(34, 'Gironde'),
-(35, 'Hérault'),
-(36, 'Ile-et-Vilaine'),
-(37, 'Indre'),
-(38, 'Indre-et-Loire'),
-(39, 'Isère'),
-(40, 'Jura'),
-(41, 'Landes'),
-(42, 'Loir-et-Cher'),
-(43, 'Loire'),
-(44, 'Haute-Loire'),
-(45, 'Loire-Atlantique'),
-(46, 'Loiret'),
-(47, 'Lot'),
-(48, 'Lot-et-Garonne'),
-(49, 'Lozère'),
-(50, 'Maine-et-Loire'),
-(51, 'Manche'),
-(52, 'Marne'),
-(53, 'Haute-Marne'),
-(54, 'Mayenne'),
-(55, 'Meurthe-et-Moselle'),
-(56, 'Meuse'),
-(57, 'Morbihan'),
-(58, 'Moselle'),
-(59, 'Nièvre'),
-(60, 'Nord'),
-(61, 'Oise'),
-(62, 'Orne'),
-(63, 'Pas-de-Calais'),
-(64, 'Puy-de-Dôme'),
-(65, 'Pyrénées-Atlantiques'),
-(66, 'Hautes-Pyrénées'),
-(67, 'Pyrénées-Orientales'),
-(68, 'Bas-Rhin'),
-(69, 'Haut-Rhin'),
-(70, 'Rhône'),
-(71, 'Haute-Saône'),
-(72, 'Saône-et-Loire'),
-(73, 'Sarthe'),
-(74, 'Savoie'),
-(75, 'Haute-Savoie'),
-(76, 'Paris'),
-(77, 'Seine-Maritime'),
-(78, 'Seine-et-Marne'),
-(79, 'Yvelines'),
-(80, 'Deux-Sèvres'),
-(81, 'Somme'),
-(82, 'Tarn'),
-(83, 'Tarn-et-Garonne'),
-(84, 'Var'),
-(85, 'Vaucluse'),
-(86, 'Vendée'),
-(87, 'Vienne'),
-(88, 'Haute-Vienne'),
-(89, 'Vosges'),
-(90, 'Yonne'),
-(91, 'Territoire de Belfort'),
-(92, 'Essonne'),
-(93, 'Hauts-de-Seine'),
-(94, 'Seine-Saint-Denis'),
-(95, 'Val-de-Marne'),
-(96, 'Val-d''oise'),
+(20, 'Corse'),
+(21, 'Côte-d''or'),
+(22, 'Côtes-d''armor'),
+(23, 'Creuse'),
+(24, 'Dordogne'),
+(25, 'Doubs'),
+(26, 'Drôme'),
+(27, 'Eure'),
+(28, 'Eure-et-Loir'),
+(29, 'Finistère'),
+(30, 'Gard'),
+(31, 'Haute-Garonne'),
+(32, 'Gers'),
+(33, 'Gironde'),
+(34, 'Hérault'),
+(35, 'Ile-et-Vilaine'),
+(36, 'Indre'),
+(37, 'Indre-et-Loire'),
+(38, 'Isère'),
+(39, 'Jura'),
+(40, 'Landes'),
+(41, 'Loir-et-Cher'),
+(42, 'Loire'),
+(43, 'Haute-Loire'),
+(44, 'Loire-Atlantique'),
+(45, 'Loiret'),
+(46, 'Lot'),
+(47, 'Lot-et-Garonne'),
+(48, 'Lozère'),
+(49, 'Maine-et-Loire'),
+(50, 'Manche'),
+(51, 'Marne'),
+(52, 'Haute-Marne'),
+(53, 'Mayenne'),
+(54, 'Meurthe-et-Moselle'),
+(55, 'Meuse'),
+(56, 'Morbihan'),
+(57, 'Moselle'),
+(58, 'Nièvre'),
+(59, 'Nord'),
+(60, 'Oise'),
+(61, 'Orne'),
+(62, 'Pas-de-Calais'),
+(63, 'Puy-de-Dôme'),
+(64, 'Pyrénées-Atlantiques'),
+(65, 'Hautes-Pyrénées'),
+(66, 'Pyrénées-Orientales'),
+(67, 'Bas-Rhin'),
+(68, 'Haut-Rhin'),
+(69, 'Rhône'),
+(70, 'Haute-Saône'),
+(71, 'Saône-et-Loire'),
+(72, 'Sarthe'),
+(73, 'Savoie'),
+(74, 'Haute-Savoie'),
+(75, 'Paris'),
+(76, 'Seine-Maritime'),
+(77, 'Seine-et-Marne'),
+(78, 'Yvelines'),
+(79, 'Deux-Sèvres'),
+(80, 'Somme'),
+(81, 'Tarn'),
+(82, 'Tarn-et-Garonne'),
+(83, 'Var'),
+(84, 'Vaucluse'),
+(85, 'Vendée'),
+(86, 'Vienne'),
+(87, 'Haute-Vienne'),
+(88, 'Vosges'),
+(89, 'Yonne'),
+(90, 'Territoire de Belfort'),
+(91, 'Essonne'),
+(92, 'Hauts-de-Seine'),
+(93, 'Seine-Saint-Denis'),
+(94, 'Val-de-Marne'),
+(95, 'Val-d''oise'),
 (971, 'Guadeloupe'),
 (972, 'Martinique'),
 (973, 'Guyane'),
@@ -330,22 +329,28 @@ CREATE TABLE IF NOT EXISTS `inspecteur` (
   `PERNOM_INSPECTEUR` varchar(128) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   `LOGIN` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `MDP` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `PHOTO` varchar(150) DEFAULT NULL,
+  `PHOTO` varchar(150) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `TEMPS_CONNEXION` time NOT NULL,
+  `ID_DEPARTEMENT` int(11) DEFAULT NULL,
+  `DATE_NAISSANCE` date DEFAULT NULL,
+  `NATIONALITE` varchar(30) NOT NULL,
   PRIMARY KEY (`ID_INSPECTEUR`),
-  KEY `I_FK_INSPECTEUR_SPECIALITE` (`ID_SPECIALITE`)
+  KEY `I_FK_INSPECTEUR_SPECIALITE` (`ID_SPECIALITE`),
+  KEY `LIBELLE_DEPARTEMENT` (`ID_DEPARTEMENT`),
+  KEY `ID_DEPARTEMENT` (`ID_DEPARTEMENT`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `inspecteur`
 --
 
-INSERT INTO `inspecteur` (`ID_INSPECTEUR`, `ID_SPECIALITE`, `NOM_INSPECTEUR`, `PERNOM_INSPECTEUR`, `LOGIN`, `MDP`, `PHOTO`) VALUES
-(1, 2, 'Grondin', 'Nicolas', 'NGrondin', 'c6c4940b323ff81c66e02a02e0281c370c535008', 'PDP/NG.jpg'),
-(2, 3, 'Bouhours', 'Natacha', 'NBouhours', 'c6c4940b323ff81c66e02a02e0281c370c535008', 'PDP/NB.jpg'),
-(3, 1, 'Da Silva', 'Nicolas', 'NDSilva', 'c6c4940b323ff81c66e02a02e0281c370c535008', 'PDP/NDS.jpg'),
-(4, 1, 'Robin', 'Dimitry', 'Drobin', 'f356a267d8cd8a5f8b3d4ac4164a5ed1a101603f', 'PDP/DR.jpg'),
-(5, 3, 'Hermange', 'Pierre', 'PHermange', 'c6c4940b323ff81c66e02a02e0281c370c535008', 'PDP/PH.jpg'),
-(6, 1, 'Menant', 'KÃ©vin', 'KMenant', 'c6c4940b323ff81c66e02a02e0281c370c535008', 'PDP/KM.jpg');
+INSERT INTO `inspecteur` (`ID_INSPECTEUR`, `ID_SPECIALITE`, `NOM_INSPECTEUR`, `PERNOM_INSPECTEUR`, `LOGIN`, `MDP`, `PHOTO`, `TEMPS_CONNEXION`, `ID_DEPARTEMENT`, `DATE_NAISSANCE`, `NATIONALITE`) VALUES
+(1, 2, 'Grondin', 'Nicolas', 'NGrondin', 'c6c4940b323ff81c66e02a02e0281c370c535008', 'PDP/NG.jpg', '00:00:00', 49, NULL, 'Française'),
+(2, 3, 'Bouhours', 'Natacha', 'NBouhours', 'c6c4940b323ff81c66e02a02e0281c370c535008', 'PDP/NB.jpg', '00:00:00', 49, '1996-12-05', 'Française'),
+(3, 1, 'Da Silva', 'Nicolas', 'NDSilva', 'c6c4940b323ff81c66e02a02e0281c370c535008', 'PDP/NDS.jpg', '00:00:00', 49, '1995-05-30', 'Française'),
+(4, 1, 'Robin', 'Dimitry', 'Drobin', 'f356a267d8cd8a5f8b3d4ac4164a5ed1a101603f', 'PDP/DR.jpg', '120:00:00', 49, '1996-11-03', 'Française'),
+(5, 3, 'Hermange', 'Pierre', 'PHermange', 'c6c4940b323ff81c66e02a02e0281c370c535008', 'PDP/PH.jpg', '00:00:00', 49, '1997-02-02', 'Française'),
+(6, 1, 'Menant', 'Kévin', 'KMenant', 'c6c4940b323ff81c66e02a02e0281c370c535008', 'PDP/KM.jpg', '00:00:00', 49, '1995-10-05', 'Française');
 
 -- --------------------------------------------------------
 
@@ -410,6 +415,34 @@ INSERT INTO `specialite` (`ID_SPECIALITE`, `LIBELLE_SPECIALITE`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `temps_connexion`
+--
+
+DROP TABLE IF EXISTS `temps_connexion`;
+CREATE TABLE IF NOT EXISTS `temps_connexion` (
+  `ID_CONNEXION` int(11) NOT NULL AUTO_INCREMENT,
+  `ID_INSPECTEUR` int(11) DEFAULT NULL,
+  `DEBUT_CONNEXION` datetime DEFAULT NULL,
+  `FIN_CONNEXION` datetime DEFAULT NULL,
+  PRIMARY KEY (`ID_CONNEXION`),
+  KEY `ID_INSPECTEUR` (`ID_INSPECTEUR`) USING BTREE
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `temps_connexion`
+--
+
+INSERT INTO `temps_connexion` (`ID_CONNEXION`, `ID_INSPECTEUR`, `DEBUT_CONNEXION`, `FIN_CONNEXION`) VALUES
+(1, 1, NULL, NULL),
+(2, 2, NULL, NULL),
+(3, 3, NULL, NULL),
+(4, 4, NULL, NULL),
+(5, 5, NULL, NULL),
+(6, 6, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `type_cuisine`
 --
 
@@ -460,7 +493,7 @@ CREATE TABLE IF NOT EXISTS `visite` (
 INSERT INTO `visite` (`ID_VISITE`, `ID_HEBERGEMENT`, `ID_INSPECTEUR`, `ID_SAISON`, `NOMBRE_ETOILE_VISITE`, `DATE_HEURE_VISITE`, `CONTRE_VISITE`, `COMMENTAIRE_VISITE`, `ID_CONTREVISITE`) VALUES
 (20, 1, NULL, 1, NULL, NULL, NULL, NULL, NULL),
 (21, 3, 4, 1, NULL, '2016-04-21 11:00:00', NULL, NULL, NULL),
-(22, 8, 4, 1, NULL, '2016-04-18 09:00:00', NULL, NULL, NULL),
+(22, 8, 4, 1, 2, '2016-04-18 09:00:00', NULL, 'Nul !', NULL),
 (23, 14, NULL, 1, NULL, NULL, NULL, NULL, NULL),
 (24, 5, NULL, 1, NULL, NULL, NULL, NULL, NULL);
 
@@ -505,7 +538,8 @@ ALTER TABLE `hotel`
 -- Contraintes pour la table `inspecteur`
 --
 ALTER TABLE `inspecteur`
-  ADD CONSTRAINT `inspecteur_ibfk_1` FOREIGN KEY (`ID_SPECIALITE`) REFERENCES `specialite` (`ID_SPECIALITE`);
+  ADD CONSTRAINT `inspecteur_ibfk_1` FOREIGN KEY (`ID_SPECIALITE`) REFERENCES `specialite` (`ID_SPECIALITE`),
+  ADD CONSTRAINT `inspecteur_ibfk_2` FOREIGN KEY (`ID_DEPARTEMENT`) REFERENCES `departement` (`ID_DEPARTEMENT`);
 
 --
 -- Contraintes pour la table `posseder`
