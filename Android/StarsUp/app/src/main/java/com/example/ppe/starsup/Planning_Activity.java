@@ -11,6 +11,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -27,6 +29,8 @@ import java.util.HashMap;
 import java.util.List;
 
 
+
+
 public class Planning_Activity extends Activity {
 
     // Progress Dialog
@@ -35,8 +39,7 @@ public class Planning_Activity extends Activity {
     // Creating JSON Parser object
     JSONParser jParser = new JSONParser();
 
-    //Liste des visites
-    ArrayList<HashMap<String, String>> listVisite = new ArrayList<HashMap<String, String>>();
+    ArrayList<HashMap<String, String>> listVisite;
 
     // url to get all products list
     private static String get_visites = "http://192.168.215.10/ppe4-stars-up/get_visites.php";
@@ -44,19 +47,19 @@ public class Planning_Activity extends Activity {
     // products JSONArray
     JSONArray visites = null;
 
-    ListView list_visite = (ListView) findViewById(R.id.list_visites);
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_planning);
 
-
+        //Liste des visites
+        listVisite = new ArrayList<HashMap<String, String>>();
 
 
         //chargement des visites
         new ChargementVisite().execute();
 
+        ListView list_visite = (ListView) findViewById(R.id.list_visites);
 
         //OnClick ****************************************************************************************** à faire
         list_visite.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -161,30 +164,22 @@ public class Planning_Activity extends Activity {
             return null;
         }
 
-        /**
-         * After completing background task Dismiss the progress dialog
-         * *
-         */
+        //After completing background task Dismiss the progress dialog
         protected void onPostExecute(String file_url) {
             // dismiss the dialog after getting all products
             pDialog.dismiss();
             // updating UI from Background Thread
             runOnUiThread(new Runnable() {
                 public void run() {
-                    /**
-                     * Updating parsed JSON data into ListView
-                     * */
+                    //Updating parsed JSON data into ListView
 
                     //Insertion des items dans la vue list_planning
-                    SimpleAdapter adapter = new SimpleAdapter(Planning_Activity.this, listVisite, R.layout.list_planning,
+                    ListAdapter adapter = new SimpleAdapter(Planning_Activity.this, listVisite, R.layout.list_planning,
                             new String[] {"date", "nom", "adresse"}, new int[] {R.id.date, R.id.nom, R.id.adresse});
 
-                    list_visite.setAdapter(adapter);
+                    setListAdapter(adapter);
                 }
             });
-
         }
-
-
     }
 }
