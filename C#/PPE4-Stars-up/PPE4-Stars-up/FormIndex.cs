@@ -22,6 +22,9 @@ namespace PPE4_Stars_up
         private BindingSource bindingSource1 = new BindingSource();
         private BindingSource bindingSource2 = new BindingSource();
 
+        int idI;
+        string test;
+
         private MySqlDataAdapter mySqlDataAdapterTP7 = new MySqlDataAdapter();
         private DataSet dataSetTP7 = new DataSet();
         private DataView dv_specialite = new DataView();
@@ -143,6 +146,14 @@ namespace PPE4_Stars_up
                     InputBox(LangueElement[35], "");
                 }
 
+                // Fin de connexion
+
+                // MessageBox.Show(controleur.Vmodele.Dv_temps_con.ToTable().Rows[0][2].ToString());
+                // MessageBox.Show(DateTime.Now.ToString());
+                // controleur.Vmodele.Dv_temps_con.ToTable().Rows[0][3] = DateTime.Now;
+                // MessageBox.Show(controleur.Vmodele.Dv_temps_con.ToTable().Rows[0][2].ToString());
+                controleur.modif_bdd_fin('u', DateTime.Now, recup() - 1);
+
                 controleur.Vmodele.seconnecter();
 
                 if (controleur.Vmodele.Connopen == false)  // si la connexion échoue : propriété connopen de vmmodele à faux
@@ -151,12 +162,6 @@ namespace PPE4_Stars_up
                 }
                 else  // sinon
                 {
-                    // Fin de connexion
-
-                    // MessageBox.Show(controleur.Vmodele.Dv_temps_con.ToTable().Rows[0][2].ToString());
-                    // MessageBox.Show(DateTime.Now.ToString());
-                    controleur.Vmodele.Dv_temps_con.ToTable().Rows[0][3] = DateTime.Now;
-
                     if (AffichageInputBox() == "Oui")
                     {
                         InputBox(LangueElement[37], "");
@@ -223,7 +228,8 @@ namespace PPE4_Stars_up
 
                     // MessageBox.Show(controleur.Vmodele.Dv_temps_con.ToTable().Rows[0][2].ToString());
                     // MessageBox.Show(DateTime.Now.ToString());
-                    controleur.Vmodele.Dv_temps_con.ToTable().Rows[0][2] = DateTime.Now;
+                    // controleur.Vmodele.Dv_temps_con.ToTable().Rows[0][2] = DateTime.Now;
+                    controleur.modif_bdd_deb('u', DateTime.Now, recup() - 1);
 
                     importToolStripMenuItem.Text = LangueElement[13];
                     planningToolStripMenuItem.Enabled = true;
@@ -239,16 +245,16 @@ namespace PPE4_Stars_up
                     lblNbVisitePasseeNonRemplie.Text = controleur.Vmodele.Dv_nb_visite_passee_non_evaluee.ToTable().Rows[0][0].ToString(); // Récupère le nombre de visite passées non évaluées de l'inspecteur
                     lblNbVisitePrevue.Text = controleur.Vmodele.Dv_nb_visite_prevue.ToTable().Rows[0][0].ToString(); // Récupère le nombre de visite prévue de l'inspecteur 
 
-                    if (controleur.Vmodele.Dv_pdp.ToTable().Rows[0][0].ToString() != "")
+                    if (controleur.Vmodele.Dv_pdp.ToTable().Rows[0][6].ToString() != "")
                     {
-                        pbPDP.Location = new Point(712, 356);
-                        pbPDP.SizeMode = PictureBoxSizeMode.AutoSize;
+                        pbPDP.Location = new Point(695, 359);
+                        pbPDP.SizeMode = PictureBoxSizeMode.Zoom;
                         pbPDP.ImageLocation = controleur.Vmodele.Dv_pdp.ToTable().Rows[0][6].ToString(); // Récupère le chemin de la photo
                     }
                     else
                     {
                         pbPDP.ImageLocation = @"PDP/anonyme.png";
-                        pbPDP.Location = new Point(680, 359);
+                        pbPDP.Location = new Point(679, 359);
                     }
 
                     pbPDP.Visible = true;
@@ -260,6 +266,41 @@ namespace PPE4_Stars_up
             }
         }
 
+        private void lireFichier()
+        {
+
+            // string[] lines = System.IO.File.ReadAllLines(@"C:\PPE4_DR\Preferences_PPE4_DR.txt");
+
+            int counter = 0;
+            string line;
+
+            // Read the file and display it line by line.
+            System.IO.StreamReader file = new System.IO.StreamReader(@"C:\PPE4_DR\Preferences_PPE4_DR.txt");
+
+            while ((line = file.ReadLine()) != null)
+            {
+                counter++;
+                if (counter == 1)
+                {
+
+                    test = line.ToString();
+                }
+            }
+
+            file.Close();
+
+            // test = lines[0].ToString();
+        }
+
+        public int recup()
+        {
+            // Id de l'inspecteur connecté
+
+            lireFichier();
+            idI = Convert.ToInt32(test);
+            return idI;
+        }
+
         private void FormIndex_FormClosed(object sender, FormClosedEventArgs e)
         {
             // Exportation des données
@@ -268,6 +309,8 @@ namespace PPE4_Stars_up
             {
                 InputBox(LangueElement[35], "");
             }
+
+            controleur.modif_bdd_fin('u', DateTime.Now, recup() - 1);
 
             controleur.Vmodele.seconnecter();
 
@@ -315,6 +358,7 @@ namespace PPE4_Stars_up
 
         private void planningToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            MessageBox.Show(controleur.Vmodele.Dv_temps_con.ToTable().Rows[0][2].ToString());
             historiqueDesVisitesToolStripMenuItem.Enabled = false;
             planningToolStripMenuItem.Enabled = false;
             pictureBox1.Visible = false;
@@ -467,6 +511,13 @@ namespace PPE4_Stars_up
             lblPrevue.Parent = pictureBox1;
             lblPrevue.Location = pos22;
             lblPrevue.BackColor = Color.Transparent;
+
+            
+            var pos23 = this.PointToScreen(pbPDP.Location);
+            pos23 = pictureBox1.PointToClient(pos23);
+            pbPDP.Parent = pictureBox1;
+            pbPDP.Location = pos23;
+            pbPDP.BackColor = Color.Transparent;
         }
 
         public void MAJHeure()
@@ -588,7 +639,7 @@ namespace PPE4_Stars_up
 
         private void FormIndex_Load(object sender, EventArgs e)
         {
-            pbPDP.SizeMode = PictureBoxSizeMode.AutoSize;
+            pbPDP.SizeMode = PictureBoxSizeMode.Zoom;
 
             // Gestion de la langue
             StreamReader reader = File.OpenText(fileName2);

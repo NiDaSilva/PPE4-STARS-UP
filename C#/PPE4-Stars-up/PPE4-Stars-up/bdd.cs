@@ -27,7 +27,7 @@ namespace PPE4_Stars_up
 
         private MySqlDataAdapter mySqlDataAdapterTP7 = new MySqlDataAdapter();
         private DataSet dataSetTP7 = new DataSet();
-        private DataView dv_login, dv_visite, dv_specialite, dv_NbEtoiles, dv_Historique, dv_Historique_Dep, dv_Historique_Etoile, dv_maj_etoile_commentaire, dv_inspecteur, dv_nb_visite_total, dv_nb_visite_passee, dv_nb_visite_today, dv_nb_visite_passee_non_evaluee, dv_nb_visite_prevue, dv_pdp, dv_departement, dv_temps_con = new DataView();
+        private DataView dv_login, dv_visite, dv_specialite, dv_NbEtoiles, dv_Historique, dv_Historique_Dep, dv_Historique_Etoile, dv_maj_etoile_commentaire, dv_inspecteur, dv_nb_visite_total, dv_nb_visite_passee, dv_nb_visite_today, dv_nb_visite_passee_non_evaluee, dv_nb_visite_prevue, dv_pdp, dv_departement, dv_temps_con, dv_all_temps_con, dv_maj_tps_con = new DataView();
 
         #region Lecture du fichier
         private void lireFichier()
@@ -289,6 +289,32 @@ namespace PPE4_Stars_up
                 dv_temps_con = value;
             }
         }
+
+        public DataView Dv_all_temps_con
+        {
+            get
+            {
+                return dv_all_temps_con;
+            }
+
+            set
+            {
+                dv_all_temps_con = value;
+            }
+        }
+
+        public DataView Dv_maj_tps_con
+        {
+            get
+            {
+                return dv_maj_tps_con;
+            }
+
+            set
+            {
+                dv_maj_tps_con = value;
+            }
+        }
         #endregion
 
         #region constructeur
@@ -343,7 +369,7 @@ namespace PPE4_Stars_up
         public void import()
         {
             if (!connopen) return;
-            mySqlDataAdapterTP7.SelectCommand = new MySqlCommand("select * from inspecteur; select v.ID_HEBERGEMENT as 'ID', h.NOM_HEBERGEMENT as 'NOM', h.ADRESSE_HEBERGEMENT as 'ADRESSE', h.VILLE_HEBERGEMENT as 'VILLE', v.DATE_HEURE_VISITE as 'DATE', h.HORAIRES, v.COMMENTAIRE_VISITE from visite as v inner join hebergement as h on v.ID_HEBERGEMENT = h.ID_HEBERGEMENT where id_inspecteur =" + recup() + "; SELECT Libelle_specialite FROM specialite as s INNER JOIN inspecteur as i on s.ID_SPECIALITE = i.ID_SPECIALITE where id_inspecteur =" + recup() + "; Select ID_HEBERGEMENT as 'ID', DATE_HEURE_VISITE as 'Date_Heure', NOMBRE_ETOILE_VISITE as 'Nb Etoiles' FROM visite ORDER BY Date_Heure DESC; SELECT v.DATE_HEURE_VISITE as 'Date & Heure', d.LIBELLE_DEPARTEMENT as 'Departement', h.NOM_HEBERGEMENT as 'Hebergement', v.NOMBRE_ETOILE_VISITE as 'Etoile', v.COMMENTAIRE_VISITE as 'Commentaire' FROM departement as d INNER JOIN hebergement as h on d.ID_DEPARTEMENT = h.ID_DEPARTEMENT INNER JOIN visite as v on h.ID_HEBERGEMENT = v.ID_HEBERGEMENT WHERE v.ID_INSPECTEUR =" + recup() + " AND v.DATE_HEURE_VISITE < DATE(NOW()) ORDER BY DATE_HEURE_VISITE ASC; SELECT v.DATE_HEURE_VISITE as 'Date & Heure', d.LIBELLE_DEPARTEMENT as 'Departement', h.NOM_HEBERGEMENT as 'Hebergement', v.NOMBRE_ETOILE_VISITE as 'Etoile', v.COMMENTAIRE_VISITE as 'Commentaire' FROM departement as d INNER JOIN hebergement as h on d.ID_DEPARTEMENT = h.ID_DEPARTEMENT INNER JOIN visite as v on h.ID_HEBERGEMENT = v.ID_HEBERGEMENT WHERE v.ID_INSPECTEUR =" + recup() + " AND v.DATE_HEURE_VISITE < DATE(NOW()) ORDER BY Departement ASC; SELECT v.DATE_HEURE_VISITE as 'Date & Heure', d.LIBELLE_DEPARTEMENT as 'Departement', h.NOM_HEBERGEMENT as 'Hebergement', v.NOMBRE_ETOILE_VISITE as 'Etoile', v.COMMENTAIRE_VISITE as 'Commentaire' FROM departement as d INNER JOIN hebergement as h on d.ID_DEPARTEMENT = h.ID_DEPARTEMENT INNER JOIN visite as v on h.ID_HEBERGEMENT = v.ID_HEBERGEMENT WHERE v.ID_INSPECTEUR =" + recup() + " AND v.DATE_HEURE_VISITE < DATE(NOW()) ORDER BY Etoile ASC; SELECT ID_INSPECTEUR, ID_HEBERGEMENT, COMMENTAIRE_VISITE, NOMBRE_ETOILE_VISITE FROM visite; SELECT CONCAT(PERNOM_INSPECTEUR, ' ', NOM_INSPECTEUR) FROM inspecteur WHERE ID_INSPECTEUR =" + recup() + "; SELECT count(ID_INSPECTEUR) FROM visite WHERE ID_INSPECTEUR =" + recup() + "; Select count(ID_INSPECTEUR) FROM visite WHERE DATE_HEURE_VISITE < DATE(NOW()) AND ID_INSPECTEUR =" + recup() + "; Select count(ID_INSPECTEUR) FROM visite WHERE DAY(DATE_HEURE_VISITE) = DAY(DATE(NOW())) AND MONTH(DATE_HEURE_VISITE) = MONTH(DATE(NOW())) AND YEAR(DATE_HEURE_VISITE) = YEAR(DATE(NOW())) AND ID_INSPECTEUR =" + recup() + "; Select count(ID_INSPECTEUR) FROM visite WHERE DATE_HEURE_VISITE < DATE(NOW()) AND COMMENTAIRE_VISITE IS NULL AND ID_INSPECTEUR =" + recup() + "; Select count(ID_INSPECTEUR) FROM visite WHERE DAY(DATE_HEURE_VISITE) > DAY(DATE(NOW())) AND MONTH(DATE_HEURE_VISITE) >= MONTH(DATE(NOW())) AND YEAR(DATE_HEURE_VISITE) >= YEAR(DATE(NOW())) AND ID_INSPECTEUR =" + recup() + "; SELECT * FROM inspecteur WHERE ID_INSPECTEUR =" + recup() + "; SELECT libelle_departement FROM inspecteur as i INNER JOIN departement as d on i.ID_DEPARTEMENT = d.ID_DEPARTEMENT WHERE ID_INSPECTEUR =" + recup() + "; SELECT ID_CONNEXION, ID_INSPECTEUR, DEBUT_CONNEXION, FIN_CONNEXION FROM temps_connexion where ID_INSPECTEUR =" + recup() + "; ", myConnection);   
+            mySqlDataAdapterTP7.SelectCommand = new MySqlCommand("select * from inspecteur; select v.ID_HEBERGEMENT as 'ID', h.NOM_HEBERGEMENT as 'NOM', h.ADRESSE_HEBERGEMENT as 'ADRESSE', h.VILLE_HEBERGEMENT as 'VILLE', v.DATE_HEURE_VISITE as 'DATE', h.HORAIRES, v.COMMENTAIRE_VISITE from visite as v inner join hebergement as h on v.ID_HEBERGEMENT = h.ID_HEBERGEMENT where id_inspecteur =" + recup() + "; SELECT Libelle_specialite FROM specialite as s INNER JOIN inspecteur as i on s.ID_SPECIALITE = i.ID_SPECIALITE where id_inspecteur =" + recup() + "; Select ID_HEBERGEMENT as 'ID', DATE_HEURE_VISITE as 'Date_Heure', NOMBRE_ETOILE_VISITE as 'Nb Etoiles' FROM visite ORDER BY Date_Heure DESC; SELECT v.DATE_HEURE_VISITE as 'Date & Heure', d.LIBELLE_DEPARTEMENT as 'Departement', h.NOM_HEBERGEMENT as 'Hebergement', v.NOMBRE_ETOILE_VISITE as 'Etoile', v.COMMENTAIRE_VISITE as 'Commentaire' FROM departement as d INNER JOIN hebergement as h on d.ID_DEPARTEMENT = h.ID_DEPARTEMENT INNER JOIN visite as v on h.ID_HEBERGEMENT = v.ID_HEBERGEMENT WHERE v.ID_INSPECTEUR =" + recup() + " AND v.DATE_HEURE_VISITE < DATE(NOW()) ORDER BY DATE_HEURE_VISITE ASC; SELECT v.DATE_HEURE_VISITE as 'Date & Heure', d.LIBELLE_DEPARTEMENT as 'Departement', h.NOM_HEBERGEMENT as 'Hebergement', v.NOMBRE_ETOILE_VISITE as 'Etoile', v.COMMENTAIRE_VISITE as 'Commentaire' FROM departement as d INNER JOIN hebergement as h on d.ID_DEPARTEMENT = h.ID_DEPARTEMENT INNER JOIN visite as v on h.ID_HEBERGEMENT = v.ID_HEBERGEMENT WHERE v.ID_INSPECTEUR =" + recup() + " AND v.DATE_HEURE_VISITE < DATE(NOW()) ORDER BY Departement ASC; SELECT v.DATE_HEURE_VISITE as 'Date & Heure', d.LIBELLE_DEPARTEMENT as 'Departement', h.NOM_HEBERGEMENT as 'Hebergement', v.NOMBRE_ETOILE_VISITE as 'Etoile', v.COMMENTAIRE_VISITE as 'Commentaire' FROM departement as d INNER JOIN hebergement as h on d.ID_DEPARTEMENT = h.ID_DEPARTEMENT INNER JOIN visite as v on h.ID_HEBERGEMENT = v.ID_HEBERGEMENT WHERE v.ID_INSPECTEUR =" + recup() + " AND v.DATE_HEURE_VISITE < DATE(NOW()) ORDER BY Etoile ASC; SELECT ID_INSPECTEUR, ID_HEBERGEMENT, COMMENTAIRE_VISITE, NOMBRE_ETOILE_VISITE FROM visite; SELECT CONCAT(PERNOM_INSPECTEUR, ' ', NOM_INSPECTEUR) FROM inspecteur WHERE ID_INSPECTEUR =" + recup() + "; SELECT count(ID_INSPECTEUR) FROM visite WHERE ID_INSPECTEUR =" + recup() + "; Select count(ID_INSPECTEUR) FROM visite WHERE DATE_HEURE_VISITE < DATE(NOW()) AND ID_INSPECTEUR =" + recup() + "; Select count(ID_INSPECTEUR) FROM visite WHERE DAY(DATE_HEURE_VISITE) = DAY(DATE(NOW())) AND MONTH(DATE_HEURE_VISITE) = MONTH(DATE(NOW())) AND YEAR(DATE_HEURE_VISITE) = YEAR(DATE(NOW())) AND ID_INSPECTEUR =" + recup() + "; Select count(ID_INSPECTEUR) FROM visite WHERE DATE_HEURE_VISITE < DATE(NOW()) AND COMMENTAIRE_VISITE IS NULL AND ID_INSPECTEUR =" + recup() + "; Select count(ID_INSPECTEUR) FROM visite WHERE DAY(DATE_HEURE_VISITE) > DAY(DATE(NOW())) AND MONTH(DATE_HEURE_VISITE) >= MONTH(DATE(NOW())) AND YEAR(DATE_HEURE_VISITE) >= YEAR(DATE(NOW())) AND ID_INSPECTEUR =" + recup() + "; SELECT * FROM inspecteur WHERE ID_INSPECTEUR =" + recup() + "; SELECT libelle_departement FROM inspecteur as i INNER JOIN departement as d on i.ID_DEPARTEMENT = d.ID_DEPARTEMENT WHERE ID_INSPECTEUR =" + recup() + "; SELECT ID_CONNEXION, ID_INSPECTEUR, DEBUT_CONNEXION, FIN_CONNEXION FROM temps_connexion where ID_INSPECTEUR =" + recup() + "; SELECT ID_CONNEXION, ID_INSPECTEUR, DEBUT_CONNEXION, FIN_CONNEXION FROM temps_connexion; select ID_INSPECTEUR, TEMPS_CONNEXION from inspecteur; ", myConnection);   
             
                 try
                 {
@@ -378,7 +404,9 @@ namespace PPE4_Stars_up
                         dv_nb_visite_prevue = dataSetTP7.Tables[13].DefaultView; // Nombre de visite prévue par inspecteur
                         dv_pdp = dataSetTP7.Tables[14].DefaultView; // Photo de profil de l'inspecteur
                         dv_departement = dataSetTP7.Tables[15].DefaultView; // Récupère le departement de l'inspecteur
-                        dv_temps_con = dataSetTP7.Tables[16].DefaultView; // Temps de connexion
+                        dv_temps_con = dataSetTP7.Tables[16].DefaultView; // Temps de connexion par inspecteur
+                        dv_all_temps_con = dataSetTP7.Tables[17].DefaultView; // Tous les temps de connexion 
+                        dv_maj_tps_con = dataSetTP7.Tables[18].DefaultView; // Tous les temps de connexion 
 
                 chargement = true;
                 }
@@ -398,6 +426,7 @@ namespace PPE4_Stars_up
             {
                 if (vaction == 'd' || vaction == 'u')
                 {
+                    
                     MySqlCommand vcommand = myConnection.CreateCommand();
                     if (vtable == 'v') // ‘v’ pour table visite
                     {
@@ -406,6 +435,23 @@ namespace PPE4_Stars_up
 
                     nb = (Int64)vcommand.ExecuteScalar();
                     // on veut savoir si la visite existe encore dans la base
+
+                    MySqlCommand vcommand2 = myConnection.CreateCommand();
+                    if (vtable == 't') // ‘t’ pour table temps_connexion
+                    {
+                        vcommand2.CommandText = "SELECT COUNT(*) FROM temps_connexion WHERE ID_INSPECTEUR = '" + args.Row[0, DataRowVersion.Original] + "'";
+                    }
+
+                    nb = (Int64)vcommand2.ExecuteScalar();
+
+                    MySqlCommand vcommand3 = myConnection.CreateCommand();
+                    if (vtable == 'i') // ‘i’ pour table inspecteur
+                    {
+                        vcommand3.CommandText = "SELECT COUNT(*) FROM inspecteur WHERE ID_INSPECTEUR = '" + args.Row[0, DataRowVersion.Original] + "'";
+                    }
+
+                    nb = (Int64)vcommand3.ExecuteScalar();
+
                 }
                 if (vaction == 'd')
                 {
@@ -435,6 +481,52 @@ namespace PPE4_Stars_up
                     else
                     {
                         if (vtable == 'v')
+                        {
+                            msg = "Pour le numéro des visites : " + args.Row[0, DataRowVersion.Original] + " Impossible MAJ car enr supprimé dans la base";
+                        }
+
+                        rapport.Add(msg);
+                        errmaj = true;
+                    }
+
+                    //
+
+                    if (nb == 1)
+                    {
+                        if (vtable == 't')
+                        {
+                            msg = "Pour le numéro des visites : " + args.Row[0, DataRowVersion.Original] + " Impossible MAJ car enr modifié dans la base";
+                        }
+
+                        rapport.Add(msg);
+                        errmaj = true;
+                    }
+                    else
+                    {
+                        if (vtable == 't')
+                        {
+                            msg = "Pour le numéro des visites : " + args.Row[0, DataRowVersion.Original] + " Impossible MAJ car enr supprimé dans la base";
+                        }
+
+                        rapport.Add(msg);
+                        errmaj = true;
+                    }
+
+                    //
+
+                    if (nb == 1)
+                    {
+                        if (vtable == 'i')
+                        {
+                            msg = "Pour le numéro des visites : " + args.Row[0, DataRowVersion.Original] + " Impossible MAJ car enr modifié dans la base";
+                        }
+
+                        rapport.Add(msg);
+                        errmaj = true;
+                    }
+                    else
+                    {
+                        if (vtable == 'i')
                         {
                             msg = "Pour le numéro des visites : " + args.Row[0, DataRowVersion.Original] + " Impossible MAJ car enr supprimé dans la base";
                         }
@@ -489,9 +581,10 @@ namespace PPE4_Stars_up
 
         public void maj_visite()
         {
+            
             vaction = 'u'; // on précise bien l’action, ici u pour update
             vtable = 'v';
-
+            
             if (!connopen) return;
             //appel d'une méthode sur l'événement modifie d'un enr de la table
             mySqlDataAdapterTP7.RowUpdated += new MySqlRowUpdatedEventHandler(OnRowUpdated);
@@ -509,9 +602,10 @@ namespace PPE4_Stars_up
             mySqlDataAdapterTP7.Update(table.Select(null, null, DataViewRowState.ModifiedCurrent)); 
             //désassocie la méthode sur l'événement maj de la base
             mySqlDataAdapterTP7.RowUpdated -= new MySqlRowUpdatedEventHandler(OnRowUpdated);
+            
         }
 
-        /*
+        
         public void maj_temps_connexion()
         {
             vaction = 'u'; // on précise bien l’action, ici u pour update
@@ -522,22 +616,46 @@ namespace PPE4_Stars_up
             if (!connopen) return;
             //appel d'une méthode sur l'événement modifie d'un enr de la table
             mySqlDataAdapterTP7.RowUpdated += new MySqlRowUpdatedEventHandler(OnRowUpdated);
-            mySqlDataAdapterTP7.UpdateCommand = new MySqlCommand("update temps_connexion set DEBUT_CONNEXION =?deb_con and FIN_CONNEXION =?fin_con where ID_INSPECTEUR = ?id_inspecteur", myConnection);
+            mySqlDataAdapterTP7.UpdateCommand = new MySqlCommand("update temps_connexion set DEBUT_CONNEXION =?deb_con, FIN_CONNEXION =?fin_con where ID_INSPECTEUR = ?id_inspecteur", myConnection);
             //déclaration des variables utiles au commandbuilder
             mySqlDataAdapterTP7.UpdateCommand.Parameters.Add("?id_connexion", MySqlDbType.Int16, 10, "ID_CONNEXION");
             mySqlDataAdapterTP7.UpdateCommand.Parameters.Add("?id_inspecteur", MySqlDbType.Int16, 10, "ID_INSPECTEUR");
-            mySqlDataAdapterTP7.UpdateCommand.Parameters.Add("?deb_con", MySqlDbType.DateTime, 65535, "DEBUT_CONNEXION");
-            mySqlDataAdapterTP7.UpdateCommand.Parameters.Add("?fin_con", MySqlDbType.DateTime, 65535, "FIN_CONNEXION");
+            mySqlDataAdapterTP7.UpdateCommand.Parameters.Add("?deb_con", MySqlDbType.DateTime, 19, "DEBUT_CONNEXION");
+            mySqlDataAdapterTP7.UpdateCommand.Parameters.Add("?fin_con", MySqlDbType.DateTime, 19, "FIN_CONNEXION");
             //on continue même si erreur de MAJ
             mySqlDataAdapterTP7.ContinueUpdateOnError = true;
             //table concernée 16 = temps_connexion
-            DataTable table = dataSetTP7.Tables[16];
+            DataTable table = dataSetTP7.Tables[17];
             //on ne s'occupe que des enregistrement ajoutés en local
             mySqlDataAdapterTP7.Update(table.Select(null, null, DataViewRowState.ModifiedCurrent));
             //désassocie la méthode sur l'événement maj de la base
             mySqlDataAdapterTP7.RowUpdated -= new MySqlRowUpdatedEventHandler(OnRowUpdated);
         }
-        */
+
+        public void maj_tps_co_ins()
+        {
+            vaction = 'u'; // on précise bien l’action, ici u pour update
+            vtable = 'i';
+
+            // update temps_connexion set DEBUT_CONNEXION = "2016-04-15 22:22:22" where ID_INSPECTEUR = 4
+
+            if (!connopen) return;
+            //appel d'une méthode sur l'événement modifie d'un enr de la table
+            mySqlDataAdapterTP7.RowUpdated += new MySqlRowUpdatedEventHandler(OnRowUpdated);
+            mySqlDataAdapterTP7.UpdateCommand = new MySqlCommand("update inspecteur set TEMPS_CONNEXION =?tps_co where ID_INSPECTEUR = ?id_inspecteur", myConnection);
+            //déclaration des variables utiles au commandbuilder
+            mySqlDataAdapterTP7.UpdateCommand.Parameters.Add("?id_inspecteur", MySqlDbType.Int16, 10, "ID_INSPECTEUR");
+            mySqlDataAdapterTP7.UpdateCommand.Parameters.Add("?tps_co", MySqlDbType.Int64, 255, "TEMPS_CONNEXION");
+            //on continue même si erreur de MAJ
+            mySqlDataAdapterTP7.ContinueUpdateOnError = true;
+            //table concernée 16 = temps_connexion
+            DataTable table = dataSetTP7.Tables[18];
+            //on ne s'occupe que des enregistrement ajoutés en local
+            mySqlDataAdapterTP7.Update(table.Select(null, null, DataViewRowState.ModifiedCurrent));
+            //désassocie la méthode sur l'événement maj de la base
+            mySqlDataAdapterTP7.RowUpdated -= new MySqlRowUpdatedEventHandler(OnRowUpdated);
+        }
+
 
         // Suppression Inutile car pas de suppression dans ce projet
 
@@ -591,7 +709,8 @@ namespace PPE4_Stars_up
                     try 
                     {
                          maj_visite();
-                        // maj_temps_connexion();
+                         maj_temps_connexion();
+                         maj_tps_co_ins();
                     }
                     catch (Exception err)
                     {

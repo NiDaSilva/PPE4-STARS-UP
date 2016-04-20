@@ -444,9 +444,9 @@
             this.pbPDP.BackColor = System.Drawing.Color.Transparent;
             this.pbPDP.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbPDP.ImageLocation = "";
-            this.pbPDP.Location = new System.Drawing.Point(712, 356);
+            this.pbPDP.Location = new System.Drawing.Point(679, 359);
             this.pbPDP.Name = "pbPDP";
-            this.pbPDP.Size = new System.Drawing.Size(56, 100);
+            this.pbPDP.Size = new System.Drawing.Size(98, 100);
             this.pbPDP.TabIndex = 39;
             this.pbPDP.TabStop = false;
             this.pbPDP.Visible = false;

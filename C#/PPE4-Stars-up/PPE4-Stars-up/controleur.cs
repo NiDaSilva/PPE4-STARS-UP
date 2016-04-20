@@ -118,7 +118,163 @@ namespace PPE4_Stars_up
             {
                 InputBox(LangueElement[88], "");
             }
+
+            // MessageBox.Show("OK : données enregistrées");
+        }
+
+        public static void modif_bdd_deb(Char c, DateTime deb_con, int index2) // String cle, 
+        {
+            // Gestion de la langue
+            StreamReader reader = File.OpenText(fileName2);
+            string ligne;
+
+            List<string> listeElement = new List<string>();
+            while (!reader.EndOfStream)
+            {
+                ligne = reader.ReadLine();
+                listeElement.Add(ligne);
+            }
+            reader.Close();
+
+            if (listeElement[1] == "Francais")
+            {
+                FichierLangue = "Francais.txt";
+            }
+
+            if (listeElement[1] == "Anglais")
+            {
+                FichierLangue = "Anglais.txt";
+            }
+
+            if (listeElement[1] == "Allemand")
+            {
+                FichierLangue = "Allemand.txt";
+            }
+
+            if (listeElement[1] == "Espagnol")
+            {
+                FichierLangue = "Espagne.txt";
+            }
+
+            StreamReader reader2 = File.OpenText(FichierLangue);
+            string ligne2;
+
+            while (!reader2.EndOfStream)
+            {
+                ligne2 = reader2.ReadLine();
+                LangueElement.Add(ligne2);
+            }
+            reader.Close();
+
+            if (c == 'u') // modif
+            {
+                // MessageBox.Show("Etoile avant : " + vmodele.Dv_maj_etoile_commentaire[index2]["NOMBRE_ETOILE_VISITE"].ToString());
+                // MessageBox.Show("Commentaire avant : " + vmodele.Dv_maj_etoile_commentaire[index2]["COMMENTAIRE_VISITE"].ToString());
+
+                // MessageBox.Show("Etoile apres : " + nb_Etoile.ToString());
+
+                // MessageBox.Show(deb_con.Ticks.ToString());
+                // DateTime dt = new DateTime(deb_con.Ticks);
+                // MessageBox.Show(dt.ToString());
+
+                // on met à jour le dataView avec les nouvelles valeurs
+                vmodele.Dv_all_temps_con[index2]["DEBUT_CONNEXION"] = deb_con;
+            }
+
+            if (AffichageInputBox() == "Oui")
+            {
+                InputBox(LangueElement[88], "");
+            }
+
+
+            // MessageBox.Show("OK : données enregistrées");
+        }
+
+        public static void modif_bdd_fin(Char c, DateTime fin_con, int index2) // String cle, 
+        {
+            // Gestion de la langue
+            StreamReader reader = File.OpenText(fileName2);
+            string ligne;
+
+            List<string> listeElement = new List<string>();
+            while (!reader.EndOfStream)
+            {
+                ligne = reader.ReadLine();
+                listeElement.Add(ligne);
+            }
+            reader.Close();
+
+            if (listeElement[1] == "Francais")
+            {
+                FichierLangue = "Francais.txt";
+            }
+
+            if (listeElement[1] == "Anglais")
+            {
+                FichierLangue = "Anglais.txt";
+            }
+
+            if (listeElement[1] == "Allemand")
+            {
+                FichierLangue = "Allemand.txt";
+            }
+
+            if (listeElement[1] == "Espagnol")
+            {
+                FichierLangue = "Espagne.txt";
+            }
+
+            StreamReader reader2 = File.OpenText(FichierLangue);
+            string ligne2;
+
+            while (!reader2.EndOfStream)
+            {
+                ligne2 = reader2.ReadLine();
+                LangueElement.Add(ligne2);
+            }
+            reader.Close();
+
+            if (c == 'u') // modif
+            {
+                // MessageBox.Show("Etoile avant : " + vmodele.Dv_maj_etoile_commentaire[index2]["NOMBRE_ETOILE_VISITE"].ToString());
+                // MessageBox.Show("Commentaire avant : " + vmodele.Dv_maj_etoile_commentaire[index2]["COMMENTAIRE_VISITE"].ToString());
+
+                // MessageBox.Show("Etoile apres : " + nb_Etoile.ToString());
+                // MessageBox.Show("fin_con : " + fin_con);
+
+                // on met à jour le dataView avec les nouvelles valeurs
+                vmodele.Dv_all_temps_con[index2]["FIN_CONNEXION"] = fin_con;
             
+                // DateTime dt = new DateTime(deb_con.Ticks);
+                // MessageBox.Show(vmodele.Dv_all_temps_con[index2]["DEBUT_CONNEXION"].ToString());
+                // MessageBox.Show(vmodele.Dv_all_temps_con[index2]["FIN_CONNEXION"].ToString());
+
+                DateTime dt = Convert.ToDateTime(vmodele.Dv_all_temps_con[index2]["DEBUT_CONNEXION"].ToString());
+                DateTime dt2 = new DateTime(dt.Ticks);
+                // MessageBox.Show("debut : " + dt2.ToString());
+
+                DateTime dt3 = Convert.ToDateTime(vmodele.Dv_all_temps_con[index2]["FIN_CONNEXION"].ToString());
+                DateTime dt4 = new DateTime(dt3.Ticks);
+                // MessageBox.Show("fin : " + dt4.ToString());
+
+                // Difference in days, hours, and minutes.
+                TimeSpan ts = dt4 - dt2;
+                // MessageBox.Show("Intervalle : " + ts.ToString());
+
+                // MessageBox.Show("En int : " + ts.Ticks.ToString());
+
+                // MessageBox.Show(vmodele.Dv_maj_tps_con[index2]["TEMPS_CONNEXION"].ToString());
+                
+                Int64 fss = Convert.ToInt64(vmodele.Dv_maj_tps_con[index2]["TEMPS_CONNEXION"].ToString());
+                vmodele.Dv_maj_tps_con[index2]["TEMPS_CONNEXION"] = fss + ts.Ticks;
+
+            }
+
+            if (AffichageInputBox() == "Oui")
+            {
+                InputBox(LangueElement[88], "");
+            }
+
 
             // MessageBox.Show("OK : données enregistrées");
         }

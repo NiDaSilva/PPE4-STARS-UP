@@ -76,6 +76,70 @@ namespace PPE4_Stars_up
                 lblResNationalite.Text = "Indisponible";
             }
 
+           // MessageBox.Show(controleur.Vmodele.Dv_pdp.ToTable().Rows[0][7].ToString());
+
+            // Temps de connexion
+            if (controleur.Vmodele.Dv_pdp.ToTable().Rows[0][7].ToString() != "0")
+            {
+                // lblResTpsConnexion.Text = controleur.Vmodele.Dv_pdp.ToTable().Rows[0][7].ToString();
+
+                Int64 fss = Convert.ToInt64(controleur.Vmodele.Dv_pdp.ToTable().Rows[0][7].ToString());
+
+                DateTime dt = new DateTime(fss);
+                // lblResTpsConnexion.Text = dt.ToString();
+
+                int jouur = 0;
+                int mois = 0;
+                int annee = 0;
+
+                 //MessageBox.Show(dt.Day.ToString());
+                 //MessageBox.Show(dt.Month.ToString());
+                 //MessageBox.Show(dt.Year.ToString());
+                 //MessageBox.Show(dt.Hour.ToString());
+
+                if(dt.Day != 1)
+                {
+                    jouur = dt.Day;
+                }
+
+                if (dt.Month != 1)
+                {
+                    mois = dt.Month;
+                }
+
+                if (dt.Year != 1)
+                {
+                    annee = dt.Year;
+                }
+
+                int hour = 0;
+
+                hour = jouur * 24 + mois * 720 + annee * 8760;
+                hour = hour + dt.Hour;
+
+                lblResTpsConnexion.Text = "";
+
+                if (hour.ToString() != "0")
+                {
+                    lblResTpsConnexion.Text += hour.ToString() + " h ";
+                }
+
+                if (dt.Minute.ToString() != "0")
+                {
+                    lblResTpsConnexion.Text += dt.Minute.ToString() + " min ";
+                }
+
+                if (dt.Second.ToString() != "0")
+                {
+                    lblResTpsConnexion.Text += dt.Second.ToString() + " sec";
+                }
+
+            }
+            else
+            {
+                lblResTpsConnexion.Text = "Ø (1ère connexion)";
+            }
+
             pbPDP.Visible = true;
         }
 
