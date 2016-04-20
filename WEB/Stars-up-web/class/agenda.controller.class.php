@@ -31,8 +31,7 @@ class agen_controller{
         <div id="external-events">
 			<h4>Les demandes</h4>
 		</div>
-      </div>
-      <div id="trash">trash</div>?';
+      </div>?';
         return $r;
     }
 
