@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.2
+-- version 4.1.14
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mer 20 Avril 2016 à 19:41
--- Version du serveur :  5.7.9
--- Version de PHP :  5.6.16
+-- Généré le :  Jeu 21 Avril 2016 à 11:54
+-- Version du serveur :  5.6.17
+-- Version de PHP :  5.5.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Base de données :  `ppe4`
@@ -26,7 +26,6 @@ SET time_zone = "+00:00";
 -- Structure de la table `avoir`
 --
 
-DROP TABLE IF EXISTS `avoir`;
 CREATE TABLE IF NOT EXISTS `avoir` (
   `ID_TYPE_CUISINE` int(11) NOT NULL,
   `ID_HEBERGEMENT` int(11) NOT NULL,
@@ -41,7 +40,6 @@ CREATE TABLE IF NOT EXISTS `avoir` (
 -- Structure de la table `camping`
 --
 
-DROP TABLE IF EXISTS `camping`;
 CREATE TABLE IF NOT EXISTS `camping` (
   `ID_HEBERGEMENT` int(11) NOT NULL,
   `NOM_HEBERGEMENT` varchar(128) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
@@ -56,7 +54,6 @@ CREATE TABLE IF NOT EXISTS `camping` (
 -- Structure de la table `chambre_hote`
 --
 
-DROP TABLE IF EXISTS `chambre_hote`;
 CREATE TABLE IF NOT EXISTS `chambre_hote` (
   `ID_HEBERGEMENT` int(11) NOT NULL,
   `NOMBRE_CHAMBRE_HOTE` smallint(6) DEFAULT NULL,
@@ -73,12 +70,11 @@ CREATE TABLE IF NOT EXISTS `chambre_hote` (
 -- Structure de la table `departement`
 --
 
-DROP TABLE IF EXISTS `departement`;
 CREATE TABLE IF NOT EXISTS `departement` (
   `ID_DEPARTEMENT` int(11) NOT NULL AUTO_INCREMENT,
   `LIBELLE_DEPARTEMENT` varchar(128) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`ID_DEPARTEMENT`)
-) ENGINE=InnoDB AUTO_INCREMENT=977 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=977 ;
 
 --
 -- Contenu de la table `departement`
@@ -192,12 +188,11 @@ INSERT INTO `departement` (`ID_DEPARTEMENT`, `LIBELLE_DEPARTEMENT`) VALUES
 -- Structure de la table `equipement_camping`
 --
 
-DROP TABLE IF EXISTS `equipement_camping`;
 CREATE TABLE IF NOT EXISTS `equipement_camping` (
   `ID_EQUIPEMENT_CAMPING` int(11) NOT NULL AUTO_INCREMENT,
   `LIBELLE_EQUIPEMENT_CAMPING` varchar(128) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`ID_EQUIPEMENT_CAMPING`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Contenu de la table `equipement_camping`
@@ -216,7 +211,6 @@ INSERT INTO `equipement_camping` (`ID_EQUIPEMENT_CAMPING`, `LIBELLE_EQUIPEMENT_C
 -- Structure de la table `gerant`
 --
 
-DROP TABLE IF EXISTS `gerant`;
 CREATE TABLE IF NOT EXISTS `gerant` (
   `ID_GERANT` int(11) NOT NULL AUTO_INCREMENT,
   `NOM_GERANT` varchar(128) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
@@ -224,7 +218,7 @@ CREATE TABLE IF NOT EXISTS `gerant` (
   `LOGIN` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `MDP` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`ID_GERANT`)
-) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=56 ;
 
 --
 -- Contenu de la table `gerant`
@@ -245,7 +239,6 @@ INSERT INTO `gerant` (`ID_GERANT`, `NOM_GERANT`, `PRENOM_GERANT`, `LOGIN`, `MDP`
 -- Structure de la table `hebergement`
 --
 
-DROP TABLE IF EXISTS `hebergement`;
 CREATE TABLE IF NOT EXISTS `hebergement` (
   `ID_HEBERGEMENT` int(11) NOT NULL AUTO_INCREMENT,
   `ID_GERANT` int(11) DEFAULT NULL,
@@ -259,7 +252,7 @@ CREATE TABLE IF NOT EXISTS `hebergement` (
   KEY `I_FK_HEBERGEMENT_DEPARTEMENT` (`ID_DEPARTEMENT`),
   KEY `ID_GERANT` (`ID_GERANT`),
   KEY `ID_SPECIALITE` (`ID_SPECIALITE`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
 
 --
 -- Contenu de la table `hebergement`
@@ -269,7 +262,7 @@ INSERT INTO `hebergement` (`ID_HEBERGEMENT`, `ID_GERANT`, `ID_DEPARTEMENT`, `NOM
 (1, 1, 49, 'Hotel Mercure', '2 Allée Du Grand Launay', '49000 Angers', '8h - 18h', 1),
 (2, 2, 49, 'BEST WESTERN', '1 Boulevard Maréchal Foch', '49100 Angers', '8h - 18h', 1),
 (3, 51, 44, 'Ibis Styles', '3 rue du Couedic', '44000 Nantes', '8h - 18h', 1),
-(4, 52, 44, 'BEST WESTERN', '155 Route De Gachet', '44300 Nantes', '8h - 18h', 1),
+(4, 52, 44, 'Hotel F1', '155 Route De Gachet', '44300 Nantes', '8h - 18h', 1),
 (5, 53, 69, 'Studio Part Dieu', '23 rue Riboud', '69003 Lyon', '8h - 18h', 1),
 (6, 54, 69, 'Appart Coeur de Lyon', '72 boulevard Vivier Merle', '69003 Lyon', '8h - 18h', 2),
 (7, 55, 75, 'George Washington', '43 rue Washington', '75008 Paris', '8h - 18h', 2),
@@ -279,7 +272,13 @@ INSERT INTO `hebergement` (`ID_HEBERGEMENT`, `ID_GERANT`, `ID_DEPARTEMENT`, `NOM
 (11, 54, 31, 'Le Clocher de Rodez', '15 Place Jeanne d''Arc', '31000 Toulouse', '8h - 18h', 3),
 (12, 55, 31, 'Hotel de Brienne', '20 Boulevard Maréchal Leclerc', '31000 Toulouse', '8h - 18h', 3),
 (13, 1, 21, 'hotel Mercure', '22 Boulevard De la Mane', '21071 Dijon', '8h - 18h', 3),
-(14, 52, 21, 'hotel Ibis', '2 avenue de Marbotte', '21000 Dijon', '8h - 18h', 3);
+(14, 52, 21, 'hotel Ibis', '2 avenue de Marbotte', '21000 Dijon', '8h - 18h', 3),
+(15, 53, 10, 'Le Flore habitat jeunes', '23 Rue Maupertuis', '72000 Le Mans', '8h - 18h', 3),
+(16, 52, 89, 'La Maison des Oliviers', '77 Chemin de Montaigu', '72000 Le Mans', '8h - 18h', 1),
+(17, 51, 10, 'Centre de l''Etoile', ' 26 Rue Albert Maignan', '72000 Le Mans', '8h - 18h', 1),
+(18, 55, 5, 'Hôtel de la Pommeraie', '314 Rue de l''Éventail', '72000 Le Mans', '8h - 18h', 1),
+(19, 54, 89, 'Hôtel Novotel', 'Bords de l''Huisne, Bd Robert Schuman', '72100 Le Mans', '8h - 18h', 1),
+(20, 1, 55, 'Le Logis de la Contrescarpe', '67 Rue de la Porte Sainte-Anne', '72000 Le Mans', '8h - 18h', 1);
 
 -- --------------------------------------------------------
 
@@ -287,7 +286,6 @@ INSERT INTO `hebergement` (`ID_HEBERGEMENT`, `ID_GERANT`, `ID_DEPARTEMENT`, `NOM
 -- Structure de la table `hotel`
 --
 
-DROP TABLE IF EXISTS `hotel`;
 CREATE TABLE IF NOT EXISTS `hotel` (
   `ID_HEBERGEMENT` int(11) NOT NULL,
   `RESTAURANT_HOTEL` tinyint(1) DEFAULT NULL,
@@ -313,7 +311,12 @@ INSERT INTO `hotel` (`ID_HEBERGEMENT`, `RESTAURANT_HOTEL`, `CHEF_RESTAURANT_HOTE
 (11, 1, 'Dimitri Robin'),
 (12, 0, NULL),
 (13, 0, NULL),
-(14, NULL, NULL);
+(14, NULL, NULL),
+(16, 1, 'Grondin'),
+(17, 1, 'Natacha'),
+(18, 1, 'Pierre'),
+(19, 1, 'Pierre'),
+(20, 1, 'Jamain');
 
 -- --------------------------------------------------------
 
@@ -321,7 +324,6 @@ INSERT INTO `hotel` (`ID_HEBERGEMENT`, `RESTAURANT_HOTEL`, `CHEF_RESTAURANT_HOTE
 -- Structure de la table `inspecteur`
 --
 
-DROP TABLE IF EXISTS `inspecteur`;
 CREATE TABLE IF NOT EXISTS `inspecteur` (
   `ID_INSPECTEUR` int(11) NOT NULL AUTO_INCREMENT,
   `ID_SPECIALITE` int(11) NOT NULL,
@@ -338,19 +340,31 @@ CREATE TABLE IF NOT EXISTS `inspecteur` (
   KEY `I_FK_INSPECTEUR_SPECIALITE` (`ID_SPECIALITE`),
   KEY `LIBELLE_DEPARTEMENT` (`ID_DEPARTEMENT`),
   KEY `ID_DEPARTEMENT` (`ID_DEPARTEMENT`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Contenu de la table `inspecteur`
 --
 
 INSERT INTO `inspecteur` (`ID_INSPECTEUR`, `ID_SPECIALITE`, `NOM_INSPECTEUR`, `PERNOM_INSPECTEUR`, `LOGIN`, `MDP`, `PHOTO`, `TEMPS_CONNEXION`, `ID_DEPARTEMENT`, `DATE_NAISSANCE`, `NATIONALITE`) VALUES
-(1, 2, 'Grondin', 'Nicolas', 'NGrondin', 'c6c4940b323ff81c66e02a02e0281c370c535008', 'PDP/NG.png', 0, 49, '1971-01-01', 'Française'),
-(2, 3, 'Bouhours', 'Natacha', 'NBouhours', 'c6c4940b323ff81c66e02a02e0281c370c535008', 'PDP/NB.jpg', 0, 49, '1996-12-05', 'Française'),
-(3, 1, 'Da Silva', 'Nicolas', 'NDSilva', 'c6c4940b323ff81c66e02a02e0281c370c535008', 'PDP/NDS.jpg', 0, 49, '1995-05-30', 'Française'),
-(4, 1, 'Robin', 'Dimitry', 'Drobin', 'f356a267d8cd8a5f8b3d4ac4164a5ed1a101603f', 'PDP/DR.jpg', 6548335674445, 49, '1996-11-03', 'Française'),
-(5, 3, 'Hermange', 'Pierre', 'PHermange', 'c6c4940b323ff81c66e02a02e0281c370c535008', 'PDP/PH.jpg', 0, 49, '1997-02-02', 'Française'),
-(6, 1, 'Menant', 'Kévin', 'KMenant', 'c6c4940b323ff81c66e02a02e0281c370c535008', 'PDP/KM.jpg', 0, 49, '1995-10-05', 'Française');
+(1, 1, 'Kadera', 'Tata', 'NGrondin', 'c6c4940b323ff81c66e02a02e0281c370c535008', 'PDP/NG.png', 800000000, 49, '1971-01-01', 'Mexicaine'),
+(2, 2, 'Bouhours', 'Natacha', 'NBouhours', 'c6c4940b323ff81c66e02a02e0281c370c535008', 'PDP/NB.jpg', 0, 49, '1996-12-05', 'Française'),
+(3, 3, 'Da Silva', 'Nicolas', 'NDSilva', 'c6c4940b323ff81c66e02a02e0281c370c535008', 'PDP/NDS.jpg', 0, 49, '1995-05-30', 'Française'),
+(4, 1, 'Robin', 'Dimitry', 'Drobin', 'f356a267d8cd8a5f8b3d4ac4164a5ed1a101603f', 'PDP/DR.jpg', 6556595674445, 49, '1996-11-03', 'Française'),
+(5, 2, 'Hermange', 'Pierre', 'PHermange', 'c6c4940b323ff81c66e02a02e0281c370c535008', 'PDP/PH.jpg', 0, 49, '1997-02-02', 'Française'),
+(6, 3, 'Menant', 'Kévin', 'KMenant', 'c6c4940b323ff81c66e02a02e0281c370c535008', 'PDP/KM.jpg', 0, 49, '1995-10-05', 'Française');
+
+--
+-- Déclencheurs `inspecteur`
+--
+DROP TRIGGER IF EXISTS `after_insert_inspecteur`;
+DELIMITER //
+CREATE TRIGGER `after_insert_inspecteur` AFTER INSERT ON `inspecteur`
+ FOR EACH ROW BEGIN
+	INSERT INTO temps_connexion (id_inspecteur) VALUES (new.id_inspecteur);
+END
+//
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -358,7 +372,6 @@ INSERT INTO `inspecteur` (`ID_INSPECTEUR`, `ID_SPECIALITE`, `NOM_INSPECTEUR`, `P
 -- Structure de la table `posseder`
 --
 
-DROP TABLE IF EXISTS `posseder`;
 CREATE TABLE IF NOT EXISTS `posseder` (
   `ID_EQUIPEMENT_CAMPING` int(11) NOT NULL,
   `ID_HEBERGEMENT` int(11) NOT NULL,
@@ -373,12 +386,11 @@ CREATE TABLE IF NOT EXISTS `posseder` (
 -- Structure de la table `saison`
 --
 
-DROP TABLE IF EXISTS `saison`;
 CREATE TABLE IF NOT EXISTS `saison` (
   `ID_SAISON` int(11) NOT NULL AUTO_INCREMENT,
   `LIBELLE_SAISON` varchar(128) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`ID_SAISON`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Contenu de la table `saison`
@@ -388,7 +400,24 @@ INSERT INTO `saison` (`ID_SAISON`, `LIBELLE_SAISON`) VALUES
 (1, 'Hiver 2016'),
 (2, 'Printemps 2016'),
 (3, 'Eté 2016'),
-(4, 'Automne 2016');
+(4, 'Automne 2016'),
+(5, 'Printemps 2019'),
+(6, 'Hiver 2017');
+
+--
+-- Déclencheurs `saison`
+--
+DROP TRIGGER IF EXISTS `before_insert_saison`;
+DELIMITER //
+CREATE TRIGGER `before_insert_saison` BEFORE INSERT ON `saison`
+ FOR EACH ROW BEGIN
+	IF EXISTS(SELECT LIBELLE_SAISON FROM saison where LIBELLE_SAISON = new.LIBELLE_SAISON)
+    THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Deja existant';
+    END IF;
+END
+//
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -396,12 +425,11 @@ INSERT INTO `saison` (`ID_SAISON`, `LIBELLE_SAISON`) VALUES
 -- Structure de la table `specialite`
 --
 
-DROP TABLE IF EXISTS `specialite`;
 CREATE TABLE IF NOT EXISTS `specialite` (
   `ID_SPECIALITE` int(11) NOT NULL AUTO_INCREMENT,
   `LIBELLE_SPECIALITE` varchar(128) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`ID_SPECIALITE`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Contenu de la table `specialite`
@@ -418,25 +446,24 @@ INSERT INTO `specialite` (`ID_SPECIALITE`, `LIBELLE_SPECIALITE`) VALUES
 -- Structure de la table `temps_connexion`
 --
 
-DROP TABLE IF EXISTS `temps_connexion`;
 CREATE TABLE IF NOT EXISTS `temps_connexion` (
   `ID_CONNEXION` int(11) NOT NULL AUTO_INCREMENT,
   `ID_INSPECTEUR` int(11) DEFAULT NULL,
   `DEBUT_CONNEXION` datetime DEFAULT NULL,
   `FIN_CONNEXION` datetime DEFAULT NULL,
   PRIMARY KEY (`ID_CONNEXION`),
-  KEY `ID_INSPECTEUR` (`ID_INSPECTEUR`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+  KEY `ifk_ID_INSPECTEUR` (`ID_INSPECTEUR`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Contenu de la table `temps_connexion`
 --
 
 INSERT INTO `temps_connexion` (`ID_CONNEXION`, `ID_INSPECTEUR`, `DEBUT_CONNEXION`, `FIN_CONNEXION`) VALUES
-(1, 1, '2016-04-20 21:35:18', '2016-04-20 21:36:33'),
+(1, 1, '2016-04-21 09:06:07', '2016-04-21 09:07:27'),
 (2, 2, NULL, NULL),
 (3, 3, NULL, NULL),
-(4, 4, '2016-04-20 21:36:38', '2016-04-20 21:36:40'),
+(4, 4, '2016-04-21 09:40:43', '2016-04-21 09:40:53'),
 (5, 5, NULL, NULL),
 (6, 6, '2016-04-20 21:39:33', '2016-04-20 21:39:45');
 
@@ -446,12 +473,11 @@ INSERT INTO `temps_connexion` (`ID_CONNEXION`, `ID_INSPECTEUR`, `DEBUT_CONNEXION
 -- Structure de la table `type_cuisine`
 --
 
-DROP TABLE IF EXISTS `type_cuisine`;
 CREATE TABLE IF NOT EXISTS `type_cuisine` (
   `ID_TYPE_CUISINE` int(11) NOT NULL AUTO_INCREMENT,
   `LIBELLE_TYPE_CUISINE` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`ID_TYPE_CUISINE`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Contenu de la table `type_cuisine`
@@ -468,7 +494,6 @@ INSERT INTO `type_cuisine` (`ID_TYPE_CUISINE`, `LIBELLE_TYPE_CUISINE`) VALUES
 -- Structure de la table `visite`
 --
 
-DROP TABLE IF EXISTS `visite`;
 CREATE TABLE IF NOT EXISTS `visite` (
   `ID_VISITE` int(11) NOT NULL AUTO_INCREMENT,
   `ID_HEBERGEMENT` int(11) DEFAULT NULL,
@@ -484,29 +509,21 @@ CREATE TABLE IF NOT EXISTS `visite` (
   KEY `I_FK_VISITER_INSPECTEUR` (`ID_INSPECTEUR`),
   KEY `I_FK_VISITER_SAISON` (`ID_SAISON`),
   KEY `ID_CONTREVISITE` (`ID_CONTREVISITE`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=52 ;
 
 --
 -- Contenu de la table `visite`
 --
 
 INSERT INTO `visite` (`ID_VISITE`, `ID_HEBERGEMENT`, `ID_INSPECTEUR`, `ID_SAISON`, `NOMBRE_ETOILE_VISITE`, `DATE_HEURE_VISITE`, `CONTRE_VISITE`, `COMMENTAIRE_VISITE`, `ID_CONTREVISITE`) VALUES
-(20, 1, NULL, 1, NULL, NULL, NULL, NULL, NULL),
-(21, 3, 4, 1, NULL, '2016-04-21 11:00:00', NULL, NULL, NULL),
-(22, 8, 4, 1, 2, '2016-04-18 09:00:00', NULL, 'Nul !', NULL),
-(23, 14, NULL, 1, NULL, NULL, NULL, NULL, NULL),
-(24, 5, NULL, 1, NULL, NULL, NULL, NULL, NULL);
+(48, 1, 1, 6, NULL, NULL, NULL, NULL, NULL),
+(49, 2, 2, 6, NULL, NULL, NULL, NULL, NULL),
+(50, 3, 3, 6, NULL, NULL, NULL, NULL, NULL),
+(51, 4, 4, 6, NULL, NULL, NULL, NULL, NULL);
 
 --
 -- Contraintes pour les tables exportées
 --
-
---
--- Contraintes pour la table `avoir`
---
-ALTER TABLE `avoir`
-  ADD CONSTRAINT `avoir_ibfk_1` FOREIGN KEY (`ID_TYPE_CUISINE`) REFERENCES `type_cuisine` (`ID_TYPE_CUISINE`),
-  ADD CONSTRAINT `avoir_ibfk_2` FOREIGN KEY (`ID_HEBERGEMENT`) REFERENCES `hotel` (`ID_HEBERGEMENT`);
 
 --
 -- Contraintes pour la table `camping`
@@ -547,6 +564,12 @@ ALTER TABLE `inspecteur`
 ALTER TABLE `posseder`
   ADD CONSTRAINT `posseder_ibfk_1` FOREIGN KEY (`ID_EQUIPEMENT_CAMPING`) REFERENCES `equipement_camping` (`ID_EQUIPEMENT_CAMPING`),
   ADD CONSTRAINT `posseder_ibfk_2` FOREIGN KEY (`ID_HEBERGEMENT`) REFERENCES `camping` (`ID_HEBERGEMENT`);
+
+--
+-- Contraintes pour la table `temps_connexion`
+--
+ALTER TABLE `temps_connexion`
+  ADD CONSTRAINT `temps_connexion_ibfk_1` FOREIGN KEY (`ID_INSPECTEUR`) REFERENCES `inspecteur` (`ID_INSPECTEUR`) ON DELETE CASCADE;
 
 --
 -- Contraintes pour la table `visite`
