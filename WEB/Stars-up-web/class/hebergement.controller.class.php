@@ -35,7 +35,7 @@ class controller{
             $retour = $retour . '
             <div class="owl-item">
             <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
+                <div id="' . $row['ID_HEBERGEMENT'] . '" class="thumbnail hotel">
                     <img src="http://placehold.it/350x150" alt="320x150">
                     <div class="caption">
                         <h4><a href="#">' . $row['NOM_HEBERGEMENT'] . '</a></h4>
@@ -46,6 +46,7 @@ class controller{
             </div>
             </div>';
         }
+        $retour = $retour . '<div id="details" class="lesdetails" style="background-color:white; width:465px;height:515px; display:none;"></div>';
         return $retour;
     }
     public function pagination($perPage)
