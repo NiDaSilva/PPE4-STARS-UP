@@ -8,7 +8,9 @@ $vpdo=new mypdo();
 $script = '
 <script type="text/javascript">
 $("#submit").click(function(){
-    $.ajax({
+    if($("#id").val(" "))
+    {
+        $.ajax({
                 url: "../ajax/valid_ajout_hebergement.php",
                 type: "GET",
                 data: ({
@@ -43,18 +45,48 @@ $("#submit").click(function(){
                 },
                 error: function () {
                 }
-            })
+              })
+    }
+    else
+    {
+
+    }
+});
+
+
+$(document).ready(function() {
+    if(!$("#id").val(" "))
+    {
+        $.ajax({
+        url: "../ajax/get_item.php",
+        type: "POST",
+        data: ({table : $("#table").val(),
+                categ : $("#categ").val(),
+                id: $("#id").val()}) 
+        }).done(function(data){
+            data = JSON.parse(data);
+
+                $("#specialite").prop("selectedIndex",data.id_specialite);
+                $("#nom").val(data.nom);
+                $("#prenom").val(data.prenom);
+                $("#login").val(data.login);
+                $("#mdp").val(data.mdp);
+        })
+    }
 });
 
 </script>';
 
 if(isset($_REQUEST['categ']))
 {
+    if(!isset($_GET["id"])){$_GET["id"] = " ";}
 	switch($_REQUEST['categ'])
 	{
 		case "hotel" :
 		{
-			$data='<div id="alertsubmit"></div><input type="hidden" class="form-control" id="table" value="1">
+			$data='<input type="hidden" class="form-control" id="categ" value='.$_GET['categ'].'>
+                <input type="hidden" class="form-control" id="id" value='.$_GET['id'].'>
+            <div id="alertsubmit"></div><input type="hidden" class="form-control" id="table" value="1">
 	            <div class="form-group row">
 	                <label for="departement" class="col-sm-2 form-control-label">Département</label>
 	                <div class="col-sm-10">
@@ -125,7 +157,9 @@ if(isset($_REQUEST['categ']))
 	    	break;
 	    case "camping" :
 	    {
-	    	$data='<div id="alertsubmit"></div><input type="hidden" class="form-control" id="table" value="2">
+	    	$data='<input type="hidden" class="form-control" id="categ" value='.$_GET['categ'].'>
+                <input type="hidden" class="form-control" id="id" value='.$_GET['id'].'>
+            <div id="alertsubmit"></div><input type="hidden" class="form-control" id="table" value="2">
                	<div class="form-group row">
                     <label for="departement" class="col-sm-2 form-control-label">Département</label>
                     <div class="col-sm-10">
@@ -184,7 +218,9 @@ if(isset($_REQUEST['categ']))
 	    	break;
 	    case "chambre" :
 	    {	    
-	    	$data='<div id="alertsubmit"></div><input type="hidden" class="form-control" id="table" value="3">
+	    	$data='<input type="hidden" class="form-control" id="categ" value='.$_GET['categ'].'>
+                <input type="hidden" class="form-control" id="id" value='.$_GET['id'].'>
+            <div id="alertsubmit"></div><input type="hidden" class="form-control" id="table" value="3">
             	<div class="form-group row">
                     <label for="departement" class="col-sm-2 form-control-label">Département</label>
                     <div class="col-sm-10">
