@@ -232,7 +232,18 @@ class mypdo extends PDO
     }
     public function update_visite($tab)
     {
-        
+        $requete = 'INSERT INTO saison (LIBELLE_SAISON) VALUES ("'.$tab['saison'].' '.$tab['annee'].'")';
+        $this->connexion->query($requete);
+        $requete2 ='SELECT * FROM saison WHERE LIBELLE_SAISON = "'.$tab['saison'].' '.$tab['annee'].'";';
+        $id_saison=null;
+        $result = $this->connexion->query($requete2);
+        while ($row =$result->fetch())
+            {
+                $id_saison = $row['ID_SAISON'];
+            }
+        $requete3 = 'UPDATE visite SET ID_HEBERGEMENT = '.$tab['hebergement'].' , ID_SAISON = '.intval($id_saison).' , ID_INSPECTEUR = '.$tab['inspecteur'].' , NOMBRE_ETOILE_VISITE = '.$tab['etoile'].', DATE_HEURE_VISITE = "'.$tab['date'].'" , COMMENTAIRE_VISITE = "'.$tab['commentaire'].'" , ID_CONTREVISITE = '.$tab['id_contrevisite'].' WHERE id_visite = '.$tab['id'].';';
+
+            $this->connexion->query($requete3);        
     }
 /**************************DELETE**********************************/
     public function delete($table,$id){

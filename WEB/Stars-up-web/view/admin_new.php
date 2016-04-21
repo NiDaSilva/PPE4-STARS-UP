@@ -155,4 +155,8 @@ $("#chambre").click(function () {
         }
     })
 });
+
+$(document).ready(function() {
+        $(".hidenew").hide();
+        });
 </script>

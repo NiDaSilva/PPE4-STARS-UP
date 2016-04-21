@@ -36,8 +36,8 @@ class admin_controller{
                     <option value="" disabled selected>Select your option</option>                  
                     <option value ="hebergement">Hebergement</option>
                     <option value="inspecteur">Inspecteur</option>
-                    <option value="gerant">gerant</option>
-                    <option value="visite">visite</option>
+                    <option value="gerant">Gérant</option>
+                    <option value="visite">Visite</option>
                     </select>
                 </form>
                 </div>  
@@ -207,6 +207,52 @@ class admin_controller{
                             </select>
                                 </div>
                             </div>                            
+                        </div>
+                    </div>
+                    <div class="form-group row hidenew">
+                        <label for="inspecteur" class="col-sm-2 form-control-label">Inspecteur</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="inspecteur" name="inspecteur">
+                                <option selected value="null">- Inspecteur -</option>';
+                                $result= $this->vpdo->return_table('inspecteur',0,0);
+                                while ($row =$result->fetch())
+                                {
+                                    $form=$form.'<option value="'.$row['ID_INSPECTEUR'].'">'.$row['NOM_INSPECTEUR'].' '.$row['PERNOM_INSPECTEUR'].'</option>';
+                                }
+                                $form=$form.'                                        
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row hidenew">
+                        <label for="etoile" class="col-sm-2 form-control-label">Etoile</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="etoile">
+                        </div>
+                    </div>
+                    <div class="form-group row hidenew">
+                        <label for="date" class="col-sm-2 form-control-label">DATE HEURE</label>
+                        <div class="col-sm-10">
+                            <input type="datetime-local" class="form-control" id="date">
+                        </div>
+                    </div>
+                    <div class="form-group row hidenew">
+                        <label for="commentaire" class="col-sm-2 form-control-label">Commentaire</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" id="commentaire"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row hidenew">
+                        <label for="id_contrevisite" class="col-sm-2 form-control-label">contre visite de </label>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="id_contrevisite" name="id_contrevisite">
+                                <option selected value="null">- NULL -</option>';
+                                $result= $this->vpdo->return_table('visite',0,0);
+                                while ($row =$result->fetch())
+                                {
+                                    $form=$form.'<option value="'.$row['ID_VISITE'].'">'.$row['ID_VISITE'].'</option>';
+                                }
+                                $form=$form.'                                        
+                            </select>
                         </div>
                     </div>
                     <button type="button" id="submitvisite" name="submit" class="btn btn-primary">Submit</button>
