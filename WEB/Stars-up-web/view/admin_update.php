@@ -59,6 +59,28 @@ $("#submitgerant").click(function(){
                 }
             })
 });
+
+$("#submitvisite").click(function(){
+    $.ajax({
+                url: "../ajax/valid_update_visite.php",
+                type: "GET",
+                data: ({
+                    id : $("#id").val(),
+                    table : $("#table").val(),
+                    hebergement : $("#hebergement").val(),
+                    saison : $("#saison").val(),
+                    annee : $("#annee").val()
+                }),
+
+                success: function (data) {
+                    $("#alertsubmit").empty();
+                    var d = $.parseJSON(data);
+                   $("#alertsubmit").append(d);
+                },
+                error: function () {
+                }
+            })
+});
 </script>
 
 
@@ -87,6 +109,7 @@ $("#submitgerant").click(function(){
                 $("#login").val(data.login);
                 $("#mdp").val(data.mdp);
             }
+        
 
 
 	    })

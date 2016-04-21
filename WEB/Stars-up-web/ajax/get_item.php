@@ -66,7 +66,19 @@ if(isset($_REQUEST['table']) && isset($_REQUEST['id']))
 				
 				break;
 			case 'visite':
-			{}
+			{
+				while ($r =$result->fetch())
+				{				
+			 	    $item=array(
+			 	    	"table" => $table,
+				        "id" => $r["ID_VISITE"],			        
+				        "hebergement" => $r["ID_HEBERGEMENT"],
+				        //////////////////////////::
+				        "saison" => $r[""],// saison annee a separer
+				        "annee" => $r["LOGIN"]
+				    );
+			 	}
+			}
 				
 				break;
 		}
