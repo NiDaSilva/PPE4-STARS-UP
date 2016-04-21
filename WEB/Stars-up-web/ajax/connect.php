@@ -6,7 +6,7 @@ if(isset($_REQUEST["login"]) && isset($_REQUEST["pass"]) && isset($_REQUEST["typ
 {
     $tab=array(
         "login"   => $_REQUEST["login"],
-        "pass"   => $_REQUEST["pass"],
+        "pass"   => sha1($_REQUEST["pass"]),
         "type" => $_REQUEST["type"],
     );
     $result=$vpdo->connect($tab);
