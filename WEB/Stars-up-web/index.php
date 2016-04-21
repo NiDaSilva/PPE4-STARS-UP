@@ -24,6 +24,8 @@ echo'
 
     <!-- Custom CSS -->
     <link href="css/grayscale.css" rel="stylesheet">
+    <link href="owl/owl-carousel/owl.carousel.css" rel="stylesheet">
+    <link href="owl/owl-carousel/owl.theme.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -149,9 +151,6 @@ echo'
                     .'
                         </div>
                     </div>
-                    <div class="col-lg-8 col-lg-offset-2">
-                        <center>'.$controller->pagination(6).'</center>
-                    </div>
                 </div>
             </div>
         </div>
@@ -174,6 +173,7 @@ echo'
 
     <!-- Custom Theme JavaScript -->
     <script src="js/grayscale.js"></script>
+    <script src="owl/owl-carousel/owl.carousel.min.js"></script>
 
 </body>
 
@@ -181,22 +181,12 @@ echo'
 ?>
 <script>
     $(document).ready(function() {
-
-        $("#owl-demo").owlCarousel({
-
-            navigation : true, // Show next and prev buttons
-            slideSpeed : 300,
-            paginationSpeed : 400,
-            singleItem:true
-
-            // "singleItem:true" is a shortcut for:
-            // items : 1,
-            // itemsDesktop : false,
-            // itemsDesktopSmall : false,
-            // itemsTablet: false,
-            // itemsMobile : false
-
+        $('.owl-wrapper').owlCarousel({
+            margin:10,
+            loop:true,
+            autoWidth:true,
+            items:3
         });
-
+        $(".owl-controls").remove();
     });
 </script>
