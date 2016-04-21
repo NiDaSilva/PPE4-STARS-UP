@@ -20,6 +20,11 @@ $agenda->afficher();
                 $('#external-events').append("<div data-overlap='false'  data-id="+agenda.lesdemandes[i].id+" class='fc-event ui-draggable ui-draggable-handle'>"+agenda.lesdemandes[i].title+"</div>");
             }
         }
+        $('#trash').droppable({
+            over: function(event, ui) {
+                ui.draggable.remove();
+            }
+        });
         $('#external-events .fc-event').each(function() {
             $(this).data('event', {
                 id:$.trim($(this).data('id')),

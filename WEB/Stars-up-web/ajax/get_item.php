@@ -17,6 +17,7 @@ if(isset($_REQUEST['table']) && isset($_REQUEST['id']))
 			case 'hebergement':
 			{
 					$r =$result->fetch();
+					
 			 	    $item=array(
 				        "id" => $r["ID_HEBERGEMENT"],
 				        "ID_SPECIALITE" => $r["ID_DEPARTEMENT"],
@@ -25,7 +26,6 @@ if(isset($_REQUEST['table']) && isset($_REQUEST['id']))
 				        "adresse" => $r["ADRESSE_HEBERGEMENT"],
 				        "ville" => $r["VILLE_HEBERGEMENT"],
 				        "horaires" => $r["Horaires"],
-
 				        "specialite"  => $r["ID_SPECIALITE"]
 				    );
 			}
@@ -50,7 +50,19 @@ if(isset($_REQUEST['table']) && isset($_REQUEST['id']))
 				
 				break;
 			case 'gerant':
-			{}
+			{
+				while ($r =$result->fetch())
+				{				
+			 	    $item=array(
+			 	    	"table" => $table,
+				        "id" => $r["ID_GERANT"],			        
+				        "nom" => $r["NOM_GERANT"],
+				        "prenom" => $r["PRENOM_GERANT"],
+				        "login" => $r["LOGIN"],
+				        "mdp" => $r["MDP"]
+				    );
+			 	}
+			}
 				
 				break;
 			case 'visite':

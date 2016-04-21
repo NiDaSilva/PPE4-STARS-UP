@@ -37,6 +37,7 @@ class admin_controller{
                     <option value ="hebergement">Hebergement</option>
                     <option value="inspecteur">Inspecteur</option>
                     <option value="gerant">gerant</option>
+                    <option value="visite">visite</option>
                     </select>
                 </form>
                 </div>  
@@ -73,7 +74,10 @@ class admin_controller{
             break;
             case "inspecteur" :
             {
+                if(!isset($_GET["id"])){$_GET["id"] = " ";}
                 $form=$form.'
+                <div id="alertsubmit">
+                            </div>
                 <input type="hidden" class="form-control" id="table" value='.$_GET['type'].'>
                 <input type="hidden" class="form-control" id="id" value='.$_GET['id'].'>
                 <div class="well well-lg">
@@ -115,9 +119,101 @@ class admin_controller{
                             <input type="text" class="form-control" id="mdp" placeholder="••••••••">
                         </div>
                     </div>                    
-                    <button type="button" id="submit" name="submit" class="btn btn-primary">Submit</button>
+                    <button type="button" id="submitinspecteur" name="submit" class="btn btn-primary">Submit</button>
                 </div> ';
             }
+            break;
+            case "gerant" :
+            {
+                if(!isset($_GET["id"])){$_GET["id"] = " ";}
+                $form=$form.'
+                <div id="alertsubmit">
+                            </div>
+                <input type="hidden" class="form-control" id="table" value='.$_GET['type'].'>
+                <input type="hidden" class="form-control" id="id" value='.$_GET['id'].'>
+                <div class="well well-lg">
+                    <div class="form-group row">
+                        <label for="nom" class="col-sm-2 form-control-label">Nom</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="nom" placeholder="nom">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="prenom" class="col-sm-2 form-control-label">Prenom</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="prenom" placeholder="Prenom">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="login" class="col-sm-2 form-control-label">Login</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="login" placeholder="Login">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="mdp" class="col-sm-2 form-control-label">Password</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="mdp" placeholder="••••••••">
+                        </div>
+                    </div>                    
+                    <button type="button" id="submitgerant" name="submit" class="btn btn-primary">Submit</button>
+                </div> ';
+            }
+            break;
+            case "visite" :
+            {
+                if(!isset($_GET["id"])){$_GET["id"] = " ";}
+                $form=$form.'
+                <div id="alertsubmit">
+                            </div>
+                <input type="hidden" class="form-control" id="table" value='.$_GET['type'].'>
+                <input type="hidden" class="form-control" id="id" value='.$_GET['id'].'>
+                <div class="well well-lg">
+                    <div class="form-group row">
+                        <label for="hebergement" class="col-sm-2 form-control-label">HEBERGEMENT</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="hebergement" name="hebergement">
+                                <option selected>- hebergement -</option>';
+                                $result= $this->vpdo->return_table('hebergement',0,0);
+                                while ($row =$result->fetch())
+                                {
+                                    $form=$form.'<option value="'.$row['ID_HEBERGEMENT'].'">'.$row['NOM_HEBERGEMENT'].'</option>';
+                                }
+                                $form=$form.'                                        
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="saison" class="col-sm-2 form-control-label">SAISON</label>
+                        <div class="col-sm-10">
+                            <div class="input-group">
+                                <div class="col-sm-6">
+                                <select class="form-control" id="saison" name="saison">
+                                    <option selected>-saison -</option>
+                                    <option value="Hiver">Hiver</option> 
+                                    <option value="Printemps">Printemps</option> 
+                                    <option value="Eté">Eté</option> 
+                                    <option value="Automne">Automne</option>
+                                </select>
+                                </div>
+                                <div class="col-sm-6">
+                                <select class="form-control" id="annee" name="annee">
+                                <option selected>- Année -</option>';
+                                $annee= intval(date("Y"));
+                                for ($i=$annee; $i < ($annee+10) ; $i++) { 
+                                   $form=$form.'<option value="'.$i.'">'.$i.'</option>';
+                                }
+                                $form=$form.'                                        
+                            </select>
+                                </div>
+                            </div>                            
+                        </div>
+                    </div>
+                    <button type="button" id="submitvisite" name="submit" class="btn btn-primary">Submit</button>
+                </div> ';
+            }
+            break;
+
         } 
         $form=$form.'        
         </form>

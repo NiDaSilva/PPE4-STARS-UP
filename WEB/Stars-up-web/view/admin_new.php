@@ -12,7 +12,87 @@ $new->afficher();
 ?>
 
 
+<script type="text/javascript"> //submit inspecteur
+$("#submitinspecteur").click(function(){
+    $.ajax({
+                url: "../ajax/valid_ajout_inspecteur.php",
+                type: "GET",
+                data: ({
 
+                    table : $("#table").val(),
+                    specialite : $("#specialite").val(),
+                    nom : $("#nom").val(),
+                    prenom : $("#prenom").val(),
+                    login : $("#login").val(),
+                    password: $("#mdp").val()
+                }),
+
+                success: function (data) {
+                    $("#alertsubmit").empty();
+                    var d = $.parseJSON(data);
+                   $("#alertsubmit").append(d);
+                    $("#specialite").prop("selectedIndex",0);
+                    $("#nom").val("");
+                    $("#prenom").val("");
+                    $("#login").val("");
+                    $("#mdp").val("");
+                },
+                error: function () {
+                }
+            })
+});
+
+$("#submitgerant").click(function(){
+    $.ajax({
+                url: "../ajax/valid_ajout_gerant.php",
+                type: "GET",
+                data: ({
+
+                    table : $("#table").val(),
+                    nom : $("#nom").val(),
+                    prenom : $("#prenom").val(),
+                    login : $("#login").val(),
+                    password: $("#mdp").val()
+                }),
+
+                success: function (data) {
+                    $("#alertsubmit").empty();
+                    var d = $.parseJSON(data);
+                   $("#alertsubmit").append(d);
+                    $("#nom").val("");
+                    $("#prenom").val("");
+                    $("#login").val("");
+                    $("#mdp").val("");
+                },
+                error: function () {
+                }
+            })
+});
+
+$("#submitvisite").click(function(){
+    $.ajax({
+                url: "../ajax/valid_ajout_visite.php",
+                type: "GET",
+                data: ({
+                    table : $("#table").val(),
+                    hebergement : $("#hebergement").val(),
+                    saison : $("#saison").val(),
+                    annee : $("#annee").val()
+                }),
+
+                success: function (data) {
+                    $("#alertsubmit").empty();
+                    var d = $.parseJSON(data);
+                   $("#alertsubmit").append(d);
+                    $("#hebergement").prop("selectedIndex",0);
+                    $("#saison").prop("selectedIndex",0);
+                    $("#annee").prop("selectedIndex",0);
+                },
+                error: function () {
+                }
+            })
+});
+</script>
 <script type="text/javascript">
 $("#hotel").click(function () {
     $.ajax({

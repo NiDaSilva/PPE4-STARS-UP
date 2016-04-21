@@ -159,15 +159,28 @@ class mypdo extends PDO
     }
     public function insert_inspecteur($tab)
     {
-
+        $requete = 'INSERT INTO inspecteur (ID_SPECIALITE, NOM_INSPECTEUR, PERNOM_INSPECTEUR, LOGIN, MDP) VALUES ('.$tab['specialite'].',"'.$tab['nom'].'","'.$tab['prenom'].'","'.$tab['login'].'","'.$tab['password'].'"); ';
+        $this->connexion->query($requete);
     }
     public function insert_gerant($tab)
     {
-        
+        $requete ='INSERT INTO gerant (NOM_GERANT,PRENOM_GERANT, LOGIN, MDP) VALUES("'.$tab['nom'].'","'.$tab['prenom'].'","'.$tab['login'].'","'.$tab['password'].'");';
+        $this->connexion->query($requete);
     }
     public function insert_visite($tab)
     {
-        
+        $requete = 'INSERT INTO saison (LIBELLE_SAISON) VALUES ("'.$tab['saison'].' '.$tab['annee'].'")';
+        $this->connexion->query($requete);
+        $requete2 ='SELECT * FROM saison WHERE LIBELLE_SAISON = "'.$tab['saison'].' '.$tab['annee'].'";';
+        $id_saison=null;
+        $result = $this->connexion->query($requete2);
+        while ($row =$result->fetch())
+            {
+                $id_saison = $row['ID_SAISON'];
+            }
+        $requete3 = 'INSERT INTO visite (ID_HEBERGEMENT,ID_SAISON) VALUES ('.$tab['hebergement'].','.intval($id_saison).');';
+        $this->connexion->query($requete3);
+
     }
 /************************READ***********************************/
     public function count_row($nomtable)
@@ -209,11 +222,13 @@ class mypdo extends PDO
     }
     public function update_inspecteur($tab)
     {
-        
+        $requete = 'UPDATE inspecteur SET ID_SPECIALITE='.$tab['specialite'].' , NOM_INSPECTEUR ="'.$tab['nom'].'" , PERNOM_INSPECTEUR="'.$tab['prenom'].'" , LOGIN="'.$tab['login'].'" , MDP="'.$tab['password'].'" WHERE ID_INSPECTEUR = '.$tab['id'].'; ';
+        $this->connexion->query($requete);
     }
     public function update_gerant($tab)
     {
-        
+        $requete = 'UPDATE gerant SET NOM_GERANT ="'.$tab['nom'].'" , PRENOM_GERANT="'.$tab['prenom'].'" , LOGIN="'.$tab['login'].'" , MDP="'.$tab['password'].'" WHERE ID_GERANT = '.$tab['id'].'; ';
+        $this->connexion->query($requete);
     }
     public function update_visite($tab)
     {

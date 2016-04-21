@@ -4,11 +4,10 @@
 include_once('../class/mypdo.class.php');
 $vpdo=new mypdo();
 $tab=array();
+
 //test validation frd champ a faire.
-//test validation frd champ a faire.
-		if($_REQUEST['specialite']!= 0)
+		if($_REQUEST['nom']!=null)
 		{
-			$tab['specialite']=intval($_REQUEST['specialite']);
 			$tab['nom']=$_REQUEST['nom'];
 			$tab['prenom']=$_REQUEST['prenom'];
 			$tab['login']=$_REQUEST['login'];
@@ -19,7 +18,7 @@ $tab=array();
 						'.$_REQUEST['table'].' '.$tab['nom'].' Ajouté !
 				</div>
 				';
-			$vpdo->insert_inspecteur($tab);
+			$vpdo->insert_gerant($tab);
 		}
 		else
 		{

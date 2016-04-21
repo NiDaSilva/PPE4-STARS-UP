@@ -9,6 +9,7 @@ $tab=array();
 		if($_REQUEST['specialite']!= 0)
 		{
 			$tab['specialite']=intval($_REQUEST['specialite']);
+			$tab['id']=intval($_REQUEST['id']);
 			$tab['nom']=$_REQUEST['nom'];
 			$tab['prenom']=$_REQUEST['prenom'];
 			$tab['login']=$_REQUEST['login'];
@@ -16,10 +17,10 @@ $tab=array();
 			$tab['alert']='
 				<div class="alert alert-success alert-dismissible" role="alert">
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						'.$_REQUEST['table'].' '.$tab['nom'].' Ajouté !
+						'.$_REQUEST['table'].' '.$tab['nom'].' Modifier !
 				</div>
 				';
-			$vpdo->insert_inspecteur($tab);
+			$vpdo->update_inspecteur($tab);
 		}
 		else
 		{

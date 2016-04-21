@@ -21,15 +21,15 @@ var agenda= {
         });
     },
 
-    update_visite: function (idE,date) {
+    update_visite: function ($id,$date) {
         $.ajax({
             url: "../ajax/update_visite.php",
             type: "POST",
-            data: ({id:idE, date:date})
+            data: ({id: $id, date:$date})
         }).done(function (data) {
             data = JSON.parse(data);
             agenda.lesvisites=data.visites;
-            $('.fc-event[data-id='+idE+']').remove();
+            console.log($(".fc-event").attr('data-id', $id));
         });
     }
 
