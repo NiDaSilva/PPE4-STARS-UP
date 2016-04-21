@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -12,6 +14,12 @@ namespace PPE4_Stars_up
 {
     public partial class FormProfil : Form
     {
+        string FichierLangue = "";
+        List<string> LangueElement = new List<string>();
+
+        string fileName2 = @"C:\PPE4_DR\Preferences_PPE4_DR.txt";
+        string family = "Gentium Basic";
+
         public FormProfil()
         {
             InitializeComponent();
@@ -29,6 +37,156 @@ namespace PPE4_Stars_up
 
         private void FormProfil_Load(object sender, EventArgs e)
         {
+            // Gestion de la langue
+            StreamReader reader = File.OpenText(fileName2);
+            string ligne;
+
+            List<string> listeElement = new List<string>();
+            while (!reader.EndOfStream)
+            {
+                ligne = reader.ReadLine();
+                listeElement.Add(ligne);
+            }
+            reader.Close();
+
+            if (listeElement[1] == "Francais")
+            {
+                FichierLangue = "Francais.txt";
+            }
+
+            if (listeElement[1] == "Anglais")
+            {
+                FichierLangue = "Anglais.txt";
+            }
+
+            if (listeElement[1] == "Allemand")
+            {
+                FichierLangue = "Allemand.txt";
+            }
+
+            if (listeElement[1] == "Espagnol")
+            {
+                FichierLangue = "Espagne.txt";
+            }
+
+            StreamReader reader2 = File.OpenText(FichierLangue);
+            string ligne2;
+
+            while (!reader2.EndOfStream)
+            {
+                ligne2 = reader2.ReadLine();
+                LangueElement.Add(ligne2);
+            }
+            reader.Close();
+
+            this.Text = LangueElement[129];
+            lblTpsConnexion.Text = LangueElement[130];
+            lblDep.Text = LangueElement[131];
+            lblNationalite.Text = LangueElement[132];
+            lblAge.Text = LangueElement[133];
+
+            // Gestion transparence
+            if (listeElement[3] != "")
+            {
+                Opacity = Convert.ToDouble(listeElement[3]);
+            }
+
+            // Gestion couleur background
+
+            if (listeElement[6] != "Par défaut")
+            {
+                this.BackgroundImage = null;
+
+                int AA = 0;
+                int RR = 0;
+                int GG = 0;
+                int BB = 0;
+
+                // Get first match.
+                Match match = Regex.Match(listeElement[6], @"\d+");
+                if (match.Success)
+                {
+                    AA = Convert.ToInt32(match.Value);
+                }
+
+                // Get second match.
+                match = match.NextMatch();
+                if (match.Success)
+                {
+                    RR = Convert.ToInt32(match.Value);
+                }
+
+                // Get 3 match.
+                match = match.NextMatch();
+                if (match.Success)
+                {
+                    GG = Convert.ToInt32(match.Value);
+                }
+
+                // Get 4 match.
+                match = match.NextMatch();
+                if (match.Success)
+                {
+                    BB = Convert.ToInt32(match.Value); ;
+                }
+
+                Color c = Color.FromArgb(AA, RR, GG, BB);
+
+                try
+                {
+                    this.BackColor = c;
+                }
+                catch
+                {
+                    this.BackgroundImage = PPE4_Stars_up.Properties.Resources.background_profil;
+                }
+            }
+            else
+            {
+                this.BackgroundImage = PPE4_Stars_up.Properties.Resources.background_profil;
+            }
+
+
+            // Gestion Police
+
+            if (listeElement[7] != "Par défaut")
+            {
+                try
+                {
+                    foreach (Control x in this.Controls)
+                    {
+                        if (x is Label)
+                        {
+                            x.Font = new Font(listeElement[7], x.Font.SizeInPoints, x.Font.Style);
+                        }
+                    }
+                }
+                catch
+                {
+                    foreach (Control x in this.Controls)
+                    {
+                        if (x is Label)
+                        {
+                            x.Font = new Font(family, x.Font.SizeInPoints, x.Font.Style);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                foreach (Control x in this.Controls)
+                {
+                    if (x is Label)
+                    {
+                        x.Font = new Font(family, x.Font.SizeInPoints, x.Font.Style);
+                    }
+                }
+            }
+
+
+
+            
+            
             if (controleur.Vmodele.Dv_pdp.ToTable().Rows[0][0].ToString() != "")
             {
                 // pbPDP.Location = new Point(712, 356);
@@ -52,7 +210,7 @@ namespace PPE4_Stars_up
             }
             else
             {
-                lblResAge.Text = "Indisponible";
+                lblResAge.Text = LangueElement[134];
             }
 
 
@@ -63,7 +221,7 @@ namespace PPE4_Stars_up
             }
             else
             {
-                lblResDep.Text = "Indisponible";
+                lblResDep.Text = LangueElement[134];
             }
 
             // Nationalite
@@ -73,7 +231,7 @@ namespace PPE4_Stars_up
             }
             else
             {
-                lblResNationalite.Text = "Indisponible";
+                lblResNationalite.Text = LangueElement[134];
             }
 
            // MessageBox.Show(controleur.Vmodele.Dv_pdp.ToTable().Rows[0][7].ToString());
@@ -137,7 +295,7 @@ namespace PPE4_Stars_up
             }
             else
             {
-                lblResTpsConnexion.Text = "Ø (1ère connexion)";
+                lblResTpsConnexion.Text = LangueElement[135];
             }
 
             pbPDP.Visible = true;

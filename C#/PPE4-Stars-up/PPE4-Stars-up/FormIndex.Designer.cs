@@ -65,6 +65,7 @@
             this.pbEspagne = new System.Windows.Forms.PictureBox();
             this.pbParametre = new System.Windows.Forms.PictureBox();
             this.pbPDP = new System.Windows.Forms.PictureBox();
+            this.ttProfil = new System.Windows.Forms.ToolTip(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbFrance)).BeginInit();
@@ -239,7 +240,9 @@
             this.pbFrance.Size = new System.Drawing.Size(30, 15);
             this.pbFrance.TabIndex = 12;
             this.pbFrance.TabStop = false;
+            this.ttProfil.SetToolTip(this.pbFrance, "-");
             this.pbFrance.Click += new System.EventHandler(this.pbFrance_Click);
+            this.pbFrance.MouseHover += new System.EventHandler(this.pbFrance_MouseHover);
             // 
             // pbAngleterre
             // 
@@ -250,7 +253,9 @@
             this.pbAngleterre.Size = new System.Drawing.Size(30, 15);
             this.pbAngleterre.TabIndex = 14;
             this.pbAngleterre.TabStop = false;
+            this.ttProfil.SetToolTip(this.pbAngleterre, "-");
             this.pbAngleterre.Click += new System.EventHandler(this.pbAngleterre_Click);
+            this.pbAngleterre.MouseHover += new System.EventHandler(this.pbAngleterre_MouseHover);
             // 
             // pbAllemagne
             // 
@@ -261,7 +266,9 @@
             this.pbAllemagne.Size = new System.Drawing.Size(30, 15);
             this.pbAllemagne.TabIndex = 16;
             this.pbAllemagne.TabStop = false;
+            this.ttProfil.SetToolTip(this.pbAllemagne, "-");
             this.pbAllemagne.Click += new System.EventHandler(this.pbAllemagne_Click);
+            this.pbAllemagne.MouseHover += new System.EventHandler(this.pbAllemagne_MouseHover);
             // 
             // lblInfoNbVisiteTotal
             // 
@@ -426,7 +433,9 @@
             this.pbEspagne.Size = new System.Drawing.Size(30, 15);
             this.pbEspagne.TabIndex = 35;
             this.pbEspagne.TabStop = false;
+            this.ttProfil.SetToolTip(this.pbEspagne, "-");
             this.pbEspagne.Click += new System.EventHandler(this.pbEspagne_Click);
+            this.pbEspagne.MouseHover += new System.EventHandler(this.pbEspagne_MouseHover);
             // 
             // pbParametre
             // 
@@ -437,7 +446,9 @@
             this.pbParametre.Size = new System.Drawing.Size(30, 30);
             this.pbParametre.TabIndex = 37;
             this.pbParametre.TabStop = false;
+            this.ttProfil.SetToolTip(this.pbParametre, "-");
             this.pbParametre.Click += new System.EventHandler(this.pbParametre_Click);
+            this.pbParametre.MouseHover += new System.EventHandler(this.pbParametre_MouseHover);
             // 
             // pbPDP
             // 
@@ -449,8 +460,14 @@
             this.pbPDP.Size = new System.Drawing.Size(98, 100);
             this.pbPDP.TabIndex = 39;
             this.pbPDP.TabStop = false;
+            this.ttProfil.SetToolTip(this.pbPDP, "-");
             this.pbPDP.Visible = false;
             this.pbPDP.Click += new System.EventHandler(this.pbPDP_Click);
+            this.pbPDP.MouseHover += new System.EventHandler(this.pbPDP_MouseHover);
+            // 
+            // ttProfil
+            // 
+            this.ttProfil.Tag = "";
             // 
             // FormIndex
             // 
@@ -571,6 +588,7 @@
         private System.Windows.Forms.PictureBox pbEspagne;
         private System.Windows.Forms.PictureBox pbParametre;
         private System.Windows.Forms.PictureBox pbPDP;
+        private System.Windows.Forms.ToolTip ttProfil;
     }
 }
 

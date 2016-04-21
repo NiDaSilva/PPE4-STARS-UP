@@ -127,3 +127,16 @@ Neustart für die Farbe erforderlich wirksam auf die gesamte Anwendung zu sein.
 Polizei
 Neustart für die Polizei erforderlich wirksam auf die Gesamtheit der Anwendung sein.
 Die Polizei ist bereits standardmäßig aktiviert.
+Profil
+Verbindungszeit :
+Örtlichkeit :
+Nationalität :
+Alter :
+Nicht verfügbar
+Ø (erste Verbindung)
+Klicken Sie auf das Profil zuzugreifen.
+Sprache ändern Französisch.
+Sprache ändern in Englisch.
+Sprache ändern Deutsch.
+Sprache ändern Spanisch.
+Geben Sie den Parameter.

@@ -327,8 +327,8 @@ namespace PPE4_Stars_up
         #region seconnecter()
         public void seconnecter()
         {
-            // string myConnectionString = "Database=ppe4;Data Source=192.168.215.10;User Id=root; "; // SERVEUR
-            string myConnectionString = "Database=ppe4;Data Source=localhost;User Id=root; "; // LOCAL
+            string myConnectionString = "Database=ppe4;Data Source=192.168.215.10;User Id=root; "; // SERVEUR
+            // string myConnectionString = "Database=ppe4;Data Source=localhost;User Id=root; "; // LOCAL
 
             myConnection = new MySqlConnection(myConnectionString);
             try // tentative

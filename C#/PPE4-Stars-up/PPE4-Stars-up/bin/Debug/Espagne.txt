@@ -127,3 +127,16 @@ Reiniciar requerido para que el color sea eficaz en la totalidad de la aplicaci�
 Policía
 Se requiere reiniciar para que la policía sea eficaz en el conjunto de la aplicación.
 La policía ya son por defecto.
+Perfil
+Tiempo de conexion :
+Localidad :
+Nacionalidad :
+Edad :
+Indisponible
+Ø (1 de conexión)
+Haga clic para acceder al perfil.
+Cambiar el idioma francés.
+Cambiar el idioma en Inglés.
+Cambiar el idioma alemán.
+Cambiar el idioma español.
+Introducir el parámetro.

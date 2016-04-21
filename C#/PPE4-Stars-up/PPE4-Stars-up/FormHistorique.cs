@@ -152,6 +152,7 @@ namespace PPE4_Stars_up
                     comment = dataGridViewHistorique.Rows[i].Cells[4].Value.ToString();
                 }
 
+
                 // Remplissage de la liste
                 listBoxHistorique.Items.Add(LangueElement[107] + dataGridViewHistorique.Rows[i].Cells[0].Value.ToString());
                 listBoxHistorique.Items.Add(LangueElement[108] + dataGridViewHistorique.Rows[i].Cells[1].Value.ToString());

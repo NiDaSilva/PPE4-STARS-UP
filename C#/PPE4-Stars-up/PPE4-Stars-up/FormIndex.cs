@@ -358,7 +358,7 @@ namespace PPE4_Stars_up
 
         private void planningToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(controleur.Vmodele.Dv_temps_con.ToTable().Rows[0][2].ToString());
+            // MessageBox.Show(controleur.Vmodele.Dv_temps_con.ToTable().Rows[0][2].ToString());
             historiqueDesVisitesToolStripMenuItem.Enabled = false;
             planningToolStripMenuItem.Enabled = false;
             pictureBox1.Visible = false;
@@ -712,6 +712,7 @@ namespace PPE4_Stars_up
             lblPassees.Text = LangueElement[27];
             lblPasseeNonEvaluee.Text = LangueElement[31];
             lblPrevue.Text = LangueElement[33];
+
 
             // Gestion couleur background
 
@@ -1200,6 +1201,288 @@ namespace PPE4_Stars_up
             }
 
             return resultat;
+        }
+
+        private void pbPDP_MouseHover(object sender, EventArgs e)
+        {
+            // Gestion de la langue
+            StreamReader reader = File.OpenText(fileName2);
+            string ligne;
+
+            List<string> listeElement = new List<string>();
+            while (!reader.EndOfStream)
+            {
+                ligne = reader.ReadLine();
+                listeElement.Add(ligne);
+            }
+            reader.Close();
+
+            if (listeElement[1] == "Francais")
+            {
+                FichierLangue = "Francais.txt";
+            }
+
+            if (listeElement[1] == "Anglais")
+            {
+                FichierLangue = "Anglais.txt";
+            }
+
+            if (listeElement[1] == "Allemand")
+            {
+                FichierLangue = "Allemand.txt";
+            }
+
+            if (listeElement[1] == "Espagnol")
+            {
+                FichierLangue = "Espagne.txt";
+            }
+
+            StreamReader reader2 = File.OpenText(FichierLangue);
+            string ligne2;
+
+            while (!reader2.EndOfStream)
+            {
+                ligne2 = reader2.ReadLine();
+                LangueElement.Add(ligne2);
+            }
+            reader.Close();
+
+            ttProfil.ToolTipTitle = LangueElement[136];
+        }
+
+        private void pbFrance_MouseHover(object sender, EventArgs e)
+        {
+            // Gestion de la langue
+            StreamReader reader = File.OpenText(fileName2);
+            string ligne;
+
+            List<string> listeElement = new List<string>();
+            while (!reader.EndOfStream)
+            {
+                ligne = reader.ReadLine();
+                listeElement.Add(ligne);
+            }
+            reader.Close();
+
+            if (listeElement[1] == "Francais")
+            {
+                FichierLangue = "Francais.txt";
+            }
+
+            if (listeElement[1] == "Anglais")
+            {
+                FichierLangue = "Anglais.txt";
+            }
+
+            if (listeElement[1] == "Allemand")
+            {
+                FichierLangue = "Allemand.txt";
+            }
+
+            if (listeElement[1] == "Espagnol")
+            {
+                FichierLangue = "Espagne.txt";
+            }
+
+            StreamReader reader2 = File.OpenText(FichierLangue);
+            string ligne2;
+
+            while (!reader2.EndOfStream)
+            {
+                ligne2 = reader2.ReadLine();
+                LangueElement.Add(ligne2);
+            }
+            reader.Close();
+
+            ttProfil.ToolTipTitle = LangueElement[137];
+        }
+
+        private void pbAngleterre_MouseHover(object sender, EventArgs e)
+        {
+            // Gestion de la langue
+            StreamReader reader = File.OpenText(fileName2);
+            string ligne;
+
+            List<string> listeElement = new List<string>();
+            while (!reader.EndOfStream)
+            {
+                ligne = reader.ReadLine();
+                listeElement.Add(ligne);
+            }
+            reader.Close();
+
+            if (listeElement[1] == "Francais")
+            {
+                FichierLangue = "Francais.txt";
+            }
+
+            if (listeElement[1] == "Anglais")
+            {
+                FichierLangue = "Anglais.txt";
+            }
+
+            if (listeElement[1] == "Allemand")
+            {
+                FichierLangue = "Allemand.txt";
+            }
+
+            if (listeElement[1] == "Espagnol")
+            {
+                FichierLangue = "Espagne.txt";
+            }
+
+            StreamReader reader2 = File.OpenText(FichierLangue);
+            string ligne2;
+
+            while (!reader2.EndOfStream)
+            {
+                ligne2 = reader2.ReadLine();
+                LangueElement.Add(ligne2);
+            }
+            reader.Close();
+
+            ttProfil.ToolTipTitle = LangueElement[138];
+        }
+
+        private void pbAllemagne_MouseHover(object sender, EventArgs e)
+        {
+            // Gestion de la langue
+            StreamReader reader = File.OpenText(fileName2);
+            string ligne;
+
+            List<string> listeElement = new List<string>();
+            while (!reader.EndOfStream)
+            {
+                ligne = reader.ReadLine();
+                listeElement.Add(ligne);
+            }
+            reader.Close();
+
+            if (listeElement[1] == "Francais")
+            {
+                FichierLangue = "Francais.txt";
+            }
+
+            if (listeElement[1] == "Anglais")
+            {
+                FichierLangue = "Anglais.txt";
+            }
+
+            if (listeElement[1] == "Allemand")
+            {
+                FichierLangue = "Allemand.txt";
+            }
+
+            if (listeElement[1] == "Espagnol")
+            {
+                FichierLangue = "Espagne.txt";
+            }
+
+            StreamReader reader2 = File.OpenText(FichierLangue);
+            string ligne2;
+
+            while (!reader2.EndOfStream)
+            {
+                ligne2 = reader2.ReadLine();
+                LangueElement.Add(ligne2);
+            }
+            reader.Close();
+
+            ttProfil.ToolTipTitle = LangueElement[139];
+        }
+
+        private void pbEspagne_MouseHover(object sender, EventArgs e)
+        {
+            // Gestion de la langue
+            StreamReader reader = File.OpenText(fileName2);
+            string ligne;
+
+            List<string> listeElement = new List<string>();
+            while (!reader.EndOfStream)
+            {
+                ligne = reader.ReadLine();
+                listeElement.Add(ligne);
+            }
+            reader.Close();
+
+            if (listeElement[1] == "Francais")
+            {
+                FichierLangue = "Francais.txt";
+            }
+
+            if (listeElement[1] == "Anglais")
+            {
+                FichierLangue = "Anglais.txt";
+            }
+
+            if (listeElement[1] == "Allemand")
+            {
+                FichierLangue = "Allemand.txt";
+            }
+
+            if (listeElement[1] == "Espagnol")
+            {
+                FichierLangue = "Espagne.txt";
+            }
+
+            StreamReader reader2 = File.OpenText(FichierLangue);
+            string ligne2;
+
+            while (!reader2.EndOfStream)
+            {
+                ligne2 = reader2.ReadLine();
+                LangueElement.Add(ligne2);
+            }
+            reader.Close();
+
+            ttProfil.ToolTipTitle = LangueElement[140];
+        }
+
+        private void pbParametre_MouseHover(object sender, EventArgs e)
+        {
+            // Gestion de la langue
+            StreamReader reader = File.OpenText(fileName2);
+            string ligne;
+
+            List<string> listeElement = new List<string>();
+            while (!reader.EndOfStream)
+            {
+                ligne = reader.ReadLine();
+                listeElement.Add(ligne);
+            }
+            reader.Close();
+
+            if (listeElement[1] == "Francais")
+            {
+                FichierLangue = "Francais.txt";
+            }
+
+            if (listeElement[1] == "Anglais")
+            {
+                FichierLangue = "Anglais.txt";
+            }
+
+            if (listeElement[1] == "Allemand")
+            {
+                FichierLangue = "Allemand.txt";
+            }
+
+            if (listeElement[1] == "Espagnol")
+            {
+                FichierLangue = "Espagne.txt";
+            }
+
+            StreamReader reader2 = File.OpenText(FichierLangue);
+            string ligne2;
+
+            while (!reader2.EndOfStream)
+            {
+                ligne2 = reader2.ReadLine();
+                LangueElement.Add(ligne2);
+            }
+            reader.Close();
+
+            ttProfil.ToolTipTitle = LangueElement[141];
         }
     }
 }

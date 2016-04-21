@@ -127,3 +127,16 @@ Restart required for the color to be effective on the whole of the application.
 Police
 Restart required for the police to be effective on the whole of the application.
 The police are already by default.
+Profile
+Connection Time :
+Locality :
+Nationality :
+Age :
+Unavailable
+Ø (1st connection)
+Click to access the profile.
+Change language French.
+Change language in English.
+Change language German.
+Change language Spanish.
+Enter the parameter.

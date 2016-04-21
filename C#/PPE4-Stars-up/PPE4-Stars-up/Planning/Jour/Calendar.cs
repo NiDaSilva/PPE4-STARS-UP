@@ -1282,8 +1282,15 @@ namespace PPE4_Stars_up
 
             _days = new CalendarDay[span.Days];
 
-            for (int i = 0; i < Days.Length; i++)
-                Days[i] = new CalendarDay(this, ViewStart.AddDays(-preDays + i), i);
+            try
+            {
+                for (int i = 0; i < Days.Length; i++)
+                    Days[i] = new CalendarDay(this, ViewStart.AddDays(-preDays + i), i);
+            }
+            catch
+            {
+                
+            }
 
             
             //Weeks

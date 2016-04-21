@@ -127,3 +127,16 @@ Redémarrage requis pour que la couleur soit effective sur la globalité de l'ap
 Police
 Redémarrage requis pour que la police soit effective sur la globalité de l'application.
 La police est déjà par défaut.
+Profil
+Temps de connexion :
+Localité :
+Nationalité :
+Age :
+Indisponible
+Ø (1ère connexion)
+Cliquez pour accéder au profil.
+Changer la langue en français.
+Changer la langue en anglais.
+Changer la langue en allemand.
+Changer la langue en espagnol.
+Accéder au paramètre.

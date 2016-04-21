@@ -535,7 +535,6 @@ namespace PPE4_Stars_up
 
             chargedgv();
 
-
             tbNom.Text = LangueElement[0];
             tbMdp.Text = LangueElement[1];
             cbAfficherMdp.Text = LangueElement[2];
@@ -628,9 +627,14 @@ namespace PPE4_Stars_up
 
         public void chargedgv()
         {
+
+
             try
             {
                 bindingSource1.DataSource = controleur.Vmodele.Dv_login;
+
+                // MessageBox.Show(controleur.Vmodele.Dv_login.ToTable().Rows[0][4].ToString());
+                // MessageBox.Show(controleur.Vmodele.Dv_login.ToTable().Rows[0][5].ToString());
                 
                 // on parcourt le dataView des inspecteurs Dv_login de la classe bdd pour compléter la FList
                 for (int i = 0; i < controleur.Vmodele.Dv_login.ToTable().Rows.Count; i++)
