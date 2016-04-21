@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -25,10 +26,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
-
-
+import java.util.ListIterator;
 
 
 public class Planning_Activity extends Activity {
@@ -36,6 +39,8 @@ public class Planning_Activity extends Activity {
     // Progress Dialog
     private ProgressDialog pDialog;
 
+
+    public ArrayList<VISITE> lesV = new ArrayList<VISITE>() ;
     // Creating JSON Parser object
     JSONParser jParser = new JSONParser();
 
@@ -68,10 +73,29 @@ public class Planning_Activity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> a, View v, int position, long id) {
                 Intent i = new Intent(getApplicationContext(), Hebergement_Activity.class);
+                i.putExtra("nom", "test");
                 startActivity(i);
             }
         });
+
     }
+
+    // Response from Edit Product Activity
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        // if result code 100
+        if (resultCode == 100) {
+            // if result code 100 is received
+            // means user edited/deleted product
+            // reload this screen again
+            Intent intent = getIntent();
+            finish();
+            startActivity(intent);
+        }
+
+    }
+
 
 
 
@@ -158,6 +182,7 @@ public class Planning_Activity extends Activity {
                     // Closing all previous activities
                     // i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     //startActivity(i);
+                   // Toast.makeText(getApplicationContext(), "Pas de visite", Toast.LENGTH_SHORT).show();
                 }
             } catch (JSONException e) {
                 e.printStackTrace();

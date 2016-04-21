@@ -28,11 +28,12 @@ public class Hebergement_Activity extends Activity {
 
         //Réception les données passées par le Intent
         Bundle b = getIntent().getExtras();
-        //String info1 = b.getString("info1");
+        String nom = b.getString("nom");
         hebergement = (HEBERGEMENT) getIntent().getSerializableExtra("hebergement");
         //Toast.makeText(getApplicationContext(), "Chargement effectuée ! Hébergement : " + hebergement.getNOM_HEBERGEMENT(), Toast.LENGTH_LONG).show();
 
         //Chargement des infos dans la page
+        ((TextView) findViewById(R.id.txt_nom)).setText(nom);
         /*((TextView) findViewById(R.id.txt_nom)).setText(hebergement.getNOM_HEBERGEMENT());
         ((TextView) findViewById(R.id.txt_web)).setText(hebergement.getWEBSITE_HEBERGEMENT());
         ((TextView) findViewById(R.id.txt_horaires)).setText(hebergement.getHORAIRES_HEBERGEMENT());
