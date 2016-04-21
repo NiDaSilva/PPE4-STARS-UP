@@ -42,10 +42,12 @@ public class Planning_Activity extends Activity {
     ArrayList<HashMap<String, String>> listVisite;
 
     // url to get all products list
-    private static String get_visites = "http://192.168.215.10/ppe4-stars-up/get_visites.php";
+    private static String get_visites = "http://192.168.215.10/Android/get_visites.php";
 
     // products JSONArray
     JSONArray visites = null;
+
+    ListView list_visite;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +61,7 @@ public class Planning_Activity extends Activity {
         //chargement des visites
         new ChargementVisite().execute();
 
-        ListView list_visite = (ListView) findViewById(R.id.list_visites);
+        list_visite = (ListView) findViewById(R.id.list_visites);
 
         //OnClick ****************************************************************************************** à faire
         list_visite.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -144,7 +146,7 @@ public class Planning_Activity extends Activity {
                         // adding each child node to HashMap key => value
                         map.put("nom", v.getString("nom"));
                         map.put("adresse", v.getString("adresse") + " " + v.getString("ville"));
-                        map.put("date", v.getString("horaire"));
+                        map.put("date", v.getString("horaires"));
 
                         // adding HashList to ArrayList
                         listVisite.add(map);
@@ -170,6 +172,8 @@ public class Planning_Activity extends Activity {
             pDialog.dismiss();
             // updating UI from Background Thread
             runOnUiThread(new Runnable() {
+
+
                 public void run() {
                     //Updating parsed JSON data into ListView
 
@@ -177,8 +181,11 @@ public class Planning_Activity extends Activity {
                     ListAdapter adapter = new SimpleAdapter(Planning_Activity.this, listVisite, R.layout.list_planning,
                             new String[] {"date", "nom", "adresse"}, new int[] {R.id.date, R.id.nom, R.id.adresse});
 
-                    setListAdapter(adapter);
+                    list_visite.setAdapter(adapter);
                 }
+
+
+
             });
         }
     }

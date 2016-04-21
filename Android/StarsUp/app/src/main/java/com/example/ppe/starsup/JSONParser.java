@@ -88,6 +88,13 @@ public class JSONParser {
 
         // try parse the string to a JSON object
         try {
+            json = json.replaceFirst("<font>.*?</font>", "");
+
+            int jsonStart = json.indexOf("{");
+            int jsonEnd = json.lastIndexOf("}");
+
+            if (jsonStart >= 0 && jsonEnd >= 0 && jsonEnd > jsonStart) {
+                json = json.substring(jsonStart, jsonEnd + 1);}
             jObj = new JSONObject(json);
         } catch (JSONException e) {
             Log.e("JSON Parser", "Error parsing data " + e.toString());
