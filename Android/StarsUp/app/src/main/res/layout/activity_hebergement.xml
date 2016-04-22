@@ -64,8 +64,7 @@
             android:layout_gravity="center_horizontal"
             android:numStars="5"
             android:stepSize="1"
-            android:layout_marginBottom="15dp"
-            android:isIndicator="true" />
+            android:layout_marginBottom="15dp" />
 
         <Button
             android:layout_width="wrap_content"

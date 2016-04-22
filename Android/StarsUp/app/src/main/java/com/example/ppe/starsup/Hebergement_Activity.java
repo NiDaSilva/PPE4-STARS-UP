@@ -75,6 +75,8 @@ public class Hebergement_Activity extends Activity {
         ((TextView) findViewById(R.id.txt_adresse)).setText(adresse);
         ((EditText) findViewById(R.id.txt_commentaire)).setText(commentaire);
         ((RatingBar) findViewById(R.id.bar_note)).setRating(nbr_etoiles);
+
+
     }
 
 
@@ -88,9 +90,6 @@ public class Hebergement_Activity extends Activity {
 
                     commentaire = ((EditText)findViewById(R.id.txt_commentaire)).getText().toString();
                     note = String.valueOf(Math.round(((RatingBar) findViewById(R.id.bar_note)).getRating()));
-
-                    Intent i = new Intent(getApplicationContext(), Planning_Activity.class);
-                    startActivity(i);
 
                     break;
             }
@@ -188,7 +187,7 @@ public class Hebergement_Activity extends Activity {
                 public void run() {
                     //Updating parsed JSON data into ListView
 
-                    //Insertion des items dans la vue list_planning
+                    Toast.makeText(getApplicationContext(), getString(R.string.update_fini), Toast.LENGTH_SHORT).show();
                 }
 
 

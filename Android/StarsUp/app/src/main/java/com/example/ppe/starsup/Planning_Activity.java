@@ -90,20 +90,24 @@ public class Planning_Activity extends Activity {
 
                 String id_v = listVisite.get(i).get("id_v");
                 String id_i = listVisite.get(i).get("id_i");
+                String datetime = listVisite.get(i).get("datetime");
+                String nbr_etoiles = listVisite.get(i).get("nbr_etoiles");
+                String commentaire = listVisite.get(i).get("commentaire");
+
                 String nom_h = listVisite.get(i).get("nom");
                 String horaire_h = listVisite.get(i).get("horaires");
                 String adresse_h = listVisite.get(i).get("adresse");
-                String nbr_etoiles = listVisite.get(i).get("nbr_etoiles");
-                String commentaire = listVisite.get(i).get("commentaire");
 
                 Intent in = new Intent(getApplicationContext(), Hebergement_Activity.class);
                 in.putExtra("id_v", id_v);
                 in.putExtra("id_i", id_i);
+                in.putExtra("datetime", datetime);
+                in.putExtra("nbr_etoiles", nbr_etoiles);
+                in.putExtra("commentaire", commentaire);
+
                 in.putExtra("nom", nom_h);
                 in.putExtra("horaires", horaire_h);
                 in.putExtra("adresse", adresse_h);
-                in.putExtra("nbr_etoiles", nbr_etoiles);
-                in.putExtra("commentaire", commentaire);
                 startActivity(in);
             }
         });
@@ -199,6 +203,7 @@ public class Planning_Activity extends Activity {
                         // adding each child node to HashMap key => value
                         map.put("id_v", v.getString("id_v"));
                         map.put("id_i", v.getString("id_i"));
+                        map.put("datetime", v.getString("datetime"));
                         map.put("date", v.getString("date"));
                         map.put("heure", v.getString("heure"));
                         map.put("nbr_etoiles", v.getString("nbr_etoiles"));
