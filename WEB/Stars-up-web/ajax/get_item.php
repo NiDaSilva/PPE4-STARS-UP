@@ -17,18 +17,52 @@ if(isset($_REQUEST['table']) && isset($_REQUEST['id']))
 
 			case 'hebergement':
 			{
-					$r =$result->fetch();
-					
+				print_r('1er');
+				$x=0;
+				$id=0;					
+				while ($r =$result->fetch())
+				{
+					print_r('2er');
 			 	    $item=array(
 				        "id" => $r["ID_HEBERGEMENT"],
-				        "ID_SPECIALITE" => $r["ID_DEPARTEMENT"],
-				        "id_gerant" => $r["ID_GERANT"],
+				        "departement" => intval($r["ID_DEPARTEMENT"]),
+				        "gerant" => intval($r["ID_GERANT"]),
 				        "nom" => $r["NOM_HEBERGEMENT"],
 				        "adresse" => $r["ADRESSE_HEBERGEMENT"],
 				        "ville" => $r["VILLE_HEBERGEMENT"],
-				        "horaires" => $r["Horaires"],
+				        "horaire" => $r["HORAIRES"],
 				        "specialite"  => $r["ID_SPECIALITE"]
-				    );
+				    );	
+				    $x = $item['specialite'];
+				    $id = $item['id'];
+			 	}
+			 	switch ($x) {
+				    	case 1:
+				    		{
+				    			$result2= $vpdo->get_item('hotel',$id);
+				    			while ($r2 =$result2->fetch()) {
+				    				$item['nbresto'] = $r2['RESTAURANT_HOTEL'];
+				    				$item['chefresto'] = $r2['CHEF_RESTAURANT_HOTEL'];
+				    			}
+				    		}		
+				    	break;
+
+				    	case 2:
+				    		{}		
+				    	break;
+
+				    	case 3:
+				    		{
+				    			$result2= $vpdo->get_item('chambre_hote',$id);
+				    			while ($r2 =$result2->fetch()) {
+				    				$item['nbchambre'] = $r2['NOMBRE_CHAMBRE_HOTE'];
+				    				$item['nbcuisine'] = $r2['CUISINE_CHAMBRE_HOTE'];
+				    			}
+				    		}		
+				    	break;
+				    	
+				    }
+
 			}
 				break;
 			case 'inspecteur':

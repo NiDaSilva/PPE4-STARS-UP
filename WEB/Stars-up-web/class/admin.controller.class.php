@@ -60,7 +60,11 @@ class admin_controller{
         switch($type){
             case "hebergement" :
             {
-                $form=$form.'                
+                if(!isset($_GET["id"])){$_GET["id"] = " ";}
+
+                $form=$form.'
+                            <input type="hidden" class="form-control" id="categ" value="'.$_GET['type'].'">
+                             <input type="hidden" class="form-control" id="id" value='.$_GET['id'].'>
                             <ul class="nav nav-pills nav-justified nav-inverse">
                                 <li id ="lihotel" role="presentation"><a id="hotel">Hotel</a></li>
                                 <li id ="licamping" role="presentation"><a id ="camping">Camping</a></li>
