@@ -1,24 +1,23 @@
 <?php
-include_once('../class/page_base_admin.class.php');
+include_once('../class/page_base_gerant.class.php');
 include '../class/admin.controller.class.php';
 
 $controller = new admin_controller();
 
-$update = new page_base_admin('Update '.$_GET['type']);
+$new = new page_base_gerant('Demande visite');
 
-$update->corps=$controller->corps_new($_GET['type']);
+$new->corps=$controller->corps_gerantvisite();
 
-$update->afficher();
+$new->afficher();
 ?>
-
 
 <script type="text/javascript"> //submit inspecteur
 $("#submitinspecteur").click(function(){
     $.ajax({
-                url: "../ajax/valid_update_inspecteur.php",
+                url: "../ajax/valid_ajout_inspecteur.php",
                 type: "GET",
                 data: ({
-                    id : $("#id").val(),
+
                     table : $("#table").val(),
                     specialite : $("#specialite").val(),
                     nom : $("#nom").val(),
@@ -31,6 +30,11 @@ $("#submitinspecteur").click(function(){
                     $("#alertsubmit").empty();
                     var d = $.parseJSON(data);
                    $("#alertsubmit").append(d);
+                    $("#specialite").prop("selectedIndex",0);
+                    $("#nom").val("");
+                    $("#prenom").val("");
+                    $("#login").val("");
+                    $("#mdp").val("");
                 },
                 error: function () {
                 }
@@ -39,10 +43,10 @@ $("#submitinspecteur").click(function(){
 
 $("#submitgerant").click(function(){
     $.ajax({
-                url: "../ajax/valid_update_gerant.php",
+                url: "../ajax/valid_ajout_gerant.php",
                 type: "GET",
                 data: ({
-                    id : $("#id").val(),
+
                     table : $("#table").val(),
                     nom : $("#nom").val(),
                     prenom : $("#prenom").val(),
@@ -54,6 +58,10 @@ $("#submitgerant").click(function(){
                     $("#alertsubmit").empty();
                     var d = $.parseJSON(data);
                    $("#alertsubmit").append(d);
+                    $("#nom").val("");
+                    $("#prenom").val("");
+                    $("#login").val("");
+                    $("#mdp").val("");
                 },
                 error: function () {
                 }
@@ -62,80 +70,28 @@ $("#submitgerant").click(function(){
 
 $("#submitvisite").click(function(){
     $.ajax({
-                url: "../ajax/valid_update_visite.php",
+                url: "../ajax/valid_ajout_visite.php",
                 type: "GET",
                 data: ({
-                    id : $("#id").val(),
                     table : $("#table").val(),
                     hebergement : $("#hebergement").val(),
                     saison : $("#saison").val(),
-                    annee : $("#annee").val(),
-                    inspecteur :$("#inspecteur").val(),
-                    etoile:$("#etoile").val(),
-                    date: moment($("#date").val()).format("YYYY-MM-DD HH:mm:ss"),
-                    commentaire: $("#commentaire").val(),
-                    id_contrevisite : $("#id_contrevisite").val(),
+                    annee : $("#annee").val()
                 }),
 
                 success: function (data) {
                     $("#alertsubmit").empty();
                     var d = $.parseJSON(data);
                    $("#alertsubmit").append(d);
+                    $("#hebergement").prop("selectedIndex",0);
+                    $("#saison").prop("selectedIndex",0);
+                    $("#annee").prop("selectedIndex",0);
                 },
                 error: function () {
                 }
             })
 });
 </script>
-
-
-<script type="text/javascript">
- $(document).ready(function() {
-        $.ajax({
-        url: "../ajax/get_item.php",
-        type: "POST",
-        data: ({table : $("#table").val(),
-                id: $("#id").val()}) 
-	    }).done(function(data){
-            data = JSON.parse(data);
-
-	    	if(data.table="inspecteur")
-            {
-	    		$("#specialite").prop("selectedIndex",data.id_specialite);
-                $("#nom").val(data.nom);
-                $("#prenom").val(data.prenom);
-                $("#login").val(data.login);
-                $("#mdp").val(data.mdp);
-            }
-        if(data.table="gerant")
-            {
-                $("#nom").val(data.nom);
-                $("#prenom").val(data.prenom);
-                $("#login").val(data.login);
-                $("#mdp").val(data.mdp);
-            }
-        if(data.table="visite")
-            {
-                $("#hebergement").val(data.hebergement);
-                $("#saison").val(data.saison);
-                $("#annee").val(data.annee);
-                $("#commentaire").val(data.commentaire);
-                $("#date").val(data.date);
-                $("#inspecteur").val(data.inspecteur);
-                $("#id_contrevisite").val(data.contrevisite);
-                $("#etoile").val(data.etoile);
-
-
-            }
-        
-
-
-	    })
-    });
-</script>
-
-
-
 <script type="text/javascript">
 $("#hotel").click(function () {
     $.ajax({
@@ -198,4 +154,8 @@ $("#chambre").click(function () {
         }
     })
 });
+
+$(document).ready(function() {
+        $(".hidenew").hide();
+        });
 </script>

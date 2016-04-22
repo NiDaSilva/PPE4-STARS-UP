@@ -1,10 +1,10 @@
 <?php
-include_once('../class/page_base.class.php');
+include_once('../class/page_base_inspecteur.class.php');
 include '../class/agenda.controller.class.php';
 
 $controller = new agen_controller();
 
-$agenda = new page_base('Votre agenda');
+$agenda = new page_base_inspecteur('Votre agenda');
 
 $agenda->corps=$controller->corps_agenda();
 

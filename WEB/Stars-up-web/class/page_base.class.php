@@ -2,8 +2,8 @@
 
 class page_base {
 
-	private $titre;
-	private $corps;
+	protected $titre;
+	protected $corps;
 
 	public function __construct($p) {
 				$this->titre = $p;
@@ -53,7 +53,20 @@ class page_base {
     	echo $r;
 	}
 
-	/****************************** Affichage de la navbar top ***************************************/	
+	/****************************** Affichage de la navbar top ***************************************/
+	protected function navbar()
+	{
+		$r='	         <li>
+	                        <a class="page-scroll" href="#about">About</a>
+	                    </li>
+	                    <li>
+	                        <a class="page-scroll" href="#">Contact</a>
+	                    </li>
+	                    <li>
+	                        <a class="page-scroll" href="../view/deconnexion.php">Deconnexion</a>
+	                    </li>';
+	    return $r;
+	}	
 	private function navbar_top(){
 		$r='
 		<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
@@ -73,16 +86,8 @@ class page_base {
 	                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
 	                    <li class="hidden">
 	                        <a href="#page-top"></a>
-	                    </li>                    
-	                    <li>
-	                        <a class="page-scroll" href="#about">About</a>
-	                    </li>
-	                    <li>
-	                        <a class="page-scroll" href="#">Contact</a>
-	                    </li>
-	                    <li>
-	                        <a class="page-scroll" href="../view/deconnexion.php">Deconnexion</a>
-	                    </li>
+	                    </li>'.$this->navbar().'
+
 	                </ul>
 	            </div>
 	            <!-- /.navbar-collapse -->

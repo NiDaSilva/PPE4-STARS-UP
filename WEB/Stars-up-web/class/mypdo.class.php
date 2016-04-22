@@ -189,19 +189,44 @@ class mypdo extends PDO
         $result = $this->connexion->query($requete);
         return ($result->rowCount());
     }
+    public function count_row2($nomtable,$idgerant)
+    {
+        $requete = 'SELECT * FROM hebergement WHERE ID_GERANT = '.$idgerant.';';
+        $result = $this->connexion->query($requete);
+        return ($result->rowCount());
+    }
 
 
     public function return_table($nomtable,$cPage,$limit)
     {
+
+            if($limit == 0)
+            {
+                $requete = 'SELECT * FROM '.$nomtable.';';
+            }
+            else
+            {
+                $cPage=($cPage-1)*$limit;
+                $requete = 'SELECT * FROM '.$nomtable.' LIMIT '.$cPage.','.$limit.';';
+            }
+        $result = $this->connexion->query($requete);
+        if ($result) {
+            if ($result->rowCount() >= 1) {
+                return ($result);
+            }
+        }
+    }
+    public function return_table2($nomtable,$cPage,$limit,$id_gerant)
+    {
         if($limit == 0)
-        {
-            $requete = 'SELECT * FROM '.$nomtable.';';
-        }
-        else
-        {
-            $cPage=($cPage-1)*$limit;
-            $requete = 'SELECT * FROM '.$nomtable.' LIMIT '.$cPage.','.$limit.';';
-        }
+            {
+                $requete = 'SELECT * FROM '.$nomtable.' WHERE ID_GERANT ='.$id_gerant.';';
+            }
+            else
+            {
+                $cPage=($cPage-1)*$limit;
+        $requete = 'SELECT * FROM '.$nomtable.' WHERE ID_GERANT ='.$id_gerant.' LIMIT '.$cPage.','.$limit.';';   
+            }
         $result = $this->connexion->query($requete);
         if ($result) {
             if ($result->rowCount() >= 1) {

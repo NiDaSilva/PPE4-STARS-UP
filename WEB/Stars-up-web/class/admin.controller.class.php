@@ -23,6 +23,186 @@ class admin_controller{
         }
     }
 
+    public function corps_gerantvisite(){
+        $vpdo=new mypdo();
+            session_start();
+            $form=
+        '<div class="well well-lg">
+        <form id="new" name="new" method="post">
+        ';
+if(!isset($_GET["id"])){$_GET["id"] = " ";}
+                $form=$form.'
+                <div id="alertsubmit">
+                            </div>
+                <input type="hidden" class="form-control" id="table" value="visite">
+                <input type="hidden" class="form-control" id="id" value='.$_GET['id'].'>
+                <div class="well well-lg">
+                    <div class="form-group row">
+                        <label for="hebergement" class="col-sm-2 form-control-label">HEBERGEMENT</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="hebergement" name="hebergement">
+                                <option selected>- hebergement -</option>';
+                                $result= $this->vpdo->return_table2('hebergement',0,0,$_SESSION['id']);
+                                while ($row =$result->fetch())
+                                {
+                                    $form=$form.'<option value="'.$row['ID_HEBERGEMENT'].'">'.$row['NOM_HEBERGEMENT'].'</option>';
+                                }
+                                $form=$form.'                                        
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="saison" class="col-sm-2 form-control-label">SAISON</label>
+                        <div class="col-sm-10">
+                            <div class="input-group">
+                                <div class="col-sm-6">
+                                <select class="form-control" id="saison" name="saison">
+                                    <option selected>-saison -</option>
+                                    <option value="Hiver">Hiver</option> 
+                                    <option value="Printemps">Printemps</option> 
+                                    <option value="Eté">Eté</option> 
+                                    <option value="Automne">Automne</option>
+                                </select>
+                                </div>
+                                <div class="col-sm-6">
+                                <select class="form-control" id="annee" name="annee">
+                                <option selected>- Année -</option>';
+                                $annee= intval(date("Y"));
+                                for ($i=$annee; $i < ($annee+10) ; $i++) { 
+                                   $form=$form.'<option value="'.$i.'">'.$i.'</option>';
+                                }
+                                $form=$form.'                                        
+                            </select>
+                                </div>
+                            </div>                            
+                        </div>
+                    </div>
+                    
+                    <button type="button" id="submitvisite" name="submit" class="btn btn-primary">Submit</button>
+                </div> 
+                </form>
+                        </div>';
+        return $form;
+    }
+
+    public function corps_gerant(){
+            $vpdo=new mypdo();
+            session_start();
+        $script='
+    <script type="text/javascript">
+        $(".page").click(function(){
+            $.ajax({
+                url: "../ajax/switch_tableau_bdd.php",
+                type: "GET",
+                data: ({page : $(this).text(),
+                        table : $("#nomtable").val()}),
+
+                success: function (data) {
+
+                   $("#resultajax").empty();
+                   var d = $.parseJSON(data)
+                   $("#resultajax").append(d);
+                },
+                error: function () {
+                    alert("fail");
+                }
+            })
+        });
+    $(".delete").click(function(){
+            $.ajax({
+                url: "../ajax/delete.php",
+                type: "GET",
+                data: ({id : $(this).attr("name"),
+                        table : $("#nomtable").val()}),
+
+                success: function (data) {
+                $("#nomtable").trigger("change");
+                   $("#resultat1").empty();
+                   $("#resultat1").addClass("alert alert-success");
+                   var d = $.parseJSON(data);
+                   $("#resultat1").append(d);
+
+                },
+                error: function () {
+                    $("#resultat1").empty();
+                    $("#resultat1").addClass("alert alert-danger");
+                   var d = $.parseJSON(data);
+                   $("#resultat1").append(d);
+                }
+            })
+        });
+
+        
+    </script>';
+                    $data='
+                   <div id="resultajax" class="well well-lg"> 
+            <h3 style="color:black">Mes hebergements</h3>
+            <div id="resultat1"></div>
+                <div id="pagination" style="padding:5px">       
+                    <table class="table">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>NOM</th>
+                        <th>VILLE</th>
+                        <th>ACTION</th>
+                    </tr>
+                    </thead>
+                    <tbody>';
+                    if(!isset($_GET['page'])){$_GET['page'] = 1;}
+                    if($vpdo->count_row('hebergement') != 0)
+                    {
+                        $result= $vpdo->return_table2('hebergement',$_GET['page'],6,$_SESSION['id']);                    
+                        while ($row =$result->fetch())
+                        {
+                            $data = $data .'
+                            <tr>
+                            <td></td>
+                            <td>'.$row['NOM_HEBERGEMENT'].'</td>
+                            <td>'.$row['VILLE_HEBERGEMENT'].'</td>
+                            <td>
+                                <div class="btn-group btn-group-xs" role="group" aria-label="...">  
+                                  <a class="btn btn-success"href="admin_update.php?type="hebergement"&id='.$row['ID_HEBERGEMENT'].'">UPDATE</a>
+                                  <a class="btn btn-danger delete" name="'.$row['ID_HEBERGEMENT'].'">Delete</a>
+                                </div>
+                            </td>
+                            </tr>';
+                            
+                        }
+                    }
+                    $data=$data.
+                    '</tbody>
+                </table>';
+                $nbRow= $vpdo->count_row2('hebergement',$_SESSION['id']);
+                        $nbpage= ceil($nbRow/6);//6 => nb par page
+                        $data= $data.'
+                        <div>
+                        <nav>
+                          <ul class="pagination">
+                            <li>
+                              <a href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                              </a>
+                            </li>';
+                            for ($i=1; $i <= $nbpage ; $i++) { 
+                               $data= $data.'<li><a href="?page='.$i.'" class="page">'.$i.'</a></li>';
+                            }
+                        $data= $data.'
+                            <li>
+                              <a href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                              </a>
+                            </li>
+                          </ul>
+                        </nav>
+                        </div>
+                <a class="btn btn-success"href="admin_new.php?type=hebergement">NEW</a>
+            </div></div>
+            '.$script   ;
+            return $data;
+
+    }
+
 
     public function corps_admin(){
         $retour= '

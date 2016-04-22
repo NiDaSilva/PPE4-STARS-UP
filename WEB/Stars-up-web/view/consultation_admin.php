@@ -1,10 +1,10 @@
 <?php
-include_once('../class/page_base.class.php');
+include_once('../class/page_base_admin.class.php');
 include '../class/admin.controller.class.php';
 
 $controller = new admin_controller();
 
-$test = new page_base('GESTION CRUD');
+$test = new page_base_admin('GESTION CRUD');
 
 $test->corps=$controller->corps_admin();
 
@@ -12,9 +12,6 @@ $test->afficher();
 ?>
 
 <script type="text/javascript">
-
-
-
 
 
 $("#nomtable").change(function (){
