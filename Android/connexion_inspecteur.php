@@ -10,9 +10,10 @@ $db = new DB_CONNECT(); // connecting to db
 if (isset($_GET["login"]) && isset($_GET["mdp"])) {
     $login = $_GET['login'];
     $mdp = $_GET['mdp'];
+    $mdp = sha1($mdp);
 
     // get a inspecteur from inspecteurs table
-    $result = mysql_query("SELECT * FROM inspecteur WHERE LOGIN = $login AND MDP = $mdp");
+    $result = mysql_query("SELECT * FROM inspecteur WHERE LOGIN = '".$login."' AND MDP = '".$mdp."'") or die(mysql_error());
 
     if (!empty($result)) {
         // check for empty result
