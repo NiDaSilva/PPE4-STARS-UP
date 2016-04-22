@@ -55,37 +55,48 @@ $("#submit").click(function(){
 
 
 $(document).ready(function() {
-    if(!$("#id").val(" "))
-    {
         $.ajax({
         url: "../ajax/get_item.php",
         type: "POST",
-        data: ({table : $("#table").val(),
-                categ : $("#categ").val(),
+        data: ({table : $("#categ").val(),
                 id: $("#id").val()}) 
         }).done(function(data){
             data = JSON.parse(data);
-
-                $("#specialite").prop("selectedIndex",data.id_specialite);
+                $("#departement").prop("selectedIndex",data.departement);
+                $("#gerant").val(data.gerant);
                 $("#nom").val(data.nom);
-                $("#prenom").val(data.prenom);
-                $("#login").val(data.login);
-                $("#mdp").val(data.mdp);
+                $("#adresse").val(data.adresse);
+                $("#ville").val(data.ville);
+                $("#horaire").val(data.horaire);
+                console.log("test");
+        if(data.specialite=1)
+            {                
+                $("#nbresto").val(data.nbresto);
+                $("#chefresto").val(data.chefresto);
+            }
+        if(data.specialite=2)
+            {
+              
+            }
+        if(data.specialite=3)
+            {
+                $("#nbchambre").val(data.nbchambre);
+                $("#nbcuisine").val(data.nbcuisine);
+            }
         })
-    }
+    
 });
 
 </script>';
 
 if(isset($_REQUEST['categ']))
 {
-    if(!isset($_GET["id"])){$_GET["id"] = " ";}
+    
 	switch($_REQUEST['categ'])
 	{
 		case "hotel" :
 		{
-			$data='<input type="hidden" class="form-control" id="categ" value='.$_GET['categ'].'>
-                <input type="hidden" class="form-control" id="id" value='.$_GET['id'].'>
+			$data='
             <div id="alertsubmit"></div><input type="hidden" class="form-control" id="table" value="1">
 	            <div class="form-group row">
 	                <label for="departement" class="col-sm-2 form-control-label">Département</label>
@@ -157,8 +168,7 @@ if(isset($_REQUEST['categ']))
 	    	break;
 	    case "camping" :
 	    {
-	    	$data='<input type="hidden" class="form-control" id="categ" value='.$_GET['categ'].'>
-                <input type="hidden" class="form-control" id="id" value='.$_GET['id'].'>
+	    	$data='
             <div id="alertsubmit"></div><input type="hidden" class="form-control" id="table" value="2">
                	<div class="form-group row">
                     <label for="departement" class="col-sm-2 form-control-label">Département</label>
@@ -218,8 +228,7 @@ if(isset($_REQUEST['categ']))
 	    	break;
 	    case "chambre" :
 	    {	    
-	    	$data='<input type="hidden" class="form-control" id="categ" value='.$_GET['categ'].'>
-                <input type="hidden" class="form-control" id="id" value='.$_GET['id'].'>
+	    	$data='
             <div id="alertsubmit"></div><input type="hidden" class="form-control" id="table" value="3">
             	<div class="form-group row">
                     <label for="departement" class="col-sm-2 form-control-label">Département</label>

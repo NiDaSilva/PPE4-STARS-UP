@@ -211,7 +211,10 @@ class mypdo extends PDO
     }
     public function get_item($table, $id)
     {
-        $requete = 'SELECT * FROM '.$table.' WHERE id_'.$table.' = '.$id.' ;';
+        if(($table == "hotel")||($table == "camping")||($table == "chambre_hote"))
+        {$requete = 'SELECT * FROM '.$table.' WHERE ID_HEBERGEMENT = '.$id.' ;';}
+        else{
+        $requete = 'SELECT * FROM '.$table.' WHERE id_'.$table.' = '.$id.' ;';}
         $result = $this->connexion->query($requete);
         return $result;
     }
