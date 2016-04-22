@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.apache.http.NameValuePair;
@@ -54,10 +55,24 @@ public class Planning_Activity extends Activity {
 
     ListView list_visite;
 
+    String idInspecteur;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_planning);
+
+        Intent intent = getIntent();
+        if(intent.hasExtra("idInspecteur")){
+            idInspecteur = intent.getExtras().getString("idInspecteur");
+        }
+        else if(intent.hasExtra("test")) {
+            idInspecteur = intent.getExtras().getString("idInspecteur");
+        }
+
+        /*
+        Bundle b = getIntent().getExtras();
+        idInspecteur = b.getString("idInspecteur");*/
 
         //Liste des visites
         listVisite = new ArrayList<HashMap<String, String>>();
@@ -69,12 +84,27 @@ public class Planning_Activity extends Activity {
         list_visite = (ListView) findViewById(R.id.list_visites);
 
         //OnClick ****************************************************************************************** à faire
-        list_visite.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        list_visite.setOnItemClickListener(new OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> a, View v, int position, long id) {
-                Intent i = new Intent(getApplicationContext(), Hebergement_Activity.class);
-                i.putExtra("nom", "test");
-                startActivity(i);
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                String id_v = listVisite.get(i).get("id_v");
+                String id_i = listVisite.get(i).get("id_i");
+                String nom_h = listVisite.get(i).get("nom");
+                String horaire_h = listVisite.get(i).get("horaires");
+                String adresse_h = listVisite.get(i).get("adresse");
+                String nbr_etoiles = listVisite.get(i).get("nbr_etoiles");
+                String commentaire = listVisite.get(i).get("commentaire");
+
+                Intent in = new Intent(getApplicationContext(), Hebergement_Activity.class);
+                in.putExtra("id_v", id_v);
+                in.putExtra("id_i", id_i);
+                in.putExtra("nom", nom_h);
+                in.putExtra("horaires", horaire_h);
+                in.putExtra("adresse", adresse_h);
+                in.putExtra("nbr_etoiles", nbr_etoiles);
+                in.putExtra("commentaire", commentaire);
+                startActivity(in);
             }
         });
 
@@ -139,7 +169,6 @@ public class Planning_Activity extends Activity {
 
         // getting All visites from url
         protected String doInBackground(String... args) {
-            String idInspecteur = "4";
 
             // Building Parameters
             List<NameValuePair> params = new ArrayList<NameValuePair>();
@@ -168,9 +197,17 @@ public class Planning_Activity extends Activity {
                         HashMap<String, String> map = new HashMap<String, String>();
 
                         // adding each child node to HashMap key => value
+                        map.put("id_v", v.getString("id_v"));
+                        map.put("id_i", v.getString("id_i"));
+                        map.put("date", v.getString("date"));
+                        map.put("heure", v.getString("heure"));
+                        map.put("nbr_etoiles", v.getString("nbr_etoiles"));
+                        map.put("commentaire", v.getString("commentaire"));
+
+                        map.put("id_h", v.getString("id_h"));
                         map.put("nom", v.getString("nom"));
                         map.put("adresse", v.getString("adresse") + " " + v.getString("ville"));
-                        map.put("date", v.getString("horaires"));
+                        map.put("horaires", v.getString("horaires"));
 
                         // adding HashList to ArrayList
                         listVisite.add(map);
@@ -204,7 +241,7 @@ public class Planning_Activity extends Activity {
 
                     //Insertion des items dans la vue list_planning
                     ListAdapter adapter = new SimpleAdapter(Planning_Activity.this, listVisite, R.layout.list_planning,
-                            new String[] {"date", "nom", "adresse"}, new int[] {R.id.date, R.id.nom, R.id.adresse});
+                            new String[] {"date", "heure", "nom", "adresse"}, new int[] {R.id.date, R.id.heure, R.id.nom, R.id.adresse});
 
                     list_visite.setAdapter(adapter);
                 }

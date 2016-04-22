@@ -48,23 +48,31 @@
             android:id="@+id/txt_adresse"
             android:layout_marginBottom="10dp" />
 
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_commentaire"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.45"
+            android:hint="@string/commentaire"
+            android:layout_marginBottom="20dp" />
+
         <RatingBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/ratingBar"
+            android:id="@+id/bar_note"
+            android:layout_gravity="center_horizontal"
             android:numStars="5"
             android:stepSize="1"
             android:layout_marginBottom="15dp"
-            android:clickable="false"
-            android:focusable="false"
             android:isIndicator="true" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/rediger"
-            android:id="@+id/btn_rediger"
-            android:layout_gravity="right" />
+            android:text="@string/envoyer"
+            android:id="@+id/btn_envoyer"
+            android:layout_gravity="center_horizontal" />
 
     </LinearLayout>
 </RelativeLayout>
