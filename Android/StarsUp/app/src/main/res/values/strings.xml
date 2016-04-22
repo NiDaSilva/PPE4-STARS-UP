@@ -26,5 +26,6 @@
     <string name="envoyer">Envoyer</string>
     <string name="chargement_update">Update en cours. Attendez ...</string>
     <string name="update_fini">Update effectuée</string>
+    <string name="deconnexion">Deconnexion</string>
 
 </resources>

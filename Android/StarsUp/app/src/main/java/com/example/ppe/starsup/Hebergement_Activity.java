@@ -22,7 +22,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -75,6 +78,14 @@ public class Hebergement_Activity extends Activity {
         ((TextView) findViewById(R.id.txt_adresse)).setText(adresse);
         ((EditText) findViewById(R.id.txt_commentaire)).setText(commentaire);
         ((RatingBar) findViewById(R.id.bar_note)).setRating(nbr_etoiles);
+
+        String s_date = b.getString("datetime");
+        Date date_v;
+        try {
+            date_v = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(s_date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
 
     }
