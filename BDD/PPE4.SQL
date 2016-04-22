@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Jeu 21 Avril 2016 à 20:07
+-- Généré le :  Ven 22 Avril 2016 à 01:05
 -- Version du serveur :  5.7.9
 -- Version de PHP :  5.6.16
 
@@ -89,6 +89,30 @@ CREATE TABLE IF NOT EXISTS `chambre_hote` (
   `VILLE_HEBERGEMENT` varchar(128) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`ID_HEBERGEMENT`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `contre_visite`
+--
+
+DROP TABLE IF EXISTS `contre_visite`;
+CREATE TABLE IF NOT EXISTS `contre_visite` (
+  `ID_VISITE` int(11) NOT NULL AUTO_INCREMENT,
+  `ID_HEBERGEMENT` int(11) DEFAULT NULL,
+  `ID_INSPECTEUR` int(11) DEFAULT NULL,
+  `ID_SAISON` int(11) DEFAULT NULL,
+  `NOMBRE_ETOILE_VISITE` smallint(6) DEFAULT NULL,
+  `DATE_HEURE_VISITE` datetime DEFAULT NULL,
+  `CONTRE_VISITE` tinyint(1) DEFAULT NULL,
+  `COMMENTAIRE_VISITE` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  `ID_CONTREVISITE` int(11) DEFAULT NULL,
+  PRIMARY KEY (`ID_VISITE`),
+  KEY `I_FK_VISITER_HEBERGEMENT` (`ID_HEBERGEMENT`),
+  KEY `I_FK_VISITER_INSPECTEUR` (`ID_INSPECTEUR`),
+  KEY `I_FK_VISITER_SAISON` (`ID_SAISON`),
+  KEY `ID_CONTREVISITE` (`ID_CONTREVISITE`)
+) ENGINE=InnoDB AUTO_INCREMENT=122 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -482,7 +506,7 @@ INSERT INTO `inspecteur` (`ID_INSPECTEUR`, `ID_SPECIALITE`, `NOM_INSPECTEUR`, `P
 (1, 1, 'Kadera', 'Tata', 'NGrondin', 'c6c4940b323ff81c66e02a02e0281c370c535008', 'PDP/NG.png', 800000000, 49, '1971-01-01', 'Mexicaine'),
 (2, 2, 'Bouhours', 'Natacha', 'NBouhours', 'c6c4940b323ff81c66e02a02e0281c370c535008', 'PDP/NB.jpg', 0, 49, '1996-12-05', 'Française'),
 (3, 3, 'Da Silva', 'Nicolas', 'NDSilva', 'c6c4940b323ff81c66e02a02e0281c370c535008', 'PDP/NDS.jpg', 0, 49, '1995-05-30', 'Française'),
-(4, 1, 'Robin', 'Dimitry', 'Drobin', 'f356a267d8cd8a5f8b3d4ac4164a5ed1a101603f', 'PDP/DR.jpg', 6556595674445, 49, '1996-11-03', 'Française'),
+(4, 1, 'Robin', 'Dimitry', 'Drobin', 'f356a267d8cd8a5f8b3d4ac4164a5ed1a101603f', 'PDP/DR.jpg', 6558025674445, 49, '1996-11-03', 'Française'),
 (5, 2, 'Hermange', 'Pierre', 'PHermange', 'c6c4940b323ff81c66e02a02e0281c370c535008', 'PDP/PH.jpg', 0, 49, '1997-02-02', 'Française'),
 (6, 3, 'Menant', 'Kévin', 'KMenant', 'c6c4940b323ff81c66e02a02e0281c370c535008', 'PDP/KM.jpg', 0, 49, '1995-10-05', 'Française');
 
@@ -597,7 +621,7 @@ INSERT INTO `temps_connexion` (`ID_CONNEXION`, `ID_INSPECTEUR`, `DEBUT_CONNEXION
 (1, 1, '2016-04-21 09:06:07', '2016-04-21 09:07:27'),
 (2, 2, NULL, NULL),
 (3, 3, NULL, NULL),
-(4, 4, '2016-04-21 09:40:43', '2016-04-21 09:40:53'),
+(4, 4, '2016-04-22 01:08:34', '2016-04-22 01:08:44'),
 (5, 5, NULL, NULL),
 (6, 6, '2016-04-20 21:39:33', '2016-04-20 21:39:45');
 
@@ -772,6 +796,40 @@ INSERT INTO `visite` (`ID_VISITE`, `ID_HEBERGEMENT`, `ID_INSPECTEUR`, `ID_SAISON
 (118, 118, 3, 4, 5, '2016-04-26 08:00:00', NULL, 'a neque. Nullam', NULL),
 (119, 119, 3, 3, 3, '2016-04-26 15:00:00', NULL, 'justo. Proin non massa non ante bibendum ullamcorper. Duis', NULL),
 (120, 120, 3, 3, 3, '2016-04-27 13:00:00', NULL, 'Proin velit. Sed malesuada augue ut lacus.', NULL);
+
+--
+-- Déclencheurs `visite`
+--
+DROP TRIGGER IF EXISTS `after_update_etoile`;
+DELIMITER $$
+CREATE TRIGGER `after_update_etoile` AFTER UPDATE ON `visite` FOR EACH ROW BEGIN
+	IF((Select NOMBRE_ETOILE_VISITE FROM visite WHERE ID_HEBERGEMENT = old.ID_HEBERGEMENT ORDER BY DATE_HEURE_VISITE DESC LIMIT 0,1) < (Select NOMBRE_ETOILE_VISITE FROM visite WHERE ID_HEBERGEMENT = old.ID_HEBERGEMENT ORDER BY DATE_HEURE_VISITE DESC LIMIT 1,1))
+    THEN
+    	INSERT INTO contre_visite (`ID_HEBERGEMENT`, `ID_SAISON`, `NOMBRE_ETOILE_VISITE`, `ID_CONTREVISITE`) VALUES (old.ID_HEBERGEMENT, old.ID_SAISON, new.NOMBRE_ETOILE_VISITE, old.ID_VISITE);
+    END IF;
+END
+$$
+DELIMITER ;
+DROP TRIGGER IF EXISTS `before_insert_etoile_visite`;
+DELIMITER $$
+CREATE TRIGGER `before_insert_etoile_visite` BEFORE UPDATE ON `visite` FOR EACH ROW BEGIN
+	IF(new.NOMBRE_ETOILE_VISITE > 5 OR new.NOMBRE_ETOILE_VISITE < 0)
+    THEN
+    	SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'La note doit etre inferieur a 5 et superieur a 0';
+    END IF;
+END
+$$
+DELIMITER ;
+DROP TRIGGER IF EXISTS `before_update_visite_nbMax`;
+DELIMITER $$
+CREATE TRIGGER `before_update_visite_nbMax` BEFORE UPDATE ON `visite` FOR EACH ROW BEGIN
+    IF((SELECT count(ID_VISITE) FROM visite WHERE new.ID_INSPECTEUR = new.ID_INSPECTEUR AND new.DATE_HEURE_VISITE >= DATE(DATE(NOW()) - 3) AND new.DATE_HEURE_VISITE <= DATE(DATE(NOW()) + 3)) >= 15)
+    THEN
+    	SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Inspecteur ne peut faire plus de 15 visites par semaine.';
+    END IF;
+END
+$$
+DELIMITER ;
 
 --
 -- Contraintes pour les tables exportées
