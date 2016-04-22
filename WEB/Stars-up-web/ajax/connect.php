@@ -16,6 +16,7 @@ if(isset($_REQUEST["login"]) && isset($_REQUEST["pass"]) && isset($_REQUEST["typ
         $_SESSION["type"] = $_REQUEST["type"];
         if($_REQUEST["type"]=="inspecteur")
         {
+            
             $_SESSION["id"] = $result["ID_INSPECTEUR"];
             $_SESSION["nom"] = $result["NOM_INSPECTEUR"];
         }else if($_REQUEST["type"]=="gerant")

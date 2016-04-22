@@ -57,14 +57,11 @@ class page_base {
 	protected function navbar()
 	{
 		$r='	         <li>
-	                        <a class="page-scroll" href="#about">About</a>
-	                    </li>
-	                    <li>
-	                        <a class="page-scroll" href="#">Contact</a>
-	                    </li>
-	                    <li>
-	                        <a class="page-scroll" href="../view/deconnexion.php">Deconnexion</a>
-	                    </li>';
+                        <a class="page-scroll" href="view/connexion.php">Connexion</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#">Contact</a>
+                    </li>';
 	    return $r;
 	}	
 	private function navbar_top(){

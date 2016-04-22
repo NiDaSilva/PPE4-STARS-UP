@@ -1,10 +1,62 @@
 <?php
+
 include 'class/hebergement.controller.class.php';
 $controller = new controller();
 if(!isset($_GET['page']))
 {
 $_GET['page']=1;
 }
+$menu =" ";
+if(isset($_SESSION['type']))
+{
+    switch ($_SESSION['type']) {
+        case 'admin':
+            {
+                $menu = '<li>
+                            <a class="page-scroll" href="../view/consultation_admin.php">C.R.U.D.</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="../view/deconnexion.php">Deconnexion</a>
+                        </li>';
+            }
+            break;
+                case 'inspecteur':
+            {
+                $menu='<li>
+                            <a class="page-scroll" href="../view/agenda.php">Faire son planning</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="../view/deconnexion.php">Deconnexion</a>
+                        </li>';
+            }
+            break;
+                    case 'gerant':
+            {
+                $menu='<li>
+                            <a class="page-scroll" href="../view/affichehebergement.php">Mes hebergement</a>
+                        </li>
+
+                        <li>
+                            <a class="page-scroll" href="../view/demendevisite.php">Demande de visite</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="../view/deconnexion.php">Deconnexion</a>
+                        </li>';
+            }
+            break;
+
+    }
+}
+else
+{
+    $menu='<li>
+                        <a class="page-scroll" href="view/connexion.php">Connexion</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#">Contact</a>
+                    </li>';
+}
+
 echo'
 <!DOCTYPE html>
 <html lang="en">
@@ -60,16 +112,8 @@ echo'
                     <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
                     <li class="hidden">
                         <a href="#page-top"></a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="view/connexion.php">Connexion</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="view/consultation_admin.php">Consultation Admin</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#">Contact</a>
-                    </li>
+                    </li>'.$menu.'
+                    
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
