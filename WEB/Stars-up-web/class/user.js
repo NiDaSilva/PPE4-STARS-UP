@@ -15,7 +15,7 @@ var user= {
                 setTimeout( function(){
                     $("#bien").hide();
                     if (data.type == "gerant") {
-                        document.location.href = "../index.php";
+                        document.location.href = "../view/demandevisite.php";
                     }
                     else if (data.type == "inspecteur") {
                         document.location.href = "agenda.php";

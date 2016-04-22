@@ -84,7 +84,7 @@ echo'
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
                         <h1 class="brand-heading">Star\'s UP</h1>
-                        <p class="intro-text">Created by 2TSIOD.</p>
+                        <p class="intro-text">Created by 2TSSIOD.</p>
                         <a href="#about" class="btn btn-circle page-scroll">
                             <i class="fa fa-angle-double-down animated"></i>
                         </a>
