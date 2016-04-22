@@ -65,15 +65,9 @@ public class Connexion_Activity extends Activity {
                     //chargement des visites
                     new Connexion().execute();
 
-                    //Toast.makeText(getApplicationContext(), "Connexion ...", Toast.LENGTH_SHORT).show();
-
                     login = ((EditText)findViewById(R.id.txt_Login)).getText().toString();
                     mdp = ((EditText)findViewById(R.id.txt_MDP)).getText().toString();
 
-                        //if login est bon
-                        //    Intent i = new Intent(getApplicationContext(), Planning_Activity.class);
-                        //    Toast.makeText(getApplicationContext(),"Valide",Toast.LENGTH_SHORT).show();
-                        //    startActivity(i);
                     break;
             }
         }
@@ -108,7 +102,7 @@ public class Connexion_Activity extends Activity {
         protected void onPreExecute() {
             super.onPreExecute();
             pDialog = new ProgressDialog(Connexion_Activity.this);
-            pDialog.setMessage("Connexion en cours. Attendez ...");
+            pDialog.setMessage(getString(R.string.chargement_connexion));
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(false);
             pDialog.show();

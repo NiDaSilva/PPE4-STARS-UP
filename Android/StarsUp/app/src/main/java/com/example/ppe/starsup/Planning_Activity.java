@@ -160,7 +160,7 @@ public class Planning_Activity extends Activity {
         protected void onPreExecute() {
             super.onPreExecute();
             pDialog = new ProgressDialog(Planning_Activity.this);
-            pDialog.setMessage("Chargement des visites. Attendez ...");
+            pDialog.setMessage(getString(R.string.chargement_visites));
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(false);
             pDialog.show();

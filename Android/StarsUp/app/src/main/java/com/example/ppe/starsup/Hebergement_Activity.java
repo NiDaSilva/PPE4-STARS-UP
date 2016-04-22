@@ -127,7 +127,7 @@ public class Hebergement_Activity extends Activity {
         protected void onPreExecute() {
             super.onPreExecute();
             pDialog = new ProgressDialog(Hebergement_Activity.this);
-            pDialog.setMessage("Update en cours. Attendez ...");
+            pDialog.setMessage(getString(R.string.chargement_update));
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(false);
             pDialog.show();

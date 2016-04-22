@@ -2,14 +2,18 @@
     <string name="app_name">StarsUp</string>
 
     <!-- Strings de Connexion -->
+    <string name="titre_activity_connexion">Connexion</string>
     <string name="champ_requis">Ce champ est requis</string>
-    <string name="email_erreur">L\'email est incorrect</string>
-    <string name="mdp">Mot de passe</string>
-    <string name="mdp_erreur">Le mot de passe est incorrect</string>
+    <string name="login">Identifiant</string>
+    <string name="password">Mot de passe</string>
+    <string name="login_erreur">L\'identifiant est incorrect</string>
+    <string name="password_erreur">Le mot de passe est incorrect</string>
     <string name="connexion">Connexion</string>
     <string name="action_settings">Parametres</string>
+    <string name="chargement_connexion">Connexion en cours. Attendez ...</string>
 
     <string name="titre_activity_planning">Planning</string>
+    <string name="chargement_visites">Chargement des visites. Attendez ...</string>
 
     <!-- Strings de Hebergement -->
     <string name="titre_activity_hebergement">Hébergement</string>
@@ -18,10 +22,8 @@
     <string name="horaires">Horaires</string>
     <string name="adresse">Adresse</string>
     <string name="note">Note</string>
-    <string name="rediger">Rédiger</string>
-
-    <!-- Strings de Visite -->
-    <string name="titre_activity_visite">Compte Rendu</string>
     <string name="commentaire">Commentaire</string>
     <string name="envoyer">Envoyer</string>
+    <string name="chargement_update">Update en cours. Attendez ...</string>
+
 </resources>

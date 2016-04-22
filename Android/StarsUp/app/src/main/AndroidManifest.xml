@@ -39,10 +39,6 @@
             android:label="@string/titre_activity_planning" >
 
         </activity>
-        <activity
-            android:name=".Visite_Activity"
-            android:label="@string/titre_activity_visite" >
-        </activity>
     </application>
 
 </manifest>
