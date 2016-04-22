@@ -19,6 +19,8 @@ var user= {
                     }
                     else if (data.type == "inspecteur") {
                         document.location.href = "agenda.php";
+                    }else{
+                        document.location.href = "../view/consultation_admin.php";
                     }
                 }, 1000 );
 

@@ -59,6 +59,33 @@ $("#submitgerant").click(function(){
                 }
             })
 });
+
+$("#submitvisite").click(function(){
+    $.ajax({
+                url: "../ajax/valid_update_visite.php",
+                type: "GET",
+                data: ({
+                    id : $("#id").val(),
+                    table : $("#table").val(),
+                    hebergement : $("#hebergement").val(),
+                    saison : $("#saison").val(),
+                    annee : $("#annee").val(),
+                    inspecteur :$("#inspecteur").val(),
+                    etoile:$("#etoile").val(),
+                    date: moment($("#date").val()).format("YYYY-MM-DD HH:mm:ss"),
+                    commentaire: $("#commentaire").val(),
+                    id_contrevisite : $("#id_contrevisite").val(),
+                }),
+
+                success: function (data) {
+                    $("#alertsubmit").empty();
+                    var d = $.parseJSON(data);
+                   $("#alertsubmit").append(d);
+                },
+                error: function () {
+                }
+            })
+});
 </script>
 
 
@@ -87,6 +114,20 @@ $("#submitgerant").click(function(){
                 $("#login").val(data.login);
                 $("#mdp").val(data.mdp);
             }
+        if(data.table="visite")
+            {
+                $("#hebergement").val(data.hebergement);
+                $("#saison").val(data.saison);
+                $("#annee").val(data.annee);
+                $("#commentaire").val(data.commentaire);
+                $("#date").val(data.date);
+                $("#inspecteur").val(data.inspecteur);
+                $("#id_contrevisite").val(data.contrevisite);
+                $("#etoile").val(data.etoile);
+
+
+            }
+        
 
 
 	    })

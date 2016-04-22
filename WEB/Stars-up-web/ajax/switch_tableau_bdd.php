@@ -299,7 +299,7 @@ if(isset($_REQUEST['table']))
 	                        <td>'.$saison.'</td>
 	                        <td>
 	                            <div class="btn-group btn-group-xs" role="group" aria-label="...">  
-	                              <button type="button" class="btn btn-success">Update</button>
+	                              <a class="btn btn-success"href="admin_update.php?type='.$_REQUEST['table'].'&id='.$row['ID_VISITE'].'">UPDATE</a>
 	                              <a class="btn btn-danger delete" name="'.$row['ID_VISITE'].'">Delete</a>
 	                            </div>
 	                        </td>
