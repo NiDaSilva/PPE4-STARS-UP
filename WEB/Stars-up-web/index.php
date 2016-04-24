@@ -58,6 +58,7 @@ else
 }
 
 echo'
+<style>p{height: 0px;}h4{height: 0px;margin-bottom: 60px !important;}</style>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -78,6 +79,7 @@ echo'
     <link href="css/grayscale.css" rel="stylesheet">
     <link href="owl/owl-carousel/owl.carousel.css" rel="stylesheet">
     <link href="owl/owl-carousel/owl.theme.css" rel="stylesheet">
+    <link href="css/amano.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -187,7 +189,8 @@ echo'
                   </div><!-- /.container-fluid -->
                 </nav>
                 <!-- contenue -->
-                <div class="row">
+                <div id="row" class="row">
+                <div  id="detail" class="lesdetails"></div>
                     <div class="col-lg-8 col-lg-offset-2">
                         <div class="owl-wrapper">
 							'.

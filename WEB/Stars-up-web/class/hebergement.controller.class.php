@@ -40,12 +40,14 @@ class controller{
                                     <div class="col-sm-6 col-md-4">';
             }
             $retour = $retour . '
-                <div class="thumbnail" style="width:204px;height: 362px;">
+                <div id="' . $row['ID_HEBERGEMENT'] . '" class="thumbnail" style="width:204px;height: 362px;">
                     <img src="http://placehold.it/350x150" alt="320x150">
                     <div class="caption">
                         <h4><a href="#">' . $row['NOM_HEBERGEMENT'] . '</a></h4>
-                        <p>' . $row['ADRESSE_HEBERGEMENT'] . '</p>
-                        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                        <p>' . $row['ADRESSE_HEBERGEMENT'] . '<br>' . $row['VILLE_HEBERGEMENT'] . '</p>
+                        <p>' . $row['HORAIRES'] . '</p>
+                         <p>' . $row['NOMBRE_ETOILE_VISITE'] . '</p>
+                        <p><a id"btn" class="btn btn-primary btn-index" role="button">Button</a></p>
                     </div>
                 </div>
             ';

@@ -17,12 +17,10 @@ if(isset($_REQUEST['table']) && isset($_REQUEST['id']))
 
 			case 'hebergement':
 			{
-				print_r('1er');
-				$x=0;
-				$id=0;					
+				$x=null;
+				$id=null;
 				while ($r =$result->fetch())
 				{
-					print_r('2er');
 			 	    $item=array(
 				        "id" => $r["ID_HEBERGEMENT"],
 				        "departement" => intval($r["ID_DEPARTEMENT"]),

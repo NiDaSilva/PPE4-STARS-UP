@@ -202,7 +202,14 @@ class mypdo extends PDO
 
             if($limit == 0)
             {
-                $requete = 'SELECT * FROM '.$nomtable.';';
+                if($nomtable!="hebergement")
+                {
+                    $requete = 'SELECT * FROM ' . $nomtable . ';';
+                }
+                else
+                {
+                    $requete = 'SELECT * FROM ' . $nomtable . ' as h INNER JOIN visite as v on h.ID_HEBERGEMENT = v.ID_HEBERGEMENT;';
+                }
             }
             else
             {
