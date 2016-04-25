@@ -25,7 +25,7 @@ if (isset($_GET["login"]) && isset($_GET["mdp"])) {
             $inspecteur["id"]       = $result["ID_INSPECTEUR"];
             $inspecteur["id_specialite"] = $result["ID_SPECIALITE"];
             $inspecteur["nom"]      = $result["NOM_INSPECTEUR"];
-            $inspecteur["prenom"]   = $result["PERNOM_INSPECTEUR"];
+            $inspecteur["prenom"]   = utf8_encode($result["PERNOM_INSPECTEUR"]);
             $inspecteur["login"]    = $result["LOGIN"];
             $inspecteur["mdp"]      = $result["MDP"];
             // success

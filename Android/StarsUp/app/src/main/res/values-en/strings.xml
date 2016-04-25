@@ -30,6 +30,6 @@
     <string name="envoyer">Send</string>
     <string name="chargement_update">Update ... Please wait</string>
     <string name="update_fini">Update done</string>
-    <string name="deconnexion">Sigh out</string>
+    <string name="deconnexion">Sign out</string>
 
 </resources>

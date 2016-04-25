@@ -143,13 +143,15 @@ public class Connexion_Activity extends Activity {
                     startActivity(i);
 
                 } else {
-                    // Erreur
-                    // Launch Add New product Activity
-                    //Intent i = new Intent(getApplicationContext(), Planning_Activity.class);
-                    // Closing all previous activities
-                    // i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    //startActivity(i);
-                    //Toast.makeText(getApplicationContext(), "Pas de visite", Toast.LENGTH_SHORT).show();
+
+                    final String message = json.getString("message");
+
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+
+                            Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
