@@ -208,7 +208,7 @@ class mypdo extends PDO
                 }
                 else
                 {
-                    $requete = 'SELECT * FROM ' . $nomtable . ' as h INNER JOIN visite as v on h.ID_HEBERGEMENT = v.ID_HEBERGEMENT;';
+                    $requete = 'SELECT v.ID_HEBERGEMENT, v.ID_VISITE, h.NOM_HEBERGEMENT, h.ADRESSE_HEBERGEMENT, h.VILLE_HEBERGEMENT, h.HORAIRES, v.NOMBRE_ETOILE_VISITE, v.COMMENTAIRE_VISITE FROM hebergement as h INNER JOIN visite as v on h.ID_HEBERGEMENT = v.ID_HEBERGEMENT WHERE v.NOMBRE_ETOILE_VISITE <> "NULL" AND v.COMMENTAIRE_VISITE <> "NULL" GROUP BY v.ID_HEBERGEMENT DESC';
                 }
             }
             else
