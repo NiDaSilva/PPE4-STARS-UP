@@ -31,10 +31,6 @@ namespace PPE4_Stars_up
 
         string family = "Gentium Basic";
 
-        private string nomInspecteur;
-        private string prenomInspecteur;
-        private int idInspecteur;
-
         public int idINSP;
 
         // creation d’une liste des logins inspecteurs
@@ -133,7 +129,7 @@ namespace PPE4_Stars_up
 
                 List<string> listeElement = new List<string>();
 
-                listeElement.Add(idINSP.ToString());
+                listeElement.Add("0");
                 listeElement.Add(langue);
                 listeElement.Add("Spécialité");
                 listeElement.Add("100");
@@ -141,7 +137,7 @@ namespace PPE4_Stars_up
                 listeElement.Add("Oui");
                 listeElement.Add("Par défaut");
                 listeElement.Add("Par défaut");
-
+                listeElement.Add("Login");
 
                 StreamWriter writer = new StreamWriter(fileName2);
 
@@ -166,7 +162,8 @@ namespace PPE4_Stars_up
             }
             reader.Close();
 
-            listeElement[0] = idINSP.ToString();
+            listeElement[0] = "0";
+            listeElement[8] = tbNom.Text;
 
             StreamWriter writer = new StreamWriter(fileName2);
             foreach (var item in listeElement)
@@ -251,63 +248,13 @@ namespace PPE4_Stars_up
 
                 mdp = SHA1HashStringForUTF8String(tbMdp.Text);
 
-                if (mdp == lbMdp.Items[countt].ToString()) 
+                if (mdp == lbMdp.Items[countt].ToString())
                 {
                     // mdp correct
-
-                    #region confidentiel
-                    if (tbNom.Text == "NGrondin")
-                    {
-                        nomInspecteur = "Grondin";
-                        prenomInspecteur = "Nicolas";
-                        idInspecteur = 1;
-                        idINSP = 1;
-                    }
-
-                    if (tbNom.Text == "NBouhours")
-                    {
-                        nomInspecteur = "Bouhours";
-                        prenomInspecteur = "Natacha";
-                        idInspecteur = 2;
-                        idINSP = 2;
-                    }
-
-                    if (tbNom.Text == "NDSilva")
-                    {
-                        nomInspecteur = "Da Silva";
-                        prenomInspecteur = "Nicolas";
-                        idInspecteur = 3;
-                        idINSP = 3;
-                    }
-
-                    if (tbNom.Text == "Drobin")
-                    {
-                        nomInspecteur = "Robin";
-                        prenomInspecteur = "Dimitry";
-                        idInspecteur = 4;
-                        idINSP = 4;
-                    }
-
-                    if (tbNom.Text == "PHermange")
-                    {
-                        nomInspecteur = "Hermange";
-                        prenomInspecteur = "Pierre";
-                        idInspecteur = 5;
-                        idINSP = 5;
-                    }
-
-                    if (tbNom.Text == "KMenant")
-                    {
-                        nomInspecteur = "Menant";
-                        prenomInspecteur = "Kévin";
-                        idInspecteur = 6;
-                        idINSP = 6;
-                    }
-                    #endregion confidentiel
-
+                    
                     ecrireFichier();
-
-                    FormIndex FI = new FormIndex(nomInspecteur, prenomInspecteur, idInspecteur);
+                    
+                    FormIndex FI = new FormIndex();
                     FI.Show();
                     Visible = false;
                 }
@@ -328,14 +275,14 @@ namespace PPE4_Stars_up
                     // tbMdp.Text = "Mot de passe";
                     // cbAfficherMdp.Checked = false;
 
-                    if(cbAfficherMdp.Checked==true)
+                    if (cbAfficherMdp.Checked == true)
                     {
                         tbMdp.PasswordChar = '\0';
                     }
                     else
                     {
                         tbMdp.PasswordChar = '*';
-                    }                    
+                    }
                 }
             }
             else
@@ -368,6 +315,7 @@ namespace PPE4_Stars_up
 
             foreach (Process p in processesList)
             {
+                Visible = false;
                 p.Kill();
             }
 

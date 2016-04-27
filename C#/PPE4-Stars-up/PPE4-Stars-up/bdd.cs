@@ -14,7 +14,7 @@ namespace PPE4_Stars_up
     class bdd
     {
         int idI;
-        string test;
+        string test, log;
 
         private MySqlConnection myConnection;
         private bool connopen = false;
@@ -27,7 +27,7 @@ namespace PPE4_Stars_up
 
         private MySqlDataAdapter mySqlDataAdapterTP7 = new MySqlDataAdapter();
         private DataSet dataSetTP7 = new DataSet();
-        private DataView dv_login, dv_visite, dv_specialite, dv_NbEtoiles, dv_Historique, dv_Historique_Dep, dv_Historique_Etoile, dv_maj_etoile_commentaire, dv_inspecteur, dv_nb_visite_total, dv_nb_visite_passee, dv_nb_visite_today, dv_nb_visite_passee_non_evaluee, dv_nb_visite_prevue, dv_pdp, dv_departement, dv_temps_con, dv_all_temps_con, dv_maj_tps_con = new DataView();
+        private DataView dv_login, dv_visite, dv_specialite, dv_NbEtoiles, dv_Historique, dv_Historique_Dep, dv_Historique_Etoile, dv_maj_etoile_commentaire, dv_inspecteur, dv_nb_visite_total, dv_nb_visite_passee, dv_nb_visite_today, dv_nb_visite_passee_non_evaluee, dv_nb_visite_prevue, dv_pdp, dv_departement, dv_temps_con, dv_all_temps_con, dv_maj_tps_con, dv_id_inspe = new DataView();
 
         #region Lecture du fichier
         private void lireFichier()
@@ -49,6 +49,12 @@ namespace PPE4_Stars_up
 
                     test = line.ToString();
                 }
+
+                if (counter == 9)
+                {
+
+                    log = line.ToString();
+                }
             }
 
             file.Close();
@@ -64,7 +70,15 @@ namespace PPE4_Stars_up
             idI = Convert.ToInt32(test);
             return idI;
         }
-#endregion
+
+        public string recupLogin()
+        {
+            // Id de l'inspecteur connecté
+
+            lireFichier();
+            return log;
+        }
+        #endregion
 
         #region instanciation des variables
 
@@ -315,6 +329,19 @@ namespace PPE4_Stars_up
                 dv_maj_tps_con = value;
             }
         }
+
+        public DataView Dv_id_inspe
+        {
+            get
+            {
+                return dv_id_inspe;
+            }
+
+            set
+            {
+                dv_id_inspe = value;
+            }
+        }
         #endregion
 
         #region constructeur
@@ -369,7 +396,7 @@ namespace PPE4_Stars_up
         public void import()
         {
             if (!connopen) return;
-            mySqlDataAdapterTP7.SelectCommand = new MySqlCommand("select * from inspecteur; select v.ID_HEBERGEMENT as 'ID', h.NOM_HEBERGEMENT as 'NOM', h.ADRESSE_HEBERGEMENT as 'ADRESSE', h.VILLE_HEBERGEMENT as 'VILLE', v.DATE_HEURE_VISITE as 'DATE', h.HORAIRES, v.COMMENTAIRE_VISITE from visite as v inner join hebergement as h on v.ID_HEBERGEMENT = h.ID_HEBERGEMENT where id_inspecteur =" + recup() + "; SELECT Libelle_specialite FROM specialite as s INNER JOIN inspecteur as i on s.ID_SPECIALITE = i.ID_SPECIALITE where id_inspecteur =" + recup() + "; Select ID_HEBERGEMENT as 'ID', DATE_HEURE_VISITE as 'Date_Heure', NOMBRE_ETOILE_VISITE as 'Nb Etoiles' FROM visite ORDER BY Date_Heure DESC; SELECT v.DATE_HEURE_VISITE as 'Date & Heure', d.LIBELLE_DEPARTEMENT as 'Departement', h.NOM_HEBERGEMENT as 'Hebergement', v.NOMBRE_ETOILE_VISITE as 'Etoile', v.COMMENTAIRE_VISITE as 'Commentaire' FROM departement as d INNER JOIN hebergement as h on d.ID_DEPARTEMENT = h.ID_DEPARTEMENT INNER JOIN visite as v on h.ID_HEBERGEMENT = v.ID_HEBERGEMENT WHERE v.ID_INSPECTEUR =" + recup() + " AND v.DATE_HEURE_VISITE < DATE(NOW()) ORDER BY DATE_HEURE_VISITE ASC; SELECT v.DATE_HEURE_VISITE as 'Date & Heure', d.LIBELLE_DEPARTEMENT as 'Departement', h.NOM_HEBERGEMENT as 'Hebergement', v.NOMBRE_ETOILE_VISITE as 'Etoile', v.COMMENTAIRE_VISITE as 'Commentaire' FROM departement as d INNER JOIN hebergement as h on d.ID_DEPARTEMENT = h.ID_DEPARTEMENT INNER JOIN visite as v on h.ID_HEBERGEMENT = v.ID_HEBERGEMENT WHERE v.ID_INSPECTEUR =" + recup() + " AND v.DATE_HEURE_VISITE < DATE(NOW()) ORDER BY Departement ASC; SELECT v.DATE_HEURE_VISITE as 'Date & Heure', d.LIBELLE_DEPARTEMENT as 'Departement', h.NOM_HEBERGEMENT as 'Hebergement', v.NOMBRE_ETOILE_VISITE as 'Etoile', v.COMMENTAIRE_VISITE as 'Commentaire' FROM departement as d INNER JOIN hebergement as h on d.ID_DEPARTEMENT = h.ID_DEPARTEMENT INNER JOIN visite as v on h.ID_HEBERGEMENT = v.ID_HEBERGEMENT WHERE v.ID_INSPECTEUR =" + recup() + " AND v.DATE_HEURE_VISITE < DATE(NOW()) ORDER BY Etoile ASC; SELECT ID_INSPECTEUR, ID_HEBERGEMENT, COMMENTAIRE_VISITE, NOMBRE_ETOILE_VISITE FROM visite; SELECT CONCAT(PERNOM_INSPECTEUR, ' ', NOM_INSPECTEUR) FROM inspecteur WHERE ID_INSPECTEUR =" + recup() + "; SELECT count(ID_INSPECTEUR) FROM visite WHERE ID_INSPECTEUR =" + recup() + "; Select count(ID_INSPECTEUR) FROM visite WHERE DATE_HEURE_VISITE < DATE(NOW()) AND ID_INSPECTEUR =" + recup() + "; Select count(ID_INSPECTEUR) FROM visite WHERE DAY(DATE_HEURE_VISITE) = DAY(DATE(NOW())) AND MONTH(DATE_HEURE_VISITE) = MONTH(DATE(NOW())) AND YEAR(DATE_HEURE_VISITE) = YEAR(DATE(NOW())) AND ID_INSPECTEUR =" + recup() + "; Select count(ID_INSPECTEUR) FROM visite WHERE DATE_HEURE_VISITE < DATE(NOW()) AND COMMENTAIRE_VISITE IS NULL AND ID_INSPECTEUR =" + recup() + "; Select count(ID_INSPECTEUR) FROM visite WHERE DAY(DATE_HEURE_VISITE) > DAY(DATE(NOW())) AND MONTH(DATE_HEURE_VISITE) >= MONTH(DATE(NOW())) AND YEAR(DATE_HEURE_VISITE) >= YEAR(DATE(NOW())) AND ID_INSPECTEUR =" + recup() + "; SELECT * FROM inspecteur WHERE ID_INSPECTEUR =" + recup() + "; SELECT libelle_departement FROM inspecteur as i INNER JOIN departement as d on i.ID_DEPARTEMENT = d.ID_DEPARTEMENT WHERE ID_INSPECTEUR =" + recup() + "; SELECT ID_CONNEXION, ID_INSPECTEUR, DEBUT_CONNEXION, FIN_CONNEXION FROM temps_connexion where ID_INSPECTEUR =" + recup() + "; SELECT ID_CONNEXION, ID_INSPECTEUR, DEBUT_CONNEXION, FIN_CONNEXION FROM temps_connexion; select ID_INSPECTEUR, TEMPS_CONNEXION from inspecteur; ", myConnection);   
+            mySqlDataAdapterTP7.SelectCommand = new MySqlCommand("select * from inspecteur; select v.ID_HEBERGEMENT as 'ID', h.NOM_HEBERGEMENT as 'NOM', h.ADRESSE_HEBERGEMENT as 'ADRESSE', h.VILLE_HEBERGEMENT as 'VILLE', v.DATE_HEURE_VISITE as 'DATE', h.HORAIRES, v.COMMENTAIRE_VISITE from visite as v inner join hebergement as h on v.ID_HEBERGEMENT = h.ID_HEBERGEMENT where id_inspecteur =" + recup() + "; SELECT Libelle_specialite FROM specialite as s INNER JOIN inspecteur as i on s.ID_SPECIALITE = i.ID_SPECIALITE where id_inspecteur =" + recup() + "; Select ID_HEBERGEMENT as 'ID', DATE_HEURE_VISITE as 'Date_Heure', NOMBRE_ETOILE_VISITE as 'Nb Etoiles' FROM visite ORDER BY Date_Heure DESC; SELECT v.DATE_HEURE_VISITE as 'Date & Heure', d.LIBELLE_DEPARTEMENT as 'Departement', h.NOM_HEBERGEMENT as 'Hebergement', v.NOMBRE_ETOILE_VISITE as 'Etoile', v.COMMENTAIRE_VISITE as 'Commentaire' FROM departement as d INNER JOIN hebergement as h on d.ID_DEPARTEMENT = h.ID_DEPARTEMENT INNER JOIN visite as v on h.ID_HEBERGEMENT = v.ID_HEBERGEMENT WHERE v.ID_INSPECTEUR =" + recup() + " AND v.DATE_HEURE_VISITE < DATE(NOW()) ORDER BY DATE_HEURE_VISITE ASC; SELECT v.DATE_HEURE_VISITE as 'Date & Heure', d.LIBELLE_DEPARTEMENT as 'Departement', h.NOM_HEBERGEMENT as 'Hebergement', v.NOMBRE_ETOILE_VISITE as 'Etoile', v.COMMENTAIRE_VISITE as 'Commentaire' FROM departement as d INNER JOIN hebergement as h on d.ID_DEPARTEMENT = h.ID_DEPARTEMENT INNER JOIN visite as v on h.ID_HEBERGEMENT = v.ID_HEBERGEMENT WHERE v.ID_INSPECTEUR =" + recup() + " AND v.DATE_HEURE_VISITE < DATE(NOW()) ORDER BY Departement ASC; SELECT v.DATE_HEURE_VISITE as 'Date & Heure', d.LIBELLE_DEPARTEMENT as 'Departement', h.NOM_HEBERGEMENT as 'Hebergement', v.NOMBRE_ETOILE_VISITE as 'Etoile', v.COMMENTAIRE_VISITE as 'Commentaire' FROM departement as d INNER JOIN hebergement as h on d.ID_DEPARTEMENT = h.ID_DEPARTEMENT INNER JOIN visite as v on h.ID_HEBERGEMENT = v.ID_HEBERGEMENT WHERE v.ID_INSPECTEUR =" + recup() + " AND v.DATE_HEURE_VISITE < DATE(NOW()) ORDER BY Etoile ASC; SELECT ID_INSPECTEUR, ID_HEBERGEMENT, COMMENTAIRE_VISITE, NOMBRE_ETOILE_VISITE FROM visite; SELECT CONCAT(PERNOM_INSPECTEUR, ' ', NOM_INSPECTEUR) FROM inspecteur WHERE ID_INSPECTEUR =" + recup() + "; SELECT count(ID_INSPECTEUR) FROM visite WHERE ID_INSPECTEUR =" + recup() + "; Select count(ID_INSPECTEUR) FROM visite WHERE DATE_HEURE_VISITE < DATE(NOW()) AND ID_INSPECTEUR =" + recup() + "; Select count(ID_INSPECTEUR) FROM visite WHERE DAY(DATE_HEURE_VISITE) = DAY(DATE(NOW())) AND MONTH(DATE_HEURE_VISITE) = MONTH(DATE(NOW())) AND YEAR(DATE_HEURE_VISITE) = YEAR(DATE(NOW())) AND ID_INSPECTEUR =" + recup() + "; Select count(ID_INSPECTEUR) FROM visite WHERE DATE_HEURE_VISITE < DATE(NOW()) AND COMMENTAIRE_VISITE IS NULL AND ID_INSPECTEUR =" + recup() + "; Select count(ID_INSPECTEUR) FROM visite WHERE DAY(DATE_HEURE_VISITE) > DAY(DATE(NOW())) AND MONTH(DATE_HEURE_VISITE) >= MONTH(DATE(NOW())) AND YEAR(DATE_HEURE_VISITE) >= YEAR(DATE(NOW())) AND ID_INSPECTEUR =" + recup() + "; SELECT * FROM inspecteur WHERE ID_INSPECTEUR =" + recup() + "; SELECT libelle_departement FROM inspecteur as i INNER JOIN departement as d on i.ID_DEPARTEMENT = d.ID_DEPARTEMENT WHERE ID_INSPECTEUR =" + recup() + "; SELECT ID_CONNEXION, ID_INSPECTEUR, DEBUT_CONNEXION, FIN_CONNEXION FROM temps_connexion where ID_INSPECTEUR =" + recup() + "; SELECT ID_CONNEXION, ID_INSPECTEUR, DEBUT_CONNEXION, FIN_CONNEXION FROM temps_connexion; select ID_INSPECTEUR, TEMPS_CONNEXION from inspecteur; SELECT ID_INSPECTEUR FROM inspecteur WHERE LOGIN ='" + recupLogin() + "'; ", myConnection);   
             
                 try
                 {
@@ -407,6 +434,7 @@ namespace PPE4_Stars_up
                         dv_temps_con = dataSetTP7.Tables[16].DefaultView; // Temps de connexion par inspecteur
                         dv_all_temps_con = dataSetTP7.Tables[17].DefaultView; // Tous les temps de connexion 
                         dv_maj_tps_con = dataSetTP7.Tables[18].DefaultView; // Tous les temps de connexion 
+                        dv_id_inspe = dataSetTP7.Tables[19].DefaultView; // Récupération de l'id 
 
                 chargement = true;
                 }

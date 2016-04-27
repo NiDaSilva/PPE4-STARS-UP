@@ -85,36 +85,54 @@ namespace PPE4_Stars_up
 
         private void quitterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Exportation des données
-
-            if (AffichageInputBox() == "Oui")
+            if (importToolStripMenuItem.Text == LangueElement[13])
             {
-                InputBox(LangueElement[35], "");
-            }
-
-            controleur.Vmodele.seconnecter();
-
-            if (controleur.Vmodele.Connopen == false)  // si la connexion échoue : propriété connopen de vmmodele à faux
-            {
-                MessageBox.Show(LangueElement[36], LangueElement[7], MessageBoxButtons.OK, MessageBoxIcon.Error);  // messageBox d’erreur
-            }
-            else  // sinon
-            {
-                if (AffichageInputBox() == "Oui")
-                {
-                    InputBox(LangueElement[37], "");
-                }
-
-                // MessageBox.Show("Connexion à la base de donnée effectuée avec succès", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                controleur.Vmodele.export();  // appel de la méthode export() via Vmodele du controleur
+                // Exportation des données
 
                 if (AffichageInputBox() == "Oui")
                 {
-                    InputBox(LangueElement[39], "");
+                    InputBox(LangueElement[35], "");
                 }
 
-                controleur.Vmodele.sedeconnecter();  // se déconnecter de la BD.
+                controleur.modif_bdd_fin('u', DateTime.Now, recup() - 1);
 
+                controleur.Vmodele.seconnecter();
+
+                if (controleur.Vmodele.Connopen == false)  // si la connexion échoue : propriété connopen de vmmodele à faux
+                {
+                    MessageBox.Show(LangueElement[36], LangueElement[7], MessageBoxButtons.OK, MessageBoxIcon.Error);  // messageBox d’erreur
+                }
+                else  // sinon
+                {
+                    if (AffichageInputBox() == "Oui")
+                    {
+                        InputBox(LangueElement[37], "");
+                    }
+
+                    // MessageBox.Show("Connexion à la base de donnée effectuée avec succès", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    controleur.Vmodele.export();  // appel de la méthode export() via Vmodele du controleur
+
+                    if (AffichageInputBox() == "Oui")
+                    {
+                        InputBox(LangueElement[39], "");
+                    }
+
+                    controleur.Vmodele.sedeconnecter();  // se déconnecter de la BD.
+
+                    planningToolStripMenuItem.Enabled = false;
+                    historiqueDesVisitesToolStripMenuItem.Enabled = false;
+                    imprimerPDFToolStripMenuItem.Enabled = false;
+                    quitterToolStripMenuItem.Enabled = false;
+
+                    timerHHmm.Stop();
+                    Visible = false;
+
+                    FormLogin FL = new FormLogin();
+                    FL.Show();
+                }
+            }
+            else
+            {
                 planningToolStripMenuItem.Enabled = false;
                 historiqueDesVisitesToolStripMenuItem.Enabled = false;
                 imprimerPDFToolStripMenuItem.Enabled = false;
@@ -224,12 +242,34 @@ namespace PPE4_Stars_up
 
                     controleur.Vmodele.sedeconnecter();
 
+                    ecrireFichier();
+
+                    controleur.init();
+                    controleur.Vmodele.seconnecter();
+
+                    if (controleur.Vmodele.Connopen == false)
+                    {
+                        MessageBox.Show(LangueElement[36], LangueElement[7], MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        controleur.Vmodele.import();
+
+                        controleur.Vmodele.sedeconnecter();
+
+                        ecrireFichier();
+                    }
+
+
+
+                        controleur.modif_bdd_deb('u', DateTime.Now, recup() - 1);
+
                     // Début de connexion
 
                     // MessageBox.Show(controleur.Vmodele.Dv_temps_con.ToTable().Rows[0][2].ToString());
                     // MessageBox.Show(DateTime.Now.ToString());
                     // controleur.Vmodele.Dv_temps_con.ToTable().Rows[0][2] = DateTime.Now;
-                    controleur.modif_bdd_deb('u', DateTime.Now, recup() - 1);
+
 
                     importToolStripMenuItem.Text = LangueElement[13];
                     planningToolStripMenuItem.Enabled = true;
@@ -253,7 +293,7 @@ namespace PPE4_Stars_up
                     }
                     else
                     {
-                        pbPDP.ImageLocation = @"PDP/anonyme.png";
+                        pbPDP.ImageLocation = @"anonyme.png";
                         pbPDP.Location = new Point(679, 359);
                     }
 
@@ -303,38 +343,56 @@ namespace PPE4_Stars_up
 
         private void FormIndex_FormClosed(object sender, FormClosedEventArgs e)
         {
-            // Exportation des données
-
-            if (AffichageInputBox() == "Oui")
+            if (importToolStripMenuItem.Text == LangueElement[13])
             {
-                InputBox(LangueElement[35], "");
-            }
-
-            controleur.modif_bdd_fin('u', DateTime.Now, recup() - 1);
-
-            controleur.Vmodele.seconnecter();
-
-            if (controleur.Vmodele.Connopen == false)  // si la connexion échoue : propriété connopen de vmmodele à faux
-            {
-                MessageBox.Show(LangueElement[36], LangueElement[7], MessageBoxButtons.OK, MessageBoxIcon.Error);  // messageBox d’erreur
-            }
-            else  // sinon
-            {
-                if (AffichageInputBox() == "Oui")
-                {
-                    InputBox(LangueElement[37], "");
-                }
-
-                // MessageBox.Show("Connexion à la base de donnée effectuée avec succès", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                controleur.Vmodele.export();  // appel de la méthode export() via Vmodele du controleur
+                // Exportation des données
 
                 if (AffichageInputBox() == "Oui")
                 {
-                    InputBox(LangueElement[39], "");
+                    InputBox(LangueElement[35], "");
                 }
 
-                controleur.Vmodele.sedeconnecter();  // se déconnecter de la BD.
+                controleur.modif_bdd_fin('u', DateTime.Now, recup() - 1);
 
+                controleur.Vmodele.seconnecter();
+
+                if (controleur.Vmodele.Connopen == false)  // si la connexion échoue : propriété connopen de vmmodele à faux
+                {
+                    MessageBox.Show(LangueElement[36], LangueElement[7], MessageBoxButtons.OK, MessageBoxIcon.Error);  // messageBox d’erreur
+                }
+                else  // sinon
+                {
+                    if (AffichageInputBox() == "Oui")
+                    {
+                        InputBox(LangueElement[37], "");
+                    }
+
+                    // MessageBox.Show("Connexion à la base de donnée effectuée avec succès", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    controleur.Vmodele.export();  // appel de la méthode export() via Vmodele du controleur
+
+                    if (AffichageInputBox() == "Oui")
+                    {
+                        InputBox(LangueElement[39], "");
+                    }
+
+                    controleur.Vmodele.sedeconnecter();  // se déconnecter de la BD.
+
+                    planningToolStripMenuItem.Enabled = false;
+                    historiqueDesVisitesToolStripMenuItem.Enabled = false;
+                    imprimerPDFToolStripMenuItem.Enabled = false;
+                    quitterToolStripMenuItem.Enabled = false;
+
+                    timerHHmm.Stop();
+                    Visible = false;
+
+                    FormLogin FL = new FormLogin();
+                    FL.Show();
+
+                    // Application.Exit();
+                }
+            }
+            else
+            {
                 planningToolStripMenuItem.Enabled = false;
                 historiqueDesVisitesToolStripMenuItem.Enabled = false;
                 imprimerPDFToolStripMenuItem.Enabled = false;
@@ -345,10 +403,7 @@ namespace PPE4_Stars_up
 
                 FormLogin FL = new FormLogin();
                 FL.Show();
-
-                // Application.Exit();
             }
-
         }
 
         private void semaineToolStripMenuItem_Click(object sender, EventArgs e)
@@ -932,7 +987,15 @@ namespace PPE4_Stars_up
             }
             reader.Close();
 
-            listeElement[2] = lblSpecialite.Text;
+            try
+            {
+                listeElement[0] = controleur.Vmodele.Dv_id_inspe.ToTable().Rows[0][0].ToString();
+                listeElement[2] = lblSpecialite.Text;
+            }
+            catch
+            {
+
+            }
 
             /*
             if(listeElement.Count() < 3)

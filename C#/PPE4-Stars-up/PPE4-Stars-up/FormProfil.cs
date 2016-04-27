@@ -187,7 +187,7 @@ namespace PPE4_Stars_up
 
             
             
-            if (controleur.Vmodele.Dv_pdp.ToTable().Rows[0][0].ToString() != "")
+            if (controleur.Vmodele.Dv_pdp.ToTable().Rows[0][6].ToString() != "")
             {
                 // pbPDP.Location = new Point(712, 356);
                 pbPDP.SizeMode = PictureBoxSizeMode.Zoom;
@@ -196,7 +196,7 @@ namespace PPE4_Stars_up
             else
             {
                 pbPDP.SizeMode = PictureBoxSizeMode.Zoom;
-                pbPDP.ImageLocation = @"PDP/anonyme.png";
+                pbPDP.ImageLocation = @"anonyme.png";
                 // pbPDP.Location = new Point(680, 359);
             }
             
