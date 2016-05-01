@@ -6,7 +6,7 @@ if(isset($_REQUEST['login']) && isset($_REQUEST['pass']) && isset($_REQUEST['nom
 {
     $tab=array(
         "login"   => $_REQUEST['login'],
-        "pass"   => $_REQUEST['pass'],
+        "pass"   => sha1($_REQUEST['pass']),
         "nom" => $_REQUEST['nom'],
         "prenom" => $_REQUEST['prenom'],
         "type" => "gerant",
