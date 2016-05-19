@@ -13,7 +13,7 @@ if (isset($_GET["id"])) {
 //ID_VISITE,v.ID_HEBERGEMENT,ID_SAISON,DATE_HEURE_VISITE, NOM_HEBERGEMENT,ADRESSE_HEBERGEMENT,VILLE_HEBERGEMENT,ID_DEPARTEMENT,HORAIRES  WHERE ID_INSPECTEUR = $id
 
     // get a visite from visites table
-    $result = mysql_query("SELECT * FROM visite AS v INNER JOIN hebergement AS h ON v.ID_HEBERGEMENT=h.ID_HEBERGEMENT WHERE ID_INSPECTEUR = $id") or die(mysql_error());    
+    $result = mysql_query("SELECT * FROM visite AS v INNER JOIN hebergement AS h ON v.ID_HEBERGEMENT=h.ID_HEBERGEMENT WHERE ID_INSPECTEUR = $id AND DATE_HEURE_VISITE >= DATE (NOW())") or die(mysql_error());    
 
     if (!empty($result)) {
         // check for empty result
