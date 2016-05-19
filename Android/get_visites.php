@@ -13,7 +13,7 @@ if (isset($_GET["id"])) {
 //ID_VISITE,v.ID_HEBERGEMENT,ID_SAISON,DATE_HEURE_VISITE, NOM_HEBERGEMENT,ADRESSE_HEBERGEMENT,VILLE_HEBERGEMENT,ID_DEPARTEMENT,HORAIRES  WHERE ID_INSPECTEUR = $id
 
     // get a visite from visites table
-    $result = mysql_query("SELECT * FROM visite AS v INNER JOIN hebergement AS h ON v.ID_HEBERGEMENT=h.ID_HEBERGEMENT WHERE ID_INSPECTEUR = $id") or die(mysql_error());
+    $result = mysql_query("SELECT * FROM visite AS v INNER JOIN hebergement AS h ON v.ID_HEBERGEMENT=h.ID_HEBERGEMENT WHERE ID_INSPECTEUR = $id") or die(mysql_error());    
 
     if (!empty($result)) {
         // check for empty result
@@ -25,13 +25,20 @@ if (isset($_GET["id"])) {
             while ($row = mysql_fetch_array($result)) {
                 // temp user array
                 $visite = array();
-                $visite["id"]           = $row["ID_VISITE"];
-                $visite["id_h"]         = $row["ID_HEBERGEMENT"];
+                $visite["id_v"]         = $row["ID_VISITE"];
+                $visite["id_i"]         = $row["ID_INSPECTEUR"];
                 $visite["id_s"]         = $row["ID_SAISON"];
-                $visite["date"]         = $row["DATE_HEURE_VISITE"];
-                $visite["nom"]          = $row["NOM_HEBERGEMENT"];
-                $visite["adresse"]      = $row["ADRESSE_HEBERGEMENT"];
-                $visite["ville"]        = $row["VILLE_HEBERGEMENT"];
+                $visite["datetime"]     = $row["DATE_HEURE_VISITE"];
+                $visite["date"]         = date("d/m", strtotime($row["DATE_HEURE_VISITE"]));
+                $visite["heure"]        = date("H:i", strtotime($row["DATE_HEURE_VISITE"]));
+                $visite["nbr_etoiles"]  = $row["NOMBRE_ETOILE_VISITE"];
+                $visite["commentaire"]  = utf8_encode($row["COMMENTAIRE_VISITE"]);
+
+
+                $visite["id_h"]         = $row["ID_HEBERGEMENT"];
+                $visite["nom"]          = utf8_encode($row["NOM_HEBERGEMENT"]);
+                $visite["adresse"]      = utf8_encode($row["ADRESSE_HEBERGEMENT"]);
+                $visite["ville"]        = utf8_encode($row["VILLE_HEBERGEMENT"]);
                 $visite["departement"]  = $row["ID_DEPARTEMENT"];
                 $visite["horaires"]     = $row["HORAIRES"];
          

@@ -7,16 +7,16 @@ if (isset($_GET['id']) && isset($_GET['note']) && isset($_GET['commentaire']) ) 
  
     $id = $_GET['id'];
     $note = $_GET['note'];
-    $commentaire = $_GET['commentaire'];
- 
+    $commentaire = utf8_encode($_GET['commentaire']);
+
     // include db connect class
     require_once __DIR__ . '/db_connect.php';
  
     // connecting to db
     $db = new DB_CONNECT();
- 
+    
     // mysql update row with matched pid
-    $result = mysql_query("UPDATE visite SET NOMBRE_ETOILE_VISITE = $note, COMMENTAIRE_VISITE = $commentaire WHERE ID_VISITE = $id");
+    $result = mysql_query("UPDATE visite SET NOMBRE_ETOILE_VISITE = $note, COMMENTAIRE_VISITE = '".$commentaire."' WHERE ID_VISITE = $id");
  
     // check if row inserted or not
     if ($result) {
@@ -28,7 +28,7 @@ if (isset($_GET['id']) && isset($_GET['note']) && isset($_GET['commentaire']) ) 
         echo json_encode($response);
     }
     else {
-        $response["success"] = 1;
+        $response["success"] = 0;
         $response["message"] = "Erreur";
  
         // echoing JSON response
