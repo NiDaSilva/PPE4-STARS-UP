@@ -26,13 +26,16 @@ class agen_controller{
     public function corps_agenda()
     {
         $r= '
-      <div class="row">
-        <div id="calendar"></div>
-        <div id="external-events">
-			<h4>Les demandes</h4>
+    <div class="row agenda">
+        <div class="col-xs-4">
+            <div id="external-events">
+			    <h4 style="margin-top: 5px">Les demandes</h4>
+		    </div>
 		</div>
-      </div>
-      <div id="trash">trash</div>?';
+        <div class="col-xs-8">
+            <div id="calendar"></div>
+        </div>
+    </div>?';
         return $r;
     }
 
